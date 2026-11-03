@@ -1,0 +1,67 @@
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'section_header_model.dart';
+export 'section_header_model.dart';
+
+class SectionHeaderWidget extends StatefulWidget {
+  const SectionHeaderWidget({
+    super.key,
+    String? title,
+  }) : this.title = title ?? 'Contact Details';
+
+  final String title;
+
+  @override
+  State<SectionHeaderWidget> createState() => _SectionHeaderWidgetState();
+}
+
+class _SectionHeaderWidgetState extends State<SectionHeaderWidget> {
+  late SectionHeaderModel _model;
+
+  @override
+  void setState(VoidCallback callback) {
+    super.setState(callback);
+    _model.onUpdate();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => SectionHeaderModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
+  }
+
+  @override
+  void dispose() {
+    _model.maybeDispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      valueOrDefault<String>(
+        widget!.title,
+        'Contact Details',
+      ),
+      style: FlutterFlowTheme.of(context).bodyMedium.override(
+            font: GoogleFonts.inter(
+              fontWeight: FontWeight.w600,
+              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+            ),
+            color: Color(0xFF374151),
+            fontSize: 16.0,
+            letterSpacing: 0.0,
+            fontWeight: FontWeight.w600,
+            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+            lineHeight: 1.4,
+          ),
+    );
+  }
+}
