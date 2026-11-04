@@ -883,12 +883,24 @@ class _ShopWidgetState extends State<ShopWidget> {
 
                                 return Builder(
                                   builder: (context) {
-                                    final productItem =
-                                        WooCommerceProductsCall.productsList(
-                                              gridWooCommerceProductsResponse
-                                                  .jsonBody,
-                                            )?.toList() ??
-                                            [];
+                                    final productItem = (WooCommerceProductsCall.productsList(
+          gridWooCommerceProductsResponse.jsonBody,
+        ) ??
+        [])
+    .where((e) => e is Map)
+    .toList();
+
+if (productItem.isEmpty) {
+  return Padding(
+    padding: EdgeInsets.all(24),
+    child: Center(
+      child: Text(
+        'Could not load products '
+        '(status ${gridWooCommerceProductsResponse.statusCode})',
+      ),
+    ),
+  );
+}
 
                                     return GridView.builder(
                                       padding: EdgeInsets.zero,
@@ -906,20 +918,14 @@ class _ShopWidgetState extends State<ShopWidget> {
                                       itemBuilder: (context, productItemIndex) {
                                         final productItemItem =
                                             productItem[productItemIndex];
-                                        return ProductCard2Widget(
-                                          key: Key(
-                                              'Key5gv_${productItemIndex}_of_${productItem.length}'),
-                                          brand: ProductDataTypeCreatedStruct
-                                                  .maybeFromMap(productItemItem)
-                                              ?.brand,
-                                          name: ProductDataTypeCreatedStruct
-                                                  .maybeFromMap(productItemItem)
-                                              ?.name,
-                                          rating: '',
-                                          price: ProductDataTypeCreatedStruct
-                                                  .maybeFromMap(productItemItem)
-                                              ?.price,
-                                        );
+                                       return ProductCard2Widget(
+  key: Key('Key5gv_${productItemIndex}_of_${productItem.length}'),
+  imageDesc: getJsonField(productItemItem, r'''$.images[0].src''')?.toString(),
+  brand: getJsonField(productItemItem, r'''$.brands[0].name''')?.toString(),
+  name: _decodeHtml(getJsonField(productItemItem, r'''$.name''')?.toString()),
+  rating: '',
+  price: _formatWooPrice(productItemItem),
+);
                                       },
                                     );
                                   },
@@ -939,4 +945,28 @@ class _ShopWidgetState extends State<ShopWidget> {
       ),
     );
   }
+}
+String _decodeHtml(String? text) => (text ?? '')
+    .replaceAll('&amp;', '&')
+    .replaceAll('&#038;', '&')
+    .replaceAll('&#8211;', '–')
+    .replaceAll('&#8217;', '’')
+    .replaceAll('&quot;', '"');
+
+// Store API price minor unit-il aanu ("149900" => 1499.00)
+String _formatWooPrice(dynamic item) {
+  final raw = getJsonField(item, r'''$.prices.price''')?.toString();
+  final value = int.tryParse(raw ?? '');
+  if (value == null) return '';
+  final minor = int.tryParse(
+          getJsonField(item, r'''$.prices.currency_minor_unit''')?.toString() ??
+              '') ??
+      2;
+  var divisor = 1;
+  for (var i = 0; i < minor; i++) {
+    divisor *= 10;
+  }
+  final symbol =
+      getJsonField(item, r'''$.prices.currency_symbol''')?.toString() ?? '';
+  return '$symbol${(value / divisor).toStringAsFixed(minor)}';
 }
