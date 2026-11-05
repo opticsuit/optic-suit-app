@@ -1,20 +1,38 @@
 import '/backend/api_requests/api_calls.dart';
 import '/components/category_chip2_widget.dart';
 import '/components/product_card2_widget.dart';
+import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
-import '/backend/schema/structs/index.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'shop_widget.dart' show ShopWidget;
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class ShopModel extends FlutterFlowModel<ShopWidget> {
+  ///  Local state fields for this page.
+
+  List<dynamic> products = [];
+  void addToProducts(dynamic item) => products.add(item);
+  void removeFromProducts(dynamic item) => products.remove(item);
+  void removeAtIndexFromProducts(int index) => products.removeAt(index);
+  void insertAtIndexInProducts(int index, dynamic item) =>
+      products.insert(index, item);
+  void updateProductsAtIndex(int index, Function(dynamic) updateFn) =>
+      products[index] = updateFn(products[index]);
+
+  int nextPage = 2;
+
+  bool hasMore = true;
+
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Backend Call - API (WooCommerce Products)] action in Shop widget.
+  ApiCallResponse? firstBatch;
   // Model for CategoryChip.
   late CategoryChip2Model categoryChipModel1;
   // Model for CategoryChip.
@@ -25,6 +43,8 @@ class ShopModel extends FlutterFlowModel<ShopWidget> {
   late CategoryChip2Model categoryChipModel4;
   // Model for CategoryChip.
   late CategoryChip2Model categoryChipModel5;
+  // Stores action output result for [Backend Call - API (WooCommerce Products)] action in Button widget.
+  ApiCallResponse? moreBatch;
 
   @override
   void initState(BuildContext context) {

@@ -12,13 +12,19 @@ export 'api_manager.dart' show ApiCallResponse;
 const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
 class WooCommerceProductsCall {
-  static Future<ApiCallResponse> call() async {
+  static Future<ApiCallResponse> call({
+    String? perPage = '100',
+    String? page = '1',
+  }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'WooCommerce Products',
       apiUrl: 'https://opticsuit.com/wp-json/wc/store/v1/products',
       callType: ApiCallType.GET,
       headers: {},
-      params: {},
+      params: {
+        'per_page': "${perPage}",
+        'page': "${page}",
+      },
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,

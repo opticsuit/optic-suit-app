@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -95,8 +96,7 @@ class _ProductCard2WidgetState extends State<ProductCard2Widget> {
                     child: CachedNetworkImage(
                       fadeInDuration: Duration(milliseconds: 0),
                       fadeOutDuration: Duration(milliseconds: 0),
-                      imageUrl:
-                          'https://images.unsplash.com/photo-1531969179221-3946e6b5a5e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHwyfHx0ZWF8ZW58MHx8fHwxNzkzMTA1NjI3fDA&ixlib=rb-4.1.0&q=80&w=1080',
+                      imageUrl: widget!.imageDesc,
                       fit: BoxFit.cover,
                       alignment: Alignment(0.0, 0.0),
                     ),
@@ -215,7 +215,10 @@ class _ProductCard2WidgetState extends State<ProductCard2Widget> {
                       ].divide(SizedBox(width: 4.0)),
                     ),
                     Text(
-                      widget!.price,
+                      valueOrDefault<String>(
+                        functions.formatWooPrice(widget!.price, '₹'),
+                        '₹',
+                      ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             font: GoogleFonts.inter(
                               fontWeight: FontWeight.bold,

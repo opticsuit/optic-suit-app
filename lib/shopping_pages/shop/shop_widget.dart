@@ -1,13 +1,14 @@
 import '/backend/api_requests/api_calls.dart';
 import '/components/category_chip2_widget.dart';
 import '/components/product_card2_widget.dart';
+import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
-import '/backend/schema/structs/index.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'shop_model.dart';
@@ -235,6 +236,28 @@ class _ShopWidgetState extends State<ShopWidget> {
     _model = createModel(context, () => ShopModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Shop'});
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('SHOP_PAGE_Shop_ON_INIT_STATE');
+      logFirebaseEvent('Shop_backend_call');
+      _model.firstBatch = await WooCommerceProductsCall.call(
+        perPage: '100',
+        page: '1',
+      );
+
+      if ((_model.firstBatch?.succeeded ?? true)) {
+        logFirebaseEvent('Shop_update_page_state');
+        _model.products = getJsonField(
+          (_model.firstBatch?.jsonBody ?? ''),
+          r'''$''',
+          true,
+        )!
+            .toList()
+            .cast<dynamic>();
+        safeSetState(() {});
+      }
+    });
+
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -543,197 +566,6 @@ class _ShopWidgetState extends State<ShopWidget> {
                                 ].divide(SizedBox(width: 8.0)),
                               ),
                             ),
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(16.0),
-                              child: Container(
-                                height: 160.0,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(16.0),
-                                  shape: BoxShape.rectangle,
-                                ),
-                                child: Stack(
-                                  alignment: AlignmentDirectional(-1.0, -1.0),
-                                  children: [
-                                    CachedNetworkImage(
-                                      fadeInDuration: Duration(milliseconds: 0),
-                                      fadeOutDuration:
-                                          Duration(milliseconds: 0),
-                                      imageUrl:
-                                          'https://dimg.dreamflow.cloud/v1/image/lifestyle%20model%20wearing%20stylish%20summer%20sunglasses',
-                                      fit: BoxFit.cover,
-                                      alignment: Alignment(0.0, 0.0),
-                                    ),
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        gradient: LinearGradient(
-                                          colors: [
-                                            Color(0x99000000),
-                                            Color(0x1A000000)
-                                          ],
-                                          stops: [0.0, 1.0],
-                                          begin:
-                                              AlignmentDirectional(-1.0, 0.0),
-                                          end: AlignmentDirectional(1.0, 0),
-                                        ),
-                                        shape: BoxShape.rectangle,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.all(20.0),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            'NEW COLLECTION',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  font: GoogleFonts.inter(
-                                                    fontWeight: FontWeight.w500,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontStyle,
-                                                  ),
-                                                  color: Color(0xCCFFFFFF),
-                                                  fontSize: 12.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w500,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                  lineHeight: 1.4,
-                                                ),
-                                          ),
-                                          Text(
-                                            'Summer Sunglasses',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  font: GoogleFonts.inter(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontStyle,
-                                                  ),
-                                                  color: Colors.white,
-                                                  fontSize: 20.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                  lineHeight: 1.4,
-                                                ),
-                                          ),
-                                          Text(
-                                            'Up to 40% OFF',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  font: GoogleFonts.inter(
-                                                    fontWeight:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontWeight,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontStyle,
-                                                  ),
-                                                  color: Colors.white,
-                                                  fontSize: 14.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                  lineHeight: 1.4,
-                                                ),
-                                          ),
-                                          Container(
-                                            height: 8.0,
-                                          ),
-                                          Container(
-                                            width: 110.0,
-                                            height: 38.0,
-                                            decoration: BoxDecoration(
-                                              color: Color(0xFF1F3A87),
-                                              borderRadius:
-                                                  BorderRadius.circular(20.0),
-                                              shape: BoxShape.rectangle,
-                                            ),
-                                            alignment:
-                                                AlignmentDirectional(0.0, 0.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.min,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              children: [
-                                                Text(
-                                                  'Shop Now',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        font: GoogleFonts.inter(
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                        color: Colors.white,
-                                                        fontSize: 13.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontStyle,
-                                                        lineHeight: 1.4,
-                                                      ),
-                                                ),
-                                                Icon(
-                                                  Icons.arrow_forward_rounded,
-                                                  color: Colors.white,
-                                                  size: 14.0,
-                                                ),
-                                              ].divide(SizedBox(width: 4.0)),
-                                            ),
-                                          ),
-                                        ].divide(SizedBox(height: 4.0)),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
                             Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -860,73 +692,125 @@ class _ShopWidgetState extends State<ShopWidget> {
                                 ),
                               ],
                             ),
-                            FutureBuilder<ApiCallResponse>(
-                              future: WooCommerceProductsCall.call(),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 25.0,
-                                      height: 25.0,
-                                      child: CircularProgressIndicator(
-                                        valueColor:
-                                            AlwaysStoppedAnimation<Color>(
-                                          FlutterFlowTheme.of(context).primary,
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment:
+                                  (FFMainAxisAlignment.end).flutterValue,
+                              children: [
+                                FFButtonWidget(
+                                  onPressed: () async {
+                                    logFirebaseEvent(
+                                        'SHOP_PAGE_LOAD_MORE_BTN_ON_TAP');
+                                    logFirebaseEvent('Button_backend_call');
+                                    _model.moreBatch =
+                                        await WooCommerceProductsCall.call(
+                                      perPage: '100',
+                                      page: _model.nextPage.toString(),
+                                    );
+
+                                    if ((_model.moreBatch?.succeeded ?? true)) {
+                                      logFirebaseEvent(
+                                          'Button_update_page_state');
+                                      _model.products = functions
+                                          .mergeLists(
+                                              getJsonField(
+                                                (_model.moreBatch?.jsonBody ??
+                                                    ''),
+                                                r'''$''',
+                                                true,
+                                              ),
+                                              _model.products.toList())!
+                                          .toList()
+                                          .cast<dynamic>();
+                                      _model.nextPage = _model.nextPage + 1;
+                                      safeSetState(() {});
+                                    }
+
+                                    safeSetState(() {});
+                                  },
+                                  text: 'Load More',
+                                  options: FFButtonOptions(
+                                    height: 40.0,
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        16.0, 0.0, 16.0, 0.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          font: GoogleFonts.inter(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .fontStyle,
+                                          ),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          fontSize: 13.0,
+                                          letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .fontStyle,
                                         ),
-                                      ),
-                                    ),
-                                  );
-                                }
-                                final gridWooCommerceProductsResponse =
-                                    snapshot.data!;
+                                    elevation: 0.0,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Builder(
+                              builder: (context) {
+                                final productItem = getJsonField(
+                                  (_model.firstBatch?.jsonBody ?? ''),
+                                  r'''$''',
+                                ).toList();
 
-                                return Builder(
-                                  builder: (context) {
-                                    final productItem = (WooCommerceProductsCall.productsList(
-          gridWooCommerceProductsResponse.jsonBody,
-        ) ??
-        [])
-    .where((e) => e is Map)
-    .toList();
-
-if (productItem.isEmpty) {
-  return Padding(
-    padding: EdgeInsets.all(24),
-    child: Center(
-      child: Text(
-        'Could not load products '
-        '(status ${gridWooCommerceProductsResponse.statusCode})',
-      ),
-    ),
-  );
-}
-
-                                    return GridView.builder(
-                                      padding: EdgeInsets.zero,
-                                      gridDelegate:
-                                          SliverGridDelegateWithFixedCrossAxisCount(
-                                        crossAxisCount: 2,
-                                        crossAxisSpacing: 12.0,
-                                        mainAxisSpacing: 12.0,
-                                        childAspectRatio: 0.65,
-                                      ),
-                                      primary: false,
-                                      shrinkWrap: true,
-                                      scrollDirection: Axis.vertical,
-                                      itemCount: productItem.length,
-                                      itemBuilder: (context, productItemIndex) {
-                                        final productItemItem =
-                                            productItem[productItemIndex];
-                                       return ProductCard2Widget(
-  key: Key('Key5gv_${productItemIndex}_of_${productItem.length}'),
-  imageDesc: getJsonField(productItemItem, r'''$.images[0].src''')?.toString(),
-  brand: getJsonField(productItemItem, r'''$.brands[0].name''')?.toString(),
-  name: _decodeHtml(getJsonField(productItemItem, r'''$.name''')?.toString()),
-  rating: '',
-  price: _formatWooPrice(productItemItem),
-);
-                                      },
+                                return GridView.builder(
+                                  padding: EdgeInsets.zero,
+                                  gridDelegate:
+                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2,
+                                    crossAxisSpacing: 12.0,
+                                    mainAxisSpacing: 12.0,
+                                    childAspectRatio: 0.65,
+                                  ),
+                                  primary: false,
+                                  shrinkWrap: true,
+                                  scrollDirection: Axis.vertical,
+                                  itemCount: productItem.length,
+                                  itemBuilder: (context, productItemIndex) {
+                                    final productItemItem =
+                                        productItem[productItemIndex];
+                                    return ProductCard2Widget(
+                                      key: Key(
+                                          'Key5gv_${productItemIndex}_of_${productItem.length}'),
+                                      imageDesc: getJsonField(
+                                        productItemItem,
+                                        r'''$.images[0].src''',
+                                      ).toString(),
+                                      brand: getJsonField(
+                                        productItemItem,
+                                        r'''$.brands[0].name''',
+                                      ).toString(),
+                                      name: getJsonField(
+                                        productItemItem,
+                                        r'''$.name''',
+                                      ).toString(),
+                                      price: getJsonField(
+                                        productItemItem,
+                                        r'''$.prices.price''',
+                                      ).toString(),
                                     );
                                   },
                                 );
@@ -945,28 +829,4 @@ if (productItem.isEmpty) {
       ),
     );
   }
-}
-String _decodeHtml(String? text) => (text ?? '')
-    .replaceAll('&amp;', '&')
-    .replaceAll('&#038;', '&')
-    .replaceAll('&#8211;', '–')
-    .replaceAll('&#8217;', '’')
-    .replaceAll('&quot;', '"');
-
-// Store API price minor unit-il aanu ("149900" => 1499.00)
-String _formatWooPrice(dynamic item) {
-  final raw = getJsonField(item, r'''$.prices.price''')?.toString();
-  final value = int.tryParse(raw ?? '');
-  if (value == null) return '';
-  final minor = int.tryParse(
-          getJsonField(item, r'''$.prices.currency_minor_unit''')?.toString() ??
-              '') ??
-      2;
-  var divisor = 1;
-  for (var i = 0; i < minor; i++) {
-    divisor *= 10;
-  }
-  final symbol =
-      getJsonField(item, r'''$.prices.currency_symbol''')?.toString() ?? '';
-  return '$symbol${(value / divisor).toStringAsFixed(minor)}';
 }
