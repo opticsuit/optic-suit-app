@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -715,29 +716,51 @@ class _ShopWidgetState extends State<ShopWidget> {
                                   itemBuilder: (context, productItemIndex) {
                                     final productItemItem =
                                         productItem[productItemIndex];
-                                    return ProductCard2Widget(
-                                      key: Key(
-                                          'Key5gv_${productItemIndex}_of_${productItem.length}'),
-                                      imageDesc: getJsonField(
-                                        productItemItem,
-                                        r'''$.images[0].src''',
-                                      ).toString(),
-                                      brand: getJsonField(
-                                        productItemItem,
-                                        r'''$.brands[0].name''',
-                                      ).toString(),
-                                      name: getJsonField(
-                                        productItemItem,
-                                        r'''$.name''',
-                                      ).toString(),
-                                      rating: getJsonField(
-                                        productItemItem,
-                                        r'''$.average_rating''',
-                                      ).toString(),
-                                      price: getJsonField(
-                                        productItemItem,
-                                        r'''$.prices.price''',
-                                      ).toString(),
+                                    return InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        logFirebaseEvent(
+                                            'SHOP_PAGE_Container_5gv7q87v_ON_TAP');
+                                        logFirebaseEvent(
+                                            'ProductCard2_navigate_to');
+
+                                        context.pushNamed(
+                                          ProductDeatilsWidget.routeName,
+                                          queryParameters: {
+                                            'productId': serializeParam(
+                                              0,
+                                              ParamType.int,
+                                            ),
+                                          }.withoutNulls,
+                                        );
+                                      },
+                                      child: ProductCard2Widget(
+                                        key: Key(
+                                            'Key5gv_${productItemIndex}_of_${productItem.length}'),
+                                        imageDesc: getJsonField(
+                                          productItemItem,
+                                          r'''$.images[0].src''',
+                                        ).toString(),
+                                        brand: getJsonField(
+                                          productItemItem,
+                                          r'''$.brands[0].name''',
+                                        ).toString(),
+                                        name: getJsonField(
+                                          productItemItem,
+                                          r'''$.name''',
+                                        ).toString(),
+                                        rating: getJsonField(
+                                          productItemItem,
+                                          r'''$.average_rating''',
+                                        ).toString(),
+                                        price: getJsonField(
+                                          productItemItem,
+                                          r'''$.prices.price''',
+                                        ).toString(),
+                                      ),
                                     );
                                   },
                                 );
