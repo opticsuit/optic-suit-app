@@ -247,13 +247,16 @@ class _ShopWidgetState extends State<ShopWidget> {
 
       if ((_model.firstBatch?.succeeded ?? true)) {
         logFirebaseEvent('Shop_update_page_state');
-        _model.products = getJsonField(
+        _model.products = WooCommerceProductsCall.productsList(
           (_model.firstBatch?.jsonBody ?? ''),
-          r'''$''',
-          true,
         )!
             .toList()
             .cast<dynamic>();
+        _model.hasMore = WooCommerceProductsCall.productsList(
+              (_model.firstBatch?.jsonBody ?? ''),
+            )!
+                .length >=
+            100;
         safeSetState(() {});
       }
     });
@@ -692,89 +695,9 @@ class _ShopWidgetState extends State<ShopWidget> {
                                 ),
                               ],
                             ),
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment:
-                                  (FFMainAxisAlignment.end).flutterValue,
-                              children: [
-                                FFButtonWidget(
-                                  onPressed: () async {
-                                    logFirebaseEvent(
-                                        'SHOP_PAGE_LOAD_MORE_BTN_ON_TAP');
-                                    logFirebaseEvent('Button_backend_call');
-                                    _model.moreBatch =
-                                        await WooCommerceProductsCall.call(
-                                      perPage: '100',
-                                      page: _model.nextPage.toString(),
-                                    );
-
-                                    if ((_model.moreBatch?.succeeded ?? true)) {
-                                      logFirebaseEvent(
-                                          'Button_update_page_state');
-                                      _model.products = functions
-                                          .mergeLists(
-                                              getJsonField(
-                                                (_model.moreBatch?.jsonBody ??
-                                                    ''),
-                                                r'''$''',
-                                                true,
-                                              ),
-                                              _model.products.toList())!
-                                          .toList()
-                                          .cast<dynamic>();
-                                      _model.nextPage = _model.nextPage + 1;
-                                      safeSetState(() {});
-                                    }
-
-                                    safeSetState(() {});
-                                  },
-                                  text: 'Load More',
-                                  options: FFButtonOptions(
-                                    height: 40.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 0.0, 16.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          font: GoogleFonts.inter(
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .fontStyle,
-                                          ),
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          fontSize: 13.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmall
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmall
-                                                  .fontStyle,
-                                        ),
-                                    elevation: 0.0,
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                ),
-                              ],
-                            ),
                             Builder(
                               builder: (context) {
-                                final productItem = getJsonField(
-                                  (_model.firstBatch?.jsonBody ?? ''),
-                                  r'''$''',
-                                ).toList();
+                                final productItem = _model.products.toList();
 
                                 return GridView.builder(
                                   padding: EdgeInsets.zero,
@@ -807,6 +730,10 @@ class _ShopWidgetState extends State<ShopWidget> {
                                         productItemItem,
                                         r'''$.name''',
                                       ).toString(),
+                                      rating: getJsonField(
+                                        productItemItem,
+                                        r'''$.average_rating''',
+                                      ).toString(),
                                       price: getJsonField(
                                         productItemItem,
                                         r'''$.prices.price''',
@@ -815,6 +742,58 @@ class _ShopWidgetState extends State<ShopWidget> {
                                   },
                                 );
                               },
+                            ),
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                logFirebaseEvent(
+                                    'SHOP_PAGE_Row_050lffhe_ON_TAP');
+                                logFirebaseEvent('Row_backend_call');
+                                _model.appendProducts =
+                                    await WooCommerceProductsCall.call(
+                                  perPage: '100',
+                                  page: _model.nextPage.toString(),
+                                );
+
+                                if ((_model.appendProducts?.succeeded ??
+                                    true)) {
+                                  logFirebaseEvent('Row_update_page_state');
+                                  _model.products = functions
+                                      .mergeLists(
+                                          _model.products.toList(),
+                                          getJsonField(
+                                            (_model.appendProducts?.jsonBody ??
+                                                ''),
+                                            r'''$''',
+                                            true,
+                                          ))!
+                                      .toList()
+                                      .cast<dynamic>();
+                                  _model.nextPage = _model.nextPage + 1;
+                                  safeSetState(() {});
+                                }
+
+                                safeSetState(() {});
+                              },
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    (FFMainAxisAlignment.center).flutterValue,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Icon(
+                                      Icons.autorenew_rounded,
+                                      color:
+                                          FlutterFlowTheme.of(context).success,
+                                      size: 20.0,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ].divide(SizedBox(height: 24.0)),
                         ),

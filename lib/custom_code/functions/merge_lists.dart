@@ -16,8 +16,16 @@ import '/flutter_flow/ff_builtin_enums.dart';
 import '/auth/firebase_auth/auth_util.dart';
 
 List<dynamic>? mergeLists(
-  List<dynamic>? b,
-  List<dynamic>? a,
+  List<dynamic>? oldProducts,
+  List<dynamic>? newProducts,
 ) {
-  return [...(a ?? []), ...(b ?? [])];
+  final merged = [...(oldProducts ?? [])];
+  final ids = <dynamic>{};
+  for (final product in merged) {
+    if (product is Map) ids.add(product['id']);
+  }
+  for (final product in newProducts ?? []) {
+    if (product is Map && ids.add(product['id'])) merged.add(product);
+  }
+  return merged;
 }

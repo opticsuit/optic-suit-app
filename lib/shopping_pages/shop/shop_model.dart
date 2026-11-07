@@ -29,10 +29,14 @@ class ShopModel extends FlutterFlowModel<ShopWidget> {
 
   bool hasMore = true;
 
+  bool? loadingMore = false;
+
   ///  State fields for stateful widgets in this page.
 
   // Stores action output result for [Backend Call - API (WooCommerce Products)] action in Shop widget.
   ApiCallResponse? firstBatch;
+  // Stores action output result for [Backend Call - API (WooCommerce Products)] action in Column widget.
+  ApiCallResponse? moreBatch;
   // Model for CategoryChip.
   late CategoryChip2Model categoryChipModel1;
   // Model for CategoryChip.
@@ -43,8 +47,8 @@ class ShopModel extends FlutterFlowModel<ShopWidget> {
   late CategoryChip2Model categoryChipModel4;
   // Model for CategoryChip.
   late CategoryChip2Model categoryChipModel5;
-  // Stores action output result for [Backend Call - API (WooCommerce Products)] action in Button widget.
-  ApiCallResponse? moreBatch;
+  // Stores action output result for [Backend Call - API (WooCommerce Products)] action in Row widget.
+  ApiCallResponse? appendProducts;
 
   @override
   void initState(BuildContext context) {

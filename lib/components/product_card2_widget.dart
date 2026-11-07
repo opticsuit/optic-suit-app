@@ -14,23 +14,18 @@ export 'product_card2_model.dart';
 class ProductCard2Widget extends StatefulWidget {
   const ProductCard2Widget({
     super.key,
-    String? imageDesc,
-    String? brand,
-    String? name,
-    String? rating,
-    String? price,
-  })  : this.imageDesc = imageDesc ??
-            'https://dimg.dreamflow.cloud/v1/image/classic%20gold%20aviator%20sunglasses',
-        this.brand = brand ?? 'Ray-Ban',
-        this.name = name ?? 'Aviator Classic',
-        this.rating = rating ?? '4.8',
-        this.price = price ?? '\$163';
+    this.imageDesc,
+    this.brand,
+    this.name,
+    this.rating,
+    this.price,
+  });
 
-  final String imageDesc;
-  final String brand;
-  final String name;
-  final String rating;
-  final String price;
+  final String? imageDesc;
+  final String? brand;
+  final String? name;
+  final String? rating;
+  final String? price;
 
   @override
   State<ProductCard2Widget> createState() => _ProductCard2WidgetState();
@@ -96,7 +91,7 @@ class _ProductCard2WidgetState extends State<ProductCard2Widget> {
                     child: CachedNetworkImage(
                       fadeInDuration: Duration(milliseconds: 0),
                       fadeOutDuration: Duration(milliseconds: 0),
-                      imageUrl: widget!.imageDesc,
+                      imageUrl: widget!.imageDesc!,
                       fit: BoxFit.cover,
                       alignment: Alignment(0.0, 0.0),
                     ),
@@ -132,7 +127,7 @@ class _ProductCard2WidgetState extends State<ProductCard2Widget> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  widget!.brand,
+                  widget!.brand == '' ? 'Unbranded' : widget!.brand!,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         font: GoogleFonts.inter(
                           fontWeight: FlutterFlowTheme.of(context)
@@ -152,7 +147,7 @@ class _ProductCard2WidgetState extends State<ProductCard2Widget> {
                       ),
                 ),
                 Text(
-                  widget!.name,
+                  widget!.name!,
                   maxLines: 1,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         font: GoogleFonts.inter(
@@ -175,44 +170,28 @@ class _ProductCard2WidgetState extends State<ProductCard2Widget> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.star_rounded,
-                          color: Color(0xFFF5B301),
-                          size: 14.0,
-                        ),
-                        Text(
-                          valueOrDefault<String>(
-                            widget!.rating,
-                            '4.8',
+                    Text(
+                      widget!.rating!,
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            font: GoogleFonts.inter(
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
+                            ),
+                            color: Color(0xFF1B1B1B),
+                            fontSize: 12.0,
+                            letterSpacing: 0.0,
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontStyle,
+                            lineHeight: 1.4,
                           ),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    font: GoogleFonts.inter(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontStyle,
-                                    ),
-                                    color: Color(0xFF1B1B1B),
-                                    fontSize: 12.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontStyle,
-                                    lineHeight: 1.4,
-                                  ),
-                        ),
-                      ].divide(SizedBox(width: 4.0)),
                     ),
                     Text(
                       valueOrDefault<String>(
