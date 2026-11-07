@@ -718,6 +718,7 @@ class _ShopWidgetState extends State<ShopWidget> {
                                     return ProductCard2Widget(
                                       key: Key(
                                           'Key5gv_${productItemIndex}_of_${productItem.length}'),
+                                      productId: castToType<int>(getJsonField(productItemItem, r'''$.id''')),
                                       imageDesc: getJsonField(
                                         productItemItem,
                                         r'''$.images[0].src''',
