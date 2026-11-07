@@ -1,10 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'offer_card_model.dart';
 export 'offer_card_model.dart';
 
@@ -102,7 +99,7 @@ class _OfferCardWidgetState extends State<OfferCardWidget> {
                       children: [
                         Text(
                           valueOrDefault<String>(
-                            widget!.title,
+                            widget.title,
                             'Flat ₹200 OFF',
                           ),
                           style:
@@ -125,7 +122,7 @@ class _OfferCardWidgetState extends State<OfferCardWidget> {
                         ),
                         Text(
                           valueOrDefault<String>(
-                            widget!.desc,
+                            widget.desc,
                             'Get ₹200 off on eligible purchases above ₹1999.',
                           ),
                           maxLines: 2,
@@ -191,7 +188,7 @@ class _OfferCardWidgetState extends State<OfferCardWidget> {
                           child: Container(
                             child: Text(
                               valueOrDefault<String>(
-                                widget!.code,
+                                widget.code,
                                 'OPTIC200',
                               ),
                               style: FlutterFlowTheme.of(context)
@@ -217,7 +214,7 @@ class _OfferCardWidgetState extends State<OfferCardWidget> {
                       ),
                       Text(
                         valueOrDefault<String>(
-                          'Expires: ${widget!.expiry}',
+                          'Expires: ${widget.expiry}',
                           'Expires: 31 Dec 2024',
                         ),
                         style: FlutterFlowTheme.of(context).labelSmall.override(

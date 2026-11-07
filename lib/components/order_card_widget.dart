@@ -2,12 +2,10 @@ import '/components/status_badge_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import '/index.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'order_card_model.dart';
 export 'order_card_model.dart';
 
@@ -109,7 +107,7 @@ class _OrderCardWidgetState extends State<OrderCardWidget> {
                     children: [
                       Text(
                         valueOrDefault<String>(
-                          'Order ${widget!.id}',
+                          'Order ${widget.id}',
                           'Order ',
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -131,7 +129,7 @@ class _OrderCardWidgetState extends State<OrderCardWidget> {
                       ),
                       Text(
                         valueOrDefault<String>(
-                          widget!.date,
+                          widget.date,
                           '05 Oct 2026',
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -162,7 +160,7 @@ class _OrderCardWidgetState extends State<OrderCardWidget> {
                     updateCallback: () => safeSetState(() {}),
                     child: StatusBadgeWidget(
                       status: valueOrDefault<String>(
-                        widget!.status,
+                        widget.status,
                         'Delivered',
                       ),
                     ),
@@ -188,7 +186,7 @@ class _OrderCardWidgetState extends State<OrderCardWidget> {
                         fadeInDuration: Duration(milliseconds: 0),
                         fadeOutDuration: Duration(milliseconds: 0),
                         imageUrl: valueOrDefault<String>(
-                          widget!.imgDesc,
+                          widget.imgDesc,
                           'https://dimg.dreamflow.cloud/v1/image/black%20rectangular%20eyeglasses',
                         ),
                         fit: BoxFit.cover,
@@ -205,7 +203,7 @@ class _OrderCardWidgetState extends State<OrderCardWidget> {
                       children: [
                         Text(
                           valueOrDefault<String>(
-                            widget!.product,
+                            widget.product,
                             'Jet Premium Eyeglasses',
                           ),
                           maxLines: 1,
@@ -230,7 +228,7 @@ class _OrderCardWidgetState extends State<OrderCardWidget> {
                         ),
                         Text(
                           valueOrDefault<String>(
-                            'Qty: ${widget!.qty}',
+                            'Qty: ${widget.qty}',
                             'Qty: 1',
                           ),
                           style:
@@ -257,7 +255,7 @@ class _OrderCardWidgetState extends State<OrderCardWidget> {
                         ),
                         Text(
                           valueOrDefault<String>(
-                            widget!.price,
+                            widget.price,
                             '₹1,499',
                           ),
                           style:
@@ -325,7 +323,7 @@ class _OrderCardWidgetState extends State<OrderCardWidget> {
                       ),
                       Text(
                         valueOrDefault<String>(
-                          widget!.price,
+                          widget.price,
                           '₹1,499',
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(

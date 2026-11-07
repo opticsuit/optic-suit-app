@@ -1,10 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'preference_item_model.dart';
 export 'preference_item_model.dart';
 
@@ -63,7 +60,7 @@ class _PreferenceItemWidgetState extends State<PreferenceItemWidget> {
       child: Container(
         height: 44.0,
         decoration: BoxDecoration(
-          color: widget!.selectedItems!.contains(widget!.text)
+          color: widget.selectedItems!.contains(widget.text)
               ? FlutterFlowTheme.of(context).primary
               : FlutterFlowTheme.of(context).secondaryBackground,
           borderRadius: BorderRadius.circular(8.0),
@@ -75,14 +72,14 @@ class _PreferenceItemWidgetState extends State<PreferenceItemWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                widget!.text!,
+                widget.text!,
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       font: GoogleFonts.inter(
                         fontWeight: FontWeight.w600,
                         fontStyle:
                             FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                       ),
-                      color: widget!.selectedItems!.contains(widget!.text)
+                      color: widget.selectedItems!.contains(widget.text)
                           ? FlutterFlowTheme.of(context).primaryBackground
                           : FlutterFlowTheme.of(context).primaryText,
                       fontSize: 16.0,

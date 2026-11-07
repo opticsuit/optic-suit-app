@@ -1,10 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'notification_card_model.dart';
 export 'notification_card_model.dart';
 
@@ -83,7 +80,7 @@ class _NotificationCardWidgetState extends State<NotificationCardWidget> {
                       shape: BoxShape.rectangle,
                     ),
                     alignment: AlignmentDirectional(0.0, 0.0),
-                    child: widget!.icon!,
+                    child: widget.icon!,
                   ),
                   Expanded(
                     flex: 1,
@@ -101,7 +98,7 @@ class _NotificationCardWidgetState extends State<NotificationCardWidget> {
                               flex: 1,
                               child: Text(
                                 valueOrDefault<String>(
-                                  widget!.title,
+                                  widget.title,
                                   'Order Confirmed',
                                 ),
                                 maxLines: 1,
@@ -126,7 +123,7 @@ class _NotificationCardWidgetState extends State<NotificationCardWidget> {
                               ),
                             ),
                             if (valueOrDefault<bool>(
-                              widget!.unread,
+                              widget.unread,
                               true,
                             ))
                               Container(
@@ -142,7 +139,7 @@ class _NotificationCardWidgetState extends State<NotificationCardWidget> {
                         ),
                         Text(
                           valueOrDefault<String>(
-                            widget!.desc,
+                            widget.desc,
                             'Your order has been confirmed.',
                           ),
                           maxLines: 2,
@@ -172,7 +169,7 @@ class _NotificationCardWidgetState extends State<NotificationCardWidget> {
                         ),
                         Text(
                           valueOrDefault<String>(
-                            widget!.time,
+                            widget.time,
                             '10 min ago',
                           ),
                           style:

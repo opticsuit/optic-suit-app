@@ -1,11 +1,8 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'suggestion_card_model.dart';
 export 'suggestion_card_model.dart';
 
@@ -87,7 +84,7 @@ class _SuggestionCardWidgetState extends State<SuggestionCardWidget> {
                     fadeInDuration: Duration(milliseconds: 0),
                     fadeOutDuration: Duration(milliseconds: 0),
                     imageUrl: valueOrDefault<String>(
-                      widget!.imgDesc,
+                      widget.imgDesc,
                       'https://dimg.dreamflow.cloud/v1/image/Round%20tortoise%20shell%20glasses',
                     ),
                     width: 120.0,
@@ -111,7 +108,7 @@ class _SuggestionCardWidgetState extends State<SuggestionCardWidget> {
                 children: [
                   Text(
                     valueOrDefault<String>(
-                      widget!.brand,
+                      widget.brand,
                       'ALBERT ITALY',
                     ),
                     style: FlutterFlowTheme.of(context).labelSmall.override(
@@ -131,7 +128,7 @@ class _SuggestionCardWidgetState extends State<SuggestionCardWidget> {
                   ),
                   Text(
                     valueOrDefault<String>(
-                      widget!.name,
+                      widget.name,
                       'Classic Round Frame',
                     ),
                     maxLines: 1,
@@ -156,7 +153,7 @@ class _SuggestionCardWidgetState extends State<SuggestionCardWidget> {
                   ),
                   Text(
                     valueOrDefault<String>(
-                      widget!.price,
+                      widget.price,
                       '₹2,499',
                     ),
                     style: FlutterFlowTheme.of(context).titleSmall.override(

@@ -1,10 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'field_label_model.dart';
 export 'field_label_model.dart';
 
@@ -54,7 +51,7 @@ class _FieldLabelWidgetState extends State<FieldLabelWidget> {
       children: [
         Text(
           valueOrDefault<String>(
-            widget!.label,
+            widget.label,
             'Full Name',
           ),
           style: FlutterFlowTheme.of(context).labelLarge.override(

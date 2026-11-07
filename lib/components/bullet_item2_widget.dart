@@ -1,10 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'bullet_item2_model.dart';
 export 'bullet_item2_model.dart';
 
@@ -70,7 +67,7 @@ class _BulletItem2WidgetState extends State<BulletItem2Widget> {
           flex: 1,
           child: Text(
             valueOrDefault<String>(
-              widget!.text,
+              widget.text,
               'Delivery times may vary depending on product availability, stock status, prescription requirements, and delivery location.',
             ),
             style: FlutterFlowTheme.of(context).bodyMedium.override(

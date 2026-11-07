@@ -1,10 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'booking_card_model.dart';
 export 'booking_card_model.dart';
 
@@ -118,7 +115,7 @@ class _BookingCardWidgetState extends State<BookingCardWidget> {
                           ),
                           Text(
                             valueOrDefault<String>(
-                              'Booking #${widget!.idNum}',
+                              'Booking #${widget.idNum}',
                               'Booking #APT-10245',
                             ),
                             style: FlutterFlowTheme.of(context)
@@ -151,7 +148,7 @@ class _BookingCardWidgetState extends State<BookingCardWidget> {
                         decoration: BoxDecoration(
                           color: valueOrDefault<Color>(
                             valueOrDefault<bool>(
-                              widget!.isUpcoming,
+                              widget.isUpcoming,
                               true,
                             )
                                 ? Color(0xFFECFDF3)
@@ -178,7 +175,7 @@ class _BookingCardWidgetState extends State<BookingCardWidget> {
                                     decoration: BoxDecoration(
                                       color: valueOrDefault<Color>(
                                         valueOrDefault<bool>(
-                                          widget!.isUpcoming,
+                                          widget.isUpcoming,
                                           true,
                                         )
                                             ? Color(0xFF16A34A)
@@ -192,7 +189,7 @@ class _BookingCardWidgetState extends State<BookingCardWidget> {
                                   ),
                                   Text(
                                     valueOrDefault<String>(
-                                      widget!.status,
+                                      widget.status,
                                       'Confirmed',
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -207,7 +204,7 @@ class _BookingCardWidgetState extends State<BookingCardWidget> {
                                           ),
                                           color: valueOrDefault<Color>(
                                             valueOrDefault<bool>(
-                                              widget!.isUpcoming,
+                                              widget.isUpcoming,
                                               true,
                                             )
                                                 ? Color(0xFF16A34A)
@@ -249,7 +246,7 @@ class _BookingCardWidgetState extends State<BookingCardWidget> {
                         children: [
                           Text(
                             valueOrDefault<String>(
-                              widget!.store,
+                              widget.store,
                               'Optic Suit – Kozhikode',
                             ),
                             style: FlutterFlowTheme.of(context)
@@ -273,7 +270,7 @@ class _BookingCardWidgetState extends State<BookingCardWidget> {
                           ),
                           Text(
                             valueOrDefault<String>(
-                              '${widget!.city}, Kerala',
+                              '${widget.city}, Kerala',
                               'Kozhikode, Kerala',
                             ),
                             style:
@@ -319,7 +316,7 @@ class _BookingCardWidgetState extends State<BookingCardWidget> {
                           ),
                           Text(
                             valueOrDefault<String>(
-                              widget!.date,
+                              widget.date,
                               '05 Oct 2026',
                             ),
                             style: FlutterFlowTheme.of(context)
@@ -355,7 +352,7 @@ class _BookingCardWidgetState extends State<BookingCardWidget> {
                           ),
                           Text(
                             valueOrDefault<String>(
-                              widget!.time,
+                              widget.time,
                               '11:00 AM',
                             ),
                             style: FlutterFlowTheme.of(context)
@@ -382,7 +379,7 @@ class _BookingCardWidgetState extends State<BookingCardWidget> {
                     ].divide(SizedBox(width: 24.0)),
                   ),
                   if (valueOrDefault<bool>(
-                    widget!.isUpcoming,
+                    widget.isUpcoming,
                     true,
                   ))
                     Column(

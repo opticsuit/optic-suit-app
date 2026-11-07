@@ -1,10 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'address_card_model.dart';
 export 'address_card_model.dart';
 
@@ -106,10 +103,10 @@ class _AddressCardWidgetState extends State<AddressCardWidget> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                widget!.icon!,
+                                widget.icon!,
                                 Text(
                                   valueOrDefault<String>(
-                                    widget!.type,
+                                    widget.type,
                                     'Home',
                                   ),
                                   style: FlutterFlowTheme.of(context)
@@ -140,7 +137,7 @@ class _AddressCardWidgetState extends State<AddressCardWidget> {
                     ].divide(SizedBox(width: 8.0)),
                   ),
                   if (valueOrDefault<bool>(
-                    widget!.isDefault,
+                    widget.isDefault,
                     true,
                   ))
                     Container(
@@ -208,7 +205,7 @@ class _AddressCardWidgetState extends State<AddressCardWidget> {
                 children: [
                   Text(
                     valueOrDefault<String>(
-                      widget!.name,
+                      widget.name,
                       'Alex Rivera',
                     ),
                     style: FlutterFlowTheme.of(context).titleMedium.override(
@@ -229,7 +226,7 @@ class _AddressCardWidgetState extends State<AddressCardWidget> {
                   ),
                   Text(
                     valueOrDefault<String>(
-                      widget!.phone,
+                      widget.phone,
                       '+1 (555) 012-3456',
                     ),
                     style: FlutterFlowTheme.of(context).bodySmall.override(
@@ -252,7 +249,7 @@ class _AddressCardWidgetState extends State<AddressCardWidget> {
                   ),
                   Text(
                     valueOrDefault<String>(
-                      widget!.address,
+                      widget.address,
                       '123 Maple Avenue, Apt 4B',
                     ),
                     maxLines: 2,
@@ -278,7 +275,7 @@ class _AddressCardWidgetState extends State<AddressCardWidget> {
                   ),
                   Text(
                     valueOrDefault<String>(
-                      widget!.cityState,
+                      widget.cityState,
                       'Brooklyn, NY 11201',
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(

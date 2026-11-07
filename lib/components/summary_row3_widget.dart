@@ -1,10 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'summary_row3_model.dart';
 export 'summary_row3_model.dart';
 
@@ -71,10 +68,10 @@ class _SummaryRow3WidgetState extends State<SummaryRow3Widget> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  widget!.icon!,
+                  widget.icon!,
                   Text(
                     valueOrDefault<String>(
-                      widget!.label,
+                      widget.label,
                       'Order Number',
                     ),
                     style: FlutterFlowTheme.of(context).labelMedium.override(
@@ -101,7 +98,7 @@ class _SummaryRow3WidgetState extends State<SummaryRow3Widget> {
               ),
               Text(
                 valueOrDefault<String>(
-                  widget!.value,
+                  widget.value,
                   '#ORD-77291',
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -110,7 +107,7 @@ class _SummaryRow3WidgetState extends State<SummaryRow3Widget> {
                         fontStyle:
                             FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                       ),
-                      color: widget!.valueColor,
+                      color: widget.valueColor,
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.w500,
                       fontStyle:

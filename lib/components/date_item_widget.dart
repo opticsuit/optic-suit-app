@@ -1,10 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'date_item_model.dart';
 export 'date_item_model.dart';
 
@@ -58,7 +55,7 @@ class _DateItemWidgetState extends State<DateItemWidget> {
       decoration: BoxDecoration(
         color: valueOrDefault<Color>(
           valueOrDefault<bool>(
-            widget!.selected,
+            widget.selected,
             true,
           )
               ? Color(0xFF1F3A87)
@@ -70,7 +67,7 @@ class _DateItemWidgetState extends State<DateItemWidget> {
         border: Border.all(
           color: valueOrDefault<Color>(
             valueOrDefault<bool>(
-              widget!.selected,
+              widget.selected,
               true,
             )
                 ? Color(0xFF1F3A87)
@@ -88,7 +85,7 @@ class _DateItemWidgetState extends State<DateItemWidget> {
         children: [
           Text(
             valueOrDefault<String>(
-              widget!.date,
+              widget.date,
               '05',
             ),
             style: FlutterFlowTheme.of(context).titleMedium.override(
@@ -99,7 +96,7 @@ class _DateItemWidgetState extends State<DateItemWidget> {
                   ),
                   color: valueOrDefault<Color>(
                     valueOrDefault<bool>(
-                      widget!.selected,
+                      widget.selected,
                       true,
                     )
                         ? Colors.white
@@ -114,7 +111,7 @@ class _DateItemWidgetState extends State<DateItemWidget> {
           ),
           Text(
             valueOrDefault<String>(
-              widget!.day,
+              widget.day,
               'Mon',
             ),
             style: FlutterFlowTheme.of(context).labelSmall.override(
@@ -126,7 +123,7 @@ class _DateItemWidgetState extends State<DateItemWidget> {
                   ),
                   color: valueOrDefault<Color>(
                     valueOrDefault<bool>(
-                      widget!.selected,
+                      widget.selected,
                       true,
                     )
                         ? Color(0xB3FFFFFF)

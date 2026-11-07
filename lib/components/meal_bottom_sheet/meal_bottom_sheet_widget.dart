@@ -2,11 +2,8 @@ import '/backend/backend.dart';
 import '/components/feedback_bottom_sheet/feedback_bottom_sheet_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'meal_bottom_sheet_model.dart';
 export 'meal_bottom_sheet_model.dart';
@@ -94,7 +91,7 @@ class _MealBottomSheetWidgetState extends State<MealBottomSheetWidget> {
                                   'MEAL_BOTTOM_SHEET_ShareMealTile_ON_TAP');
                               logFirebaseEvent('ShareMealTile_share');
                               await Share.share(
-                                'Check out this amazing recipe for ${widget!.mealRef?.mealName}! Here are the ingredients: ${widget!.mealRef?.mealIngredients}',
+                                'Check out this amazing recipe for ${widget.mealRef?.mealName}! Here are the ingredients: ${widget.mealRef?.mealIngredients}',
                                 sharePositionOrigin:
                                     getWidgetBoundingBox(context),
                               );
@@ -182,7 +179,7 @@ class _MealBottomSheetWidgetState extends State<MealBottomSheetWidget> {
                                 return Padding(
                                   padding: MediaQuery.viewInsetsOf(context),
                                   child: FeedbackBottomSheetWidget(
-                                    mealName: widget!.mealRef?.mealName,
+                                    mealName: widget.mealRef?.mealName,
                                   ),
                                 );
                               },

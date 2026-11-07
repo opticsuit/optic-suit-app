@@ -1,10 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'date_chip_model.dart';
 export 'date_chip_model.dart';
 
@@ -58,7 +55,7 @@ class _DateChipWidgetState extends State<DateChipWidget> {
       decoration: BoxDecoration(
         color: valueOrDefault<Color>(
           valueOrDefault<bool>(
-            widget!.selected,
+            widget.selected,
             true,
           )
               ? FlutterFlowTheme.of(context).primary
@@ -70,7 +67,7 @@ class _DateChipWidgetState extends State<DateChipWidget> {
         border: Border.all(
           color: valueOrDefault<Color>(
             valueOrDefault<bool>(
-              widget!.selected,
+              widget.selected,
               true,
             )
                 ? FlutterFlowTheme.of(context).primary
@@ -88,7 +85,7 @@ class _DateChipWidgetState extends State<DateChipWidget> {
         children: [
           Text(
             valueOrDefault<String>(
-              widget!.day,
+              widget.day,
               'Mon',
             ),
             style: FlutterFlowTheme.of(context).labelSmall.override(
@@ -100,7 +97,7 @@ class _DateChipWidgetState extends State<DateChipWidget> {
                   ),
                   color: valueOrDefault<Color>(
                     valueOrDefault<bool>(
-                      widget!.selected,
+                      widget.selected,
                       true,
                     )
                         ? Color(0xCCFFFFFF)
@@ -116,7 +113,7 @@ class _DateChipWidgetState extends State<DateChipWidget> {
           ),
           Text(
             valueOrDefault<String>(
-              widget!.date,
+              widget.date,
               '14',
             ),
             style: FlutterFlowTheme.of(context).titleMedium.override(
@@ -127,7 +124,7 @@ class _DateChipWidgetState extends State<DateChipWidget> {
                   ),
                   color: valueOrDefault<Color>(
                     valueOrDefault<bool>(
-                      widget!.selected,
+                      widget.selected,
                       true,
                     )
                         ? Colors.white

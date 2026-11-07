@@ -1,9 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'time_slot5_model.dart';
 export 'time_slot5_model.dart';
 
@@ -53,7 +51,7 @@ class _TimeSlot5WidgetState extends State<TimeSlot5Widget> {
       decoration: BoxDecoration(
         color: valueOrDefault<Color>(
           valueOrDefault<bool>(
-            widget!.selected,
+            widget.selected,
             true,
           )
               ? Color(0xFF1F3A87)
@@ -65,7 +63,7 @@ class _TimeSlot5WidgetState extends State<TimeSlot5Widget> {
         border: Border.all(
           color: valueOrDefault<Color>(
             valueOrDefault<bool>(
-              widget!.selected,
+              widget.selected,
               true,
             )
                 ? Color(0xFF1F3A87)
@@ -78,7 +76,7 @@ class _TimeSlot5WidgetState extends State<TimeSlot5Widget> {
       alignment: AlignmentDirectional(0.0, 0.0),
       child: Text(
         valueOrDefault<String>(
-          widget!.time,
+          widget.time,
           '10 AM',
         ),
         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -88,7 +86,7 @@ class _TimeSlot5WidgetState extends State<TimeSlot5Widget> {
               ),
               color: valueOrDefault<Color>(
                 valueOrDefault<bool>(
-                  widget!.selected,
+                  widget.selected,
                   true,
                 )
                     ? Colors.white

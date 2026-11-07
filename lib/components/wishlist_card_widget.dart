@@ -1,11 +1,9 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'wishlist_card_model.dart';
 export 'wishlist_card_model.dart';
 
@@ -97,7 +95,7 @@ class _WishlistCardWidgetState extends State<WishlistCardWidget> {
                       fadeInDuration: Duration(milliseconds: 0),
                       fadeOutDuration: Duration(milliseconds: 0),
                       imageUrl: valueOrDefault<String>(
-                        widget!.imageDesc,
+                        widget.imageDesc,
                         'https://dimg.dreamflow.cloud/v1/image/modern%20black%20polarized%20aviator%20sunglasses',
                       ),
                       width: 140.0,
@@ -148,7 +146,7 @@ class _WishlistCardWidgetState extends State<WishlistCardWidget> {
                           alignment: AlignmentDirectional(0.0, 0.0),
                           child: Text(
                             valueOrDefault<String>(
-                              widget!.brand,
+                              widget.brand,
                               'JET',
                             ),
                             style: FlutterFlowTheme.of(context)
@@ -175,7 +173,7 @@ class _WishlistCardWidgetState extends State<WishlistCardWidget> {
                           alignment: AlignmentDirectional(0.0, 0.0),
                           child: Text(
                             valueOrDefault<String>(
-                              widget!.name,
+                              widget.name,
                               'P9009 Polarized Sunglasses',
                             ),
                             textAlign: TextAlign.center,
@@ -210,7 +208,7 @@ class _WishlistCardWidgetState extends State<WishlistCardWidget> {
                             children: [
                               Text(
                                 valueOrDefault<String>(
-                                  widget!.price,
+                                  widget.price,
                                   '₹1,499',
                                 ),
                                 style: FlutterFlowTheme.of(context)
@@ -234,7 +232,7 @@ class _WishlistCardWidgetState extends State<WishlistCardWidget> {
                               ),
                               if (valueOrDefault<bool>(
                                 valueOrDefault<String>(
-                                          widget!.originalPrice,
+                                          widget.originalPrice,
                                           '₹1,999',
                                         ) !=
                                         ''
@@ -246,7 +244,7 @@ class _WishlistCardWidgetState extends State<WishlistCardWidget> {
                                   alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Text(
                                     valueOrDefault<String>(
-                                      widget!.originalPrice,
+                                      widget.originalPrice,
                                       '₹1,999',
                                     ),
                                     style: FlutterFlowTheme.of(context)

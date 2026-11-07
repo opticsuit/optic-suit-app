@@ -1,10 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'summary_row_model.dart';
 export 'summary_row_model.dart';
 
@@ -59,7 +56,7 @@ class _SummaryRowWidgetState extends State<SummaryRowWidget> {
       children: [
         Text(
           valueOrDefault<String>(
-            widget!.label,
+            widget.label,
             'Subtotal',
           ),
           style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -77,7 +74,7 @@ class _SummaryRowWidgetState extends State<SummaryRowWidget> {
         ),
         Text(
           valueOrDefault<String>(
-            widget!.value,
+            widget.value,
             '\$214.00',
           ),
           style: FlutterFlowTheme.of(context).bodyMedium.override(

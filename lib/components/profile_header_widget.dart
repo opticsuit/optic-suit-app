@@ -1,12 +1,9 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import '/index.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'profile_header_model.dart';
 export 'profile_header_model.dart';
 
@@ -121,7 +118,7 @@ class _ProfileHeaderWidgetState extends State<ProfileHeaderWidget> {
                   children: [
                     Text(
                       valueOrDefault<String>(
-                        widget!.title,
+                        widget.title,
                         'shamlida',
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -142,7 +139,7 @@ class _ProfileHeaderWidgetState extends State<ProfileHeaderWidget> {
                           ),
                     ),
                     Text(
-                      widget!.subtitle,
+                      widget.subtitle,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             font: GoogleFonts.inter(
                               fontWeight: FlutterFlowTheme.of(context)
@@ -165,7 +162,7 @@ class _ProfileHeaderWidgetState extends State<ProfileHeaderWidget> {
                           ),
                     ),
                     Text(
-                      widget!.details,
+                      widget.details,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             font: GoogleFonts.inter(
                               fontWeight: FlutterFlowTheme.of(context)

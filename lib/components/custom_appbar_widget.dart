@@ -2,11 +2,9 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'custom_appbar_model.dart';
 export 'custom_appbar_model.dart';
 
@@ -63,7 +61,7 @@ class _CustomAppbarWidgetState extends State<CustomAppbarWidget> {
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        if (widget!.backButton ?? true)
+        if (widget.backButton ?? true)
           FlutterFlowIconButton(
             borderColor: FlutterFlowTheme.of(context).secondaryBackground,
             borderRadius: 24.0,
@@ -84,7 +82,7 @@ class _CustomAppbarWidgetState extends State<CustomAppbarWidget> {
         Row(
           mainAxisSize: MainAxisSize.max,
           children: [
-            if (widget!.actionButton)
+            if (widget.actionButton)
               FFButtonWidget(
                 onPressed: () async {
                   logFirebaseEvent('CUSTOM_APPBAR_COMP_SAVE_BTN_ON_TAP');
@@ -92,7 +90,7 @@ class _CustomAppbarWidgetState extends State<CustomAppbarWidget> {
                   await widget.actionButtonAction?.call();
                 },
                 text: valueOrDefault<String>(
-                  widget!.actionButtonText,
+                  widget.actionButtonText,
                   'Button',
                 ),
                 options: FFButtonOptions(
@@ -121,7 +119,7 @@ class _CustomAppbarWidgetState extends State<CustomAppbarWidget> {
                   borderRadius: BorderRadius.circular(25.0),
                 ),
               ),
-            if (widget!.optionsButton)
+            if (widget.optionsButton)
               FlutterFlowIconButton(
                 borderColor: FlutterFlowTheme.of(context).secondaryBackground,
                 borderRadius: 24.0,

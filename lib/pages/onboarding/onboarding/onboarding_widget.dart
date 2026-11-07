@@ -1,19 +1,16 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import '/components/custom_appbar_widget.dart';
 import '/components/diet_item/diet_item_widget.dart';
 import '/components/preference_item/preference_item_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'onboarding_model.dart';
 export 'onboarding_model.dart';
 
@@ -43,12 +40,12 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
       logFirebaseEvent('ONBOARDING_PAGE_Onboarding_ON_INIT_STATE');
       logFirebaseEvent('Onboarding_update_page_state');
       _model.allergenSelection =
-          (currentUserDocument?.allergens?.toList() ?? [])
+          (currentUserDocument?.allergens.toList() ?? [])
               .toList()
               .cast<String>();
       _model.dietSelection = valueOrDefault(currentUserDocument?.diet, '');
       _model.ingredientSelection =
-          (currentUserDocument?.ingredientDislikes?.toList() ?? [])
+          (currentUserDocument?.ingredientDislikes.toList() ?? [])
               .toList()
               .cast<String>();
       safeSetState(() {});
@@ -192,7 +189,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                               final diet =
                                                   onboardingOnboardingOptionsRecord
                                                           ?.dietOptions
-                                                          ?.toList() ??
+                                                          .toList() ??
                                                       [];
 
                                               return Column(
@@ -287,7 +284,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                                   final allergens =
                                                       onboardingOnboardingOptionsRecord
                                                               ?.allergenOptions
-                                                              ?.toList() ??
+                                                              .toList() ??
                                                           [];
 
                                                   return Wrap(
@@ -408,7 +405,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                                   final dislikes =
                                                       onboardingOnboardingOptionsRecord
                                                               ?.ingredientOptions
-                                                              ?.toList() ??
+                                                              .toList() ??
                                                           [];
 
                                                   return Wrap(

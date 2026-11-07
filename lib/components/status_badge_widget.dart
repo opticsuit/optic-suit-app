@@ -1,10 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'status_badge_model.dart';
 export 'status_badge_model.dart';
 
@@ -51,11 +48,11 @@ class _StatusBadgeWidgetState extends State<StatusBadgeWidget> {
       decoration: BoxDecoration(
         color: valueOrDefault<Color>(
           () {
-            if (widget!.status == 'Delivered') {
+            if (widget.status == 'Delivered') {
               return Color(0xFFECFDF5);
-            } else if (widget!.status == 'Shipped') {
+            } else if (widget.status == 'Shipped') {
               return Color(0xFFEFF6FF);
-            } else if (widget!.status == 'Processing') {
+            } else if (widget.status == 'Processing') {
               return Color(0xFFFFF7ED);
             } else {
               return Color(0xFFFEF2F2);
@@ -82,11 +79,11 @@ class _StatusBadgeWidgetState extends State<StatusBadgeWidget> {
                   decoration: BoxDecoration(
                     color: valueOrDefault<Color>(
                       () {
-                        if (widget!.status == 'Delivered') {
+                        if (widget.status == 'Delivered') {
                           return Color(0xFF16A34A);
-                        } else if (widget!.status == 'Shipped') {
+                        } else if (widget.status == 'Shipped') {
                           return Color(0xFF2563EB);
-                        } else if (widget!.status == 'Processing') {
+                        } else if (widget.status == 'Processing') {
                           return Color(0xFFEA580C);
                         } else {
                           return Color(0xFFDC2626);
@@ -99,7 +96,7 @@ class _StatusBadgeWidgetState extends State<StatusBadgeWidget> {
                   ),
                 ),
                 Text(
-                  widget!.status,
+                  widget.status,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         font: GoogleFonts.inter(
                           fontWeight: FontWeight.w600,
@@ -108,11 +105,11 @@ class _StatusBadgeWidgetState extends State<StatusBadgeWidget> {
                         ),
                         color: valueOrDefault<Color>(
                           () {
-                            if (widget!.status == 'Delivered') {
+                            if (widget.status == 'Delivered') {
                               return Color(0xFF16A34A);
-                            } else if (widget!.status == 'Shipped') {
+                            } else if (widget.status == 'Shipped') {
                               return Color(0xFF2563EB);
-                            } else if (widget!.status == 'Processing') {
+                            } else if (widget.status == 'Processing') {
                               return Color(0xFFEA580C);
                             } else {
                               return Color(0xFFDC2626);

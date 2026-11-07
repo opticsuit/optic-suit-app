@@ -1,9 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'time_slot3_model.dart';
 export 'time_slot3_model.dart';
 
@@ -52,7 +50,7 @@ class _TimeSlot3WidgetState extends State<TimeSlot3Widget> {
       decoration: BoxDecoration(
         color: valueOrDefault<Color>(
           valueOrDefault<bool>(
-            widget!.active,
+            widget.active,
             false,
           )
               ? Color(0x00000000)
@@ -64,7 +62,7 @@ class _TimeSlot3WidgetState extends State<TimeSlot3Widget> {
         border: Border.all(
           color: valueOrDefault<Color>(
             valueOrDefault<bool>(
-              widget!.active,
+              widget.active,
               false,
             )
                 ? FlutterFlowTheme.of(context).primary
@@ -81,7 +79,7 @@ class _TimeSlot3WidgetState extends State<TimeSlot3Widget> {
             alignment: AlignmentDirectional(0.0, 0.0),
             child: Text(
               valueOrDefault<String>(
-                widget!.time,
+                widget.time,
                 '09:00 AM',
               ),
               style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -93,7 +91,7 @@ class _TimeSlot3WidgetState extends State<TimeSlot3Widget> {
                     ),
                     color: valueOrDefault<Color>(
                       valueOrDefault<bool>(
-                        widget!.active,
+                        widget.active,
                         false,
                       )
                           ? Color(0x00000000)

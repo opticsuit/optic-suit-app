@@ -1,12 +1,9 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'product_card3_model.dart';
 export 'product_card3_model.dart';
 
@@ -87,14 +84,14 @@ class _ProductCard3WidgetState extends State<ProductCard3Widget> {
                     fadeInDuration: Duration(milliseconds: 0),
                     fadeOutDuration: Duration(milliseconds: 0),
                     imageUrl: valueOrDefault<String>(
-                      widget!.imageDesc,
+                      widget.imageDesc,
                       'https://dimg.dreamflow.cloud/v1/image/classic%20aviator%20sunglasses',
                     ),
                     fit: BoxFit.cover,
                     alignment: Alignment(0.0, 0.0),
                   ),
                   if (valueOrDefault<bool>(
-                    widget!.isNew,
+                    widget.isNew,
                     false,
                   ))
                     Align(
@@ -171,7 +168,7 @@ class _ProductCard3WidgetState extends State<ProductCard3Widget> {
                     children: [
                       Text(
                         valueOrDefault<String>(
-                          widget!.name,
+                          widget.name,
                           'Ray-Ban Aviator',
                         ),
                         maxLines: 1,
@@ -199,7 +196,7 @@ class _ProductCard3WidgetState extends State<ProductCard3Widget> {
                         children: [
                           Text(
                             valueOrDefault<String>(
-                              widget!.price,
+                              widget.price,
                               '\$150',
                             ),
                             style: FlutterFlowTheme.of(context)
@@ -221,7 +218,7 @@ class _ProductCard3WidgetState extends State<ProductCard3Widget> {
                           ),
                           Text(
                             valueOrDefault<String>(
-                              widget!.oldPrice,
+                              widget.oldPrice,
                               '\$180',
                             ),
                             style: FlutterFlowTheme.of(context)

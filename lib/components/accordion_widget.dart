@@ -1,10 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'accordion_model.dart';
 export 'accordion_model.dart';
 
@@ -93,8 +90,8 @@ class _AccordionWidgetState extends State<AccordionWidget> {
                         ),
                         child: Stack(
                           children: [
-                            if (widget!.expandedAccordionIndex !=
-                                widget!.accordionIndex)
+                            if (widget.expandedAccordionIndex !=
+                                widget.accordionIndex)
                               Align(
                                 alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Icon(
@@ -104,8 +101,8 @@ class _AccordionWidgetState extends State<AccordionWidget> {
                                   size: 18.0,
                                 ),
                               ),
-                            if (widget!.expandedAccordionIndex ==
-                                widget!.accordionIndex)
+                            if (widget.expandedAccordionIndex ==
+                                widget.accordionIndex)
                               Align(
                                 alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Icon(
@@ -122,7 +119,7 @@ class _AccordionWidgetState extends State<AccordionWidget> {
                     Expanded(
                       child: Text(
                         valueOrDefault<String>(
-                          widget!.question,
+                          widget.question,
                           'cccc',
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -145,12 +142,12 @@ class _AccordionWidgetState extends State<AccordionWidget> {
                   ],
                 ),
               ),
-              if (widget!.expandedAccordionIndex == widget!.accordionIndex)
+              if (widget.expandedAccordionIndex == widget.accordionIndex)
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 6.0),
                   child: Text(
                     valueOrDefault<String>(
-                      widget!.answer,
+                      widget.answer,
                       'cccccc',
                     ),
                     style: FlutterFlowTheme.of(context).labelLarge.override(

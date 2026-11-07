@@ -1,10 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'setting_item_model.dart';
 export 'setting_item_model.dart';
 
@@ -90,7 +87,7 @@ class _SettingItemWidgetState extends State<SettingItemWidget> {
                         shape: BoxShape.rectangle,
                       ),
                       alignment: AlignmentDirectional(0.0, 0.0),
-                      child: widget!.icon!,
+                      child: widget.icon!,
                     ),
                     Expanded(
                       flex: 1,
@@ -101,7 +98,7 @@ class _SettingItemWidgetState extends State<SettingItemWidget> {
                         children: [
                           Text(
                             valueOrDefault<String>(
-                              widget!.title,
+                              widget.title,
                               'Personal Information',
                             ),
                             maxLines: 1,
@@ -114,7 +111,7 @@ class _SettingItemWidgetState extends State<SettingItemWidget> {
                                         .bodyMedium
                                         .fontStyle,
                                   ),
-                                  color: widget!.titleColor,
+                                  color: widget.titleColor,
                                   fontSize: 14.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
@@ -127,7 +124,7 @@ class _SettingItemWidgetState extends State<SettingItemWidget> {
                           ),
                           Text(
                             valueOrDefault<String>(
-                              widget!.subtitle,
+                              widget.subtitle,
                               'Name, email and phone number',
                             ),
                             maxLines: 1,
@@ -155,7 +152,7 @@ class _SettingItemWidgetState extends State<SettingItemWidget> {
                       ),
                     ),
                     if (valueOrDefault<bool>(
-                      widget!.showChevron,
+                      widget.showChevron,
                       false,
                     ))
                       Icon(

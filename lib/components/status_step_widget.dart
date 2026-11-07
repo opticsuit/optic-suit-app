@@ -1,10 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'status_step_model.dart';
 export 'status_step_model.dart';
 
@@ -75,12 +72,12 @@ class _StatusStepWidgetState extends State<StatusStepWidget> {
                 color: valueOrDefault<Color>(
                   () {
                     if (valueOrDefault<bool>(
-                      widget!.active,
+                      widget.active,
                       false,
                     )) {
                       return FlutterFlowTheme.of(context).primary;
                     } else if (valueOrDefault<bool>(
-                      widget!.completed,
+                      widget.completed,
                       true,
                     )) {
                       return Color(0x3386C144);
@@ -106,7 +103,7 @@ class _StatusStepWidgetState extends State<StatusStepWidget> {
                   children: [
                     if (valueOrDefault<bool>(
                       valueOrDefault<bool>(
-                        widget!.completed,
+                        widget.completed,
                         true,
                       )
                           ? true
@@ -118,12 +115,12 @@ class _StatusStepWidgetState extends State<StatusStepWidget> {
                         color: valueOrDefault<Color>(
                           () {
                             if (valueOrDefault<bool>(
-                              widget!.active,
+                              widget.active,
                               false,
                             )) {
                               return Colors.white;
                             } else if (valueOrDefault<bool>(
-                              widget!.completed,
+                              widget.completed,
                               true,
                             )) {
                               return FlutterFlowTheme.of(context).primary;
@@ -137,7 +134,7 @@ class _StatusStepWidgetState extends State<StatusStepWidget> {
                       ),
                     if (valueOrDefault<bool>(
                       valueOrDefault<bool>(
-                        widget!.completed,
+                        widget.completed,
                         true,
                       )
                           ? false
@@ -149,12 +146,12 @@ class _StatusStepWidgetState extends State<StatusStepWidget> {
                         color: valueOrDefault<Color>(
                           () {
                             if (valueOrDefault<bool>(
-                              widget!.active,
+                              widget.active,
                               false,
                             )) {
                               return Colors.white;
                             } else if (valueOrDefault<bool>(
-                              widget!.completed,
+                              widget.completed,
                               true,
                             )) {
                               return FlutterFlowTheme.of(context).primary;
@@ -172,7 +169,7 @@ class _StatusStepWidgetState extends State<StatusStepWidget> {
             ),
             if (valueOrDefault<bool>(
               valueOrDefault<bool>(
-                widget!.last,
+                widget.last,
                 false,
               )
                   ? false
@@ -185,7 +182,7 @@ class _StatusStepWidgetState extends State<StatusStepWidget> {
                 decoration: BoxDecoration(
                   color: valueOrDefault<Color>(
                     valueOrDefault<bool>(
-                      widget!.completed,
+                      widget.completed,
                       true,
                     )
                         ? FlutterFlowTheme.of(context).primary
@@ -206,7 +203,7 @@ class _StatusStepWidgetState extends State<StatusStepWidget> {
             children: [
               Text(
                 valueOrDefault<String>(
-                  widget!.title,
+                  widget.title,
                   'Order Placed',
                 ),
                 style: FlutterFlowTheme.of(context).bodyLarge.override(
@@ -218,7 +215,7 @@ class _StatusStepWidgetState extends State<StatusStepWidget> {
                       ),
                       color: valueOrDefault<Color>(
                         valueOrDefault<bool>(
-                          widget!.active,
+                          widget.active,
                           false,
                         )
                             ? FlutterFlowTheme.of(context).primaryText
@@ -235,7 +232,7 @@ class _StatusStepWidgetState extends State<StatusStepWidget> {
               ),
               if (valueOrDefault<bool>(
                 valueOrDefault<String>(
-                          widget!.time,
+                          widget.time,
                           'Oct 24, 09:20 AM',
                         ) !=
                         ''
@@ -245,7 +242,7 @@ class _StatusStepWidgetState extends State<StatusStepWidget> {
               ))
                 Text(
                   valueOrDefault<String>(
-                    widget!.time,
+                    widget.time,
                     'Oct 24, 09:20 AM',
                   ),
                   style: FlutterFlowTheme.of(context).labelSmall.override(

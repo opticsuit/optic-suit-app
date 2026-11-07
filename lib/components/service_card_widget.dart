@@ -1,10 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'service_card_model.dart';
 export 'service_card_model.dart';
 
@@ -93,7 +90,7 @@ class _ServiceCardWidgetState extends State<ServiceCardWidget> {
                   children: [
                     Text(
                       valueOrDefault<String>(
-                        widget!.title,
+                        widget.title,
                         'Comprehensive Eye Exam',
                       ),
                       style: FlutterFlowTheme.of(context).titleMedium.override(
@@ -122,7 +119,7 @@ class _ServiceCardWidgetState extends State<ServiceCardWidget> {
                         ),
                         Text(
                           valueOrDefault<String>(
-                            widget!.duration,
+                            widget.duration,
                             '45 mins',
                           ),
                           style:
@@ -152,7 +149,7 @@ class _ServiceCardWidgetState extends State<ServiceCardWidget> {
               ),
               Text(
                 valueOrDefault<String>(
-                  widget!.price,
+                  widget.price,
                   '\$85',
                 ),
                 style: FlutterFlowTheme.of(context).titleLarge.override(

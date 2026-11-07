@@ -1,10 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'bullet_item_model.dart';
 export 'bullet_item_model.dart';
 
@@ -70,7 +67,7 @@ class _BulletItemWidgetState extends State<BulletItemWidget> {
           flex: 1,
           child: Text(
             valueOrDefault<String>(
-              widget!.content,
+              widget.content,
               'Cash on Delivery (COD) is available only for frame-only orders, subject to delivery serviceability and availability.',
             ),
             style: FlutterFlowTheme.of(context).bodyMedium.override(

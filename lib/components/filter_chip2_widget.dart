@@ -1,9 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'filter_chip2_model.dart';
 export 'filter_chip2_model.dart';
 
@@ -53,7 +51,7 @@ class _FilterChip2WidgetState extends State<FilterChip2Widget> {
       decoration: BoxDecoration(
         color: valueOrDefault<Color>(
           valueOrDefault<bool>(
-            widget!.selected,
+            widget.selected,
             true,
           )
               ? Color(0xFF1F3A87)
@@ -65,7 +63,7 @@ class _FilterChip2WidgetState extends State<FilterChip2Widget> {
         border: Border.all(
           color: valueOrDefault<Color>(
             valueOrDefault<bool>(
-              widget!.selected,
+              widget.selected,
               true,
             )
                 ? Color(0xFF1F3A87)
@@ -82,7 +80,7 @@ class _FilterChip2WidgetState extends State<FilterChip2Widget> {
             alignment: AlignmentDirectional(0.0, 0.0),
             child: Text(
               valueOrDefault<String>(
-                widget!.label,
+                widget.label,
                 'All',
               ),
               style: FlutterFlowTheme.of(context).labelLarge.override(
@@ -94,7 +92,7 @@ class _FilterChip2WidgetState extends State<FilterChip2Widget> {
                     ),
                     color: valueOrDefault<Color>(
                       valueOrDefault<bool>(
-                        widget!.selected,
+                        widget.selected,
                         true,
                       )
                           ? Colors.white
