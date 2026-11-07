@@ -133,3 +133,23 @@ String _serializeJson(dynamic jsonVar, [bool isList = false]) {
     return isList ? '[]' : '{}';
   }
 }
+
+
+/// Fetches one product from the WooCommerce Store API by product ID.
+class WooCommerceProductByIdCall {
+  static Future<ApiCallResponse> call({required int productId}) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'WooCommerce Product By ID',
+      apiUrl: 'https://opticsuit.com/wp-json/wc/store/v1/products/$productId',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
