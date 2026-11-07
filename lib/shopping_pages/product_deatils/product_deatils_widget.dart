@@ -75,7 +75,7 @@ class _ProductDeatilsWidgetState extends State<ProductDeatilsWidget> {
           final onSale = saleRaw.isNotEmpty && saleRaw != '0' && saleRaw != regularRaw;
           final inStock = getJsonField(product, r'$.is_in_stock') == true;
           final images = (getJsonField(product, r'$.images', true) as List?) ?? [];
-          final imageIndex = _selectedImage.clamp(0, images.isEmpty ? 0 : images.length - 1);
+          final imageIndex = _selectedImage.clamp(0, images.isEmpty ? 0 : images.length - 1).toInt();
           final imageUrl = images.isEmpty ? '' : _text(getJsonField(images[imageIndex], r'$.src'));
           final brand = _text(getJsonField(product, r'$.brands[0].name'), 'OPTIC SUIT');
           final categories = (getJsonField(product, r'$.categories', true) as List?) ?? [];
