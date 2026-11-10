@@ -1,7 +1,9 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'time_slot6_model.dart';
 export 'time_slot6_model.dart';
 
@@ -55,12 +57,12 @@ class _TimeSlot6WidgetState extends State<TimeSlot6Widget> {
         color: valueOrDefault<Color>(
           () {
             if (valueOrDefault<bool>(
-              widget.disabled,
+              widget!.disabled,
               false,
             )) {
               return Color(0xFFF1F5F9);
             } else if (valueOrDefault<bool>(
-              widget.selected,
+              widget!.selected,
               false,
             )) {
               return Color(0xFF1F3A87);
@@ -75,7 +77,7 @@ class _TimeSlot6WidgetState extends State<TimeSlot6Widget> {
         border: Border.all(
           color: valueOrDefault<Color>(
             valueOrDefault<bool>(
-              widget.selected,
+              widget!.selected,
               false,
             )
                 ? Color(0xFF1F3A87)
@@ -88,7 +90,7 @@ class _TimeSlot6WidgetState extends State<TimeSlot6Widget> {
       alignment: AlignmentDirectional(0.0, 0.0),
       child: Text(
         valueOrDefault<String>(
-          widget.time,
+          widget!.time,
           '10:00 AM',
         ),
         style: FlutterFlowTheme.of(context).bodySmall.override(
@@ -99,12 +101,12 @@ class _TimeSlot6WidgetState extends State<TimeSlot6Widget> {
               color: valueOrDefault<Color>(
                 () {
                   if (valueOrDefault<bool>(
-                    widget.disabled,
+                    widget!.disabled,
                     false,
                   )) {
                     return Color(0xFF9CA3AF);
                   } else if (valueOrDefault<bool>(
-                    widget.selected,
+                    widget!.selected,
                     false,
                   )) {
                     return Colors.white;

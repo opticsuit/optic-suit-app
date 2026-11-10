@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'help_topic_card_model.dart';
 export 'help_topic_card_model.dart';
 
@@ -46,10 +49,21 @@ class _HelpTopicCardWidgetState extends State<HelpTopicCardWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 90.0,
+      height: 108.0,
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(12.0),
+        boxShadow: [
+          BoxShadow(
+            blurRadius: 6.0,
+            color: Color(0x10000000),
+            offset: Offset(
+              0.0,
+              2.0,
+            ),
+            spreadRadius: 0.0,
+          )
+        ],
+        borderRadius: BorderRadius.circular(16.0),
         shape: BoxShape.rectangle,
         border: Border.all(
           color: Color(0xFFE5E7EB),
@@ -60,7 +74,7 @@ class _HelpTopicCardWidgetState extends State<HelpTopicCardWidget> {
         padding: EdgeInsets.all(16.0),
         child: Container(
           child: Container(
-            height: 58.0,
+            height: 64.0,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -70,16 +84,16 @@ class _HelpTopicCardWidgetState extends State<HelpTopicCardWidget> {
                   width: 32.0,
                   height: 32.0,
                   decoration: BoxDecoration(
-                    color: Color(0x1A1F3A87),
+                    color: Color(0xFFF5F6F8),
                     borderRadius: BorderRadius.circular(9999.0),
                     shape: BoxShape.rectangle,
                   ),
                   alignment: AlignmentDirectional(0.0, 0.0),
-                  child: widget.icon!,
+                  child: widget!.icon!,
                 ),
                 Text(
                   valueOrDefault<String>(
-                    widget.label,
+                    widget!.label,
                     'Orders & Delivery',
                   ),
                   maxLines: 2,
@@ -89,8 +103,8 @@ class _HelpTopicCardWidgetState extends State<HelpTopicCardWidget> {
                           fontStyle:
                               FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                         ),
-                        color: Color(0xFF1A1A1A),
-                        fontSize: 11.0,
+                        color: Color(0xFF1F3A87),
+                        fontSize: 13.0,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.w600,
                         fontStyle:

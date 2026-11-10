@@ -2,10 +2,14 @@ import '/components/body_paragraph_widget.dart';
 import '/components/bullet_item_widget.dart';
 import '/components/contact_widget.dart';
 import '/components/section_header4_widget.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'terms_conditions_model.dart';
 export 'terms_conditions_model.dart';
 
@@ -187,364 +191,397 @@ class _TermsConditionsWidgetState extends State<TermsConditionsWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          automaticallyImplyLeading: false,
-          title: Text(
-            'Terms & Conditions',
-            style: FlutterFlowTheme.of(context).titleLarge.override(
-                  font: GoogleFonts.inter(
-                    fontWeight:
-                        FlutterFlowTheme.of(context).titleLarge.fontWeight,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(56.0),
+          child: AppBar(
+            backgroundColor: Colors.white,
+            iconTheme: IconThemeData(color: Color(0xFF1F3A87)),
+            automaticallyImplyLeading: true,
+            leading: FlutterFlowIconButton(
+              borderRadius: 8.0,
+              buttonSize: 40.0,
+              fillColor: Colors.transparent,
+              icon: Icon(
+                Icons.arrow_back_rounded,
+                color: Color(0xFF1F3A87),
+                size: 24.0,
+              ),
+              onPressed: () async {
+                logFirebaseEvent('TERMS_CONDITIONS_PAGE_IconButton_ON_TAP');
+                logFirebaseEvent('IconButton_navigate_back');
+                context.safePop();
+              },
+            ),
+            title: Text(
+              'Terms & Conditions',
+              style: FlutterFlowTheme.of(context).titleMedium.override(
+                    font: GoogleFonts.poppins(
+                      fontWeight: FontWeight.w600,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).titleMedium.fontStyle,
+                    ),
+                    color: Color(0xFF1F3A87),
+                    letterSpacing: 0.0,
+                    fontWeight: FontWeight.w600,
                     fontStyle:
-                        FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                        FlutterFlowTheme.of(context).titleMedium.fontStyle,
+                    lineHeight: 1.4,
                   ),
-                  letterSpacing: 0.0,
-                  fontWeight:
-                      FlutterFlowTheme.of(context).titleLarge.fontWeight,
-                  fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
-                  lineHeight: 1.4,
+            ),
+            actions: [],
+            bottom: PreferredSize(
+              preferredSize: Size.fromHeight(0),
+              child: Container(
+                height: 1.0,
+                decoration: BoxDecoration(
+                  color: Color(0xFFE5E7EB),
                 ),
+              ),
+            ),
+            centerTitle: true,
+            toolbarHeight: 56.0,
+            elevation: 0.0,
           ),
-          actions: [],
-          centerTitle: false,
-          elevation: 0.0,
         ),
-        body: SingleChildScrollView(
-          primary: false,
+        body: SafeArea(
+          top: true,
           child: Column(
-            mainAxisSize: MainAxisSize.min,
+            mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Padding(
-                padding: EdgeInsets.all(20.0),
-                child: Container(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
+              Expanded(
+                child: Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 20.0),
+                  child: Container(
+                    child: SingleChildScrollView(
+                      primary: false,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          Text(
-                            'Last Updated: 19 October 2026',
-                            style: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .override(
-                                  font: GoogleFonts.poppins(
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .fontStyle,
-                                  ),
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .fontStyle,
-                                  lineHeight: 1.4,
-                                ),
+                          Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Last Updated: 19 October 2026',
+                                style: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .override(
+                                      font: GoogleFonts.poppins(
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .fontStyle,
+                                      ),
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
+                                      lineHeight: 1.4,
+                                    ),
+                              ),
+                              Text(
+                                'Please read these Terms & Conditions carefully before using the Optic Suit website or app, or placing an order.',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      font: GoogleFonts.poppins(
+                                        fontWeight: FontWeight.w500,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
+                                      color: Color(0xFF1F3A87),
+                                      fontSize: 14.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w500,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                      lineHeight: 1.4,
+                                    ),
+                              ),
+                            ].divide(SizedBox(height: 4.0)),
                           ),
-                          Text(
-                            'Please read these Terms & Conditions carefully before using the Optic Suit website or app, or placing an order.',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  font: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.w500,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontStyle,
-                                  ),
-                                  color: Color(0xFF1F3A87),
-                                  fontSize: 14.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w500,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontStyle,
-                                  lineHeight: 1.4,
-                                ),
-                          ),
-                        ].divide(SizedBox(height: 4.0)),
-                      ),
-                      wrapWithModel(
-                        model: _model.sectionHeaderModel1,
-                        updateCallback: () => safeSetState(() {}),
-                        child: SectionHeader4Widget(
-                          title: '1. General',
-                        ),
-                      ),
-                      wrapWithModel(
-                        model: _model.bodyParagraphModel1,
-                        updateCallback: () => safeSetState(() {}),
-                        child: BodyParagraphWidget(
-                          content:
-                              'These Terms & Conditions govern your use of the Optic Suit website and app and the purchase of our products. Optic Suit may update these terms from time to time. Updated terms will be published on our website or app with a revised date. Your rights under applicable law will not be affected by these updates.',
-                        ),
-                      ),
-                      wrapWithModel(
-                        model: _model.sectionHeaderModel2,
-                        updateCallback: () => safeSetState(() {}),
-                        child: SectionHeader4Widget(
-                          title: '2. Products & Pricing',
-                        ),
-                      ),
-                      wrapWithModel(
-                        model: _model.bodyParagraphModel2,
-                        updateCallback: () => safeSetState(() {}),
-                        child: BodyParagraphWidget(
-                          content:
-                              'We strive to ensure that product descriptions, specifications, images, and prices are accurate. Product images are for illustration purposes, and actual colours may vary slightly due to screen settings or manufacturer updates. Prices and product availability may change. Promotional offers are valid only for the specified period and subject to their stated conditions.',
-                        ),
-                      ),
-                      wrapWithModel(
-                        model: _model.sectionHeaderModel3,
-                        updateCallback: () => safeSetState(() {}),
-                        child: SectionHeader4Widget(
-                          title: '3. Orders & Payment',
-                        ),
-                      ),
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
                           wrapWithModel(
-                            model: _model.bodyParagraphModel3,
+                            model: _model.sectionHeaderModel1,
+                            updateCallback: () => safeSetState(() {}),
+                            child: SectionHeader4Widget(
+                              title: '1. General',
+                            ),
+                          ),
+                          wrapWithModel(
+                            model: _model.bodyParagraphModel1,
                             updateCallback: () => safeSetState(() {}),
                             child: BodyParagraphWidget(
                               content:
-                                  'Placing an order indicates your intention to purchase. Orders are subject to product availability and confirmation. Payments must be made using the payment methods available at checkout.',
+                                  'These Terms & Conditions govern your use of the Optic Suit website and app and the purchase of our products. Optic Suit may update these terms from time to time. Updated terms will be published on our website or app with a revised date. Your rights under applicable law will not be affected by these updates.',
                             ),
                           ),
                           wrapWithModel(
-                            model: _model.bulletItemModel1,
+                            model: _model.sectionHeaderModel2,
                             updateCallback: () => safeSetState(() {}),
-                            child: BulletItemWidget(
-                              content:
-                                  'Cash on Delivery (COD) is available only for frame-only orders, subject to delivery serviceability and availability.',
+                            child: SectionHeader4Widget(
+                              title: '2. Products & Pricing',
                             ),
                           ),
                           wrapWithModel(
-                            model: _model.bulletItemModel2,
-                            updateCallback: () => safeSetState(() {}),
-                            child: BulletItemWidget(
-                              content:
-                                  'COD is not available for frame-and-lens orders. These orders must be paid online at checkout.',
-                            ),
-                          ),
-                          wrapWithModel(
-                            model: _model.bulletItemModel3,
-                            updateCallback: () => safeSetState(() {}),
-                            child: BulletItemWidget(
-                              content:
-                                  'COD is not available for contact lens orders. Contact lens orders must be paid online at checkout.',
-                            ),
-                          ),
-                          wrapWithModel(
-                            model: _model.bulletItemModel4,
-                            updateCallback: () => safeSetState(() {}),
-                            child: BulletItemWidget(
-                              content:
-                                  'Additional delivery charges may apply to certain locations. Applicable charges will be shown before order confirmation.',
-                            ),
-                          ),
-                        ].divide(SizedBox(height: 16.0)),
-                      ),
-                      wrapWithModel(
-                        model: _model.sectionHeaderModel4,
-                        updateCallback: () => safeSetState(() {}),
-                        child: SectionHeader4Widget(
-                          title: '4. Shipping & Delivery',
-                        ),
-                      ),
-                      wrapWithModel(
-                        model: _model.bodyParagraphModel4,
-                        updateCallback: () => safeSetState(() {}),
-                        child: BodyParagraphWidget(
-                          content:
-                              'We offer shipping across India, subject to service availability. Estimated delivery times may vary depending on location, courier operations, weather, and other unforeseen circumstances. We will make reasonable efforts to assist customers with delivery issues. Your statutory rights remain unaffected.',
-                        ),
-                      ),
-                      wrapWithModel(
-                        model: _model.sectionHeaderModel5,
-                        updateCallback: () => safeSetState(() {}),
-                        child: SectionHeader4Widget(
-                          title: '5. Returns & Exchanges',
-                        ),
-                      ),
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          wrapWithModel(
-                            model: _model.bulletItemModel5,
-                            updateCallback: () => safeSetState(() {}),
-                            child: BulletItemWidget(
-                              content:
-                                  'Exchanges may be considered for damaged, defective, incorrect products, or approved size/fit issues.',
-                            ),
-                          ),
-                          wrapWithModel(
-                            model: _model.bulletItemModel6,
-                            updateCallback: () => safeSetState(() {}),
-                            child: BulletItemWidget(
-                              content:
-                                  'Exchange requests must be submitted within 7 days of delivery.',
-                            ),
-                          ),
-                          wrapWithModel(
-                            model: _model.bulletItemModel7,
-                            updateCallback: () => safeSetState(() {}),
-                            child: BulletItemWidget(
-                              content:
-                                  'Products must be unused and returned with their original packaging, invoice, and accessories, where applicable.',
-                            ),
-                          ),
-                          wrapWithModel(
-                            model: _model.bulletItemModel8,
-                            updateCallback: () => safeSetState(() {}),
-                            child: BulletItemWidget(
-                              content:
-                                  'Prescription eyewear, prescription lenses, contact lenses, and customised products are not eligible for return or exchange except where permitted by applicable law.',
-                            ),
-                          ),
-                        ].divide(SizedBox(height: 16.0)),
-                      ),
-                      wrapWithModel(
-                        model: _model.sectionHeaderModel6,
-                        updateCallback: () => safeSetState(() {}),
-                        child: SectionHeader4Widget(
-                          title: '6. Contact Lens Policy',
-                        ),
-                      ),
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          wrapWithModel(
-                            model: _model.bodyParagraphModel5,
+                            model: _model.bodyParagraphModel2,
                             updateCallback: () => safeSetState(() {}),
                             child: BodyParagraphWidget(
                               content:
-                                  'Contact lenses are hygiene-sensitive products and are supplied in sealed, original packaging. Customers should carefully verify the lens power, type, quantity, and product details before placing an order.',
+                                  'We strive to ensure that product descriptions, specifications, images, and prices are accurate. Product images are for illustration purposes, and actual colours may vary slightly due to screen settings or manufacturer updates. Prices and product availability may change. Promotional offers are valid only for the specified period and subject to their stated conditions.',
                             ),
                           ),
                           wrapWithModel(
-                            model: _model.bulletItemModel9,
+                            model: _model.sectionHeaderModel3,
                             updateCallback: () => safeSetState(() {}),
-                            child: BulletItemWidget(
-                              content:
-                                  'COD is not available for contact lens orders. Payment must be made online at checkout.',
+                            child: SectionHeader4Widget(
+                              title: '3. Orders & Payment',
                             ),
                           ),
-                          wrapWithModel(
-                            model: _model.bulletItemModel10,
-                            updateCallback: () => safeSetState(() {}),
-                            child: BulletItemWidget(
-                              content:
-                                  'Eligible issues must be reported within 7 days of delivery.',
-                            ),
-                          ),
-                          wrapWithModel(
-                            model: _model.bulletItemModel11,
-                            updateCallback: () => safeSetState(() {}),
-                            child: BulletItemWidget(
-                              content:
-                                  'Customers are responsible for providing accurate prescription/power details when placing an order.',
-                            ),
-                          ),
-                        ].divide(SizedBox(height: 16.0)),
-                      ),
-                      wrapWithModel(
-                        model: _model.sectionHeaderModel7,
-                        updateCallback: () => safeSetState(() {}),
-                        child: SectionHeader4Widget(
-                          title: '7. Limitation of Liability',
-                        ),
-                      ),
-                      wrapWithModel(
-                        model: _model.bodyParagraphModel6,
-                        updateCallback: () => safeSetState(() {}),
-                        child: BodyParagraphWidget(
-                          content:
-                              'To the extent permitted by applicable law, Optic Suit is not liable for indirect or consequential losses arising from the use of our website, app, or products.',
-                        ),
-                      ),
-                      wrapWithModel(
-                        model: _model.sectionHeaderModel8,
-                        updateCallback: () => safeSetState(() {}),
-                        child: SectionHeader4Widget(
-                          title: '8. Privacy & Data Protection',
-                        ),
-                      ),
-                      wrapWithModel(
-                        model: _model.bodyParagraphModel7,
-                        updateCallback: () => safeSetState(() {}),
-                        child: BodyParagraphWidget(
-                          content:
-                              'Personal information is handled in accordance with our Privacy Policy and applicable data protection laws.',
-                        ),
-                      ),
-                      wrapWithModel(
-                        model: _model.sectionHeaderModel9,
-                        updateCallback: () => safeSetState(() {}),
-                        child: SectionHeader4Widget(
-                          title: '9. Governing Law & Disputes',
-                        ),
-                      ),
-                      wrapWithModel(
-                        model: _model.bodyParagraphModel8,
-                        updateCallback: () => safeSetState(() {}),
-                        child: BodyParagraphWidget(
-                          content:
-                              'These Terms & Conditions are governed by the laws of India. Disputes will be handled by the competent courts or authorities having jurisdiction under applicable law.',
-                        ),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16.0),
-                          shape: BoxShape.rectangle,
-                          border: Border.all(
-                            color: FlutterFlowTheme.of(context).alternate,
-                            width: 1.0,
-                          ),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.all(24.0),
-                          child: Container(
-                            decoration: BoxDecoration(),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Expanded(
-                                  child: wrapWithModel(
-                                    model: _model.contactModel,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: ContactWidget(),
-                                  ),
+                          Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              wrapWithModel(
+                                model: _model.bodyParagraphModel3,
+                                updateCallback: () => safeSetState(() {}),
+                                child: BodyParagraphWidget(
+                                  content:
+                                      'Placing an order indicates your intention to purchase. Orders are subject to product availability and confirmation. Payments must be made using the payment methods available at checkout.',
                                 ),
-                              ].divide(SizedBox(height: 8.0)),
+                              ),
+                              wrapWithModel(
+                                model: _model.bulletItemModel1,
+                                updateCallback: () => safeSetState(() {}),
+                                child: BulletItemWidget(
+                                  content:
+                                      'Cash on Delivery (COD) is available only for frame-only orders, subject to delivery serviceability and availability.',
+                                ),
+                              ),
+                              wrapWithModel(
+                                model: _model.bulletItemModel2,
+                                updateCallback: () => safeSetState(() {}),
+                                child: BulletItemWidget(
+                                  content:
+                                      'COD is not available for frame-and-lens orders. These orders must be paid online at checkout.',
+                                ),
+                              ),
+                              wrapWithModel(
+                                model: _model.bulletItemModel3,
+                                updateCallback: () => safeSetState(() {}),
+                                child: BulletItemWidget(
+                                  content:
+                                      'COD is not available for contact lens orders. Contact lens orders must be paid online at checkout.',
+                                ),
+                              ),
+                              wrapWithModel(
+                                model: _model.bulletItemModel4,
+                                updateCallback: () => safeSetState(() {}),
+                                child: BulletItemWidget(
+                                  content:
+                                      'Additional delivery charges may apply to certain locations. Applicable charges will be shown before order confirmation.',
+                                ),
+                              ),
+                            ].divide(SizedBox(height: 16.0)),
+                          ),
+                          wrapWithModel(
+                            model: _model.sectionHeaderModel4,
+                            updateCallback: () => safeSetState(() {}),
+                            child: SectionHeader4Widget(
+                              title: '4. Shipping & Delivery',
                             ),
                           ),
-                        ),
+                          wrapWithModel(
+                            model: _model.bodyParagraphModel4,
+                            updateCallback: () => safeSetState(() {}),
+                            child: BodyParagraphWidget(
+                              content:
+                                  'We offer shipping across India, subject to service availability. Estimated delivery times may vary depending on location, courier operations, weather, and other unforeseen circumstances. We will make reasonable efforts to assist customers with delivery issues. Your statutory rights remain unaffected.',
+                            ),
+                          ),
+                          wrapWithModel(
+                            model: _model.sectionHeaderModel5,
+                            updateCallback: () => safeSetState(() {}),
+                            child: SectionHeader4Widget(
+                              title: '5. Returns & Exchanges',
+                            ),
+                          ),
+                          Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              wrapWithModel(
+                                model: _model.bulletItemModel5,
+                                updateCallback: () => safeSetState(() {}),
+                                child: BulletItemWidget(
+                                  content:
+                                      'Exchanges may be considered for damaged, defective, incorrect products, or approved size/fit issues.',
+                                ),
+                              ),
+                              wrapWithModel(
+                                model: _model.bulletItemModel6,
+                                updateCallback: () => safeSetState(() {}),
+                                child: BulletItemWidget(
+                                  content:
+                                      'Exchange requests must be submitted within 7 days of delivery.',
+                                ),
+                              ),
+                              wrapWithModel(
+                                model: _model.bulletItemModel7,
+                                updateCallback: () => safeSetState(() {}),
+                                child: BulletItemWidget(
+                                  content:
+                                      'Products must be unused and returned with their original packaging, invoice, and accessories, where applicable.',
+                                ),
+                              ),
+                              wrapWithModel(
+                                model: _model.bulletItemModel8,
+                                updateCallback: () => safeSetState(() {}),
+                                child: BulletItemWidget(
+                                  content:
+                                      'Prescription eyewear, prescription lenses, contact lenses, and customised products are not eligible for return or exchange except where permitted by applicable law.',
+                                ),
+                              ),
+                            ].divide(SizedBox(height: 16.0)),
+                          ),
+                          wrapWithModel(
+                            model: _model.sectionHeaderModel6,
+                            updateCallback: () => safeSetState(() {}),
+                            child: SectionHeader4Widget(
+                              title: '6. Contact Lens Policy',
+                            ),
+                          ),
+                          Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              wrapWithModel(
+                                model: _model.bodyParagraphModel5,
+                                updateCallback: () => safeSetState(() {}),
+                                child: BodyParagraphWidget(
+                                  content:
+                                      'Contact lenses are hygiene-sensitive products and are supplied in sealed, original packaging. Customers should carefully verify the lens power, type, quantity, and product details before placing an order.',
+                                ),
+                              ),
+                              wrapWithModel(
+                                model: _model.bulletItemModel9,
+                                updateCallback: () => safeSetState(() {}),
+                                child: BulletItemWidget(
+                                  content:
+                                      'COD is not available for contact lens orders. Payment must be made online at checkout.',
+                                ),
+                              ),
+                              wrapWithModel(
+                                model: _model.bulletItemModel10,
+                                updateCallback: () => safeSetState(() {}),
+                                child: BulletItemWidget(
+                                  content:
+                                      'Eligible issues must be reported within 7 days of delivery.',
+                                ),
+                              ),
+                              wrapWithModel(
+                                model: _model.bulletItemModel11,
+                                updateCallback: () => safeSetState(() {}),
+                                child: BulletItemWidget(
+                                  content:
+                                      'Customers are responsible for providing accurate prescription/power details when placing an order.',
+                                ),
+                              ),
+                            ].divide(SizedBox(height: 16.0)),
+                          ),
+                          wrapWithModel(
+                            model: _model.sectionHeaderModel7,
+                            updateCallback: () => safeSetState(() {}),
+                            child: SectionHeader4Widget(
+                              title: '7. Limitation of Liability',
+                            ),
+                          ),
+                          wrapWithModel(
+                            model: _model.bodyParagraphModel6,
+                            updateCallback: () => safeSetState(() {}),
+                            child: BodyParagraphWidget(
+                              content:
+                                  'To the extent permitted by applicable law, Optic Suit is not liable for indirect or consequential losses arising from the use of our website, app, or products.',
+                            ),
+                          ),
+                          wrapWithModel(
+                            model: _model.sectionHeaderModel8,
+                            updateCallback: () => safeSetState(() {}),
+                            child: SectionHeader4Widget(
+                              title: '8. Privacy & Data Protection',
+                            ),
+                          ),
+                          wrapWithModel(
+                            model: _model.bodyParagraphModel7,
+                            updateCallback: () => safeSetState(() {}),
+                            child: BodyParagraphWidget(
+                              content:
+                                  'Personal information is handled in accordance with our Privacy Policy and applicable data protection laws.',
+                            ),
+                          ),
+                          wrapWithModel(
+                            model: _model.sectionHeaderModel9,
+                            updateCallback: () => safeSetState(() {}),
+                            child: SectionHeader4Widget(
+                              title: '9. Governing Law & Disputes',
+                            ),
+                          ),
+                          wrapWithModel(
+                            model: _model.bodyParagraphModel8,
+                            updateCallback: () => safeSetState(() {}),
+                            child: BodyParagraphWidget(
+                              content:
+                                  'These Terms & Conditions are governed by the laws of India. Disputes will be handled by the competent courts or authorities having jurisdiction under applicable law.',
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(16.0),
+                              shape: BoxShape.rectangle,
+                              border: Border.all(
+                                color: FlutterFlowTheme.of(context).alternate,
+                                width: 1.0,
+                              ),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.all(24.0),
+                              child: Container(
+                                decoration: BoxDecoration(),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    wrapWithModel(
+                                      model: _model.contactModel,
+                                      updateCallback: () => safeSetState(() {}),
+                                      child: ContactWidget(),
+                                    ),
+                                  ].divide(SizedBox(height: 8.0)),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ].divide(SizedBox(height: 24.0)),
                       ),
-                    ].divide(SizedBox(height: 24.0)),
+                    ),
                   ),
                 ),
               ),

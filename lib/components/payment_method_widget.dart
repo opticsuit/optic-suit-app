@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'payment_method_model.dart';
 export 'payment_method_model.dart';
 
@@ -59,7 +62,7 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
         border: Border.all(
           color: valueOrDefault<Color>(
             valueOrDefault<bool>(
-              widget.selected,
+              widget!.selected,
               true,
             )
                 ? Color(0xFF1F3A87)
@@ -83,7 +86,7 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                 decoration: BoxDecoration(
                   color: valueOrDefault<Color>(
                     valueOrDefault<bool>(
-                      widget.selected,
+                      widget!.selected,
                       true,
                     )
                         ? Color(0x1A86C144)
@@ -94,7 +97,7 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                   shape: BoxShape.rectangle,
                 ),
                 alignment: AlignmentDirectional(0.0, 0.0),
-                child: widget.icon!,
+                child: widget!.icon!,
               ),
               Expanded(
                 flex: 1,
@@ -105,7 +108,7 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                   children: [
                     Text(
                       valueOrDefault<String>(
-                        widget.title,
+                        widget!.title,
                         'Apple Pay',
                       ),
                       style: FlutterFlowTheme.of(context).titleSmall.override(
@@ -125,7 +128,7 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                     ),
                     Text(
                       valueOrDefault<String>(
-                        widget.subtitle,
+                        widget!.subtitle,
                         'Default Method',
                       ),
                       style: FlutterFlowTheme.of(context).labelSmall.override(
@@ -159,7 +162,7 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                   children: [
                     if (valueOrDefault<bool>(
                       valueOrDefault<bool>(
-                        widget.selected,
+                        widget!.selected,
                         true,
                       )
                           ? true
@@ -170,7 +173,7 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                         Icons.check_circle_rounded,
                         color: valueOrDefault<Color>(
                           valueOrDefault<bool>(
-                            widget.selected,
+                            widget!.selected,
                             true,
                           )
                               ? Color(0xFF1F3A87)
@@ -181,7 +184,7 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                       ),
                     if (valueOrDefault<bool>(
                       valueOrDefault<bool>(
-                        widget.selected,
+                        widget!.selected,
                         true,
                       )
                           ? false
@@ -192,7 +195,7 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                         Icons.radio_button_unchecked_rounded,
                         color: valueOrDefault<Color>(
                           valueOrDefault<bool>(
-                            widget.selected,
+                            widget!.selected,
                             true,
                           )
                               ? FlutterFlowTheme.of(context).primary

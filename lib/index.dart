@@ -58,3 +58,5 @@ export '/pages/profile/language/language_widget.dart' show LanguageWidget;
 export '/shopping_pages/optic_suit_home_page/optic_suit_home_page_widget.dart'
     show OpticSuitHomePageWidget;
 export '/components/search/search_widget.dart' show SearchWidget;
+export '/pages/profile/delete_account_page/delete_account_page_widget.dart'
+    show DeleteAccountPageWidget;

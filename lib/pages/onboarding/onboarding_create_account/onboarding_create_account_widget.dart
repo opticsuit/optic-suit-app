@@ -4,10 +4,14 @@ import '/components/custom_appbar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import '/index.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'onboarding_create_account_model.dart';
 export 'onboarding_create_account_model.dart';
 
@@ -35,6 +39,17 @@ class _OnboardingCreateAccountWidgetState
 
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'Onboarding_CreateAccount'});
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('ONBOARDING_CREATE_ACCOUNT_Onboarding_Cre');
+      logFirebaseEvent('Onboarding_CreateAccount_clear_text_fiel');
+      safeSetState(() {
+        _model.fullNameTextController?.clear();
+        _model.emailAddressTextController?.clear();
+        _model.passwordTextController?.clear();
+      });
+    });
+
     _model.fullNameTextController ??= TextEditingController();
     _model.fullNameFocusNode ??= FocusNode();
 
@@ -44,7 +59,11 @@ class _OnboardingCreateAccountWidgetState
     _model.passwordTextController ??= TextEditingController();
     _model.passwordFocusNode ??= FocusNode();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {
+          _model.fullNameTextController?.text = '';
+          _model.emailAddressTextController?.text = '';
+          _model.passwordTextController?.text = '';
+        }));
   }
 
   @override

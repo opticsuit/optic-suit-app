@@ -1,11 +1,15 @@
 import '/components/faq_item_widget.dart';
 import '/components/help_topic_card_widget.dart';
+import '/flutter_flow/ff_builtin_enums.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'help_suppor_model.dart';
 export 'help_suppor_model.dart';
 
@@ -154,6 +158,9 @@ class _HelpSupporWidgetState extends State<HelpSupporWidget> {
     _model = createModel(context, () => HelpSupporModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'HelpSuppor'});
+    _model.helpSearchTextController ??= TextEditingController();
+    _model.helpSearchFocusNode ??= FocusNode();
+
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -173,130 +180,255 @@ class _HelpSupporWidgetState extends State<HelpSupporWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFF7F8FA),
-        body: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Container(
-              height: 56.0,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                shape: BoxShape.rectangle,
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                    child: Container(
-                      child: Container(
-                        height: 55.0,
-                        alignment: AlignmentDirectional(0.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.arrow_back_rounded,
-                              color: Color(0xFF1A1A1A),
-                              size: 24.0,
-                            ),
-                            Text(
-                              'Help & Support',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    font: GoogleFonts.inter(
-                                      fontWeight: FontWeight.w600,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontStyle,
-                                    ),
-                                    color: Color(0xFF1A1A1A),
-                                    fontSize: 20.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w600,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontStyle,
-                                    lineHeight: 1.4,
-                                  ),
-                            ),
-                          ].divide(SizedBox(width: 16.0)),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 1.0,
-                    decoration: BoxDecoration(
-                      color: Color(0xFFE5E7EB),
-                      shape: BoxShape.rectangle,
-                    ),
-                  ),
-                ],
-              ),
+        backgroundColor: Color(0xFFF5F6F8),
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          automaticallyImplyLeading: false,
+          leading: FlutterFlowIconButton(
+            buttonSize: 40.0,
+            icon: Icon(
+              Icons.arrow_back_rounded,
+              color: Color(0xFF1F3A87),
+              size: 22.0,
             ),
-            Expanded(
-              flex: 1,
-              child: SingleChildScrollView(
-                primary: false,
+            onPressed: () async {
+              logFirebaseEvent('HELP_SUPPOR_PAGE_IconButton_ON_TAP');
+              logFirebaseEvent('IconButton_navigate_to');
+
+              context.pushNamed(ProfileWidget.routeName);
+            },
+          ),
+          title: Text(
+            'Help & Support',
+            style: FlutterFlowTheme.of(context).titleLarge.override(
+                  font: GoogleFonts.inter(
+                    fontWeight:
+                        FlutterFlowTheme.of(context).titleLarge.fontWeight,
+                    fontStyle:
+                        FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                  ),
+                  color: Color(0xFF1F3A87),
+                  letterSpacing: 0.0,
+                  fontWeight:
+                      FlutterFlowTheme.of(context).titleLarge.fontWeight,
+                  fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                ),
+          ),
+          actions: [],
+          centerTitle: true,
+          toolbarHeight: 60.0,
+          elevation: 0.0,
+        ),
+        body: SafeArea(
+          top: true,
+          child: ListView(
+            padding: EdgeInsets.zero,
+            primary: false,
+            children: [
+              Padding(
+                padding: EdgeInsets.all(16.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Padding(
-                      padding: EdgeInsets.all(24.0),
-                      child: Container(
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Text(
+                          'How can we help you?',
+                          style: FlutterFlowTheme.of(context)
+                              .headlineSmall
+                              .override(
+                                font: GoogleFonts.inter(
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .headlineSmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .headlineSmall
+                                      .fontStyle,
+                                ),
+                                color: Color(0xFF1F3A87),
+                                letterSpacing: 0.0,
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .headlineSmall
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .headlineSmall
+                                    .fontStyle,
+                              ),
+                        ),
+                        TextFormField(
+                          controller: _model.helpSearchTextController,
+                          focusNode: _model.helpSearchFocusNode,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            hintText: 'Search help topics',
+                            hintStyle: FlutterFlowTheme.of(context)
+                                .labelLarge
+                                .override(
+                                  font: GoogleFonts.inter(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .labelLarge
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelLarge
+                                        .fontStyle,
+                                  ),
+                                  color: Color(0xFF666666),
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .labelLarge
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .labelLarge
+                                      .fontStyle,
+                                ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0xFFE5E7EB),
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(14.0),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(14.0),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(14.0),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(14.0),
+                            ),
+                            filled: true,
+                            fillColor: Colors.white,
+                            contentPadding: EdgeInsets.all(14.0),
+                            prefixIcon: Icon(
+                              Icons.search_rounded,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              size: 20.0,
+                            ),
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                                    color: Color(0xFF333333),
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
+                          maxLines: null,
+                          validator: _model.helpSearchTextControllerValidator
+                              .asValidator(context),
+                        ),
+                      ].divide(SizedBox(height: 14.0)),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 8.0,
+                            color: Color(0x12000000),
+                            offset: Offset(
+                              0.0,
+                              2.0,
+                            ),
+                            spreadRadius: 0.0,
+                          )
+                        ],
+                        borderRadius: BorderRadius.circular(18.0),
+                        border: Border.all(
+                          color: Color(0xFFE5E7EB),
+                          width: 1.0,
+                        ),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(16.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          mainAxisAlignment:
+                              (FFMainAxisAlignment.start).flutterValue,
+                          crossAxisAlignment:
+                              (FFCrossAxisAlignment.stretch).flutterValue,
+                          textBaseline: TextBaseline.alphabetic,
                           children: [
                             Column(
                               mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              mainAxisAlignment:
+                                  (FFMainAxisAlignment.start).flutterValue,
+                              crossAxisAlignment:
+                                  (FFCrossAxisAlignment.stretch).flutterValue,
+                              textBaseline: TextBaseline.alphabetic,
                               children: [
                                 Text(
                                   'Help Topics',
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
+                                      .titleMedium
                                       .override(
                                         font: GoogleFonts.inter(
-                                          fontWeight: FontWeight.w600,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleMedium
+                                                  .fontWeight,
                                           fontStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .bodyMedium
+                                                  .titleMedium
                                                   .fontStyle,
                                         ),
-                                        color: Color(0xFF1A1A1A),
-                                        fontSize: 18.0,
+                                        color: Color(0xFF1F3A87),
                                         letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w600,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .titleMedium
+                                            .fontWeight,
                                         fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
+                                            .titleMedium
                                             .fontStyle,
-                                        lineHeight: 1.4,
                                       ),
                                 ),
                                 Column(
                                   mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment:
+                                      (FFMainAxisAlignment.start).flutterValue,
+                                  crossAxisAlignment:
+                                      (FFCrossAxisAlignment.center)
+                                          .flutterValue,
+                                  textBaseline: TextBaseline.alphabetic,
                                   children: [
                                     Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
-                                          MainAxisAlignment.start,
+                                          (FFMainAxisAlignment.start)
+                                              .flutterValue,
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.center,
+                                          (FFCrossAxisAlignment.center)
+                                              .flutterValue,
+                                      textBaseline: TextBaseline.alphabetic,
                                       children: [
                                         Expanded(
                                           flex: 1,
@@ -308,7 +440,7 @@ class _HelpSupporWidgetState extends State<HelpSupporWidget> {
                                               icon: Icon(
                                                 Icons.inventory_2_rounded,
                                                 color: Color(0xFF1F3A87),
-                                                size: 18.0,
+                                                size: 22.0,
                                               ),
                                               label: 'Orders & Delivery',
                                             ),
@@ -324,7 +456,7 @@ class _HelpSupporWidgetState extends State<HelpSupporWidget> {
                                               icon: Icon(
                                                 Icons.assignment_return_rounded,
                                                 color: Color(0xFF1F3A87),
-                                                size: 18.0,
+                                                size: 22.0,
                                               ),
                                               label: 'Returns & Exchanges',
                                             ),
@@ -335,9 +467,12 @@ class _HelpSupporWidgetState extends State<HelpSupporWidget> {
                                     Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
-                                          MainAxisAlignment.start,
+                                          (FFMainAxisAlignment.start)
+                                              .flutterValue,
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.center,
+                                          (FFCrossAxisAlignment.center)
+                                              .flutterValue,
+                                      textBaseline: TextBaseline.alphabetic,
                                       children: [
                                         Expanded(
                                           flex: 1,
@@ -349,7 +484,7 @@ class _HelpSupporWidgetState extends State<HelpSupporWidget> {
                                               icon: Icon(
                                                 Icons.payments_rounded,
                                                 color: Color(0xFF1F3A87),
-                                                size: 18.0,
+                                                size: 22.0,
                                               ),
                                               label: 'Payments & Refunds',
                                             ),
@@ -365,7 +500,7 @@ class _HelpSupporWidgetState extends State<HelpSupporWidget> {
                                               icon: Icon(
                                                 Icons.help,
                                                 color: Color(0xFF1F3A87),
-                                                size: 18.0,
+                                                size: 22.0,
                                               ),
                                               label: 'Product & Lens',
                                             ),
@@ -376,9 +511,12 @@ class _HelpSupporWidgetState extends State<HelpSupporWidget> {
                                     Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
-                                          MainAxisAlignment.start,
+                                          (FFMainAxisAlignment.start)
+                                              .flutterValue,
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.center,
+                                          (FFCrossAxisAlignment.center)
+                                              .flutterValue,
+                                      textBaseline: TextBaseline.alphabetic,
                                       children: [
                                         Expanded(
                                           flex: 1,
@@ -390,7 +528,7 @@ class _HelpSupporWidgetState extends State<HelpSupporWidget> {
                                               icon: Icon(
                                                 Icons.visibility_rounded,
                                                 color: Color(0xFF1F3A87),
-                                                size: 18.0,
+                                                size: 22.0,
                                               ),
                                               label: 'Eye Test Booking',
                                             ),
@@ -406,7 +544,7 @@ class _HelpSupporWidgetState extends State<HelpSupporWidget> {
                                               icon: Icon(
                                                 Icons.person_rounded,
                                                 color: Color(0xFF1F3A87),
-                                                size: 18.0,
+                                                size: 22.0,
                                               ),
                                               label: 'Account & Address',
                                             ),
@@ -414,42 +552,51 @@ class _HelpSupporWidgetState extends State<HelpSupporWidget> {
                                         ),
                                       ].divide(SizedBox(width: 16.0)),
                                     ),
-                                  ].divide(SizedBox(height: 16.0)),
+                                  ].divide(SizedBox(height: 12.0)),
                                 ),
-                              ].divide(SizedBox(height: 16.0)),
+                              ].divide(SizedBox(height: 12.0)),
                             ),
                             Column(
                               mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              mainAxisAlignment:
+                                  (FFMainAxisAlignment.start).flutterValue,
+                              crossAxisAlignment:
+                                  (FFCrossAxisAlignment.stretch).flutterValue,
+                              textBaseline: TextBaseline.alphabetic,
                               children: [
                                 Text(
                                   'Frequently Asked Questions',
                                   style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
+                                      .titleMedium
                                       .override(
                                         font: GoogleFonts.inter(
                                           fontWeight:
                                               FlutterFlowTheme.of(context)
-                                                  .bodyMedium
+                                                  .titleMedium
                                                   .fontWeight,
                                           fontStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .bodyMedium
+                                                  .titleMedium
                                                   .fontStyle,
                                         ),
                                         color: Color(0xFF1F3A87),
                                         letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(context)
-                                            .bodyMedium
+                                            .titleMedium
                                             .fontWeight,
                                         fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
+                                            .titleMedium
                                             .fontStyle,
                                       ),
                                 ),
                                 Column(
                                   mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      (FFMainAxisAlignment.start).flutterValue,
+                                  crossAxisAlignment:
+                                      (FFCrossAxisAlignment.center)
+                                          .flutterValue,
+                                  textBaseline: TextBaseline.alphabetic,
                                   children: [
                                     wrapWithModel(
                                       model: _model.faqItemModel1,
@@ -498,154 +645,200 @@ class _HelpSupporWidgetState extends State<HelpSupporWidget> {
                                             'Go to Profile → My Address to add or edit a saved address. During checkout, select the address you want to use.',
                                       ),
                                     ),
-                                  ].divide(SizedBox(height: 8.0)),
+                                  ].divide(SizedBox(height: 10.0)),
                                 ),
                               ].divide(SizedBox(height: 16.0)),
                             ),
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(16.0),
-                                shape: BoxShape.rectangle,
-                                border: Border.all(
-                                  color: Color(0xFFE5E7EB),
-                                  width: 1.0,
-                                ),
-                              ),
-                              child: Padding(
-                                padding: EdgeInsets.all(24.0),
-                                child: Container(
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Icon(
-                                        Icons.headset_mic_outlined,
-                                        color: Color(0xFF1F3A87),
-                                        size: 27.0,
-                                      ),
-                                      Text(
-                                        'Still need help?',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              font: GoogleFonts.inter(
-                                                fontWeight: FontWeight.bold,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
-                                              color: Color(0xFF1A1A1A),
-                                              fontSize: 18.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.bold,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontStyle,
-                                              lineHeight: 1.4,
-                                            ),
-                                      ),
-                                      Text(
-                                        'Our support team is here to help.',
-                                        textAlign: TextAlign.center,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              font: GoogleFonts.inter(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
-                                              color: Color(0xFF6B7280),
-                                              fontSize: 14.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontStyle,
-                                              lineHeight: 1.4,
-                                            ),
-                                      ),
-                                      FFButtonWidget(
-                                        onPressed: () async {
-                                          logFirebaseEvent(
-                                              'HELP_SUPPOR_CONTACT_SUPPORT_BTN_ON_TAP');
-                                          logFirebaseEvent(
-                                              'Button_navigate_to');
-
-                                          context.pushNamed(
-                                              ContactSupportWidget.routeName);
-                                        },
-                                        text: 'Contact Support',
-                                        options: FFButtonOptions(
-                                          width: double.infinity,
-                                          height: 48.0,
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 0.0, 16.0, 0.0),
-                                          iconPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
-                                          color: Color(0xFF1F3A87),
-                                          textStyle: FlutterFlowTheme.of(
-                                                  context)
-                                              .titleSmall
-                                              .override(
-                                                font: GoogleFonts.inter(
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleSmall
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleSmall
-                                                          .fontStyle,
-                                                ),
-                                                color: Colors.white,
-                                                letterSpacing: 0.0,
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmall
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmall
-                                                        .fontStyle,
-                                              ),
-                                          elevation: 0.0,
-                                          borderRadius:
-                                              BorderRadius.circular(10.0),
-                                        ),
-                                      ),
-                                    ].divide(SizedBox(height: 16.0)),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ].divide(SizedBox(height: 24.0)),
+                          ].divide(SizedBox(height: 18.0)),
                         ),
                       ),
                     ),
-                  ],
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 8.0,
+                            color: Color(0x12000000),
+                            offset: Offset(
+                              0.0,
+                              2.0,
+                            ),
+                            spreadRadius: 0.0,
+                          )
+                        ],
+                        borderRadius: BorderRadius.circular(18.0),
+                        border: Border.all(
+                          color: Color(0xFFE5E7EB),
+                          width: 1.0,
+                        ),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(18.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment:
+                              (FFMainAxisAlignment.start).flutterValue,
+                          crossAxisAlignment:
+                              (FFCrossAxisAlignment.stretch).flutterValue,
+                          textBaseline: TextBaseline.alphabetic,
+                          children: [
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment:
+                                  (FFMainAxisAlignment.start).flutterValue,
+                              crossAxisAlignment:
+                                  (FFCrossAxisAlignment.center).flutterValue,
+                              textBaseline: TextBaseline.alphabetic,
+                              children: [
+                                Icon(
+                                  Icons.headset_mic_rounded,
+                                  color: Color(0xFF1F3A87),
+                                  size: 24.0,
+                                ),
+                                Text(
+                                  'Still need help?',
+                                  style: FlutterFlowTheme.of(context)
+                                      .titleMedium
+                                      .override(
+                                        font: GoogleFonts.inter(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleMedium
+                                                  .fontStyle,
+                                        ),
+                                        color: Color(0xFF1F3A87),
+                                        letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .titleMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .titleMedium
+                                            .fontStyle,
+                                      ),
+                                ),
+                              ].divide(SizedBox(width: 12.0)),
+                            ),
+                            Text(
+                              'Our support team is here to help.',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                                    color: Color(0xFF333333),
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
+                            ),
+                            FFButtonWidget(
+                              onPressed: () async {
+                                logFirebaseEvent(
+                                    'HELP_SUPPOR_PAGE_Button_ON_TAP');
+                                logFirebaseEvent('Button_navigate_to');
+
+                                context
+                                    .pushNamed(ContactSupportWidget.routeName);
+                              },
+                              text: 'WhatsApp Support',
+                              options: FFButtonOptions(
+                                width: double.infinity,
+                                height: 48.0,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: Color(0xFFF5F6F8),
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .fontStyle,
+                                      ),
+                                      color: Color(0xFF1F3A87),
+                                      letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontStyle,
+                                    ),
+                                elevation: 0.0,
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                            ),
+                            FFButtonWidget(
+                              onPressed: () async {
+                                logFirebaseEvent(
+                                    'HELP_SUPPOR_PAGE_Button_ON_TAP');
+                                logFirebaseEvent('Button_navigate_to');
+
+                                context
+                                    .pushNamed(ContactSupportWidget.routeName);
+                              },
+                              text: 'Contact Support',
+                              options: FFButtonOptions(
+                                width: double.infinity,
+                                height: 50.0,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: Color(0xFF1F3A87),
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .fontStyle,
+                                      ),
+                                      color: Colors.white,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontStyle,
+                                    ),
+                                elevation: 0.0,
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                            ),
+                          ].divide(SizedBox(height: 12.0)),
+                        ),
+                      ),
+                    ),
+                  ].divide(SizedBox(height: 18.0)),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

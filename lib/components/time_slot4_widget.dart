@@ -1,7 +1,9 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'time_slot4_model.dart';
 export 'time_slot4_model.dart';
 
@@ -54,12 +56,12 @@ class _TimeSlot4WidgetState extends State<TimeSlot4Widget> {
         color: valueOrDefault<Color>(
           () {
             if (valueOrDefault<bool>(
-              widget.selected,
+              widget!.selected,
               false,
             )) {
               return FlutterFlowTheme.of(context).primary;
             } else if (valueOrDefault<bool>(
-              widget.available,
+              widget!.available,
               false,
             )) {
               return FlutterFlowTheme.of(context).secondaryBackground;
@@ -74,7 +76,7 @@ class _TimeSlot4WidgetState extends State<TimeSlot4Widget> {
         border: Border.all(
           color: valueOrDefault<Color>(
             valueOrDefault<bool>(
-              widget.selected,
+              widget!.selected,
               false,
             )
                 ? FlutterFlowTheme.of(context).primary
@@ -91,7 +93,7 @@ class _TimeSlot4WidgetState extends State<TimeSlot4Widget> {
             alignment: AlignmentDirectional(0.0, 0.0),
             child: Text(
               valueOrDefault<String>(
-                widget.time,
+                widget!.time,
                 '09:00 AM',
               ),
               style: FlutterFlowTheme.of(context).labelLarge.override(
@@ -104,12 +106,12 @@ class _TimeSlot4WidgetState extends State<TimeSlot4Widget> {
                     color: valueOrDefault<Color>(
                       () {
                         if (valueOrDefault<bool>(
-                          widget.selected,
+                          widget!.selected,
                           false,
                         )) {
                           return Colors.white;
                         } else if (valueOrDefault<bool>(
-                          widget.available,
+                          widget!.available,
                           false,
                         )) {
                           return FlutterFlowTheme.of(context).primaryText;

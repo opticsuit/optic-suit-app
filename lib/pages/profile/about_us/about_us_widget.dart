@@ -1,9 +1,13 @@
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/components/custom_appbar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'about_us_model.dart';
 export 'about_us_model.dart';
 
@@ -270,7 +274,7 @@ class _AboutUsWidgetState extends State<AboutUsWidget> {
                                     lineHeight: 1.4,
                                   ),
                             ),
-                            if (columnCompanyInformationRecord
+                            if (columnCompanyInformationRecord!
                                     .chefInfo.length >
                                 0)
                               Padding(
@@ -313,8 +317,8 @@ class _AboutUsWidgetState extends State<AboutUsWidget> {
                                         builder: (context) {
                                           final chefs =
                                               columnCompanyInformationRecord
-                                                      .chefInfo
-                                                      .toList() ??
+                                                      ?.chefInfo
+                                                      ?.toList() ??
                                                   [];
 
                                           return Column(
@@ -332,6 +336,9 @@ class _AboutUsWidgetState extends State<AboutUsWidget> {
                                                       MainAxisSize.min,
                                                   children: [
                                                     if (chefsItem
+                                                                .profilePicture !=
+                                                            null &&
+                                                        chefsItem
                                                                 .profilePicture !=
                                                             '')
                                                       Container(
@@ -403,6 +410,8 @@ class _AboutUsWidgetState extends State<AboutUsWidget> {
                                                                   ),
                                                             ),
                                                             if (chefsItem.bio !=
+                                                                    null &&
+                                                                chefsItem.bio !=
                                                                     '')
                                                               Padding(
                                                                 padding:

@@ -2,8 +2,12 @@ import '/components/booking_card_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'myeyetestbooking_model.dart';
 export 'myeyetestbooking_model.dart';
 
@@ -523,8 +527,12 @@ class _MyeyetestbookingWidgetState extends State<MyeyetestbookingWidget> {
                                 color: Color(0xFF1F2937),
                                 size: 24.0,
                               ),
-                              onPressed: () {
-                                print('IconButton pressed ...');
+                              onPressed: () async {
+                                logFirebaseEvent(
+                                    'MYEYETESTBOOKING_PAGE_IconButton_ON_TAP');
+                                logFirebaseEvent('IconButton_navigate_to');
+
+                                context.pushNamed(ProfileWidget.routeName);
                               },
                             ),
                             Text(

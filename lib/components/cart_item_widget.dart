@@ -1,9 +1,12 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'cart_item_model.dart';
 export 'cart_item_model.dart';
 
@@ -90,7 +93,7 @@ class _CartItemWidgetState extends State<CartItemWidget> {
                     fadeInDuration: Duration(milliseconds: 0),
                     fadeOutDuration: Duration(milliseconds: 0),
                     imageUrl: valueOrDefault<String>(
-                      widget.imgDesc,
+                      widget!.imgDesc,
                       'https://dimg.dreamflow.cloud/v1/image/high-end%20camera%20lens',
                     ),
                     fit: BoxFit.cover,
@@ -107,7 +110,7 @@ class _CartItemWidgetState extends State<CartItemWidget> {
                   children: [
                     Text(
                       valueOrDefault<String>(
-                        widget.name,
+                        widget!.name,
                         'Optic Pro Lens',
                       ),
                       maxLines: 1,
@@ -130,7 +133,7 @@ class _CartItemWidgetState extends State<CartItemWidget> {
                     ),
                     Text(
                       valueOrDefault<String>(
-                        widget.spec,
+                        widget!.spec,
                         'Blue Light Filter • 52mm',
                       ),
                       style: FlutterFlowTheme.of(context).bodySmall.override(
@@ -160,7 +163,7 @@ class _CartItemWidgetState extends State<CartItemWidget> {
                       children: [
                         Text(
                           valueOrDefault<String>(
-                            widget.price,
+                            widget!.price,
                             '\$89.00',
                           ),
                           style:
@@ -199,7 +202,7 @@ class _CartItemWidgetState extends State<CartItemWidget> {
                               },
                             ),
                             Text(
-                              '${widget.count}',
+                              '${widget!.count}',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(

@@ -1,9 +1,12 @@
 import '/components/offer_card_widget.dart';
+import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'offers_wallet_model.dart';
 export 'offers_wallet_model.dart';
 
@@ -227,10 +230,12 @@ class _OffersWalletWidgetState extends State<OffersWalletWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFF0F0F0),
+        backgroundColor: Color(0xFFF5F6F8),
         appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-          automaticallyImplyLeading: false,
+          backgroundColor: FlutterFlowTheme.of(context).primaryText,
+          iconTheme:
+              IconThemeData(color: FlutterFlowTheme.of(context).secondaryText),
+          automaticallyImplyLeading: true,
           title: Text(
             'Offers & Wallet',
             style: FlutterFlowTheme.of(context).titleLarge.override(
@@ -240,6 +245,7 @@ class _OffersWalletWidgetState extends State<OffersWalletWidget> {
                     fontStyle:
                         FlutterFlowTheme.of(context).titleLarge.fontStyle,
                   ),
+                  color: Color(0xFF1F3A87),
                   letterSpacing: 0.0,
                   fontWeight:
                       FlutterFlowTheme.of(context).titleLarge.fontWeight,
@@ -249,6 +255,7 @@ class _OffersWalletWidgetState extends State<OffersWalletWidget> {
           ),
           actions: [],
           centerTitle: false,
+          toolbarHeight: 60.0,
           elevation: 0.0,
         ),
         body: SingleChildScrollView(
@@ -259,38 +266,63 @@ class _OffersWalletWidgetState extends State<OffersWalletWidget> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 10.0),
+                padding: EdgeInsets.all(16.0),
                 child: Container(
-                  child: Container(
-                    height: 150.0,
-                    decoration: BoxDecoration(
-                      color: Color(0xFF1F3A87),
-                      borderRadius: BorderRadius.circular(16.0),
-                      shape: BoxShape.rectangle,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 16.0,
+                        color: Color(0x261F3A87),
+                        offset: Offset(
+                          0.0,
+                          6.0,
+                        ),
+                        spreadRadius: 0.0,
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(18.0),
+                    border: Border.all(
+                      color: Color(0xFFE5E7EB),
+                      width: 1.0,
                     ),
+                  ),
+                  child: Container(
+                    height: 148.0,
+                    decoration: BoxDecoration(),
                     child: Padding(
                       padding: EdgeInsets.all(20.0),
-                      child: Container(
-                        child: Container(
-                          height: 110.0,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment:
+                            (FFMainAxisAlignment.spaceBetween).flutterValue,
+                        crossAxisAlignment:
+                            (FFCrossAxisAlignment.start).flutterValue,
+                        textBaseline: TextBaseline.alphabetic,
+                        children: [
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment:
+                                (FFMainAxisAlignment.spaceBetween).flutterValue,
+                            crossAxisAlignment:
+                                (FFCrossAxisAlignment.center).flutterValue,
+                            textBaseline: TextBaseline.alphabetic,
                             children: [
                               Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.center,
+                                    (FFMainAxisAlignment.start).flutterValue,
+                                crossAxisAlignment:
+                                    (FFCrossAxisAlignment.center).flutterValue,
+                                textBaseline: TextBaseline.alphabetic,
                                 children: [
                                   Icon(
                                     Icons.account_balance_wallet_rounded,
-                                    color: Colors.white,
-                                    size: 24.0,
+                                    color: Color(0xFF1F3A87),
+                                    size: 22.0,
                                   ),
                                   Text(
-                                    'View Transactions',
+                                    'Offers wallet',
                                     style: FlutterFlowTheme.of(context)
                                         .labelMedium
                                         .override(
@@ -304,7 +336,7 @@ class _OffersWalletWidgetState extends State<OffersWalletWidget> {
                                                     .labelMedium
                                                     .fontStyle,
                                           ),
-                                          color: Color(0xCCFFFFFF),
+                                          color: Color(0xFF333333),
                                           letterSpacing: 0.0,
                                           fontWeight:
                                               FlutterFlowTheme.of(context)
@@ -314,73 +346,93 @@ class _OffersWalletWidgetState extends State<OffersWalletWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .labelMedium
                                                   .fontStyle,
-                                          decoration: TextDecoration.underline,
-                                          lineHeight: 1.4,
                                         ),
                                   ),
-                                ],
+                                ].divide(SizedBox(width: 8.0)),
                               ),
-                              Column(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Available Balance',
-                                    style: FlutterFlowTheme.of(context)
-                                        .labelSmall
-                                        .override(
-                                          font: GoogleFonts.inter(
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelSmall
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelSmall
-                                                    .fontStyle,
-                                          ),
-                                          color: Color(0xB3FFFFFF),
-                                          letterSpacing: 0.0,
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelSmall
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelSmall
-                                                  .fontStyle,
-                                          lineHeight: 1.4,
-                                        ),
-                                  ),
-                                  Text(
-                                    '₹0.00',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          font: GoogleFonts.inter(
-                                            fontWeight: FontWeight.bold,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
-                                          ),
-                                          color: Colors.white,
-                                          fontSize: 28.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.bold,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
-                                          lineHeight: 1.4,
-                                        ),
-                                  ),
-                                ].divide(SizedBox(height: 4.0)),
+                              Text(
+                                'View Transactions',
+                                style: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .override(
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .fontStyle,
+                                      ),
+                                      color: Color(0xFF1F3A87),
+                                      letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
+                                      decoration: TextDecoration.underline,
+                                    ),
                               ),
                             ],
                           ),
-                        ),
+                          Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment:
+                                (FFMainAxisAlignment.start).flutterValue,
+                            crossAxisAlignment:
+                                (FFCrossAxisAlignment.start).flutterValue,
+                            textBaseline: TextBaseline.alphabetic,
+                            children: [
+                              Text(
+                                'Available Balance',
+                                style: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .override(
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .fontStyle,
+                                      ),
+                                      color: Color(0xFF333333),
+                                      letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
+                                    ),
+                              ),
+                              Text(
+                                '₹0.00',
+                                style: FlutterFlowTheme.of(context)
+                                    .headlineMedium
+                                    .override(
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .headlineMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .headlineMedium
+                                            .fontStyle,
+                                      ),
+                                      color: Color(0xFF1F3A87),
+                                      letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .headlineMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .headlineMedium
+                                          .fontStyle,
+                                    ),
+                              ),
+                            ].divide(SizedBox(height: 6.0)),
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -395,7 +447,7 @@ class _OffersWalletWidgetState extends State<OffersWalletWidget> {
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                       child: Container(
                         child: Text(
                           'Have a Coupon Code?',
@@ -407,7 +459,7 @@ class _OffersWalletWidgetState extends State<OffersWalletWidget> {
                                           .bodyMedium
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFF222222),
+                                    color: Color(0xFF1F3A87),
                                     fontSize: 18.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
@@ -421,14 +473,17 @@ class _OffersWalletWidgetState extends State<OffersWalletWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                       child: Container(
                         child: Container(
                           decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            borderRadius: BorderRadius.circular(12.0),
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(14.0),
                             shape: BoxShape.rectangle,
+                            border: Border.all(
+                              color: Color(0xFFE5E7EB),
+                              width: 1.0,
+                            ),
                           ),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -436,7 +491,7 @@ class _OffersWalletWidgetState extends State<OffersWalletWidget> {
                               Container(
                                 width: 200.0,
                                 child: Container(
-                                  width: 330.0,
+                                  width: 210.0,
                                   child: TextFormField(
                                     controller: _model.textController,
                                     focusNode: _model.textFieldFocusNode,
@@ -445,30 +500,7 @@ class _OffersWalletWidgetState extends State<OffersWalletWidget> {
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       isDense: true,
-                                      labelStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .override(
-                                            font: GoogleFonts.inter(
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .fontStyle,
-                                            ),
-                                            letterSpacing: 0.0,
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .fontStyle,
-                                          ),
-                                      hintText: 'TextField',
+                                      hintText: 'Enter coupon code',
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
@@ -482,6 +514,7 @@ class _OffersWalletWidgetState extends State<OffersWalletWidget> {
                                                       .labelMedium
                                                       .fontStyle,
                                             ),
+                                            color: Color(0xFF666666),
                                             letterSpacing: 0.0,
                                             fontWeight:
                                                 FlutterFlowTheme.of(context)
@@ -494,11 +527,11 @@ class _OffersWalletWidgetState extends State<OffersWalletWidget> {
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                          color: Color(0xFF1F3A87),
+                                          color: Color(0xFFE5E7EB),
                                           width: 1.0,
                                         ),
                                         borderRadius:
-                                            BorderRadius.circular(8.0),
+                                            BorderRadius.circular(12.0),
                                       ),
                                       focusedBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -506,7 +539,7 @@ class _OffersWalletWidgetState extends State<OffersWalletWidget> {
                                           width: 1.0,
                                         ),
                                         borderRadius:
-                                            BorderRadius.circular(8.0),
+                                            BorderRadius.circular(12.0),
                                       ),
                                       errorBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -515,7 +548,7 @@ class _OffersWalletWidgetState extends State<OffersWalletWidget> {
                                           width: 1.0,
                                         ),
                                         borderRadius:
-                                            BorderRadius.circular(8.0),
+                                            BorderRadius.circular(12.0),
                                       ),
                                       focusedErrorBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -524,11 +557,10 @@ class _OffersWalletWidgetState extends State<OffersWalletWidget> {
                                           width: 1.0,
                                         ),
                                         borderRadius:
-                                            BorderRadius.circular(8.0),
+                                            BorderRadius.circular(12.0),
                                       ),
                                       filled: true,
-                                      fillColor: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
+                                      fillColor: Colors.white,
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
@@ -543,6 +575,7 @@ class _OffersWalletWidgetState extends State<OffersWalletWidget> {
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
+                                          color: Color(0xFF333333),
                                           letterSpacing: 0.0,
                                           fontWeight:
                                               FlutterFlowTheme.of(context)
@@ -553,8 +586,7 @@ class _OffersWalletWidgetState extends State<OffersWalletWidget> {
                                                   .bodyMedium
                                                   .fontStyle,
                                         ),
-                                    cursorColor: FlutterFlowTheme.of(context)
-                                        .primaryText,
+                                    cursorColor: Color(0xFF1F3A87),
                                     enableInteractiveSelection: true,
                                     validator: _model.textControllerValidator
                                         .asValidator(context),
@@ -571,17 +603,16 @@ class _OffersWalletWidgetState extends State<OffersWalletWidget> {
                                         onPressed: () {
                                           print('Button pressed ...');
                                         },
-                                        text: 'Button',
+                                        text: 'Apply',
                                         options: FFButtonOptions(
-                                          height: 40.0,
+                                          height: 48.0,
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   16.0, 0.0, 16.0, 0.0),
                                           iconPadding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
+                                          color: Color(0xFF1F3A87),
                                           textStyle: FlutterFlowTheme.of(
                                                   context)
                                               .titleSmall
@@ -611,7 +642,7 @@ class _OffersWalletWidgetState extends State<OffersWalletWidget> {
                                               ),
                                           elevation: 0.0,
                                           borderRadius:
-                                              BorderRadius.circular(8.0),
+                                              BorderRadius.circular(12.0),
                                         ),
                                       ),
                                     ],
@@ -635,7 +666,7 @@ class _OffersWalletWidgetState extends State<OffersWalletWidget> {
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                       child: Container(
                         child: Text(
                           'Available Offers',
@@ -647,7 +678,7 @@ class _OffersWalletWidgetState extends State<OffersWalletWidget> {
                                           .bodyMedium
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFF222222),
+                                    color: Color(0xFF1F3A87),
                                     fontSize: 18.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
@@ -661,7 +692,7 @@ class _OffersWalletWidgetState extends State<OffersWalletWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 32.0),
+                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 32.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.start,

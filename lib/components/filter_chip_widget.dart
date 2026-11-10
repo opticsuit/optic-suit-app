@@ -1,7 +1,9 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'filter_chip_model.dart';
 export 'filter_chip_model.dart';
 
@@ -49,21 +51,18 @@ class _FilterChipWidgetState extends State<FilterChipWidget> {
     return Container(
       height: 36.0,
       decoration: BoxDecoration(
-        color: valueOrDefault<Color>(
-          valueOrDefault<bool>(
-            widget.selected,
-            true,
-          )
-              ? Color(0xFF1F3A87)
-              : FlutterFlowTheme.of(context).secondaryBackground,
-          Color(0xFF1F3A87),
-        ),
+        color: valueOrDefault<bool>(
+          widget!.selected,
+          true,
+        )
+            ? Color(0xFF1F3A87)
+            : Color(0xFFEEF0F3),
         borderRadius: BorderRadius.circular(18.0),
         shape: BoxShape.rectangle,
         border: Border.all(
           color: valueOrDefault<Color>(
             valueOrDefault<bool>(
-              widget.selected,
+              widget!.selected,
               true,
             )
                 ? Color(0xFF1F3A87)
@@ -80,7 +79,7 @@ class _FilterChipWidgetState extends State<FilterChipWidget> {
             alignment: AlignmentDirectional(0.0, 0.0),
             child: Text(
               valueOrDefault<String>(
-                widget.label,
+                widget!.label,
                 'All',
               ),
               style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -89,15 +88,12 @@ class _FilterChipWidgetState extends State<FilterChipWidget> {
                       fontStyle:
                           FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                     ),
-                    color: valueOrDefault<Color>(
-                      valueOrDefault<bool>(
-                        widget.selected,
-                        true,
-                      )
-                          ? Colors.white
-                          : Color(0xFF6B7280),
-                      Colors.white,
-                    ),
+                    color: valueOrDefault<bool>(
+                      widget!.selected,
+                      true,
+                    )
+                        ? Colors.white
+                        : Color(0xFF757575),
                     fontSize: 14.0,
                     letterSpacing: 0.0,
                     fontWeight: FontWeight.w500,

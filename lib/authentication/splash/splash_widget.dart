@@ -1,10 +1,15 @@
+import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import '/index.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'splash_model.dart';
 export 'splash_model.dart';
 
@@ -48,7 +53,7 @@ class _SplashWidgetState extends State<SplashWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: Color(0xFFF8FAFC),
         body: SafeArea(
           top: true,
           child: Column(
@@ -57,30 +62,141 @@ class _SplashWidgetState extends State<SplashWidget> {
               Expanded(
                 child: Align(
                   alignment: AlignmentDirectional(0.0, 0.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        width: 328.24,
-                        height: 150.0,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            fit: BoxFit.contain,
-                            image: Image.asset(
-                              'assets/images/logo_optic.png',
-                            ).image,
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(24.0, 20.0, 24.0, 12.0),
+                    child: SingleChildScrollView(
+                      primary: false,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment:
+                            (FFCrossAxisAlignment.stretch).flutterValue,
+                        textBaseline: TextBaseline.alphabetic,
+                        children: [
+                          Container(
+                            width: 260.0,
+                            height: 122.0,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                fit: BoxFit.contain,
+                                image: Image.asset(
+                                  'assets/images/logo_optic.png',
+                                ).image,
+                              ),
+                              borderRadius: BorderRadius.circular(32.0),
+                              shape: BoxShape.rectangle,
+                            ),
                           ),
-                          borderRadius: BorderRadius.circular(32.0),
-                          shape: BoxShape.rectangle,
-                        ),
+                          Text(
+                            'SEE BETTER, LOOK SMARTER',
+                            style: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  font: GoogleFonts.poppins(
+                                    fontWeight: FontWeight.w600,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
+                                  ),
+                                  color: Color(0xFF1F3A87),
+                                  letterSpacing: 1.4,
+                                  fontWeight: FontWeight.w600,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .fontStyle,
+                                ),
+                          ),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(20.0),
+                            child: Container(
+                              width: double.infinity,
+                              height: 190.0,
+                              decoration: BoxDecoration(
+                                color: Color(0xFFEAF0FF),
+                                borderRadius: BorderRadius.circular(20.0),
+                              ),
+                              child: CachedNetworkImage(
+                                fadeInDuration: Duration(milliseconds: 0),
+                                fadeOutDuration: Duration(milliseconds: 0),
+                                imageUrl:
+                                    'https://dimg.dreamflow.cloud/v1/image/stylish%20person%20wearing%20premium%20sunglasses',
+                                width: double.infinity,
+                                height: 190.0,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                4.0, 0.0, 4.0, 0.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment:
+                                  (FFMainAxisAlignment.start).flutterValue,
+                              crossAxisAlignment:
+                                  (FFCrossAxisAlignment.stretch).flutterValue,
+                              textBaseline: TextBaseline.alphabetic,
+                              children: [
+                                Text(
+                                  'Find Your Perfect Look',
+                                  textAlign: TextAlign.center,
+                                  style: FlutterFlowTheme.of(context)
+                                      .headlineSmall
+                                      .override(
+                                        font: GoogleFonts.poppins(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineSmall
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineSmall
+                                                  .fontStyle,
+                                        ),
+                                        color: Color(0xFF1F3A87),
+                                        letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .headlineSmall
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .headlineSmall
+                                            .fontStyle,
+                                      ),
+                                ),
+                                Text(
+                                  'Discover premium eyewear, stylish frames and contact lenses.',
+                                  textAlign: TextAlign.center,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        font: GoogleFonts.poppins(
+                                          fontWeight: FontWeight.normal,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.normal,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
+                                ),
+                              ].divide(SizedBox(height: 8.0)),
+                            ),
+                          ),
+                        ].divide(SizedBox(height: 20.0)),
                       ),
-                    ],
+                    ),
                   ),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 12.0),
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 16.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -96,15 +212,15 @@ class _SplashWidgetState extends State<SplashWidget> {
                       text: 'Get Started',
                       options: FFButtonOptions(
                         width: double.infinity,
-                        height: 50.0,
+                        height: 54.0,
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         iconPadding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: Color(0xFF173177),
+                        color: Color(0xFF1F3A87),
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
-                                  font: GoogleFonts.inter(
+                                  font: GoogleFonts.poppins(
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .fontWeight,
@@ -125,7 +241,7 @@ class _SplashWidgetState extends State<SplashWidget> {
                           color: Colors.transparent,
                           width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(25.0),
+                        borderRadius: BorderRadius.circular(14.0),
                       ),
                     ),
                     InkWell(
@@ -144,7 +260,7 @@ class _SplashWidgetState extends State<SplashWidget> {
                         children: [
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 24.0, 0.0, 24.0),
+                                0.0, 14.0, 0.0, 10.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
                               focusColor: Colors.transparent,

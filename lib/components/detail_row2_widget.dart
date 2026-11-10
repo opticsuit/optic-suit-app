@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'detail_row2_model.dart';
 export 'detail_row2_model.dart';
 
@@ -55,7 +58,7 @@ class _DetailRow2WidgetState extends State<DetailRow2Widget> {
         children: [
           Text(
             valueOrDefault<String>(
-              widget.label,
+              widget!.label,
               'Material',
             ),
             style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -75,7 +78,7 @@ class _DetailRow2WidgetState extends State<DetailRow2Widget> {
           ),
           Text(
             valueOrDefault<String>(
-              widget.value,
+              widget!.value,
               'Acetate',
             ),
             style: FlutterFlowTheme.of(context).bodyMedium.override(

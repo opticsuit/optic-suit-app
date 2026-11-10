@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'language_card_model.dart';
 export 'language_card_model.dart';
 
@@ -52,13 +55,13 @@ class _LanguageCardWidgetState extends State<LanguageCardWidget> {
     return Container(
       height: 80.0,
       decoration: BoxDecoration(
-        color: FlutterFlowTheme.of(context).secondaryBackground,
+        color: Colors.white,
         borderRadius: BorderRadius.circular(12.0),
         shape: BoxShape.rectangle,
         border: Border.all(
           color: valueOrDefault<Color>(
             valueOrDefault<bool>(
-              widget.selected,
+              widget!.selected,
               true,
             )
                 ? Color(0xFF1F3A87)
@@ -88,7 +91,7 @@ class _LanguageCardWidgetState extends State<LanguageCardWidget> {
                     children: [
                       Text(
                         valueOrDefault<String>(
-                          widget.title,
+                          widget!.title,
                           'English',
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -98,7 +101,7 @@ class _LanguageCardWidgetState extends State<LanguageCardWidget> {
                                     .bodyMedium
                                     .fontStyle,
                               ),
-                              color: FlutterFlowTheme.of(context).primaryText,
+                              color: Colors.black,
                               fontSize: 15.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w600,
@@ -110,7 +113,7 @@ class _LanguageCardWidgetState extends State<LanguageCardWidget> {
                       ),
                       Text(
                         valueOrDefault<String>(
-                          widget.subtitle,
+                          widget!.subtitle,
                           'English',
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -122,7 +125,7 @@ class _LanguageCardWidgetState extends State<LanguageCardWidget> {
                                     .bodyMedium
                                     .fontStyle,
                               ),
-                              color: FlutterFlowTheme.of(context).secondaryText,
+                              color: Colors.black,
                               fontSize: 12.0,
                               letterSpacing: 0.0,
                               fontWeight: FlutterFlowTheme.of(context)
@@ -145,7 +148,7 @@ class _LanguageCardWidgetState extends State<LanguageCardWidget> {
                     children: [
                       if (valueOrDefault<bool>(
                         valueOrDefault<bool>(
-                          widget.selected,
+                          widget!.selected,
                           true,
                         )
                             ? true
@@ -156,7 +159,7 @@ class _LanguageCardWidgetState extends State<LanguageCardWidget> {
                           Icons.check_circle_rounded,
                           color: valueOrDefault<Color>(
                             valueOrDefault<bool>(
-                              widget.selected,
+                              widget!.selected,
                               true,
                             )
                                 ? Color(0xFF1F3A87)
@@ -167,7 +170,7 @@ class _LanguageCardWidgetState extends State<LanguageCardWidget> {
                         ),
                       if (valueOrDefault<bool>(
                         valueOrDefault<bool>(
-                          widget.selected,
+                          widget!.selected,
                           true,
                         )
                             ? false
@@ -178,7 +181,7 @@ class _LanguageCardWidgetState extends State<LanguageCardWidget> {
                           Icons.radio_button_unchecked_rounded,
                           color: valueOrDefault<Color>(
                             valueOrDefault<bool>(
-                              widget.selected,
+                              widget!.selected,
                               true,
                             )
                                 ? Color(0xFF1F3A87)

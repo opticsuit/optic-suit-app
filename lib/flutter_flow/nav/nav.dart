@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
@@ -8,7 +10,11 @@ import '/backend/schema/structs/index.dart';
 import '/auth/base_auth_user_provider.dart';
 
 import '/main.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/lat_lng.dart';
+import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'serialization_util.dart';
 
 import '/index.dart';
 
@@ -283,6 +289,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: SearchWidget.routeName,
               path: SearchWidget.routePath,
               builder: (context, params) => SearchWidget(),
+            ),
+            FFRoute(
+              name: DeleteAccountPageWidget.routeName,
+              path: DeleteAccountPageWidget.routePath,
+              builder: (context, params) => DeleteAccountPageWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

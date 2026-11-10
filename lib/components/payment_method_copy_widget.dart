@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'payment_method_copy_model.dart';
 export 'payment_method_copy_model.dart';
 
@@ -60,7 +63,7 @@ class _PaymentMethodCopyWidgetState extends State<PaymentMethodCopyWidget> {
         border: Border.all(
           color: valueOrDefault<Color>(
             valueOrDefault<bool>(
-              widget.selected,
+              widget!.selected,
               true,
             )
                 ? FlutterFlowTheme.of(context).primary
@@ -84,7 +87,7 @@ class _PaymentMethodCopyWidgetState extends State<PaymentMethodCopyWidget> {
                 decoration: BoxDecoration(
                   color: valueOrDefault<Color>(
                     valueOrDefault<bool>(
-                      widget.selected,
+                      widget!.selected,
                       true,
                     )
                         ? Color(0x1A86C144)
@@ -95,7 +98,7 @@ class _PaymentMethodCopyWidgetState extends State<PaymentMethodCopyWidget> {
                   shape: BoxShape.rectangle,
                 ),
                 alignment: AlignmentDirectional(0.0, 0.0),
-                child: widget.icon!,
+                child: widget!.icon!,
               ),
               Expanded(
                 flex: 1,
@@ -106,7 +109,7 @@ class _PaymentMethodCopyWidgetState extends State<PaymentMethodCopyWidget> {
                   children: [
                     Text(
                       valueOrDefault<String>(
-                        widget.title,
+                        widget!.title,
                         'Apple Pay',
                       ),
                       style: FlutterFlowTheme.of(context).titleSmall.override(
@@ -126,7 +129,7 @@ class _PaymentMethodCopyWidgetState extends State<PaymentMethodCopyWidget> {
                     ),
                     Text(
                       valueOrDefault<String>(
-                        widget.subtitle,
+                        widget!.subtitle,
                         'Default Method',
                       ),
                       style: FlutterFlowTheme.of(context).labelSmall.override(
@@ -160,7 +163,7 @@ class _PaymentMethodCopyWidgetState extends State<PaymentMethodCopyWidget> {
                   children: [
                     if (valueOrDefault<bool>(
                       valueOrDefault<bool>(
-                        widget.selected,
+                        widget!.selected,
                         true,
                       )
                           ? true
@@ -171,7 +174,7 @@ class _PaymentMethodCopyWidgetState extends State<PaymentMethodCopyWidget> {
                         Icons.check_circle_rounded,
                         color: valueOrDefault<Color>(
                           valueOrDefault<bool>(
-                            widget.selected,
+                            widget!.selected,
                             true,
                           )
                               ? FlutterFlowTheme.of(context).primary
@@ -182,7 +185,7 @@ class _PaymentMethodCopyWidgetState extends State<PaymentMethodCopyWidget> {
                       ),
                     if (valueOrDefault<bool>(
                       valueOrDefault<bool>(
-                        widget.selected,
+                        widget!.selected,
                         true,
                       )
                           ? false
@@ -193,7 +196,7 @@ class _PaymentMethodCopyWidgetState extends State<PaymentMethodCopyWidget> {
                         Icons.radio_button_unchecked_rounded,
                         color: valueOrDefault<Color>(
                           valueOrDefault<bool>(
-                            widget.selected,
+                            widget!.selected,
                             true,
                           )
                               ? FlutterFlowTheme.of(context).primary

@@ -1,10 +1,13 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'product_card2_model.dart';
 export 'product_card2_model.dart';
 
@@ -88,7 +91,7 @@ class _ProductCard2WidgetState extends State<ProductCard2Widget> {
                     child: CachedNetworkImage(
                       fadeInDuration: Duration(milliseconds: 0),
                       fadeOutDuration: Duration(milliseconds: 0),
-                      imageUrl: widget.imageDesc!,
+                      imageUrl: widget!.imageDesc!,
                       fit: BoxFit.cover,
                       alignment: Alignment(0.0, 0.0),
                     ),
@@ -124,7 +127,7 @@ class _ProductCard2WidgetState extends State<ProductCard2Widget> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  widget.brand == '' ? 'Unbranded' : widget.brand!,
+                  widget!.brand == '' ? 'Unbranded' : widget!.brand!,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         font: GoogleFonts.inter(
                           fontWeight: FlutterFlowTheme.of(context)
@@ -144,7 +147,7 @@ class _ProductCard2WidgetState extends State<ProductCard2Widget> {
                       ),
                 ),
                 Text(
-                  widget.name!,
+                  widget!.name!,
                   maxLines: 1,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         font: GoogleFonts.inter(
@@ -168,7 +171,7 @@ class _ProductCard2WidgetState extends State<ProductCard2Widget> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      widget.rating!,
+                      widget!.rating!,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             font: GoogleFonts.inter(
                               fontWeight: FlutterFlowTheme.of(context)
@@ -192,7 +195,7 @@ class _ProductCard2WidgetState extends State<ProductCard2Widget> {
                     ),
                     Text(
                       valueOrDefault<String>(
-                        functions.formatWooPrice(widget.price, '₹'),
+                        functions.formatWooPrice(widget!.price, '₹'),
                         '₹',
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(

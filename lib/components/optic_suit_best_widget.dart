@@ -1,9 +1,12 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'optic_suit_best_model.dart';
 export 'optic_suit_best_model.dart';
 
@@ -334,7 +337,7 @@ class _OpticSuitBestWidgetState extends State<OpticSuitBestWidget> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  widget.title,
+                  widget!.title,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         font: GoogleFonts.inter(
                           fontWeight: FontWeight.w600,
@@ -356,7 +359,7 @@ class _OpticSuitBestWidgetState extends State<OpticSuitBestWidget> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      widget.viewAllLabel,
+                      widget!.viewAllLabel,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             font: GoogleFonts.inter(
                               fontWeight: FontWeight.w500,

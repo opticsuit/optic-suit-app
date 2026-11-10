@@ -3,8 +3,12 @@ import '/components/order_card_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'my_orders_page_model.dart';
 export 'my_orders_page_model.dart';
 
@@ -364,7 +368,7 @@ class MyOrdersPageWidget extends StatefulWidget {
   const MyOrdersPageWidget({super.key});
 
   static String routeName = 'MyOrdersPage';
-  static String routePath = 'myOrdersPage';
+  static String routePath = 'my-orders';
 
   @override
   State<MyOrdersPageWidget> createState() => _MyOrdersPageWidgetState();
@@ -401,245 +405,343 @@ class _MyOrdersPageWidgetState extends State<MyOrdersPageWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFF7F8FA),
-        body: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Container(
-              height: 64.0,
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
-                shape: BoxShape.rectangle,
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                    child: Container(
+        backgroundColor: Color(0xFFF5F7FA),
+        body: SafeArea(
+          top: true,
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Container(
+                height: 64.0,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.rectangle,
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                       child: Container(
-                        height: 63.0,
-                        alignment: AlignmentDirectional(0.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            FlutterFlowIconButton(
-                              borderRadius: 8.0,
-                              buttonSize: 40.0,
-                              fillColor: Colors.transparent,
-                              icon: Icon(
-                                Icons.arrow_back,
-                                color: Color(0xFF1F2937),
-                                size: 24.0,
+                        child: Container(
+                          height: 63.0,
+                          alignment: AlignmentDirectional(0.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              FlutterFlowIconButton(
+                                borderRadius: 8.0,
+                                buttonSize: 40.0,
+                                fillColor: Colors.transparent,
+                                icon: Icon(
+                                  Icons.arrow_back,
+                                  color: Color(0xFF1F3A87),
+                                  size: 24.0,
+                                ),
+                                onPressed: () async {
+                                  logFirebaseEvent(
+                                      'MY_ORDERS_PAGE_PAGE_IconButton_ON_TAP');
+                                  logFirebaseEvent('IconButton_navigate_to');
+
+                                  context.pushNamed(ProfileWidget.routeName);
+                                },
                               ),
-                              onPressed: () {
-                                print('IconButton pressed ...');
-                              },
-                            ),
-                            Text(
-                              'My Orders',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    font: GoogleFonts.inter(
+                              Text(
+                                'My Orders',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FontWeight.w600,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
+                                      color: Color(0xFF1F3A87),
+                                      fontSize: 20.0,
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.w600,
                                       fontStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .fontStyle,
+                                      lineHeight: 1.4,
                                     ),
-                                    color: Color(0xFF1F2937),
-                                    fontSize: 20.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w600,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontStyle,
-                                    lineHeight: 1.4,
-                                  ),
-                            ),
-                          ].divide(SizedBox(width: 16.0)),
+                              ),
+                            ].divide(SizedBox(width: 16.0)),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  Container(
-                    height: 1.0,
-                    decoration: BoxDecoration(
-                      color: Color(0xFFE5E7EB),
-                      shape: BoxShape.rectangle,
+                    Container(
+                      height: 1.0,
+                      decoration: BoxDecoration(
+                        color: Color(0xFFE5E7EB),
+                        shape: BoxShape.rectangle,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            Container(
-              height: 52.0,
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
-                child: Container(
+              Container(
+                height: 56.0,
+                decoration: BoxDecoration(
+                  color: Color(0xFFF5F7FA),
+                ),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
                   child: Container(
-                    height: 36.0,
-                    alignment: AlignmentDirectional(0.0, 0.0),
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                16.0, 0.0, 16.0, 0.0),
-                            child: Container(
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  wrapWithModel(
-                                    model: _model.filterChipModel1,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: FilterChipWidget(
-                                      selected: true,
-                                      label: 'All',
+                    child: Container(
+                      height: 36.0,
+                      alignment: AlignmentDirectional(0.0, 0.0),
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  16.0, 0.0, 16.0, 0.0),
+                              child: Container(
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        logFirebaseEvent(
+                                            'MY_ORDERS_PAGE_PAGE_FilterChip_ON_TAP');
+                                        logFirebaseEvent(
+                                            'FilterChip_update_page_state');
+                                        _model.selectedStatus = 'All';
+                                        safeSetState(() {});
+                                      },
+                                      child: wrapWithModel(
+                                        model: _model.filterChipModel1,
+                                        updateCallback: () =>
+                                            safeSetState(() {}),
+                                        child: FilterChipWidget(
+                                          selected:
+                                              _model.selectedStatus == 'All',
+                                          label: 'All',
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                  wrapWithModel(
-                                    model: _model.filterChipModel2,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: FilterChipWidget(
-                                      selected: false,
-                                      label: 'Processing',
+                                    InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        logFirebaseEvent(
+                                            'MY_ORDERS_PAGE_PAGE_FilterChip_ON_TAP');
+                                        logFirebaseEvent(
+                                            'FilterChip_update_page_state');
+                                        _model.selectedStatus = 'Processing';
+                                        safeSetState(() {});
+                                      },
+                                      child: wrapWithModel(
+                                        model: _model.filterChipModel2,
+                                        updateCallback: () =>
+                                            safeSetState(() {}),
+                                        child: FilterChipWidget(
+                                          selected: _model.selectedStatus ==
+                                              'Processing',
+                                          label: 'Processing',
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                  wrapWithModel(
-                                    model: _model.filterChipModel3,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: FilterChipWidget(
-                                      selected: false,
-                                      label: 'Shipped',
+                                    InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        logFirebaseEvent(
+                                            'MY_ORDERS_PAGE_PAGE_FilterChip_ON_TAP');
+                                        logFirebaseEvent(
+                                            'FilterChip_update_page_state');
+                                        _model.selectedStatus = 'Shipped';
+                                        safeSetState(() {});
+                                      },
+                                      child: wrapWithModel(
+                                        model: _model.filterChipModel3,
+                                        updateCallback: () =>
+                                            safeSetState(() {}),
+                                        child: FilterChipWidget(
+                                          selected: _model.selectedStatus ==
+                                              'Shipped',
+                                          label: 'Shipped',
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                  wrapWithModel(
-                                    model: _model.filterChipModel4,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: FilterChipWidget(
-                                      selected: false,
-                                      label: 'Delivered',
+                                    InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        logFirebaseEvent(
+                                            'MY_ORDERS_PAGE_PAGE_FilterChip_ON_TAP');
+                                        logFirebaseEvent(
+                                            'FilterChip_update_page_state');
+                                        _model.selectedStatus = 'Delivered';
+                                        safeSetState(() {});
+                                      },
+                                      child: wrapWithModel(
+                                        model: _model.filterChipModel4,
+                                        updateCallback: () =>
+                                            safeSetState(() {}),
+                                        child: FilterChipWidget(
+                                          selected: _model.selectedStatus ==
+                                              'Delivered',
+                                          label: 'Delivered',
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                  wrapWithModel(
-                                    model: _model.filterChipModel5,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: FilterChipWidget(
-                                      selected: false,
-                                      label: 'Cancelled',
+                                    InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        logFirebaseEvent(
+                                            'MY_ORDERS_PAGE_PAGE_FilterChip_ON_TAP');
+                                        logFirebaseEvent(
+                                            'FilterChip_update_page_state');
+                                        _model.selectedStatus = 'Cancelled';
+                                        safeSetState(() {});
+                                      },
+                                      child: wrapWithModel(
+                                        model: _model.filterChipModel5,
+                                        updateCallback: () =>
+                                            safeSetState(() {}),
+                                        child: FilterChipWidget(
+                                          selected: _model.selectedStatus ==
+                                              'Cancelled',
+                                          label: 'Cancelled',
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                ].divide(SizedBox(width: 8.0)),
+                                  ].divide(SizedBox(width: 8.0)),
+                                ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Container(
-                child: SingleChildScrollView(
-                  primary: false,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.all(16.0),
-                        child: Container(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              wrapWithModel(
-                                model: _model.orderCardModel1,
-                                updateCallback: () => safeSetState(() {}),
-                                child: OrderCardWidget(
-                                  id: '',
-                                  date: '05 Oct 2026',
-                                  status: 'Delivered',
-                                  imgDesc:
-                                      'https://dimg.dreamflow.cloud/v1/image/black%20rectangular%20eyeglasses',
-                                  product: 'Jet Premium Eyeglasses',
-                                  qty: '1',
-                                  price: '₹1,499',
+              Expanded(
+                flex: 1,
+                child: Container(
+                  child: SingleChildScrollView(
+                    primary: false,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: Container(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                if ((_model.selectedStatus == 'All') ||
+                                    (_model.selectedStatus == 'Delivered'))
+                                  wrapWithModel(
+                                    model: _model.orderCardModel1,
+                                    updateCallback: () => safeSetState(() {}),
+                                    child: OrderCardWidget(
+                                      id: '',
+                                      date: '05 Oct 2026',
+                                      status: 'Delivered',
+                                      imgDesc:
+                                          'https://dimg.dreamflow.cloud/v1/image/black%20rectangular%20eyeglasses',
+                                      product: 'Jet Premium Eyeglasses',
+                                      qty: '1',
+                                      price: '₹1,499',
+                                    ),
+                                  ),
+                                if ((_model.selectedStatus == 'All') ||
+                                    (_model.selectedStatus == 'Shipped'))
+                                  wrapWithModel(
+                                    model: _model.orderCardModel2,
+                                    updateCallback: () => safeSetState(() {}),
+                                    child: OrderCardWidget(
+                                      id: '',
+                                      date: '03 Oct 2026',
+                                      status: 'Shipped',
+                                      imgDesc:
+                                          'https://dimg.dreamflow.cloud/v1/image/blue%20rimmed%20glasses',
+                                      product: 'O3 Eyeglasses - Blue Light',
+                                      qty: '1',
+                                      price: '₹1,299',
+                                    ),
+                                  ),
+                                if ((_model.selectedStatus == 'All') ||
+                                    (_model.selectedStatus == 'Processing'))
+                                  wrapWithModel(
+                                    model: _model.orderCardModel3,
+                                    updateCallback: () => safeSetState(() {}),
+                                    child: OrderCardWidget(
+                                      id: '',
+                                      date: '28 Sep 2026',
+                                      status: 'Processing',
+                                      imgDesc:
+                                          'https://dimg.dreamflow.cloud/v1/image/titanium%20frame%20aviator%20sunglasses',
+                                      product: 'Titanium Aviators',
+                                      qty: '1',
+                                      price: '₹2,850',
+                                    ),
+                                  ),
+                                if ((_model.selectedStatus == 'All') ||
+                                    (_model.selectedStatus == 'Cancelled'))
+                                  wrapWithModel(
+                                    model: _model.orderCardModel4,
+                                    updateCallback: () => safeSetState(() {}),
+                                    child: OrderCardWidget(
+                                      id: '',
+                                      date: '25 Sep 2026',
+                                      status: 'Cancelled',
+                                      imgDesc:
+                                          'https://dimg.dreamflow.cloud/v1/image/round%20tortoise%20shell%20glasses',
+                                      product: 'Retro Round Frames',
+                                      qty: '2',
+                                      price: '₹999',
+                                    ),
+                                  ),
+                                Container(
+                                  height: 20.0,
                                 ),
-                              ),
-                              wrapWithModel(
-                                model: _model.orderCardModel2,
-                                updateCallback: () => safeSetState(() {}),
-                                child: OrderCardWidget(
-                                  id: '',
-                                  date: '03 Oct 2026',
-                                  status: 'Shipped',
-                                  imgDesc:
-                                      'https://dimg.dreamflow.cloud/v1/image/blue%20rimmed%20glasses',
-                                  product: 'O3 Eyeglasses - Blue Light',
-                                  qty: '1',
-                                  price: '₹1,299',
-                                ),
-                              ),
-                              wrapWithModel(
-                                model: _model.orderCardModel3,
-                                updateCallback: () => safeSetState(() {}),
-                                child: OrderCardWidget(
-                                  id: '',
-                                  date: '28 Sep 2026',
-                                  status: 'Processing',
-                                  imgDesc:
-                                      'https://dimg.dreamflow.cloud/v1/image/titanium%20frame%20aviator%20sunglasses',
-                                  product: 'Titanium Aviators',
-                                  qty: '1',
-                                  price: '₹2,850',
-                                ),
-                              ),
-                              wrapWithModel(
-                                model: _model.orderCardModel4,
-                                updateCallback: () => safeSetState(() {}),
-                                child: OrderCardWidget(
-                                  id: '',
-                                  date: '25 Sep 2026',
-                                  status: 'Cancelled',
-                                  imgDesc:
-                                      'https://dimg.dreamflow.cloud/v1/image/round%20tortoise%20shell%20glasses',
-                                  product: 'Retro Round Frames',
-                                  qty: '2',
-                                  price: '₹999',
-                                ),
-                              ),
-                              Container(
-                                height: 20.0,
-                              ),
-                            ].divide(SizedBox(height: 16.0)),
+                              ].divide(SizedBox(height: 16.0)),
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

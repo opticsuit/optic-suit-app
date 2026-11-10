@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'contact_row_model.dart';
 export 'contact_row_model.dart';
 
@@ -77,7 +80,7 @@ class _ContactRowWidgetState extends State<ContactRowWidget> {
                       shape: BoxShape.rectangle,
                     ),
                     alignment: AlignmentDirectional(0.0, 0.0),
-                    child: widget.icon!,
+                    child: widget!.icon!,
                   ),
                   Expanded(
                     flex: 1,
@@ -88,7 +91,7 @@ class _ContactRowWidgetState extends State<ContactRowWidget> {
                       children: [
                         Text(
                           valueOrDefault<String>(
-                            widget.title,
+                            widget!.title,
                             'WhatsApp Support',
                           ),
                           style:
@@ -111,7 +114,7 @@ class _ContactRowWidgetState extends State<ContactRowWidget> {
                         ),
                         Text(
                           valueOrDefault<String>(
-                            widget.subtitle,
+                            widget!.subtitle,
                             'Chat with our support team',
                           ),
                           style:
@@ -151,7 +154,7 @@ class _ContactRowWidgetState extends State<ContactRowWidget> {
         ),
         if (valueOrDefault<bool>(
           valueOrDefault<bool>(
-            widget.isLast,
+            widget!.isLast,
             false,
           )
               ? false

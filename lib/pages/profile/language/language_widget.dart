@@ -1,9 +1,13 @@
 import '/components/language_card_widget.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'language_model.dart';
 export 'language_model.dart';
 
@@ -117,10 +121,24 @@ class _LanguageWidgetState extends State<LanguageWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xFFF5F6FA),
         appBar: AppBar(
           backgroundColor: Colors.white,
           automaticallyImplyLeading: false,
+          leading: FlutterFlowIconButton(
+            buttonSize: 40.0,
+            icon: Icon(
+              Icons.arrow_back_rounded,
+              color: Color(0xFF1F3A87),
+              size: 24.0,
+            ),
+            onPressed: () async {
+              logFirebaseEvent('LANGUAGE_PAGE_IconButton_ON_TAP');
+              logFirebaseEvent('IconButton_navigate_to');
+
+              context.pushNamed(SettingsWidget.routeName);
+            },
+          ),
           title: Text(
             'Language',
             style: FlutterFlowTheme.of(context).titleLarge.override(
@@ -130,6 +148,7 @@ class _LanguageWidgetState extends State<LanguageWidget> {
                     fontStyle:
                         FlutterFlowTheme.of(context).titleLarge.fontStyle,
                   ),
+                  color: Color(0xFF1F3A87),
                   letterSpacing: 0.0,
                   fontWeight:
                       FlutterFlowTheme.of(context).titleLarge.fontWeight,
@@ -138,7 +157,17 @@ class _LanguageWidgetState extends State<LanguageWidget> {
                 ),
           ),
           actions: [],
-          centerTitle: false,
+          bottom: PreferredSize(
+            preferredSize: Size.fromHeight(0),
+            child: Container(
+              height: 1.0,
+              decoration: BoxDecoration(
+                color: Color(0xFFE5E7EB),
+              ),
+            ),
+          ),
+          centerTitle: true,
+          toolbarHeight: 58.0,
           elevation: 0.0,
         ),
         body: Column(
@@ -290,33 +319,6 @@ class _LanguageWidgetState extends State<LanguageWidget> {
                                       selected: false,
                                     ),
                                   ),
-                                  wrapWithModel(
-                                    model: _model.languageCardModel8,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: LanguageCardWidget(
-                                      title: 'Japanese',
-                                      subtitle: '日本語',
-                                      selected: false,
-                                    ),
-                                  ),
-                                  wrapWithModel(
-                                    model: _model.languageCardModel9,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: LanguageCardWidget(
-                                      title: 'Portuguese',
-                                      subtitle: 'Português',
-                                      selected: false,
-                                    ),
-                                  ),
-                                  wrapWithModel(
-                                    model: _model.languageCardModel10,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: LanguageCardWidget(
-                                      title: 'Russian',
-                                      subtitle: 'Русский',
-                                      selected: false,
-                                    ),
-                                  ),
                                 ].divide(SizedBox(height: 12.0)),
                               ),
                             ].divide(SizedBox(height: 24.0)),
@@ -336,7 +338,7 @@ class _LanguageWidgetState extends State<LanguageWidget> {
                 onPressed: () {
                   print('Button pressed ...');
                 },
-                text: 'Button',
+                text: 'Save Language',
                 options: FFButtonOptions(
                   height: 48.8,
                   padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),

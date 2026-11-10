@@ -1,8 +1,11 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'product_card_model.dart';
 export 'product_card_model.dart';
 
@@ -99,7 +102,7 @@ class _ProductCardWidgetState extends State<ProductCardWidget> {
                           Icons.favorite_rounded,
                           color: valueOrDefault<Color>(
                             valueOrDefault<bool>(
-                              widget.favorite,
+                              widget!.favorite,
                               true,
                             )
                                 ? FlutterFlowTheme.of(context).error
@@ -131,7 +134,7 @@ class _ProductCardWidgetState extends State<ProductCardWidget> {
                       children: [
                         Text(
                           valueOrDefault<String>(
-                            widget.brand,
+                            widget!.brand,
                             'Ray-Ban',
                           ),
                           style:
@@ -158,7 +161,7 @@ class _ProductCardWidgetState extends State<ProductCardWidget> {
                         ),
                         Text(
                           valueOrDefault<String>(
-                            widget.name,
+                            widget!.name,
                             'Aviator Classic',
                           ),
                           maxLines: 1,
@@ -198,7 +201,7 @@ class _ProductCardWidgetState extends State<ProductCardWidget> {
                                 ),
                                 Text(
                                   valueOrDefault<String>(
-                                    '${widget.rating}',
+                                    '${widget!.rating}',
                                     '4.8',
                                   ),
                                   style: FlutterFlowTheme.of(context)
@@ -231,7 +234,7 @@ class _ProductCardWidgetState extends State<ProductCardWidget> {
                             ),
                             Text(
                               valueOrDefault<String>(
-                                widget.price,
+                                widget!.price,
                                 '₹1,299',
                               ),
                               style: FlutterFlowTheme.of(context)

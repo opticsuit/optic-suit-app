@@ -2,8 +2,12 @@ import '/components/section_header3_widget.dart';
 import '/components/setting_item_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'settings_model.dart';
 export 'settings_model.dart';
 
@@ -287,37 +291,50 @@ class _SettingsWidgetState extends State<SettingsWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: Color(0xFFF5F6F8),
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          iconTheme: IconThemeData(color: Color(0xFF1F3A87)),
+          automaticallyImplyLeading: true,
+          title: InkWell(
+            splashColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            onTap: () async {
+              logFirebaseEvent('SETTINGS_PAGE_Text_ON_TAP');
+              logFirebaseEvent('Text_navigate_to');
+
+              context.pushNamed(ProfileWidget.routeName);
+            },
+            child: Text(
+              'Settings',
+              style: FlutterFlowTheme.of(context).titleLarge.override(
+                    font: GoogleFonts.poppins(
+                      fontWeight:
+                          FlutterFlowTheme.of(context).titleLarge.fontWeight,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                    ),
+                    color: Color(0xFF1F3A87),
+                    letterSpacing: 0.0,
+                    fontWeight:
+                        FlutterFlowTheme.of(context).titleLarge.fontWeight,
+                    fontStyle:
+                        FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                  ),
+            ),
+          ),
+          actions: [],
+          centerTitle: false,
+          toolbarHeight: 60.0,
+          elevation: 0.0,
+        ),
         body: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              height: 56.0,
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
-                shape: BoxShape.rectangle,
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
-                    child: Container(),
-                  ),
-                  Container(
-                    height: 1.0,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).alternate,
-                      shape: BoxShape.rectangle,
-                    ),
-                  ),
-                ],
-              ),
-            ),
             Expanded(
               flex: 1,
               child: Container(
@@ -330,7 +347,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                     children: [
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
-                            20.0, 16.0, 20.0, 100.0),
+                            16.0, 16.0, 16.0, 32.0),
                         child: Container(
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
@@ -349,21 +366,37 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                       title: 'ACCOUNT SETTINGS',
                                     ),
                                   ),
-                                  wrapWithModel(
-                                    model: _model.settingItemModel1,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: SettingItemWidget(
-                                      icon: Icon(
-                                        Icons.person_outline_rounded,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        size: 22.0,
+                                  InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      logFirebaseEvent(
+                                          'SETTINGS_PAGE_SettingItem_ON_TAP');
+                                      logFirebaseEvent(
+                                          'SettingItem_navigate_to');
+
+                                      context.pushNamed(
+                                          PersonalInformationEditPageWidget
+                                              .routeName);
+                                    },
+                                    child: wrapWithModel(
+                                      model: _model.settingItemModel1,
+                                      updateCallback: () => safeSetState(() {}),
+                                      child: SettingItemWidget(
+                                        icon: Icon(
+                                          Icons.person_outline_rounded,
+                                          color: Color(0xFF1F3A87),
+                                          size: 22.0,
+                                        ),
+                                        iconColor: Color(0x00000000),
+                                        title: 'Personal Information',
+                                        titleColor: Color(0x00000000),
+                                        subtitle:
+                                            'Name, email and phone number',
+                                        showChevron: false,
                                       ),
-                                      iconColor: Color(0x00000000),
-                                      title: 'Personal Information',
-                                      titleColor: Color(0x00000000),
-                                      subtitle: 'Name, email and phone number',
-                                      showChevron: false,
                                     ),
                                   ),
                                   wrapWithModel(
@@ -372,8 +405,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                     child: SettingItemWidget(
                                       icon: Icon(
                                         Icons.lock_outline_rounded,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
+                                        color: Color(0xFF1F3A87),
                                         size: 22.0,
                                       ),
                                       iconColor: Color(0x00000000),
@@ -403,8 +435,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                       child: SettingItemWidget(
                                         icon: Icon(
                                           Icons.location_on_outlined,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
+                                          color: Color(0xFF1F3A87),
                                           size: 22.0,
                                         ),
                                         iconColor: Color(0x00000000),
@@ -449,8 +480,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                       child: SettingItemWidget(
                                         icon: Icon(
                                           Icons.notifications_none_rounded,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
+                                          color: Color(0xFF1F3A87),
                                           size: 22.0,
                                         ),
                                         iconColor: Color(0x00000000),
@@ -481,8 +511,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                       child: SettingItemWidget(
                                         icon: Icon(
                                           Icons.language_rounded,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
+                                          color: Color(0xFF1F3A87),
                                           size: 22.0,
                                         ),
                                         iconColor: Color(0x00000000),
@@ -527,8 +556,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                       child: SettingItemWidget(
                                         icon: Icon(
                                           Icons.shield_outlined,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
+                                          color: Color(0xFF1F3A87),
                                           size: 22.0,
                                         ),
                                         iconColor: Color(0x00000000),
@@ -560,8 +588,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                       child: SettingItemWidget(
                                         icon: Icon(
                                           Icons.description_outlined,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
+                                          color: Color(0xFF1F3A87),
                                           size: 22.0,
                                         ),
                                         iconColor: Color(0x00000000),
@@ -572,21 +599,36 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                       ),
                                     ),
                                   ),
-                                  wrapWithModel(
-                                    model: _model.settingItemModel8,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: SettingItemWidget(
-                                      icon: Icon(
-                                        Icons.delete_outline_rounded,
-                                        color: Color(0xFFD92D20),
-                                        size: 22.0,
+                                  InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      logFirebaseEvent(
+                                          'SETTINGS_PAGE_SettingItem_ON_TAP');
+                                      logFirebaseEvent(
+                                          'SettingItem_navigate_to');
+
+                                      context.pushNamed(
+                                          DeleteAccountPageWidget.routeName);
+                                    },
+                                    child: wrapWithModel(
+                                      model: _model.settingItemModel8,
+                                      updateCallback: () => safeSetState(() {}),
+                                      child: SettingItemWidget(
+                                        icon: Icon(
+                                          Icons.delete_outline_rounded,
+                                          color: Color(0xFF1F3A87),
+                                          size: 22.0,
+                                        ),
+                                        iconColor: Color(0xFF1F3A87),
+                                        title: 'Delete Account',
+                                        titleColor: Color(0xFF222222),
+                                        subtitle:
+                                            'Permanently delete your account',
+                                        showChevron: false,
                                       ),
-                                      iconColor: Color(0xFFD92D20),
-                                      title: 'Delete Account',
-                                      titleColor: Color(0xFFD92D20),
-                                      subtitle:
-                                          'Permanently delete your account',
-                                      showChevron: false,
                                     ),
                                   ),
                                 ],

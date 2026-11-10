@@ -1,8 +1,18 @@
 import '/components/payment_method_widget.dart';
 import '/components/summary_row_widget.dart';
+import '/flutter_flow/ff_builtin_enums.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
+import '/index.dart';
 import 'chekout_widget.dart' show ChekoutWidget;
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 class ChekoutModel extends FlutterFlowModel<ChekoutWidget> {
   ///  State fields for stateful widgets in this page.

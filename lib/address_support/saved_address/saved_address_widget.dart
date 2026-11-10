@@ -1,11 +1,13 @@
-import '/components/address_card_widget.dart';
+import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'saved_address_model.dart';
 export 'saved_address_model.dart';
 
@@ -113,263 +115,774 @@ class _SavedAddressWidgetState extends State<SavedAddressWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        body: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
-                shape: BoxShape.rectangle,
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 16.0, 24.0, 16.0),
-                    child: Container(
-                      child: Row(
+        backgroundColor: Color(0xFFF5F7FA),
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          automaticallyImplyLeading: true,
+          leading: FlutterFlowIconButton(
+            buttonSize: 40.0,
+            icon: Icon(
+              Icons.arrow_back,
+              color: Color(0xFF1F3A87),
+              size: 22.0,
+            ),
+            onPressed: () async {
+              logFirebaseEvent('SAVED_ADDRESS_PAGE_IconButton_ON_TAP');
+              logFirebaseEvent('IconButton_navigate_to');
+
+              context.pushNamed(ProfileWidget.routeName);
+            },
+          ),
+          title: Text(
+            'Saved Addresses',
+            style: FlutterFlowTheme.of(context).titleLarge.override(
+                  font: GoogleFonts.inter(
+                    fontWeight:
+                        FlutterFlowTheme.of(context).titleLarge.fontWeight,
+                    fontStyle:
+                        FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                  ),
+                  color: Color(0xFF222222),
+                  letterSpacing: 0.0,
+                  fontWeight:
+                      FlutterFlowTheme.of(context).titleLarge.fontWeight,
+                  fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                ),
+          ),
+          actions: [],
+          centerTitle: false,
+          elevation: 0.0,
+        ),
+        body: SafeArea(
+          top: true,
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: (FFMainAxisAlignment.start).flutterValue,
+            crossAxisAlignment: (FFCrossAxisAlignment.center).flutterValue,
+            textBaseline: TextBaseline.alphabetic,
+            children: [
+              Expanded(
+                child: ListView(
+                  padding: EdgeInsets.zero,
+                  primary: false,
+                  children: [
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 4.0),
+                      child: Column(
                         mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment:
+                            (FFMainAxisAlignment.start).flutterValue,
+                        crossAxisAlignment:
+                            (FFCrossAxisAlignment.start).flutterValue,
+                        textBaseline: TextBaseline.alphabetic,
                         children: [
-                          FlutterFlowIconButton(
-                            borderRadius: 8.0,
-                            buttonSize: 40.0,
-                            fillColor: Colors.transparent,
-                            icon: Icon(
-                              Icons.arrow_back_rounded,
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              size: 24.0,
-                            ),
-                            onPressed: () {
-                              print('IconButton pressed ...');
-                            },
-                          ),
                           Text(
-                            'Saved  Addresses',
+                            'YOUR ADDRESSES',
                             style: FlutterFlowTheme.of(context)
-                                .titleLarge
+                                .labelSmall
                                 .override(
                                   font: GoogleFonts.inter(
-                                    fontWeight: FontWeight.bold,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .labelSmall
+                                        .fontWeight,
                                     fontStyle: FlutterFlowTheme.of(context)
-                                        .titleLarge
+                                        .labelSmall
                                         .fontStyle,
                                   ),
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
+                                  color: Color(0xFF777777),
+                                  letterSpacing: 1.2,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .labelSmall
+                                      .fontWeight,
                                   fontStyle: FlutterFlowTheme.of(context)
-                                      .titleLarge
+                                      .labelSmall
                                       .fontStyle,
-                                  lineHeight: 1.4,
                                 ),
                           ),
-                        ].divide(SizedBox(width: 16.0)),
+                          Text(
+                            'Manage where your eyewear arrives.',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  font: GoogleFonts.inter(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
+                                  color: Color(0xFF777777),
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontStyle,
+                                ),
+                          ),
+                        ].divide(SizedBox(height: 6.0)),
                       ),
                     ),
-                  ),
-                  Container(
-                    height: 1.0,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).alternate,
-                      shape: BoxShape.rectangle,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Container(
-                child: SingleChildScrollView(
-                  primary: false,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.all(24.0),
-                        child: Container(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              wrapWithModel(
-                                model: _model.addressCardModel1,
-                                updateCallback: () => safeSetState(() {}),
-                                child: AddressCardWidget(
-                                  icon: Icon(
-                                    Icons.home_rounded,
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    size: 16.0,
-                                  ),
-                                  type: 'Home',
-                                  isDefault: true,
-                                  name: 'Alex Rivera',
-                                  phone: '+1 (555) 012-3456',
-                                  address: '123 Maple Avenue, Apt 4B',
-                                  cityState: 'Brooklyn, NY 11201',
-                                ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 12.0,
+                              color: Color(0x0D172B4D),
+                              offset: Offset(
+                                0.0,
+                                4.0,
                               ),
-                              wrapWithModel(
-                                model: _model.addressCardModel2,
-                                updateCallback: () => safeSetState(() {}),
-                                child: AddressCardWidget(
-                                  icon: Icon(
-                                    Icons.business_rounded,
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    size: 16.0,
-                                  ),
-                                  type: 'Work',
-                                  isDefault: false,
-                                  name: 'Alex Rivera',
-                                  phone: '+1 (555) 987-6543',
-                                  address: 'Tech Plaza, 8th Floor, Suite 802',
-                                  cityState: 'Manhattan, NY 10013',
-                                ),
-                              ),
-                              Text(
-                                'Saved Address',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      font: GoogleFonts.inter(
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontStyle,
-                                      ),
-                                      letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontStyle,
-                                    ),
-                              ),
-                              wrapWithModel(
-                                model: _model.addressCardModel3,
-                                updateCallback: () => safeSetState(() {}),
-                                child: AddressCardWidget(),
-                              ),
-                            ].divide(SizedBox(height: 24.0)),
+                            )
+                          ],
+                          borderRadius: BorderRadius.circular(14.0),
+                          border: Border.all(
+                            color: Color(0xFFE6EAF0),
+                            width: 1.0,
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(24.0),
-                  topRight: Radius.circular(24.0),
-                ),
-                shape: BoxShape.rectangle,
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Container(
-                    height: 1.0,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.rectangle,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(32.0),
-                    child: Container(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Row(
+                        child: Padding(
+                          padding: EdgeInsets.all(18.0),
+                          child: Column(
                             mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment:
+                                (FFMainAxisAlignment.start).flutterValue,
+                            crossAxisAlignment:
+                                (FFCrossAxisAlignment.start).flutterValue,
+                            textBaseline: TextBaseline.alphabetic,
                             children: [
-                              FFButtonWidget(
-                                onPressed: () async {
-                                  logFirebaseEvent(
-                                      'SAVED_ADDRESS_ADD_NEW_ADDRESS_BTN_ON_TAP');
-                                  logFirebaseEvent('Button_navigate_to');
-
-                                  context
-                                      .pushNamed(AddNewAddressWidget.routeName);
-                                },
-                                text: 'Add New Address',
-                                icon: Icon(
-                                  Icons.add,
-                                  size: 15.0,
-                                ),
-                                options: FFButtonOptions(
-                                  width: 95.0,
-                                  height: 52.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 0.0, 16.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  iconColor:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  color: Colors.white,
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .override(
-                                        font: GoogleFonts.inter(
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    (FFMainAxisAlignment.spaceBetween)
+                                        .flutterValue,
+                                crossAxisAlignment:
+                                    (FFCrossAxisAlignment.center).flutterValue,
+                                textBaseline: TextBaseline.alphabetic,
+                                children: [
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        (FFMainAxisAlignment.start)
+                                            .flutterValue,
+                                    crossAxisAlignment:
+                                        (FFCrossAxisAlignment.center)
+                                            .flutterValue,
+                                    textBaseline: TextBaseline.alphabetic,
+                                    children: [
+                                      Container(
+                                        width: 44.0,
+                                        height: 44.0,
+                                        decoration: BoxDecoration(
+                                          color: Color(0xFFEAF0FF),
+                                          borderRadius:
+                                              BorderRadius.circular(9999.0),
+                                        ),
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
+                                        child: Icon(
+                                          Icons.home_rounded,
+                                          color: Color(0xFF1F3A87),
+                                          size: 21.0,
+                                        ),
+                                      ),
+                                      Text(
+                                        'Home Address',
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleMedium
+                                            .override(
+                                              font: GoogleFonts.inter(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleMedium
+                                                        .fontStyle,
+                                              ),
+                                              color: Color(0xFF222222),
+                                              letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMedium
+                                                      .fontStyle,
+                                            ),
+                                      ),
+                                    ].divide(SizedBox(width: 12.0)),
+                                  ),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        (FFMainAxisAlignment.start)
+                                            .flutterValue,
+                                    crossAxisAlignment:
+                                        (FFCrossAxisAlignment.center)
+                                            .flutterValue,
+                                    textBaseline: TextBaseline.alphabetic,
+                                    children: [
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          color: Color(0xFFE9EFEA),
+                                          borderRadius:
+                                              BorderRadius.circular(20.0),
+                                        ),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  9.0, 5.0, 9.0, 5.0),
+                                          child: Text(
+                                            'DEFAULT',
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelSmall
+                                                .override(
+                                                  font: GoogleFonts.inter(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelSmall
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelSmall
+                                                            .fontStyle,
+                                                  ),
+                                                  color: Color(0xFF2E7D4F),
+                                                  letterSpacing: 0.5,
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelSmall
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelSmall
+                                                          .fontStyle,
+                                                ),
+                                          ),
+                                        ),
+                                      ),
+                                      Icon(
+                                        Icons.more_vert,
+                                        color: Color(0xFF777777),
+                                        size: 21.0,
+                                      ),
+                                    ].divide(SizedBox(width: 8.0)),
+                                  ),
+                                ],
+                              ),
+                              Column(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    (FFMainAxisAlignment.start).flutterValue,
+                                crossAxisAlignment:
+                                    (FFCrossAxisAlignment.start).flutterValue,
+                                textBaseline: TextBaseline.alphabetic,
+                                children: [
+                                  Text(
+                                    'Alex Morgan',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .override(
+                                          font: GoogleFonts.inter(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyLarge
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyLarge
+                                                    .fontStyle,
+                                          ),
+                                          color: Color(0xFF222222),
+                                          letterSpacing: 0.0,
                                           fontWeight:
                                               FlutterFlowTheme.of(context)
-                                                  .titleSmall
+                                                  .bodyLarge
                                                   .fontWeight,
                                           fontStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .titleSmall
+                                                  .bodyLarge
                                                   .fontStyle,
                                         ),
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .fontStyle,
-                                      ),
-                                  elevation: 0.0,
-                                  borderSide: BorderSide(
-                                    color: Color(0xFF1F3A87),
                                   ),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        (FFMainAxisAlignment.start)
+                                            .flutterValue,
+                                    crossAxisAlignment:
+                                        (FFCrossAxisAlignment.center)
+                                            .flutterValue,
+                                    textBaseline: TextBaseline.alphabetic,
+                                    children: [
+                                      Icon(
+                                        Icons.call_outlined,
+                                        color: Color(0xFF777777),
+                                        size: 16.0,
+                                      ),
+                                      Text(
+                                        '+1 (415) 555-0184',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              font: GoogleFonts.inter(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
+                                              color: Color(0xFF777777),
+                                              letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
+                                      ),
+                                    ].divide(SizedBox(width: 8.0)),
+                                  ),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        (FFMainAxisAlignment.start)
+                                            .flutterValue,
+                                    crossAxisAlignment:
+                                        (FFCrossAxisAlignment.start)
+                                            .flutterValue,
+                                    textBaseline: TextBaseline.alphabetic,
+                                    children: [
+                                      Icon(
+                                        Icons.location_on_outlined,
+                                        color: Color(0xFF1F3A87),
+                                        size: 17.0,
+                                      ),
+                                      Expanded(
+                                        child: Text(
+                                          '2488 Cedar Street, Apartment 6',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                font: GoogleFonts.inter(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
+                                                color: Color(0xFF444444),
+                                                letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                                lineHeight: 1.4,
+                                              ),
+                                        ),
+                                      ),
+                                    ].divide(SizedBox(width: 8.0)),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        25.0, 0.0, 0.0, 0.0),
+                                    child: Text(
+                                      'San Francisco, CA 94115',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            font: GoogleFonts.inter(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
+                                            color: Color(0xFF444444),
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
+                                    ),
+                                  ),
+                                ].divide(SizedBox(height: 9.0)),
                               ),
-                            ],
+                            ].divide(SizedBox(height: 18.0)),
                           ),
-                        ].divide(SizedBox(height: 24.0)),
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          16.0, 14.0, 16.0, 20.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 12.0,
+                              color: Color(0x0D172B4D),
+                              offset: Offset(
+                                0.0,
+                                4.0,
+                              ),
+                            )
+                          ],
+                          borderRadius: BorderRadius.circular(14.0),
+                          border: Border.all(
+                            color: Color(0xFFE6EAF0),
+                            width: 1.0,
+                          ),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(18.0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment:
+                                (FFMainAxisAlignment.start).flutterValue,
+                            crossAxisAlignment:
+                                (FFCrossAxisAlignment.start).flutterValue,
+                            textBaseline: TextBaseline.alphabetic,
+                            children: [
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    (FFMainAxisAlignment.spaceBetween)
+                                        .flutterValue,
+                                crossAxisAlignment:
+                                    (FFCrossAxisAlignment.center).flutterValue,
+                                textBaseline: TextBaseline.alphabetic,
+                                children: [
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        (FFMainAxisAlignment.start)
+                                            .flutterValue,
+                                    crossAxisAlignment:
+                                        (FFCrossAxisAlignment.center)
+                                            .flutterValue,
+                                    textBaseline: TextBaseline.alphabetic,
+                                    children: [
+                                      Container(
+                                        width: 44.0,
+                                        height: 44.0,
+                                        decoration: BoxDecoration(
+                                          color: Color(0xFFEAF0FF),
+                                          borderRadius:
+                                              BorderRadius.circular(9999.0),
+                                        ),
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
+                                        child: Icon(
+                                          Icons.work_outline_rounded,
+                                          color: Color(0xFF1F3A87),
+                                          size: 21.0,
+                                        ),
+                                      ),
+                                      Text(
+                                        'Work Address',
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleMedium
+                                            .override(
+                                              font: GoogleFonts.inter(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleMedium
+                                                        .fontStyle,
+                                              ),
+                                              color: Color(0xFF222222),
+                                              letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMedium
+                                                      .fontStyle,
+                                            ),
+                                      ),
+                                    ].divide(SizedBox(width: 12.0)),
+                                  ),
+                                  Icon(
+                                    Icons.more_vert,
+                                    color: Color(0xFF777777),
+                                    size: 21.0,
+                                  ),
+                                ],
+                              ),
+                              Column(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    (FFMainAxisAlignment.start).flutterValue,
+                                crossAxisAlignment:
+                                    (FFCrossAxisAlignment.start).flutterValue,
+                                textBaseline: TextBaseline.alphabetic,
+                                children: [
+                                  Text(
+                                    'Alex Morgan',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .override(
+                                          font: GoogleFonts.inter(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyLarge
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyLarge
+                                                    .fontStyle,
+                                          ),
+                                          color: Color(0xFF222222),
+                                          letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyLarge
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyLarge
+                                                  .fontStyle,
+                                        ),
+                                  ),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        (FFMainAxisAlignment.start)
+                                            .flutterValue,
+                                    crossAxisAlignment:
+                                        (FFCrossAxisAlignment.center)
+                                            .flutterValue,
+                                    textBaseline: TextBaseline.alphabetic,
+                                    children: [
+                                      Icon(
+                                        Icons.call_outlined,
+                                        color: Color(0xFF777777),
+                                        size: 16.0,
+                                      ),
+                                      Text(
+                                        '+1 (415) 555-0184',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              font: GoogleFonts.inter(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
+                                              color: Color(0xFF777777),
+                                              letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
+                                      ),
+                                    ].divide(SizedBox(width: 8.0)),
+                                  ),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        (FFMainAxisAlignment.start)
+                                            .flutterValue,
+                                    crossAxisAlignment:
+                                        (FFCrossAxisAlignment.start)
+                                            .flutterValue,
+                                    textBaseline: TextBaseline.alphabetic,
+                                    children: [
+                                      Icon(
+                                        Icons.location_on_outlined,
+                                        color: Color(0xFF1F3A87),
+                                        size: 17.0,
+                                      ),
+                                      Expanded(
+                                        child: Text(
+                                          'One Embarcadero Center, Suite 1200',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                font: GoogleFonts.inter(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
+                                                color: Color(0xFF444444),
+                                                letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                                lineHeight: 1.4,
+                                              ),
+                                        ),
+                                      ),
+                                    ].divide(SizedBox(width: 8.0)),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        25.0, 0.0, 0.0, 0.0),
+                                    child: Text(
+                                      'San Francisco, CA 94111',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            font: GoogleFonts.inter(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
+                                            color: Color(0xFF444444),
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
+                                    ),
+                                  ),
+                                ].divide(SizedBox(height: 9.0)),
+                              ),
+                            ].divide(SizedBox(height: 18.0)),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 12.0),
+                      child: Text(
+                        'Sample addresses shown for presentation.',
+                        style: FlutterFlowTheme.of(context).labelSmall.override(
+                              font: GoogleFonts.inter(
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .labelSmall
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .labelSmall
+                                    .fontStyle,
+                              ),
+                              color: Color(0xFF888888),
+                              letterSpacing: 0.0,
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .labelSmall
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .labelSmall
+                                  .fontStyle,
+                            ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                ),
+                child: Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(20.0, 14.0, 20.0, 14.0),
+                  child: FFButtonWidget(
+                    onPressed: () async {
+                      logFirebaseEvent('SAVED_ADDRESS_PAGE_Button_ON_TAP');
+                      logFirebaseEvent('Button_navigate_to');
+
+                      context.pushNamed(AddNewAddressWidget.routeName);
+                    },
+                    text: '+ Add New Address',
+                    options: FFButtonOptions(
+                      width: double.infinity,
+                      height: 54.0,
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      iconPadding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: Color(0xFF1F3A87),
+                      textStyle: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16.0,
+                      ),
+                      elevation: 0.0,
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

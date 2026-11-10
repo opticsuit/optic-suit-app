@@ -1,7 +1,9 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'section_header_model.dart';
 export 'section_header_model.dart';
 
@@ -45,7 +47,7 @@ class _SectionHeaderWidgetState extends State<SectionHeaderWidget> {
   Widget build(BuildContext context) {
     return Text(
       valueOrDefault<String>(
-        widget.title,
+        widget!.title,
         'Contact Details',
       ),
       style: FlutterFlowTheme.of(context).bodyMedium.override(

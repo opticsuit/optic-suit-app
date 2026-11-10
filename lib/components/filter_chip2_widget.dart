@@ -1,7 +1,9 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'filter_chip2_model.dart';
 export 'filter_chip2_model.dart';
 
@@ -49,27 +51,21 @@ class _FilterChip2WidgetState extends State<FilterChip2Widget> {
     return Container(
       height: 40.0,
       decoration: BoxDecoration(
-        color: valueOrDefault<Color>(
-          valueOrDefault<bool>(
-            widget.selected,
-            true,
-          )
-              ? Color(0xFF1F3A87)
-              : FlutterFlowTheme.of(context).secondaryBackground,
-          Color(0xFF1F3A87),
-        ),
+        color: valueOrDefault<bool>(
+          widget!.selected,
+          true,
+        )
+            ? Color(0xFF1F3A87)
+            : Color(0xFFF5F6F8),
         borderRadius: BorderRadius.circular(20.0),
         shape: BoxShape.rectangle,
         border: Border.all(
-          color: valueOrDefault<Color>(
-            valueOrDefault<bool>(
-              widget.selected,
-              true,
-            )
-                ? Color(0xFF1F3A87)
-                : FlutterFlowTheme.of(context).alternate,
-            Color(0xFF1F3A87),
-          ),
+          color: valueOrDefault<bool>(
+            widget!.selected,
+            true,
+          )
+              ? Color(0xFF1F3A87)
+              : Color(0xFFE5E7EB),
           width: 1.0,
         ),
       ),
@@ -80,7 +76,7 @@ class _FilterChip2WidgetState extends State<FilterChip2Widget> {
             alignment: AlignmentDirectional(0.0, 0.0),
             child: Text(
               valueOrDefault<String>(
-                widget.label,
+                widget!.label,
                 'All',
               ),
               style: FlutterFlowTheme.of(context).labelLarge.override(
@@ -90,15 +86,12 @@ class _FilterChip2WidgetState extends State<FilterChip2Widget> {
                       fontStyle:
                           FlutterFlowTheme.of(context).labelLarge.fontStyle,
                     ),
-                    color: valueOrDefault<Color>(
-                      valueOrDefault<bool>(
-                        widget.selected,
-                        true,
-                      )
-                          ? Colors.white
-                          : Color(0xFF1F3A87),
-                      Colors.white,
-                    ),
+                    color: valueOrDefault<bool>(
+                      widget!.selected,
+                      true,
+                    )
+                        ? Colors.white
+                        : Color(0xFF1F3A87),
                     letterSpacing: 0.0,
                     fontWeight:
                         FlutterFlowTheme.of(context).labelLarge.fontWeight,

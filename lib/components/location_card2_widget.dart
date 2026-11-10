@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'location_card2_model.dart';
 export 'location_card2_model.dart';
 
@@ -57,7 +60,7 @@ class _LocationCard2WidgetState extends State<LocationCard2Widget> {
         border: Border.all(
           color: valueOrDefault<Color>(
             valueOrDefault<bool>(
-              widget.selected,
+              widget!.selected,
               true,
             )
                 ? FlutterFlowTheme.of(context).primary
@@ -82,7 +85,7 @@ class _LocationCard2WidgetState extends State<LocationCard2Widget> {
                 children: [
                   Text(
                     valueOrDefault<String>(
-                      widget.name,
+                      widget!.name,
                       'Downtown Hub',
                     ),
                     style: FlutterFlowTheme.of(context).bodyLarge.override(
@@ -108,7 +111,7 @@ class _LocationCard2WidgetState extends State<LocationCard2Widget> {
                       children: [
                         if (valueOrDefault<bool>(
                           valueOrDefault<bool>(
-                            widget.selected,
+                            widget!.selected,
                             true,
                           )
                               ? true
@@ -119,7 +122,7 @@ class _LocationCard2WidgetState extends State<LocationCard2Widget> {
                             Icons.check_circle_rounded,
                             color: valueOrDefault<Color>(
                               valueOrDefault<bool>(
-                                widget.selected,
+                                widget!.selected,
                                 true,
                               )
                                   ? FlutterFlowTheme.of(context).primary
@@ -130,7 +133,7 @@ class _LocationCard2WidgetState extends State<LocationCard2Widget> {
                           ),
                         if (valueOrDefault<bool>(
                           valueOrDefault<bool>(
-                            widget.selected,
+                            widget!.selected,
                             true,
                           )
                               ? false
@@ -141,7 +144,7 @@ class _LocationCard2WidgetState extends State<LocationCard2Widget> {
                             Icons.circle_outlined,
                             color: valueOrDefault<Color>(
                               valueOrDefault<bool>(
-                                widget.selected,
+                                widget!.selected,
                                 true,
                               )
                                   ? FlutterFlowTheme.of(context).primary
@@ -157,7 +160,7 @@ class _LocationCard2WidgetState extends State<LocationCard2Widget> {
               ),
               Text(
                 valueOrDefault<String>(
-                  widget.address,
+                  widget!.address,
                   '124 Market St, Suite 201',
                 ),
                 maxLines: 2,

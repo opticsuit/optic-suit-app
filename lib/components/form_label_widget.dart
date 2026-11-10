@@ -1,7 +1,9 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'form_label_model.dart';
 export 'form_label_model.dart';
 
@@ -45,7 +47,7 @@ class _FormLabelWidgetState extends State<FormLabelWidget> {
   Widget build(BuildContext context) {
     return Text(
       valueOrDefault<String>(
-        widget.label,
+        widget!.label,
         'Full Name',
       ),
       style: FlutterFlowTheme.of(context).bodyMedium.override(

@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'summary_row2_model.dart';
 export 'summary_row2_model.dart';
 
@@ -53,7 +56,7 @@ class _SummaryRow2WidgetState extends State<SummaryRow2Widget> {
       children: [
         Text(
           valueOrDefault<String>(
-            widget.label,
+            widget!.label,
             'Store',
           ),
           style: FlutterFlowTheme.of(context).bodySmall.override(
@@ -70,7 +73,7 @@ class _SummaryRow2WidgetState extends State<SummaryRow2Widget> {
         ),
         Text(
           valueOrDefault<String>(
-            widget.value,
+            widget!.value,
             'Optic Suit – Kozhikode',
           ),
           style: FlutterFlowTheme.of(context).bodyMedium.override(

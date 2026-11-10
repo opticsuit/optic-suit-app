@@ -1,7 +1,9 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'service_chip_model.dart';
 export 'service_chip_model.dart';
 
@@ -50,7 +52,7 @@ class _ServiceChipWidgetState extends State<ServiceChipWidget> {
       decoration: BoxDecoration(
         color: valueOrDefault<Color>(
           valueOrDefault<bool>(
-            widget.selected,
+            widget!.selected,
             true,
           )
               ? FlutterFlowTheme.of(context).primary
@@ -62,7 +64,7 @@ class _ServiceChipWidgetState extends State<ServiceChipWidget> {
         border: Border.all(
           color: valueOrDefault<Color>(
             valueOrDefault<bool>(
-              widget.selected,
+              widget!.selected,
               true,
             )
                 ? FlutterFlowTheme.of(context).primary
@@ -77,7 +79,7 @@ class _ServiceChipWidgetState extends State<ServiceChipWidget> {
         child: Container(
           child: Text(
             valueOrDefault<String>(
-              widget.label,
+              widget!.label,
               'Eye Exam',
             ),
             style: FlutterFlowTheme.of(context).labelLarge.override(
@@ -89,7 +91,7 @@ class _ServiceChipWidgetState extends State<ServiceChipWidget> {
                   ),
                   color: valueOrDefault<Color>(
                     valueOrDefault<bool>(
-                      widget.selected,
+                      widget!.selected,
                       true,
                     )
                         ? Colors.white

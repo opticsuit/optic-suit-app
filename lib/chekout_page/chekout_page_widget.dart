@@ -4,10 +4,11 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:simple_gradient_text/simple_gradient_text.dart';
+import 'package:provider/provider.dart';
 import 'chekout_page_model.dart';
 export 'chekout_page_model.dart';
 
@@ -885,7 +886,7 @@ class _ChekoutPageWidgetState extends State<ChekoutPageWidget> {
                                           lineHeight: 1.4,
                                         ),
                                   ),
-                                  GradientText(
+                                  Text(
                                     '\$231.12',
                                     style: FlutterFlowTheme.of(context)
                                         .headlineSmall
@@ -906,11 +907,6 @@ class _ChekoutPageWidgetState extends State<ChekoutPageWidget> {
                                                   .headlineSmall
                                                   .fontStyle,
                                         ),
-                                    colors: [
-                                      FlutterFlowTheme.of(context).primaryText
-                                    ],
-                                    gradientDirection: GradientDirection.rtl,
-                                    gradientType: GradientType.linear,
                                   ),
                                 ],
                               ),

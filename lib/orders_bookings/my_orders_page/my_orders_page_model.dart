@@ -1,10 +1,21 @@
 import '/components/filter_chip_widget.dart';
 import '/components/order_card_widget.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
+import '/index.dart';
 import 'my_orders_page_widget.dart' show MyOrdersPageWidget;
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class MyOrdersPageModel extends FlutterFlowModel<MyOrdersPageWidget> {
+  ///  Local state fields for this page.
+
+  String? selectedStatus = 'All';
+
   ///  State fields for stateful widgets in this page.
 
   // Model for FilterChip.

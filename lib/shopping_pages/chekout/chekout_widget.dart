@@ -1,12 +1,16 @@
 import '/components/payment_method_widget.dart';
 import '/components/summary_row_widget.dart';
+import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
+import '/index.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'chekout_model.dart';
 export 'chekout_model.dart';
@@ -52,85 +56,98 @@ class _ChekoutWidgetState extends State<ChekoutWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        body: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).primaryBackground,
-                shape: BoxShape.rectangle,
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 16.0, 24.0, 16.0),
-                    child: Container(
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          FlutterFlowIconButton(
-                            borderRadius: 8.0,
-                            buttonSize: 40.0,
-                            fillColor: Colors.transparent,
-                            icon: Icon(
-                              Icons.arrow_back_rounded,
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              size: 24.0,
+        backgroundColor: Color(0xFFF5F6FA),
+        body: SafeArea(
+          top: true,
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.rectangle,
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          20.0, 12.0, 20.0, 12.0),
+                      child: Container(
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            FlutterFlowIconButton(
+                              borderRadius: 8.0,
+                              buttonSize: 40.0,
+                              fillColor: Colors.transparent,
+                              icon: Icon(
+                                Icons.arrow_back_rounded,
+                                color: Color(0xFF1F3A87),
+                                size: 24.0,
+                              ),
+                              onPressed: () async {
+                                logFirebaseEvent(
+                                    'CHEKOUT_PAGE_IconButton_ON_TAP');
+                                logFirebaseEvent('IconButton_navigate_to');
+
+                                context.pushNamed(CartWidget.routeName);
+                              },
                             ),
-                            onPressed: () {
-                              print('IconButton pressed ...');
-                            },
-                          ),
-                          Text(
-                            'Checkout',
-                            style: FlutterFlowTheme.of(context)
-                                .titleLarge
-                                .override(
-                                  font: GoogleFonts.inter(
+                            Text(
+                              'Checkout',
+                              style: FlutterFlowTheme.of(context)
+                                  .titleLarge
+                                  .override(
+                                    font: GoogleFonts.poppins(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleLarge
+                                          .fontStyle,
+                                    ),
+                                    color: Color(0xFF1F3A87),
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                     fontStyle: FlutterFlowTheme.of(context)
                                         .titleLarge
                                         .fontStyle,
+                                    lineHeight: 1.4,
                                   ),
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .titleLarge
-                                      .fontStyle,
-                                  lineHeight: 1.4,
-                                ),
-                          ),
-                        ].divide(SizedBox(width: 16.0)),
+                            ),
+                            Icon(
+                              Icons.lock_rounded,
+                              color: Color(0xFF1F3A87),
+                              size: 20.0,
+                            ),
+                          ].divide(SizedBox(width: 16.0)),
+                        ),
                       ),
                     ),
-                  ),
-                  Container(
-                    height: 1.0,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).alternate,
-                      shape: BoxShape.rectangle,
+                    Container(
+                      height: 1.0,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).alternate,
+                        shape: BoxShape.rectangle,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Container(
+              Expanded(
+                flex: 1,
                 child: SingleChildScrollView(
                   primary: false,
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    mainAxisAlignment: (FFMainAxisAlignment.start).flutterValue,
+                    crossAxisAlignment:
+                        (FFCrossAxisAlignment.stretch).flutterValue,
+                    textBaseline: TextBaseline.alphabetic,
                     children: [
                       Padding(
                         padding: EdgeInsets.all(24.0),
@@ -174,7 +191,7 @@ class _ChekoutWidgetState extends State<ChekoutWidget> {
                                             ),
                                       ),
                                       Text(
-                                        'Change',
+                                        'Edit',
                                         style: FlutterFlowTheme.of(context)
                                             .labelLarge
                                             .override(
@@ -205,12 +222,11 @@ class _ChekoutWidgetState extends State<ChekoutWidget> {
                                   ),
                                   Container(
                                     decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
-                                      borderRadius: BorderRadius.circular(24.0),
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(16.0),
                                       shape: BoxShape.rectangle,
                                       border: Border.all(
-                                        color: Color(0xFF1F3A87),
+                                        color: Color(0xFFE5E7EB),
                                         width: 1.0,
                                       ),
                                     ),
@@ -320,7 +336,7 @@ class _ChekoutWidgetState extends State<ChekoutWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: [
                                   Text(
-                                    'Order Items',
+                                    'Order Summary',
                                     style: FlutterFlowTheme.of(context)
                                         .titleMedium
                                         .override(
@@ -343,16 +359,15 @@ class _ChekoutWidgetState extends State<ChekoutWidget> {
                                         ),
                                   ),
                                   ClipRRect(
-                                    borderRadius: BorderRadius.circular(24.0),
+                                    borderRadius: BorderRadius.circular(16.0),
                                     child: Container(
                                       decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryBackground,
+                                        color: Colors.white,
                                         borderRadius:
-                                            BorderRadius.circular(24.0),
+                                            BorderRadius.circular(16.0),
                                         shape: BoxShape.rectangle,
                                         border: Border.all(
-                                          color: Color(0xFF1F3A87),
+                                          color: Color(0xFFE5E7EB),
                                           width: 1.0,
                                         ),
                                       ),
@@ -663,7 +678,7 @@ class _ChekoutWidgetState extends State<ChekoutWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: [
                                   Text(
-                                    'Payment Method',
+                                    'Select Payment Method',
                                     style: FlutterFlowTheme.of(context)
                                         .titleMedium
                                         .override(
@@ -734,15 +749,16 @@ class _ChekoutWidgetState extends State<ChekoutWidget> {
                               ),
                               Container(
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(24.0),
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(16.0),
                                   shape: BoxShape.rectangle,
                                   border: Border.all(
-                                    color: Color(0xFF1F3A87),
+                                    color: Color(0xFFE5E7EB),
                                     width: 1.0,
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.all(24.0),
+                                  padding: EdgeInsets.all(16.0),
                                   child: Container(
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
@@ -751,6 +767,30 @@ class _ChekoutWidgetState extends State<ChekoutWidget> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.stretch,
                                       children: [
+                                        Text(
+                                          'Price Details',
+                                          style: FlutterFlowTheme.of(context)
+                                              .titleMedium
+                                              .override(
+                                                font: GoogleFonts.inter(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleMedium
+                                                          .fontStyle,
+                                                ),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.bold,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleMedium
+                                                        .fontStyle,
+                                              ),
+                                        ),
                                         wrapWithModel(
                                           model: _model.summaryRowModel1,
                                           updateCallback: () =>
@@ -786,6 +826,7 @@ class _ChekoutWidgetState extends State<ChekoutWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 16.0, 0.0, 16.0),
                                           child: Container(
+                                            decoration: BoxDecoration(),
                                             child: Divider(
                                               height: 16.0,
                                               thickness: 1.0,
@@ -820,47 +861,148 @@ class _ChekoutWidgetState extends State<ChekoutWidget> {
                   ),
                 ),
               ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
-                shape: BoxShape.rectangle,
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Container(
-                    height: 1.0,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).alternate,
-                      shape: BoxShape.rectangle,
-                    ),
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(16.0),
+                    topRight: Radius.circular(16.0),
                   ),
-                  Padding(
-                    padding: EdgeInsets.all(24.0),
-                    child: Container(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Column(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Total',
-                                    style: FlutterFlowTheme.of(context)
-                                        .labelSmall
-                                        .override(
-                                          font: GoogleFonts.inter(
+                  shape: BoxShape.rectangle,
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Container(
+                      height: 1.0,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).alternate,
+                        shape: BoxShape.rectangle,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          20.0, 12.0, 20.0, 12.0),
+                      child: Container(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment:
+                                  (FFMainAxisAlignment.start).flutterValue,
+                              crossAxisAlignment:
+                                  (FFCrossAxisAlignment.stretch).flutterValue,
+                              textBaseline: TextBaseline.alphabetic,
+                              children: [
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      (FFMainAxisAlignment.start).flutterValue,
+                                  crossAxisAlignment:
+                                      (FFCrossAxisAlignment.center)
+                                          .flutterValue,
+                                  textBaseline: TextBaseline.alphabetic,
+                                  children: [
+                                    Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Total',
+                                          style: FlutterFlowTheme.of(context)
+                                              .labelSmall
+                                              .override(
+                                                font: GoogleFonts.inter(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelSmall
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelSmall
+                                                          .fontStyle,
+                                                ),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelSmall
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelSmall
+                                                        .fontStyle,
+                                                lineHeight: 1.4,
+                                              ),
+                                        ),
+                                        GradientText(
+                                          '\$231.12',
+                                          style: FlutterFlowTheme.of(context)
+                                              .headlineSmall
+                                              .override(
+                                                font: GoogleFonts.inter(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineSmall
+                                                          .fontStyle,
+                                                ),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.bold,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineSmall
+                                                        .fontStyle,
+                                              ),
+                                          colors: [
+                                            FlutterFlowTheme.of(context)
+                                                .primaryText
+                                          ],
+                                          gradientDirection:
+                                              GradientDirection.rtl,
+                                          gradientType: GradientType.linear,
+                                        ),
+                                      ],
+                                    ),
+                                    Spacer(),
+                                    Icon(
+                                      Icons.lock_rounded,
+                                      color: Color(0xFF1F3A87),
+                                      size: 16.0,
+                                    ),
+                                    Text(
+                                      'Secure checkout',
+                                      style: FlutterFlowTheme.of(context)
+                                          .labelSmall
+                                          .override(
+                                            font: GoogleFonts.inter(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelSmall
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelSmall
+                                                      .fontStyle,
+                                            ),
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            letterSpacing: 0.0,
                                             fontWeight:
                                                 FlutterFlowTheme.of(context)
                                                     .labelSmall
@@ -870,66 +1012,37 @@ class _ChekoutWidgetState extends State<ChekoutWidget> {
                                                     .labelSmall
                                                     .fontStyle,
                                           ),
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          letterSpacing: 0.0,
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelSmall
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelSmall
-                                                  .fontStyle,
-                                          lineHeight: 1.4,
-                                        ),
-                                  ),
-                                  GradientText(
-                                    '\$231.12',
-                                    style: FlutterFlowTheme.of(context)
-                                        .headlineSmall
+                                    ),
+                                  ].divide(SizedBox(width: 6.0)),
+                                ),
+                                FFButtonWidget(
+                                  onPressed: () {
+                                    print('Button pressed ...');
+                                  },
+                                  text: 'Place Order',
+                                  options: FFButtonOptions(
+                                    width: double.infinity,
+                                    height: 52.0,
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        16.0, 0.0, 16.0, 0.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: Color(0xFF1F3A87),
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
                                         .override(
-                                          font: GoogleFonts.inter(
-                                            fontWeight: FontWeight.bold,
+                                          font: GoogleFonts.poppins(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .fontWeight,
                                             fontStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .headlineSmall
+                                                    .titleSmall
                                                     .fontStyle,
                                           ),
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
+                                          color: Colors.white,
                                           letterSpacing: 0.0,
-                                          fontWeight: FontWeight.bold,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .headlineSmall
-                                                  .fontStyle,
-                                        ),
-                                    colors: [
-                                      FlutterFlowTheme.of(context).primaryText
-                                    ],
-                                    gradientDirection: GradientDirection.rtl,
-                                    gradientType: GradientType.linear,
-                                  ),
-                                ],
-                              ),
-                              Spacer(),
-                              FFButtonWidget(
-                                onPressed: () {
-                                  print('Button pressed ...');
-                                },
-                                text: 'Place Order',
-                                options: FFButtonOptions(
-                                  height: 40.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 0.0, 16.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  color: Color(0xFF1F3A87),
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .override(
-                                        font: GoogleFonts.inter(
                                           fontWeight:
                                               FlutterFlowTheme.of(context)
                                                   .titleSmall
@@ -939,29 +1052,21 @@ class _ChekoutWidgetState extends State<ChekoutWidget> {
                                                   .titleSmall
                                                   .fontStyle,
                                         ),
-                                        color: Colors.white,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .fontStyle,
-                                      ),
-                                  elevation: 0.0,
-                                  borderRadius: BorderRadius.circular(8.0),
+                                    elevation: 0.0,
+                                    borderRadius: BorderRadius.circular(14.0),
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ].divide(SizedBox(height: 16.0)),
+                              ].divide(SizedBox(height: 10.0)),
+                            ),
+                          ].divide(SizedBox(height: 10.0)),
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

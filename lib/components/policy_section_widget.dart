@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'policy_section_model.dart';
 export 'policy_section_model.dart';
 
@@ -54,11 +57,11 @@ class _PolicySectionWidgetState extends State<PolicySectionWidget> {
       children: [
         Text(
           valueOrDefault<String>(
-            widget.title,
+            widget!.title,
             '1. Introduction',
           ),
           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                font: GoogleFonts.inter(
+                font: GoogleFonts.poppins(
                   fontWeight: FontWeight.w600,
                   fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                 ),
@@ -72,11 +75,11 @@ class _PolicySectionWidgetState extends State<PolicySectionWidget> {
         ),
         Text(
           valueOrDefault<String>(
-            widget.content,
+            widget!.content,
             'At Optic Suit, we value your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, store, and protect your information when you visit our website, use our app, or make a purchase.',
           ),
           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                font: GoogleFonts.inter(
+                font: GoogleFonts.poppins(
                   fontWeight:
                       FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                   fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,

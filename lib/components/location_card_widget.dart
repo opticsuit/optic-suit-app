@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'location_card_model.dart';
 export 'location_card_model.dart';
 
@@ -60,7 +63,7 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
         border: Border.all(
           color: valueOrDefault<Color>(
             valueOrDefault<bool>(
-              widget.selected,
+              widget!.selected,
               true,
             )
                 ? FlutterFlowTheme.of(context).primary
@@ -102,7 +105,7 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
                   children: [
                     Text(
                       valueOrDefault<String>(
-                        widget.name,
+                        widget!.name,
                         'OpticSuit Central',
                       ),
                       style: FlutterFlowTheme.of(context).titleSmall.override(
@@ -122,7 +125,7 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
                     ),
                     Text(
                       valueOrDefault<String>(
-                        widget.address,
+                        widget!.address,
                         '123 Vision Blvd, Downtown',
                       ),
                       maxLines: 1,
@@ -157,7 +160,7 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
                 children: [
                   Text(
                     valueOrDefault<String>(
-                      widget.distance,
+                      widget!.distance,
                       '0.8 miles',
                     ),
                     style: FlutterFlowTheme.of(context).labelSmall.override(
@@ -187,7 +190,7 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
                       children: [
                         if (valueOrDefault<bool>(
                           valueOrDefault<bool>(
-                            widget.selected,
+                            widget!.selected,
                             true,
                           )
                               ? true
@@ -198,7 +201,7 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
                             Icons.check_circle_rounded,
                             color: valueOrDefault<Color>(
                               valueOrDefault<bool>(
-                                widget.selected,
+                                widget!.selected,
                                 true,
                               )
                                   ? FlutterFlowTheme.of(context).primary
@@ -209,7 +212,7 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
                           ),
                         if (valueOrDefault<bool>(
                           valueOrDefault<bool>(
-                            widget.selected,
+                            widget!.selected,
                             true,
                           )
                               ? false
@@ -220,7 +223,7 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
                             Icons.radio_button_unchecked_rounded,
                             color: valueOrDefault<Color>(
                               valueOrDefault<bool>(
-                                widget.selected,
+                                widget!.selected,
                                 true,
                               )
                                   ? FlutterFlowTheme.of(context).primary

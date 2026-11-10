@@ -2,13 +2,17 @@ import '/backend/api_requests/api_calls.dart';
 import '/components/brand_card_widget.dart';
 import '/components/category_item_widget.dart';
 import '/components/product_card_widget.dart';
+import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import '/index.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'optic_suit_home_page_model.dart';
 export 'optic_suit_home_page_model.dart';
 
@@ -507,7 +511,7 @@ class _OpticSuitHomePageWidgetState extends State<OpticSuitHomePageWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: Color(0xFFF5F6F8),
         body: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -515,7 +519,7 @@ class _OpticSuitHomePageWidgetState extends State<OpticSuitHomePageWidget> {
           children: [
             Container(
               decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
+                color: Colors.white,
                 shape: BoxShape.rectangle,
               ),
               child: Column(
@@ -638,8 +642,7 @@ class _OpticSuitHomePageWidgetState extends State<OpticSuitHomePageWidget> {
                             children: [
                               Container(
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
+                                  color: Colors.white,
                                   shape: BoxShape.rectangle,
                                 ),
                                 child: Padding(
@@ -684,7 +687,7 @@ class _OpticSuitHomePageWidgetState extends State<OpticSuitHomePageWidget> {
                                                                   .fontStyle,
                                                         ),
                                                         color:
-                                                            Color(0xFF6B7280),
+                                                            Color(0xFF757575),
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
@@ -722,7 +725,7 @@ class _OpticSuitHomePageWidgetState extends State<OpticSuitHomePageWidget> {
                                                                   .fontStyle,
                                                         ),
                                                         color:
-                                                            Color(0xFF1F2937),
+                                                            Color(0xFF222222),
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.w600,
@@ -758,16 +761,7 @@ class _OpticSuitHomePageWidgetState extends State<OpticSuitHomePageWidget> {
                                     child: Container(
                                       height: 200.0,
                                       decoration: BoxDecoration(
-                                        gradient: LinearGradient(
-                                          colors: [
-                                            Color(0xFF1F3A87),
-                                            Color(0xFF3B82F6)
-                                          ],
-                                          stops: [0.0, 1.0],
-                                          begin:
-                                              AlignmentDirectional(-1.0, 0.0),
-                                          end: AlignmentDirectional(1.0, 0),
-                                        ),
+                                        color: Colors.white,
                                         borderRadius:
                                             BorderRadius.circular(12.0),
                                         shape: BoxShape.rectangle,
@@ -858,13 +852,13 @@ class _OpticSuitHomePageWidgetState extends State<OpticSuitHomePageWidget> {
                                                       ),
                                                     ),
                                                     Text(
-                                                      'Summer Premium\nCollection 2024',
+                                                      'Summer Premium\nCollection 2026',
                                                       style: FlutterFlowTheme
                                                               .of(context)
                                                           .headlineSmall
                                                           .override(
                                                             font: GoogleFonts
-                                                                .inter(
+                                                                .poppins(
                                                               fontWeight:
                                                                   FontWeight
                                                                       .bold,
@@ -873,6 +867,8 @@ class _OpticSuitHomePageWidgetState extends State<OpticSuitHomePageWidget> {
                                                                   .headlineSmall
                                                                   .fontStyle,
                                                             ),
+                                                            color: Color(
+                                                                0xFF222222),
                                                             letterSpacing: 0.0,
                                                             fontWeight:
                                                                 FontWeight.bold,
@@ -882,6 +878,69 @@ class _OpticSuitHomePageWidgetState extends State<OpticSuitHomePageWidget> {
                                                                     .headlineSmall
                                                                     .fontStyle,
                                                           ),
+                                                    ),
+                                                    FFButtonWidget(
+                                                      onPressed: () async {
+                                                        logFirebaseEvent(
+                                                            'OPTIC_SUIT_HOME_PAGE_PAGE_Button_ON_TAP');
+                                                        logFirebaseEvent(
+                                                            'Button_navigate_to');
+
+                                                        context.pushNamed(
+                                                            ShopWidget
+                                                                .routeName);
+                                                      },
+                                                      text: 'Shop Now',
+                                                      options: FFButtonOptions(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        iconPadding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        color:
+                                                            Color(0xFF1F3A87),
+                                                        textStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .override(
+                                                                  font: GoogleFonts
+                                                                      .poppins(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleSmall
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleSmall
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  color: Colors
+                                                                      .white,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .fontStyle,
+                                                                ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(12.0),
+                                                      ),
                                                     ),
                                                   ],
                                                 ),
@@ -893,6 +952,320 @@ class _OpticSuitHomePageWidgetState extends State<OpticSuitHomePageWidget> {
                                     ),
                                   ),
                                 ),
+                              ),
+                              Column(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    (FFMainAxisAlignment.start).flutterValue,
+                                crossAxisAlignment:
+                                    (FFCrossAxisAlignment.center).flutterValue,
+                                textBaseline: TextBaseline.alphabetic,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        24.0, 0.0, 24.0, 0.0),
+                                    child: Container(
+                                      child: Text(
+                                        'Shop by Gender',
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleMedium
+                                            .override(
+                                              font: GoogleFonts.poppins(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleMedium
+                                                        .fontStyle,
+                                              ),
+                                              color: Color(0xFF222222),
+                                              letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMedium
+                                                      .fontStyle,
+                                            ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        24.0, 0.0, 24.0, 0.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          (FFMainAxisAlignment.start)
+                                              .flutterValue,
+                                      crossAxisAlignment:
+                                          (FFCrossAxisAlignment.center)
+                                              .flutterValue,
+                                      textBaseline: TextBaseline.alphabetic,
+                                      children: [
+                                        Expanded(
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  blurRadius: 6.0,
+                                                  color: Color(0x10000000),
+                                                  offset: Offset(
+                                                    0.0,
+                                                    2.0,
+                                                  ),
+                                                )
+                                              ],
+                                              borderRadius:
+                                                  BorderRadius.circular(14.0),
+                                              border: Border.all(
+                                                color: Color(0xFFE5E7EB),
+                                                width: 1.0,
+                                              ),
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsets.all(10.0),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    (FFMainAxisAlignment.start)
+                                                        .flutterValue,
+                                                crossAxisAlignment:
+                                                    (FFCrossAxisAlignment
+                                                            .center)
+                                                        .flutterValue,
+                                                textBaseline:
+                                                    TextBaseline.alphabetic,
+                                                children: [
+                                                  CachedNetworkImage(
+                                                    fadeInDuration: Duration(
+                                                        milliseconds: 500),
+                                                    fadeOutDuration: Duration(
+                                                        milliseconds: 500),
+                                                    imageUrl:
+                                                        'https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=500&q=80',
+                                                    width: double.infinity,
+                                                    height: 92.0,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                  Text(
+                                                    'Men',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .poppins(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          color:
+                                                              Color(0xFF222222),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                  ),
+                                                ].divide(SizedBox(height: 8.0)),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  blurRadius: 6.0,
+                                                  color: Color(0x10000000),
+                                                  offset: Offset(
+                                                    0.0,
+                                                    2.0,
+                                                  ),
+                                                )
+                                              ],
+                                              borderRadius:
+                                                  BorderRadius.circular(14.0),
+                                              border: Border.all(
+                                                color: Color(0xFFE5E7EB),
+                                                width: 1.0,
+                                              ),
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsets.all(10.0),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    (FFMainAxisAlignment.start)
+                                                        .flutterValue,
+                                                crossAxisAlignment:
+                                                    (FFCrossAxisAlignment
+                                                            .center)
+                                                        .flutterValue,
+                                                textBaseline:
+                                                    TextBaseline.alphabetic,
+                                                children: [
+                                                  CachedNetworkImage(
+                                                    fadeInDuration: Duration(
+                                                        milliseconds: 500),
+                                                    fadeOutDuration: Duration(
+                                                        milliseconds: 500),
+                                                    imageUrl:
+                                                        'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=500&q=80',
+                                                    width: double.infinity,
+                                                    height: 92.0,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                  Text(
+                                                    'Women',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .poppins(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          color:
+                                                              Color(0xFF222222),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                  ),
+                                                ].divide(SizedBox(height: 8.0)),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  blurRadius: 6.0,
+                                                  color: Color(0x10000000),
+                                                  offset: Offset(
+                                                    0.0,
+                                                    2.0,
+                                                  ),
+                                                )
+                                              ],
+                                              borderRadius:
+                                                  BorderRadius.circular(14.0),
+                                              border: Border.all(
+                                                color: Color(0xFFE5E7EB),
+                                                width: 1.0,
+                                              ),
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsets.all(10.0),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    (FFMainAxisAlignment.start)
+                                                        .flutterValue,
+                                                crossAxisAlignment:
+                                                    (FFCrossAxisAlignment
+                                                            .center)
+                                                        .flutterValue,
+                                                textBaseline:
+                                                    TextBaseline.alphabetic,
+                                                children: [
+                                                  CachedNetworkImage(
+                                                    fadeInDuration: Duration(
+                                                        milliseconds: 500),
+                                                    fadeOutDuration: Duration(
+                                                        milliseconds: 500),
+                                                    imageUrl:
+                                                        'https://images.unsplash.com/photo-1503919005314-30d93d07d823?auto=format&fit=crop&w=500&q=80',
+                                                    width: double.infinity,
+                                                    height: 92.0,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                  Text(
+                                                    'Kids',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .poppins(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          color:
+                                                              Color(0xFF222222),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                  ),
+                                                ].divide(SizedBox(height: 8.0)),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ].divide(SizedBox(width: 10.0)),
+                                    ),
+                                  ),
+                                ].divide(SizedBox(height: 16.0)),
                               ),
                               Column(
                                 mainAxisSize: MainAxisSize.min,
@@ -915,7 +1288,7 @@ class _OpticSuitHomePageWidgetState extends State<OpticSuitHomePageWidget> {
                                                         .titleMedium
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFF1F2937),
+                                              color: Color(0xFF222222),
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
                                               fontStyle:
@@ -1072,7 +1445,7 @@ class _OpticSuitHomePageWidgetState extends State<OpticSuitHomePageWidget> {
                                                             .titleMedium
                                                             .fontStyle,
                                                   ),
-                                                  color: Color(0xFF1F2937),
+                                                  color: Color(0xFF222222),
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
                                                   fontStyle:
@@ -1189,13 +1562,960 @@ class _OpticSuitHomePageWidgetState extends State<OpticSuitHomePageWidget> {
                                   ),
                                 ].divide(SizedBox(height: 16.0)),
                               ),
+                              Column(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    (FFMainAxisAlignment.start).flutterValue,
+                                crossAxisAlignment:
+                                    (FFCrossAxisAlignment.stretch).flutterValue,
+                                textBaseline: TextBaseline.alphabetic,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        24.0, 0.0, 24.0, 0.0),
+                                    child: Container(
+                                      child: Text(
+                                        'New Arrivals',
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleMedium
+                                            .override(
+                                              font: GoogleFonts.poppins(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleMedium
+                                                        .fontStyle,
+                                              ),
+                                              color: Color(0xFF222222),
+                                              letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMedium
+                                                      .fontStyle,
+                                            ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        24.0, 0.0, 24.0, 0.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          (FFMainAxisAlignment.start)
+                                              .flutterValue,
+                                      crossAxisAlignment:
+                                          (FFCrossAxisAlignment.center)
+                                              .flutterValue,
+                                      textBaseline: TextBaseline.alphabetic,
+                                      children: [
+                                        Expanded(
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
+                                              border: Border.all(
+                                                color: Color(0xFFE5E7EB),
+                                                width: 1.0,
+                                              ),
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsets.all(14.0),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    (FFMainAxisAlignment.start)
+                                                        .flutterValue,
+                                                crossAxisAlignment:
+                                                    (FFCrossAxisAlignment.start)
+                                                        .flutterValue,
+                                                textBaseline:
+                                                    TextBaseline.alphabetic,
+                                                children: [
+                                                  Text(
+                                                    'NEW',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelSmall
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .poppins(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmall
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmall
+                                                                    .fontStyle,
+                                                          ),
+                                                          color:
+                                                              Color(0xFF1F3A87),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelSmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelSmall
+                                                                  .fontStyle,
+                                                        ),
+                                                  ),
+                                                  Text(
+                                                    'Explore fresh eyewear styles',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .poppins(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          color:
+                                                              Color(0xFF222222),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                  ),
+                                                  Text(
+                                                    'Discover the latest collection',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodySmall
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .poppins(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodySmall
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodySmall
+                                                                    .fontStyle,
+                                                          ),
+                                                          color:
+                                                              Color(0xFF757575),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .fontStyle,
+                                                        ),
+                                                  ),
+                                                ].divide(SizedBox(height: 6.0)),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
+                                              border: Border.all(
+                                                color: Color(0xFFE5E7EB),
+                                                width: 1.0,
+                                              ),
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsets.all(14.0),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    (FFMainAxisAlignment.start)
+                                                        .flutterValue,
+                                                crossAxisAlignment:
+                                                    (FFCrossAxisAlignment.start)
+                                                        .flutterValue,
+                                                textBaseline:
+                                                    TextBaseline.alphabetic,
+                                                children: [
+                                                  Text(
+                                                    'NEW',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelSmall
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .poppins(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmall
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmall
+                                                                    .fontStyle,
+                                                          ),
+                                                          color:
+                                                              Color(0xFF1F3A87),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelSmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelSmall
+                                                                  .fontStyle,
+                                                        ),
+                                                  ),
+                                                  Text(
+                                                    'Find your next favourite pair',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .poppins(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          color:
+                                                              Color(0xFF222222),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                  ),
+                                                  Text(
+                                                    'Shop the new arrivals',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodySmall
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .poppins(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodySmall
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodySmall
+                                                                    .fontStyle,
+                                                          ),
+                                                          color:
+                                                              Color(0xFF757575),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .fontStyle,
+                                                        ),
+                                                  ),
+                                                ].divide(SizedBox(height: 6.0)),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ].divide(SizedBox(width: 10.0)),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        24.0, 0.0, 24.0, 0.0),
+                                    child: Container(
+                                      child: Text(
+                                        'Shop by Collection',
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleMedium
+                                            .override(
+                                              font: GoogleFonts.poppins(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleMedium
+                                                        .fontStyle,
+                                              ),
+                                              color: Color(0xFF222222),
+                                              letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMedium
+                                                      .fontStyle,
+                                            ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        24.0, 0.0, 24.0, 0.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          (FFMainAxisAlignment.start)
+                                              .flutterValue,
+                                      crossAxisAlignment:
+                                          (FFCrossAxisAlignment.center)
+                                              .flutterValue,
+                                      textBaseline: TextBaseline.alphabetic,
+                                      children: [
+                                        Expanded(
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
+                                              border: Border.all(
+                                                color: Color(0xFFE5E7EB),
+                                                width: 1.0,
+                                              ),
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsets.all(14.0),
+                                              child: Text(
+                                                'Budget Collection',
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      font: GoogleFonts.poppins(
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                                      color: Color(0xFF222222),
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
+                                              border: Border.all(
+                                                color: Color(0xFFE5E7EB),
+                                                width: 1.0,
+                                              ),
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsets.all(14.0),
+                                              child: Text(
+                                                'Classic Collection',
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      font: GoogleFonts.poppins(
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                                      color: Color(0xFF222222),
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
+                                              border: Border.all(
+                                                color: Color(0xFFE5E7EB),
+                                                width: 1.0,
+                                              ),
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsets.all(14.0),
+                                              child: Text(
+                                                'Premium Collection',
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      font: GoogleFonts.poppins(
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                                      color: Color(0xFF222222),
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ].divide(SizedBox(width: 8.0)),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        24.0, 0.0, 24.0, 0.0),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius:
+                                            BorderRadius.circular(16.0),
+                                        border: Border.all(
+                                          color: Color(0xFFE5E7EB),
+                                          width: 1.0,
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsets.all(18.0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              (FFMainAxisAlignment.start)
+                                                  .flutterValue,
+                                          crossAxisAlignment:
+                                              (FFCrossAxisAlignment.stretch)
+                                                  .flutterValue,
+                                          textBaseline: TextBaseline.alphabetic,
+                                          children: [
+                                            Icon(
+                                              Icons.visibility_rounded,
+                                              color: Color(0xFF1F3A87),
+                                              size: 28.0,
+                                            ),
+                                            Text(
+                                              'Professional Eye Care',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .titleMedium
+                                                  .override(
+                                                    font: GoogleFonts.poppins(
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleMedium
+                                                              .fontStyle,
+                                                    ),
+                                                    color: Color(0xFF222222),
+                                                    letterSpacing: 0.0,
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleMedium
+                                                            .fontStyle,
+                                                  ),
+                                            ),
+                                            Text(
+                                              'Book an eye test with our care team.',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodySmall
+                                                  .override(
+                                                    font: GoogleFonts.poppins(
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodySmall
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodySmall
+                                                              .fontStyle,
+                                                    ),
+                                                    color: Color(0xFF757575),
+                                                    letterSpacing: 0.0,
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodySmall
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodySmall
+                                                            .fontStyle,
+                                                  ),
+                                            ),
+                                            FFButtonWidget(
+                                              onPressed: () async {
+                                                logFirebaseEvent(
+                                                    'OPTIC_SUIT_HOME_PAGE_PAGE_Button_ON_TAP');
+                                                logFirebaseEvent(
+                                                    'Button_navigate_to');
+
+                                                context.pushNamed(
+                                                    BookeyetestpageWidget
+                                                        .routeName);
+                                              },
+                                              text: 'Book Now',
+                                              options: FFButtonOptions(
+                                                width: double.infinity,
+                                                height: 48.0,
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 0.0),
+                                                iconPadding:
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
+                                                color: Color(0xFF1F3A87),
+                                                textStyle: FlutterFlowTheme.of(
+                                                        context)
+                                                    .titleSmall
+                                                    .override(
+                                                      font: GoogleFonts.poppins(
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .fontStyle,
+                                                      ),
+                                                      color: Colors.white,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .fontStyle,
+                                                    ),
+                                                borderRadius:
+                                                    BorderRadius.circular(12.0),
+                                              ),
+                                            ),
+                                          ].divide(SizedBox(height: 12.0)),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        24.0, 0.0, 24.0, 0.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          (FFMainAxisAlignment.start)
+                                              .flutterValue,
+                                      crossAxisAlignment:
+                                          (FFCrossAxisAlignment.center)
+                                              .flutterValue,
+                                      textBaseline: TextBaseline.alphabetic,
+                                      children: [
+                                        Expanded(
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
+                                              border: Border.all(
+                                                color: Color(0xFFE5E7EB),
+                                                width: 1.0,
+                                              ),
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsets.all(14.0),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    (FFMainAxisAlignment.start)
+                                                        .flutterValue,
+                                                crossAxisAlignment:
+                                                    (FFCrossAxisAlignment.start)
+                                                        .flutterValue,
+                                                textBaseline:
+                                                    TextBaseline.alphabetic,
+                                                children: [
+                                                  Text(
+                                                    '★★★★★',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .titleSmall
+                                                        .override(
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontStyle,
+                                                          ),
+                                                          color:
+                                                              Color(0xFFF5B301),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontStyle,
+                                                        ),
+                                                  ),
+                                                  Text(
+                                                    '“Comfortable frames and great service.”',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodySmall
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .poppins(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodySmall
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodySmall
+                                                                    .fontStyle,
+                                                          ),
+                                                          color:
+                                                              Color(0xFF333333),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .fontStyle,
+                                                        ),
+                                                  ),
+                                                  Text(
+                                                    'Optic Suit customer',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelSmall
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .poppins(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmall
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmall
+                                                                    .fontStyle,
+                                                          ),
+                                                          color:
+                                                              Color(0xFF757575),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelSmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelSmall
+                                                                  .fontStyle,
+                                                        ),
+                                                  ),
+                                                ].divide(SizedBox(height: 8.0)),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
+                                              border: Border.all(
+                                                color: Color(0xFFE5E7EB),
+                                                width: 1.0,
+                                              ),
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsets.all(14.0),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    (FFMainAxisAlignment.start)
+                                                        .flutterValue,
+                                                crossAxisAlignment:
+                                                    (FFCrossAxisAlignment.start)
+                                                        .flutterValue,
+                                                textBaseline:
+                                                    TextBaseline.alphabetic,
+                                                children: [
+                                                  Text(
+                                                    '★★★★★',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .titleSmall
+                                                        .override(
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontStyle,
+                                                          ),
+                                                          color:
+                                                              Color(0xFFF5B301),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontStyle,
+                                                        ),
+                                                  ),
+                                                  Text(
+                                                    '“Easy to find the right style.”',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodySmall
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .poppins(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodySmall
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodySmall
+                                                                    .fontStyle,
+                                                          ),
+                                                          color:
+                                                              Color(0xFF333333),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .fontStyle,
+                                                        ),
+                                                  ),
+                                                  Text(
+                                                    'Optic Suit customer',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelSmall
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .poppins(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmall
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmall
+                                                                    .fontStyle,
+                                                          ),
+                                                          color:
+                                                              Color(0xFF757575),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelSmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelSmall
+                                                                  .fontStyle,
+                                                        ),
+                                                  ),
+                                                ].divide(SizedBox(height: 8.0)),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ].divide(SizedBox(width: 10.0)),
+                                    ),
+                                  ),
+                                ].divide(SizedBox(height: 16.0)),
+                              ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
                                 child: Container(
                                   child: Container(
                                     decoration: BoxDecoration(
-                                      color: Color(0xFFE9EFEA),
+                                      color: Colors.white,
                                       borderRadius: BorderRadius.circular(12.0),
                                       shape: BoxShape.rectangle,
                                       border: Border.all(
@@ -1264,7 +2584,7 @@ class _OpticSuitHomePageWidgetState extends State<OpticSuitHomePageWidget> {
                                                                   .fontStyle,
                                                         ),
                                                         color:
-                                                            Color(0xFF1F2937),
+                                                            Color(0xFF222222),
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.w800,
@@ -1295,7 +2615,7 @@ class _OpticSuitHomePageWidgetState extends State<OpticSuitHomePageWidget> {
                                                                   .fontStyle,
                                                         ),
                                                         color:
-                                                            Color(0xFF6B7280),
+                                                            Color(0xFF757575),
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
@@ -1309,6 +2629,62 @@ class _OpticSuitHomePageWidgetState extends State<OpticSuitHomePageWidget> {
                                                                 .fontStyle,
                                                         lineHeight: 1.4,
                                                       ),
+                                                ),
+                                                FFButtonWidget(
+                                                  onPressed: () async {
+                                                    logFirebaseEvent(
+                                                        'OPTIC_SUIT_HOME_PAGE_PAGE_Button_ON_TAP');
+                                                    logFirebaseEvent(
+                                                        'Button_navigate_to');
+
+                                                    context.pushNamed(
+                                                        ShopWidget.routeName);
+                                                  },
+                                                  text: 'Shop Now',
+                                                  options: FFButtonOptions(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: Color(0xFF1F3A87),
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .poppins(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontStyle,
+                                                          ),
+                                                          color: Colors.white,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontStyle,
+                                                        ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            12.0),
+                                                  ),
                                                 ),
                                               ].divide(SizedBox(height: 4.0)),
                                             ),
@@ -1331,49 +2707,27 @@ class _OpticSuitHomePageWidgetState extends State<OpticSuitHomePageWidget> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: [
-                                      InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          logFirebaseEvent(
-                                              'OPTIC_SUIT_HOME_PAGE_PAGE_Text_ON_TAP');
-                                          logFirebaseEvent('Text_navigate_to');
-
-                                          context.pushNamed(
-                                            ProductDeatilsWidget.routeName,
-                                            queryParameters: {
-                                              'productId': serializeParam(
-                                                0,
-                                                ParamType.int,
-                                              ),
-                                            }.withoutNulls,
-                                          );
-                                        },
-                                        child: Text(
-                                          'Best Sellers',
-                                          style: FlutterFlowTheme.of(context)
-                                              .titleMedium
-                                              .override(
-                                                font: GoogleFonts.inter(
-                                                  fontWeight: FontWeight.w600,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleMedium
-                                                          .fontStyle,
-                                                ),
-                                                color: Color(0xFF1F2937),
-                                                letterSpacing: 0.0,
+                                      Text(
+                                        'Best Sellers',
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleMedium
+                                            .override(
+                                              font: GoogleFonts.inter(
                                                 fontWeight: FontWeight.w600,
                                                 fontStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .titleMedium
                                                         .fontStyle,
-                                                lineHeight: 1.4,
                                               ),
-                                        ),
+                                              color: Color(0xFF222222),
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w600,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMedium
+                                                      .fontStyle,
+                                              lineHeight: 1.4,
+                                            ),
                                       ),
                                       Text(
                                         'View All',
@@ -1484,38 +2838,11 @@ class _OpticSuitHomePageWidgetState extends State<OpticSuitHomePageWidget> {
                                                     },
                                                     child: wrapWithModel(
                                                       model: _model
-                                                          .productCardModel1,
+                                                          .productCardModel,
                                                       updateCallback: () =>
                                                           safeSetState(() {}),
                                                       child:
                                                           ProductCardWidget(),
-                                                    ),
-                                                  ),
-                                                  wrapWithModel(
-                                                    model: _model
-                                                        .productCardModel2,
-                                                    updateCallback: () =>
-                                                        safeSetState(() {}),
-                                                    child: ProductCardWidget(
-                                                      favorite: false,
-                                                    ),
-                                                  ),
-                                                  wrapWithModel(
-                                                    model: _model
-                                                        .productCardModel3,
-                                                    updateCallback: () =>
-                                                        safeSetState(() {}),
-                                                    child: ProductCardWidget(
-                                                      favorite: false,
-                                                    ),
-                                                  ),
-                                                  wrapWithModel(
-                                                    model: _model
-                                                        .productCardModel4,
-                                                    updateCallback: () =>
-                                                        safeSetState(() {}),
-                                                    child: ProductCardWidget(
-                                                      favorite: false,
                                                     ),
                                                   ),
                                                 ],
@@ -1533,7 +2860,7 @@ class _OpticSuitHomePageWidgetState extends State<OpticSuitHomePageWidget> {
                                 child: Container(
                                   child: Container(
                                     decoration: BoxDecoration(
-                                      color: Color(0xFFE9EFEA),
+                                      color: Colors.white,
                                       borderRadius: BorderRadius.circular(12.0),
                                       shape: BoxShape.rectangle,
                                     ),
@@ -1617,7 +2944,7 @@ class _OpticSuitHomePageWidgetState extends State<OpticSuitHomePageWidget> {
                                                                     .fontStyle,
                                                               ),
                                                               color: Color(
-                                                                  0xFF1F2937),
+                                                                  0xFF222222),
                                                               letterSpacing:
                                                                   0.0,
                                                               fontWeight:
@@ -1675,7 +3002,7 @@ class _OpticSuitHomePageWidgetState extends State<OpticSuitHomePageWidget> {
                                                                     .fontStyle,
                                                               ),
                                                               color: Color(
-                                                                  0xFF1F2937),
+                                                                  0xFF222222),
                                                               letterSpacing:
                                                                   0.0,
                                                               fontWeight:
@@ -1754,7 +3081,7 @@ class _OpticSuitHomePageWidgetState extends State<OpticSuitHomePageWidget> {
                                                                       .fontStyle,
                                                                 ),
                                                                 color: Color(
-                                                                    0xFF1F2937),
+                                                                    0xFF222222),
                                                                 letterSpacing:
                                                                     0.0,
                                                                 fontWeight: FlutterFlowTheme.of(
@@ -1795,7 +3122,7 @@ class _OpticSuitHomePageWidgetState extends State<OpticSuitHomePageWidget> {
               alignment: AlignmentDirectional(0.0, 1.0),
               child: Container(
                 decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                  color: Colors.white,
                   shape: BoxShape.rectangle,
                 ),
                 child: Column(

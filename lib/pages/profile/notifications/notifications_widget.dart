@@ -1,10 +1,15 @@
 import '/components/filter_chip2_widget.dart';
 import '/components/notification_card_widget.dart';
+import '/flutter_flow/ff_builtin_enums.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'notifications_model.dart';
 export 'notifications_model.dart';
 
@@ -267,351 +272,374 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFF0F0F0),
-        body: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              height: 56.0,
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
-                shape: BoxShape.rectangle,
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                    child: Container(
+        backgroundColor: Color(0xFFF5F6F8),
+        body: SafeArea(
+          top: true,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: (FFMainAxisAlignment.start).flutterValue,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Container(
+                height: 60.0,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.rectangle,
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                       child: Container(
-                        height: 55.0,
-                        alignment: AlignmentDirectional(0.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.arrow_back_rounded,
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  size: 24.0,
-                                ),
-                                Text(
-                                  'Notifications',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        font: GoogleFonts.inter(
+                        child: Container(
+                          height: 60.0,
+                          alignment: AlignmentDirectional(0.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  FlutterFlowIconButton(
+                                    buttonSize: 40.0,
+                                    icon: Icon(
+                                      Icons.arrow_back_rounded,
+                                      color: Color(0xFF1F3A87),
+                                      size: 22.0,
+                                    ),
+                                    onPressed: () async {
+                                      logFirebaseEvent(
+                                          'NOTIFICATIONS_PAGE_IconButton_ON_TAP');
+                                      logFirebaseEvent(
+                                          'IconButton_navigate_to');
+
+                                      context
+                                          .pushNamed(SettingsWidget.routeName);
+                                    },
+                                  ),
+                                  Text(
+                                    'Notifications',
+                                    style: FlutterFlowTheme.of(context)
+                                        .titleMedium
+                                        .override(
+                                          font: GoogleFonts.inter(
+                                            fontWeight: FontWeight.w600,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleMedium
+                                                    .fontStyle,
+                                          ),
+                                          color: Color(0xFF1F3A87),
+                                          fontSize: 18.0,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
                                           fontStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .bodyMedium
+                                                  .titleMedium
                                                   .fontStyle,
+                                          lineHeight: 1.4,
                                         ),
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        fontSize: 18.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w600,
+                                  ),
+                                ].divide(SizedBox(width: 16.0)),
+                              ),
+                              Text(
+                                'Mark all as read',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FontWeight.w500,
                                         fontStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .fontStyle,
-                                        lineHeight: 1.4,
                                       ),
-                                ),
-                              ].divide(SizedBox(width: 16.0)),
-                            ),
-                            Text(
-                              'Mark all as read',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    font: GoogleFonts.inter(
+                                      color: Color(0xFF1F3A87),
+                                      fontSize: 12.0,
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
                                       fontStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .fontStyle,
+                                      lineHeight: 1.4,
                                     ),
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    fontSize: 12.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontStyle,
-                                    lineHeight: 1.4,
-                                  ),
-                            ),
-                          ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  Container(
-                    height: 1.0,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).alternate,
-                      shape: BoxShape.rectangle,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SingleChildScrollView(
-              primary: false,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Container(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              wrapWithModel(
-                                model: _model.filterChipModel1,
-                                updateCallback: () => safeSetState(() {}),
-                                child: FilterChip2Widget(
-                                  selected: true,
-                                  label: 'All',
-                                ),
-                              ),
-                              InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  logFirebaseEvent(
-                                      'NOTIFICATIONS_PAGE_FilterChip_ON_TAP');
-                                  logFirebaseEvent('FilterChip_navigate_to');
-
-                                  context
-                                      .pushNamed(MyOrdersPageWidget.routeName);
-                                },
-                                child: wrapWithModel(
-                                  model: _model.filterChipModel2,
-                                  updateCallback: () => safeSetState(() {}),
-                                  child: FilterChip2Widget(
-                                    selected: false,
-                                    label: 'Orders',
-                                  ),
-                                ),
-                              ),
-                              InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  logFirebaseEvent(
-                                      'NOTIFICATIONS_PAGE_FilterChip_ON_TAP');
-                                  logFirebaseEvent('FilterChip_navigate_to');
-
-                                  context
-                                      .pushNamed(OffersWalletWidget.routeName);
-                                },
-                                child: wrapWithModel(
-                                  model: _model.filterChipModel3,
-                                  updateCallback: () => safeSetState(() {}),
-                                  child: FilterChip2Widget(
-                                    selected: false,
-                                    label: 'Offers',
-                                  ),
-                                ),
-                              ),
-                            ].divide(SizedBox(width: 8.0)),
-                          ),
-                          Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 12.0),
-                                child: Container(
-                                  child: Text(
-                                    'Today',
-                                    style: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .override(
-                                          font: GoogleFonts.inter(
-                                            fontWeight: FontWeight.w600,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleMedium
-                                                    .fontStyle,
-                                          ),
-                                          color: Color(0xFF222222),
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w600,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleMedium
-                                                  .fontStyle,
-                                          lineHeight: 1.4,
-                                        ),
-                                  ),
-                                ),
-                              ),
-                              wrapWithModel(
-                                model: _model.notificationCardModel1,
-                                updateCallback: () => safeSetState(() {}),
-                                child: NotificationCardWidget(
-                                  icon: Icon(
-                                    Icons.shopping_bag_rounded,
-                                    color: Color(0xFF1F3A87),
-                                    size: 22.0,
-                                  ),
-                                  title: 'Order Confirmed',
-                                  unread: true,
-                                  desc: 'Your order has been confirmed.',
-                                  time: '10 min ago',
-                                ),
-                              ),
-                              wrapWithModel(
-                                model: _model.notificationCardModel2,
-                                updateCallback: () => safeSetState(() {}),
-                                child: NotificationCardWidget(
-                                  icon: Icon(
-                                    Icons.local_shipping_rounded,
-                                    color: Color(0xFF1F3A87),
-                                    size: 22.0,
-                                  ),
-                                  title: 'Order Shipped',
-                                  unread: true,
-                                  desc: 'Your order is on its way.',
-                                  time: '2 hours ago',
-                                ),
-                              ),
-                              wrapWithModel(
-                                model: _model.notificationCardModel3,
-                                updateCallback: () => safeSetState(() {}),
-                                child: NotificationCardWidget(
-                                  icon: Icon(
-                                    Icons.local_offer_rounded,
-                                    color: Color(0xFF1F3A87),
-                                    size: 22.0,
-                                  ),
-                                  title: 'Special Offer',
-                                  unread: false,
-                                  desc: 'Check out our latest offers.',
-                                  time: '5 hours ago',
-                                ),
-                              ),
-                            ],
-                          ),
-                          Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 12.0),
-                                child: Container(
-                                  child: Text(
-                                    'Earlier',
-                                    style: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .override(
-                                          font: GoogleFonts.inter(
-                                            fontWeight: FontWeight.w600,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleMedium
-                                                    .fontStyle,
-                                          ),
-                                          color: Color(0xFF222222),
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w600,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleMedium
-                                                  .fontStyle,
-                                          lineHeight: 1.4,
-                                        ),
-                                  ),
-                                ),
-                              ),
-                              wrapWithModel(
-                                model: _model.notificationCardModel4,
-                                updateCallback: () => safeSetState(() {}),
-                                child: NotificationCardWidget(
-                                  icon: Icon(
-                                    Icons.wallet_giftcard_rounded,
-                                    color: Color(0xFF1F3A87),
-                                    size: 22.0,
-                                  ),
-                                  title: 'Flash Sale',
-                                  unread: false,
-                                  desc:
-                                      'Get 20% off on all Ray-Ban collection today!',
-                                  time: 'Yesterday, 4:30 PM',
-                                ),
-                              ),
-                              wrapWithModel(
-                                model: _model.notificationCardModel5,
-                                updateCallback: () => safeSetState(() {}),
-                                child: NotificationCardWidget(
-                                  icon: Icon(
-                                    Icons.account_circle_rounded,
-                                    color: Color(0xFF1F3A87),
-                                    size: 22.0,
-                                  ),
-                                  title: 'Account Update',
-                                  unread: false,
-                                  desc:
-                                      'Your password has been changed successfully.',
-                                  time: 'Oct 12, 10:15 AM',
-                                ),
-                              ),
-                              wrapWithModel(
-                                model: _model.notificationCardModel6,
-                                updateCallback: () => safeSetState(() {}),
-                                child: NotificationCardWidget(
-                                  icon: Icon(
-                                    Icons.check_circle_rounded,
-                                    color: Color(0xFF1F3A87),
-                                    size: 22.0,
-                                  ),
-                                  title: 'Order Delivered',
-                                  unread: false,
-                                  desc:
-                                      'Order #AL1092 has been delivered. Rate your product!',
-                                  time: 'Oct 10, 02:20 PM',
-                                ),
-                              ),
-                            ],
-                          ),
-                        ].divide(SizedBox(height: 24.0)),
+                    Container(
+                      height: 1.0,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).alternate,
+                        shape: BoxShape.rectangle,
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+              Expanded(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Container(
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            16.0, 16.0, 16.0, 8.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            wrapWithModel(
+                              model: _model.filterChipModel1,
+                              updateCallback: () => safeSetState(() {}),
+                              child: FilterChip2Widget(
+                                selected: true,
+                                label: 'All',
+                              ),
+                            ),
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                logFirebaseEvent(
+                                    'NOTIFICATIONS_PAGE_FilterChip_ON_TAP');
+                                logFirebaseEvent('FilterChip_navigate_to');
+
+                                context.pushNamed(MyOrdersPageWidget.routeName);
+                              },
+                              child: wrapWithModel(
+                                model: _model.filterChipModel2,
+                                updateCallback: () => safeSetState(() {}),
+                                child: FilterChip2Widget(
+                                  selected: false,
+                                  label: 'Orders',
+                                ),
+                              ),
+                            ),
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                logFirebaseEvent(
+                                    'NOTIFICATIONS_PAGE_FilterChip_ON_TAP');
+                                logFirebaseEvent('FilterChip_navigate_to');
+
+                                context.pushNamed(OffersWalletWidget.routeName);
+                              },
+                              child: wrapWithModel(
+                                model: _model.filterChipModel3,
+                                updateCallback: () => safeSetState(() {}),
+                                child: FilterChip2Widget(
+                                  selected: false,
+                                  label: 'Offers',
+                                ),
+                              ),
+                            ),
+                          ].divide(SizedBox(width: 8.0)),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.all(16.0),
+                        child: SingleChildScrollView(
+                          primary: false,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment:
+                                (FFMainAxisAlignment.start).flutterValue,
+                            crossAxisAlignment:
+                                (FFCrossAxisAlignment.stretch).flutterValue,
+                            textBaseline: TextBaseline.alphabetic,
+                            children: [
+                              Column(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 12.0),
+                                    child: Container(
+                                      child: Text(
+                                        'Today',
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleMedium
+                                            .override(
+                                              font: GoogleFonts.inter(
+                                                fontWeight: FontWeight.w600,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleMedium
+                                                        .fontStyle,
+                                              ),
+                                              color: Color(0xFF1F3A87),
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w600,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMedium
+                                                      .fontStyle,
+                                              lineHeight: 1.4,
+                                            ),
+                                      ),
+                                    ),
+                                  ),
+                                  wrapWithModel(
+                                    model: _model.notificationCardModel1,
+                                    updateCallback: () => safeSetState(() {}),
+                                    child: NotificationCardWidget(
+                                      icon: Icon(
+                                        Icons.shopping_bag_rounded,
+                                        color: Color(0xFF1F3A87),
+                                        size: 22.0,
+                                      ),
+                                      title: 'Order Confirmed',
+                                      unread: true,
+                                      desc: 'Your order has been confirmed.',
+                                      time: '10 min ago',
+                                    ),
+                                  ),
+                                  wrapWithModel(
+                                    model: _model.notificationCardModel2,
+                                    updateCallback: () => safeSetState(() {}),
+                                    child: NotificationCardWidget(
+                                      icon: Icon(
+                                        Icons.local_shipping_rounded,
+                                        color: Color(0xFF1F3A87),
+                                        size: 22.0,
+                                      ),
+                                      title: 'Order Shipped',
+                                      unread: true,
+                                      desc: 'Your order is on its way.',
+                                      time: '2 hours ago',
+                                    ),
+                                  ),
+                                  wrapWithModel(
+                                    model: _model.notificationCardModel3,
+                                    updateCallback: () => safeSetState(() {}),
+                                    child: NotificationCardWidget(
+                                      icon: Icon(
+                                        Icons.local_offer_rounded,
+                                        color: Color(0xFF1F3A87),
+                                        size: 22.0,
+                                      ),
+                                      title: 'Special Offer',
+                                      unread: false,
+                                      desc: 'Check out our latest offers.',
+                                      time: '5 hours ago',
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Column(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 12.0),
+                                    child: Container(
+                                      child: Text(
+                                        'Earlier',
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleMedium
+                                            .override(
+                                              font: GoogleFonts.inter(
+                                                fontWeight: FontWeight.w600,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleMedium
+                                                        .fontStyle,
+                                              ),
+                                              color: Color(0xFF1F3A87),
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w600,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMedium
+                                                      .fontStyle,
+                                              lineHeight: 1.4,
+                                            ),
+                                      ),
+                                    ),
+                                  ),
+                                  wrapWithModel(
+                                    model: _model.notificationCardModel4,
+                                    updateCallback: () => safeSetState(() {}),
+                                    child: NotificationCardWidget(
+                                      icon: Icon(
+                                        Icons.wallet_giftcard_rounded,
+                                        color: Color(0xFF1F3A87),
+                                        size: 22.0,
+                                      ),
+                                      title: 'Flash Sale',
+                                      unread: false,
+                                      desc:
+                                          'Get 20% off on all Ray-Ban collection today!',
+                                      time: 'Yesterday, 4:30 PM',
+                                    ),
+                                  ),
+                                  wrapWithModel(
+                                    model: _model.notificationCardModel5,
+                                    updateCallback: () => safeSetState(() {}),
+                                    child: NotificationCardWidget(
+                                      icon: Icon(
+                                        Icons.account_circle_rounded,
+                                        color: Color(0xFF1F3A87),
+                                        size: 22.0,
+                                      ),
+                                      title: 'Account Update',
+                                      unread: false,
+                                      desc:
+                                          'Your password has been changed successfully.',
+                                      time: 'Oct 12, 10:15 AM',
+                                    ),
+                                  ),
+                                  wrapWithModel(
+                                    model: _model.notificationCardModel6,
+                                    updateCallback: () => safeSetState(() {}),
+                                    child: NotificationCardWidget(
+                                      icon: Icon(
+                                        Icons.check_circle_rounded,
+                                        color: Color(0xFF1F3A87),
+                                        size: 22.0,
+                                      ),
+                                      title: 'Order Delivered',
+                                      unread: false,
+                                      desc:
+                                          'Order #AL1092 has been delivered. Rate your product!',
+                                      time: 'Oct 10, 02:20 PM',
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ].divide(SizedBox(height: 24.0)),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

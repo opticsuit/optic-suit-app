@@ -3,8 +3,12 @@ import '/components/policy_section_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'privacy_policy_model.dart';
 export 'privacy_policy_model.dart';
 
@@ -165,80 +169,65 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xFFF5F6F8),
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          iconTheme: IconThemeData(color: Color(0xFF1F3A87)),
+          automaticallyImplyLeading: true,
+          leading: FlutterFlowIconButton(
+            borderRadius: 8.0,
+            buttonSize: 40.0,
+            fillColor: Colors.transparent,
+            icon: Icon(
+              Icons.arrow_back_rounded,
+              color: Color(0xFF1F3A87),
+              size: 24.0,
+            ),
+            onPressed: () async {
+              logFirebaseEvent('PRIVACY_POLICY_PAGE_IconButton_ON_TAP');
+              logFirebaseEvent('IconButton_navigate_back');
+              context.safePop();
+            },
+          ),
+          title: Text(
+            'Privacy Policy',
+            style: FlutterFlowTheme.of(context).titleMedium.override(
+                  font: GoogleFonts.poppins(
+                    fontWeight: FontWeight.w600,
+                    fontStyle:
+                        FlutterFlowTheme.of(context).titleMedium.fontStyle,
+                  ),
+                  color: Color(0xFF1F3A87),
+                  letterSpacing: 0.0,
+                  fontWeight: FontWeight.w600,
+                  fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
+                ),
+          ),
+          actions: [],
+          bottom: PreferredSize(
+            preferredSize: Size.fromHeight(0),
+            child: Container(
+              height: 1.0,
+              decoration: BoxDecoration(
+                color: Color(0xFFE5E7EB),
+              ),
+            ),
+          ),
+          centerTitle: false,
+          toolbarHeight: 60.0,
+          elevation: 0.0,
+        ),
         body: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
-                shape: BoxShape.rectangle,
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 12.0, 20.0, 12.0),
-                    child: Container(
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          FlutterFlowIconButton(
-                            borderRadius: 8.0,
-                            buttonSize: 40.0,
-                            fillColor: Colors.transparent,
-                            icon: Icon(
-                              Icons.arrow_back_rounded,
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              size: 24.0,
-                            ),
-                            onPressed: () {
-                              print('IconButton pressed ...');
-                            },
-                          ),
-                          Text(
-                            'Privacy Policy',
-                            style: FlutterFlowTheme.of(context)
-                                .titleLarge
-                                .override(
-                                  font: GoogleFonts.inter(
-                                    fontWeight: FontWeight.w600,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleLarge
-                                        .fontStyle,
-                                  ),
-                                  color: Color(0xFF1F3A87),
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w600,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .titleLarge
-                                      .fontStyle,
-                                  lineHeight: 1.4,
-                                ),
-                          ),
-                        ].divide(SizedBox(width: 16.0)),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 1.0,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).alternate,
-                      shape: BoxShape.rectangle,
-                    ),
-                  ),
-                ],
-              ),
-            ),
             Expanded(
               flex: 1,
               child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                ),
                 child: SingleChildScrollView(
                   primary: false,
                   child: Column(
@@ -312,10 +301,25 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                                         ),
                                   ),
                                   Expanded(
-                                    child: wrapWithModel(
-                                      model: _model.contactModel,
-                                      updateCallback: () => safeSetState(() {}),
-                                      child: ContactWidget(),
+                                    child: InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        logFirebaseEvent(
+                                            'PRIVACY_POLICY_Container_9gpq3h2a_ON_TAP');
+                                        logFirebaseEvent('CONTACT_navigate_to');
+
+                                        context.pushNamed(
+                                            SettingsWidget.routeName);
+                                      },
+                                      child: wrapWithModel(
+                                        model: _model.contactModel,
+                                        updateCallback: () =>
+                                            safeSetState(() {}),
+                                        child: ContactWidget(),
+                                      ),
                                     ),
                                   ),
                                 ].divide(SizedBox(height: 4.0)),

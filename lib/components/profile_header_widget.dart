@@ -1,9 +1,13 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import '/index.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'profile_header_model.dart';
 export 'profile_header_model.dart';
 
@@ -82,10 +86,11 @@ class _ProfileHeaderWidgetState extends State<ProfileHeaderWidget> {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(12.0),
+        borderRadius: BorderRadius.circular(16.0),
         shape: BoxShape.rectangle,
         border: Border.all(
-          color: Color(0xFF1F3A87),
+          color: Color(0xFFE2E5EA),
+          width: 1.0,
         ),
       ),
       child: Padding(
@@ -96,17 +101,18 @@ class _ProfileHeaderWidgetState extends State<ProfileHeaderWidget> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(9999.0),
-                child: CachedNetworkImage(
-                  fadeInDuration: Duration(milliseconds: 0),
-                  fadeOutDuration: Duration(milliseconds: 0),
-                  imageUrl:
-                      'https://dimg.dreamflow.cloud/v1/image/user%20profile%20photo',
-                  width: 80.0,
-                  height: 80.0,
-                  fit: BoxFit.cover,
-                  alignment: Alignment(0.0, 0.0),
+              AuthUserStreamWidget(
+                builder: (context) => ClipRRect(
+                  borderRadius: BorderRadius.circular(9999.0),
+                  child: CachedNetworkImage(
+                    fadeInDuration: Duration(milliseconds: 0),
+                    fadeOutDuration: Duration(milliseconds: 0),
+                    imageUrl: currentUserPhoto,
+                    width: 72.0,
+                    height: 72.0,
+                    fit: BoxFit.cover,
+                    alignment: Alignment(0.0, 0.0),
+                  ),
                 ),
               ),
               Expanded(
@@ -117,10 +123,7 @@ class _ProfileHeaderWidgetState extends State<ProfileHeaderWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      valueOrDefault<String>(
-                        widget.title,
-                        'shamlida',
-                      ),
+                      widget!.title,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             font: GoogleFonts.inter(
                               fontWeight: FontWeight.w600,
@@ -128,7 +131,7 @@ class _ProfileHeaderWidgetState extends State<ProfileHeaderWidget> {
                                   .bodyMedium
                                   .fontStyle,
                             ),
-                            color: FlutterFlowTheme.of(context).primaryText,
+                            color: Color(0xFF222222),
                             fontSize: 18.0,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.w600,
@@ -139,7 +142,7 @@ class _ProfileHeaderWidgetState extends State<ProfileHeaderWidget> {
                           ),
                     ),
                     Text(
-                      widget.subtitle,
+                      widget!.subtitle,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             font: GoogleFonts.inter(
                               fontWeight: FlutterFlowTheme.of(context)
@@ -149,7 +152,7 @@ class _ProfileHeaderWidgetState extends State<ProfileHeaderWidget> {
                                   .bodyMedium
                                   .fontStyle,
                             ),
-                            color: Color(0x4C272727),
+                            color: Color(0xFF777777),
                             fontSize: 13.0,
                             letterSpacing: 0.0,
                             fontWeight: FlutterFlowTheme.of(context)
@@ -162,7 +165,7 @@ class _ProfileHeaderWidgetState extends State<ProfileHeaderWidget> {
                           ),
                     ),
                     Text(
-                      widget.details,
+                      widget!.details,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             font: GoogleFonts.inter(
                               fontWeight: FlutterFlowTheme.of(context)
@@ -172,7 +175,7 @@ class _ProfileHeaderWidgetState extends State<ProfileHeaderWidget> {
                                   .bodyMedium
                                   .fontStyle,
                             ),
-                            color: Color(0x4C272727),
+                            color: Color(0xFF777777),
                             fontSize: 12.0,
                             letterSpacing: 0.0,
                             fontWeight: FlutterFlowTheme.of(context)

@@ -1,15 +1,20 @@
-import '/components/custom_appbar_widget.dart';
+import '/auth/firebase_auth/auth_util.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import '/index.dart';
 import 'forgot_password_widget.dart' show ForgotPasswordWidget;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class ForgotPasswordModel extends FlutterFlowModel<ForgotPasswordWidget> {
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
-  // Model for customAppbar component.
-  late CustomAppbarModel customAppbarModel;
   // State field(s) for emailAddress widget.
   FocusNode? emailAddressFocusNode;
   TextEditingController? emailAddressTextController;
@@ -28,13 +33,11 @@ class ForgotPasswordModel extends FlutterFlowModel<ForgotPasswordWidget> {
 
   @override
   void initState(BuildContext context) {
-    customAppbarModel = createModel(context, () => CustomAppbarModel());
     emailAddressTextControllerValidator = _emailAddressTextControllerValidator;
   }
 
   @override
   void dispose() {
-    customAppbarModel.dispose();
     emailAddressFocusNode?.dispose();
     emailAddressTextController?.dispose();
   }

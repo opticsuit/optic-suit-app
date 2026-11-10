@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'faq_item_model.dart';
 export 'faq_item_model.dart';
 
@@ -53,7 +56,18 @@ class _FaqItemWidgetState extends State<FaqItemWidget> {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(12.0),
+        boxShadow: [
+          BoxShadow(
+            blurRadius: 6.0,
+            color: Color(0x10000000),
+            offset: Offset(
+              0.0,
+              2.0,
+            ),
+            spreadRadius: 0.0,
+          )
+        ],
+        borderRadius: BorderRadius.circular(14.0),
         shape: BoxShape.rectangle,
         border: Border.all(
           color: Color(0xFFE5E7EB),
@@ -77,7 +91,7 @@ class _FaqItemWidgetState extends State<FaqItemWidget> {
                     flex: 1,
                     child: Text(
                       valueOrDefault<String>(
-                        widget.question,
+                        widget!.question,
                         'How can I track my order?',
                       ),
                       maxLines: 2,
@@ -88,7 +102,7 @@ class _FaqItemWidgetState extends State<FaqItemWidget> {
                                   .bodyMedium
                                   .fontStyle,
                             ),
-                            color: Color(0xFF1A1A1A),
+                            color: Color(0xFF333333),
                             fontSize: 15.0,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.w500,
@@ -108,7 +122,7 @@ class _FaqItemWidgetState extends State<FaqItemWidget> {
                       children: [
                         if (valueOrDefault<bool>(
                           valueOrDefault<bool>(
-                            widget.isOpen,
+                            widget!.isOpen,
                             true,
                           )
                               ? true
@@ -122,7 +136,7 @@ class _FaqItemWidgetState extends State<FaqItemWidget> {
                           ),
                         if (valueOrDefault<bool>(
                           valueOrDefault<bool>(
-                            widget.isOpen,
+                            widget!.isOpen,
                             true,
                           )
                               ? false
@@ -140,7 +154,7 @@ class _FaqItemWidgetState extends State<FaqItemWidget> {
                 ],
               ),
               if (valueOrDefault<bool>(
-                widget.isOpen,
+                widget!.isOpen,
                 true,
               ))
                 Container(
@@ -148,10 +162,10 @@ class _FaqItemWidgetState extends State<FaqItemWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 4.0, 0.0),
                     child: Container(
                       child: Visibility(
-                        visible: widget.isOpen,
+                        visible: widget!.isOpen,
                         child: Text(
                           valueOrDefault<String>(
-                            widget.answer,
+                            widget!.answer,
                             'You can track your order from My Orders → Select Order → Track Order. View your current order status and delivery updates there.',
                           ),
                           style:
@@ -164,7 +178,7 @@ class _FaqItemWidgetState extends State<FaqItemWidget> {
                                           .bodyMedium
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFF6B7280),
+                                    color: Color(0xFF333333),
                                     fontSize: 13.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)

@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'offer_card_model.dart';
 export 'offer_card_model.dart';
 
@@ -54,11 +57,22 @@ class _OfferCardWidgetState extends State<OfferCardWidget> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: FlutterFlowTheme.of(context).secondaryBackground,
-        borderRadius: BorderRadius.circular(12.0),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            blurRadius: 10.0,
+            color: Color(0x12000000),
+            offset: Offset(
+              0.0,
+              3.0,
+            ),
+            spreadRadius: 0.0,
+          )
+        ],
+        borderRadius: BorderRadius.circular(16.0),
         shape: BoxShape.rectangle,
         border: Border.all(
-          color: FlutterFlowTheme.of(context).alternate,
+          color: Color(0xFFE5E7EB),
           width: 1.0,
         ),
       ),
@@ -79,15 +93,15 @@ class _OfferCardWidgetState extends State<OfferCardWidget> {
                     width: 48.0,
                     height: 48.0,
                     decoration: BoxDecoration(
-                      color: Color(0xFFE9EFEA),
-                      borderRadius: BorderRadius.circular(8.0),
+                      color: Color(0xFFF5F6F8),
+                      borderRadius: BorderRadius.circular(24.0),
                       shape: BoxShape.rectangle,
                     ),
                     alignment: AlignmentDirectional(0.0, 0.0),
                     child: Icon(
                       Icons.local_offer_rounded,
                       color: Color(0xFF1F3A87),
-                      size: 24.0,
+                      size: 22.0,
                     ),
                   ),
                   Expanded(
@@ -99,55 +113,53 @@ class _OfferCardWidgetState extends State<OfferCardWidget> {
                       children: [
                         Text(
                           valueOrDefault<String>(
-                            widget.title,
+                            widget!.title,
                             'Flat ₹200 OFF',
                           ),
                           style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
+                              FlutterFlowTheme.of(context).bodyLarge.override(
                                     font: GoogleFonts.inter(
                                       fontWeight: FontWeight.w600,
                                       fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
+                                          .bodyLarge
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFF222222),
+                                    color: Color(0xFF1F3A87),
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
                                     fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
+                                        .bodyLarge
                                         .fontStyle,
                                     lineHeight: 1.4,
                                   ),
                         ),
                         Text(
                           valueOrDefault<String>(
-                            widget.desc,
+                            widget!.desc,
                             'Get ₹200 off on eligible purchases above ₹1999.',
                           ),
                           maxLines: 2,
-                          style: FlutterFlowTheme.of(context)
-                              .bodySmall
-                              .override(
-                                font: GoogleFonts.inter(
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .bodySmall
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .bodySmall
-                                      .fontStyle,
-                                ),
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                letterSpacing: 0.0,
-                                fontWeight: FlutterFlowTheme.of(context)
-                                    .bodySmall
-                                    .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .bodySmall
-                                    .fontStyle,
-                                lineHeight: 1.4,
-                              ),
+                          style:
+                              FlutterFlowTheme.of(context).bodySmall.override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodySmall
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodySmall
+                                          .fontStyle,
+                                    ),
+                                    color: Color(0xFF333333),
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodySmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodySmall
+                                        .fontStyle,
+                                    lineHeight: 1.4,
+                                  ),
                           overflow: TextOverflow.ellipsis,
                         ),
                       ].divide(SizedBox(height: 4.0)),
@@ -174,11 +186,11 @@ class _OfferCardWidgetState extends State<OfferCardWidget> {
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                          color: Color(0xFFF0F0F0),
-                          borderRadius: BorderRadius.circular(6.0),
+                          color: Color(0xFFF5F6F8),
+                          borderRadius: BorderRadius.circular(10.0),
                           shape: BoxShape.rectangle,
                           border: Border.all(
-                            color: Colors.transparent,
+                            color: Color(0xFFE5E7EB),
                             width: 1.0,
                           ),
                         ),
@@ -188,7 +200,7 @@ class _OfferCardWidgetState extends State<OfferCardWidget> {
                           child: Container(
                             child: Text(
                               valueOrDefault<String>(
-                                widget.code,
+                                widget!.code,
                                 'OPTIC200',
                               ),
                               style: FlutterFlowTheme.of(context)
@@ -214,7 +226,7 @@ class _OfferCardWidgetState extends State<OfferCardWidget> {
                       ),
                       Text(
                         valueOrDefault<String>(
-                          'Expires: ${widget.expiry}',
+                          'Expires: ${widget!.expiry}',
                           'Expires: 31 Dec 2024',
                         ),
                         style: FlutterFlowTheme.of(context).labelSmall.override(
@@ -226,7 +238,7 @@ class _OfferCardWidgetState extends State<OfferCardWidget> {
                                     .labelSmall
                                     .fontStyle,
                               ),
-                              color: FlutterFlowTheme.of(context).secondaryText,
+                              color: Color(0xFF666666),
                               letterSpacing: 0.0,
                               fontWeight: FlutterFlowTheme.of(context)
                                   .labelSmall

@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'policy_section2_model.dart';
 export 'policy_section2_model.dart';
 
@@ -68,11 +71,11 @@ class _PolicySection2WidgetState extends State<PolicySection2Widget> {
                 shape: BoxShape.rectangle,
               ),
               alignment: AlignmentDirectional(0.0, 0.0),
-              child: widget.icon!,
+              child: widget!.icon!,
             ),
             Text(
               valueOrDefault<String>(
-                widget.title,
+                widget!.title,
                 '2. Delivery Updates',
               ),
               style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -94,7 +97,7 @@ class _PolicySection2WidgetState extends State<PolicySection2Widget> {
         ),
         Text(
           valueOrDefault<String>(
-            widget.content,
+            widget!.content,
             'Where tracking is available, customers can use the tracking details provided after dispatch to check their order status. For assistance with a delayed shipment, please contact our customer support team.',
           ),
           style: FlutterFlowTheme.of(context).bodyMedium.override(

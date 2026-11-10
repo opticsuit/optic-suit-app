@@ -1,7 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'setting_item_model.dart';
 export 'setting_item_model.dart';
 
@@ -61,11 +64,26 @@ class _SettingItemWidgetState extends State<SettingItemWidget> {
       padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
       child: Container(
         child: Container(
-          height: 76.0,
+          height: 80.0,
           decoration: BoxDecoration(
-            color: FlutterFlowTheme.of(context).secondaryBackground,
-            borderRadius: BorderRadius.circular(12.0),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                blurRadius: 8.0,
+                color: Color(0x12000000),
+                offset: Offset(
+                  0.0,
+                  3.0,
+                ),
+                spreadRadius: 0.0,
+              )
+            ],
+            borderRadius: BorderRadius.circular(14.0),
             shape: BoxShape.rectangle,
+            border: Border.all(
+              color: Color(0xFFE0E0E0),
+              width: 0.5,
+            ),
           ),
           child: Padding(
             padding: EdgeInsets.all(12.0),
@@ -82,12 +100,12 @@ class _SettingItemWidgetState extends State<SettingItemWidget> {
                       width: 44.0,
                       height: 44.0,
                       decoration: BoxDecoration(
-                        color: Color(0xFFE9EFEA),
+                        color: Color(0xFFF5F6F8),
                         borderRadius: BorderRadius.circular(12.0),
                         shape: BoxShape.rectangle,
                       ),
                       alignment: AlignmentDirectional(0.0, 0.0),
-                      child: widget.icon!,
+                      child: widget!.icon!,
                     ),
                     Expanded(
                       flex: 1,
@@ -98,20 +116,20 @@ class _SettingItemWidgetState extends State<SettingItemWidget> {
                         children: [
                           Text(
                             valueOrDefault<String>(
-                              widget.title,
+                              widget!.title,
                               'Personal Information',
                             ),
                             maxLines: 1,
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  font: GoogleFonts.inter(
+                                  font: GoogleFonts.poppins(
                                     fontWeight: FontWeight.w500,
                                     fontStyle: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .fontStyle,
                                   ),
-                                  color: widget.titleColor,
+                                  color: Color(0xFF222222),
                                   fontSize: 14.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
@@ -124,20 +142,20 @@ class _SettingItemWidgetState extends State<SettingItemWidget> {
                           ),
                           Text(
                             valueOrDefault<String>(
-                              widget.subtitle,
+                              widget!.subtitle,
                               'Name, email and phone number',
                             ),
                             maxLines: 1,
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  font: GoogleFonts.inter(
+                                  font: GoogleFonts.poppins(
                                     fontWeight: FontWeight.normal,
                                     fontStyle: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .fontStyle,
                                   ),
-                                  color: Color(0xFF6B7280),
+                                  color: Color(0xFF757575),
                                   fontSize: 12.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.normal,
@@ -152,7 +170,7 @@ class _SettingItemWidgetState extends State<SettingItemWidget> {
                       ),
                     ),
                     if (valueOrDefault<bool>(
-                      widget.showChevron,
+                      widget!.showChevron,
                       false,
                     ))
                       Icon(

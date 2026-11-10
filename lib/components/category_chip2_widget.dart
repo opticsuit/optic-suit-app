@@ -1,7 +1,9 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'category_chip2_model.dart';
 export 'category_chip2_model.dart';
 
@@ -51,7 +53,7 @@ class _CategoryChip2WidgetState extends State<CategoryChip2Widget> {
       decoration: BoxDecoration(
         color: valueOrDefault<Color>(
           valueOrDefault<bool>(
-            widget.active,
+            widget!.active,
             true,
           )
               ? Color(0xFF1F3A87)
@@ -68,7 +70,7 @@ class _CategoryChip2WidgetState extends State<CategoryChip2Widget> {
             alignment: AlignmentDirectional(0.0, 0.0),
             child: Text(
               valueOrDefault<String>(
-                widget.label,
+                widget!.label,
                 'All',
               ),
               style: FlutterFlowTheme.of(context).labelLarge.override(
@@ -80,7 +82,7 @@ class _CategoryChip2WidgetState extends State<CategoryChip2Widget> {
                     ),
                     color: valueOrDefault<Color>(
                       valueOrDefault<bool>(
-                        widget.active,
+                        widget!.active,
                         true,
                       )
                           ? Colors.white

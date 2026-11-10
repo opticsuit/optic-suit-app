@@ -19,13 +19,5 @@ List<dynamic>? mergeLists(
   List<dynamic>? oldProducts,
   List<dynamic>? newProducts,
 ) {
-  final merged = [...(oldProducts ?? [])];
-  final ids = <dynamic>{};
-  for (final product in merged) {
-    if (product is Map) ids.add(product['id']);
-  }
-  for (final product in newProducts ?? []) {
-    if (product is Map && ids.add(product['id'])) merged.add(product);
-  }
-  return merged;
+  return [...(oldProducts ?? []), ...(newProducts ?? [])];
 }

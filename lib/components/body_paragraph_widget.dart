@@ -1,7 +1,9 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'body_paragraph_model.dart';
 export 'body_paragraph_model.dart';
 
@@ -46,7 +48,7 @@ class _BodyParagraphWidgetState extends State<BodyParagraphWidget> {
   Widget build(BuildContext context) {
     return Text(
       valueOrDefault<String>(
-        widget.content,
+        widget!.content,
         'These Terms & Conditions govern your use of the Optic Suit website and app and the purchase of our products. Optic Suit may update these terms from time to time. Updated terms will be published on our website or app with a revised date. Your rights under applicable law will not be affected by these updates.',
       ),
       style: FlutterFlowTheme.of(context).bodyMedium.override(

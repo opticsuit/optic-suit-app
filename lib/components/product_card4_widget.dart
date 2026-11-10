@@ -1,8 +1,11 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'product_card4_model.dart';
 export 'product_card4_model.dart';
 
@@ -92,7 +95,7 @@ class _ProductCard4WidgetState extends State<ProductCard4Widget> {
                       fadeInDuration: Duration(milliseconds: 0),
                       fadeOutDuration: Duration(milliseconds: 0),
                       imageUrl: valueOrDefault<String>(
-                        widget.imageDesc,
+                        widget!.imageDesc,
                         'https://dimg.dreamflow.cloud/v1/image/carbon%20fiber%20glasses%20frame',
                       ),
                       fit: BoxFit.contain,
@@ -113,7 +116,7 @@ class _ProductCard4WidgetState extends State<ProductCard4Widget> {
                     children: [
                       Text(
                         valueOrDefault<String>(
-                          widget.name,
+                          widget!.name,
                           'JET Carbon Fiber Frame',
                         ),
                         maxLines: 2,
@@ -142,7 +145,7 @@ class _ProductCard4WidgetState extends State<ProductCard4Widget> {
                         children: [
                           Text(
                             valueOrDefault<String>(
-                              widget.price,
+                              widget!.price,
                               '£1,240.00',
                             ),
                             style: FlutterFlowTheme.of(context)
@@ -166,7 +169,7 @@ class _ProductCard4WidgetState extends State<ProductCard4Widget> {
                           ),
                           if (valueOrDefault<bool>(
                             valueOrDefault<String>(
-                                      widget.oldPrice,
+                                      widget!.oldPrice,
                                       '£1,450.00',
                                     ) !=
                                     ''
@@ -176,7 +179,7 @@ class _ProductCard4WidgetState extends State<ProductCard4Widget> {
                           ))
                             Text(
                               valueOrDefault<String>(
-                                widget.oldPrice,
+                                widget!.oldPrice,
                                 '£1,450.00',
                               ),
                               style: FlutterFlowTheme.of(context)
@@ -214,7 +217,7 @@ class _ProductCard4WidgetState extends State<ProductCard4Widget> {
                             child: Text(
                               valueOrDefault<String>(
                                 valueOrDefault<bool>(
-                                  widget.inStock,
+                                  widget!.inStock,
                                   false,
                                 )
                                     ? 'In Stock'
@@ -233,7 +236,7 @@ class _ProductCard4WidgetState extends State<ProductCard4Widget> {
                                     ),
                                     color: valueOrDefault<Color>(
                                       valueOrDefault<bool>(
-                                        widget.inStock,
+                                        widget!.inStock,
                                         false,
                                       )
                                           ? Color(0xFF2E7D32)
@@ -253,7 +256,7 @@ class _ProductCard4WidgetState extends State<ProductCard4Widget> {
                           ),
                           if (valueOrDefault<bool>(
                             valueOrDefault<String>(
-                                      widget.discount,
+                                      widget!.discount,
                                       '-15%',
                                     ) !=
                                     ''
@@ -273,7 +276,7 @@ class _ProductCard4WidgetState extends State<ProductCard4Widget> {
                                 child: Container(
                                   child: Text(
                                     valueOrDefault<String>(
-                                      widget.discount,
+                                      widget!.discount,
                                       '-15%',
                                     ),
                                     style: FlutterFlowTheme.of(context)

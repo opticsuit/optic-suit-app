@@ -2,8 +2,11 @@ import '/components/wishlist_card_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'wishlist_model.dart';
 export 'wishlist_model.dart';
 
@@ -189,7 +192,7 @@ class _WishlistWidgetState extends State<WishlistWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFF8F9FA),
+        backgroundColor: Color(0xFFF5F6F8),
         body: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -198,7 +201,7 @@ class _WishlistWidgetState extends State<WishlistWidget> {
             Container(
               height: 56.0,
               decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
+                color: Colors.white,
                 shape: BoxShape.rectangle,
               ),
               child: Column(
@@ -252,7 +255,7 @@ class _WishlistWidgetState extends State<WishlistWidget> {
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
-                                            color: Color(0xFF1F2937),
+                                            color: Color(0xFF1F3A87),
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
                                             fontStyle:
@@ -309,7 +312,7 @@ class _WishlistWidgetState extends State<WishlistWidget> {
                                       fillColor: Colors.transparent,
                                       icon: Icon(
                                         Icons.shopping_cart_outlined,
-                                        color: Color(0xFF1F2937),
+                                        color: Color(0xFF1F3A87),
                                         size: 24.0,
                                       ),
                                       onPressed: () {
@@ -396,13 +399,13 @@ class _WishlistWidgetState extends State<WishlistWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      font: GoogleFonts.inter(
+                                      font: GoogleFonts.poppins(
                                         fontWeight: FontWeight.bold,
                                         fontStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFF1F2937),
+                                      color: Color(0xFF1F3A87),
                                       fontSize: 22.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
@@ -417,7 +420,7 @@ class _WishlistWidgetState extends State<WishlistWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      font: GoogleFonts.inter(
+                                      font: GoogleFonts.poppins(
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .fontWeight,

@@ -1,9 +1,16 @@
 import '/components/faq_item_widget.dart';
 import '/components/help_topic_card_widget.dart';
+import '/flutter_flow/ff_builtin_enums.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
 import '/index.dart';
 import 'help_suppor_widget.dart' show HelpSupporWidget;
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class HelpSupporModel extends FlutterFlowModel<HelpSupporWidget> {
   ///  Local state fields for this page.
@@ -12,6 +19,10 @@ class HelpSupporModel extends FlutterFlowModel<HelpSupporWidget> {
 
   ///  State fields for stateful widgets in this page.
 
+  // State field(s) for helpSearch widget.
+  FocusNode? helpSearchFocusNode;
+  TextEditingController? helpSearchTextController;
+  String? Function(BuildContext, String?)? helpSearchTextControllerValidator;
   // Model for HelpTopicCard.
   late HelpTopicCardModel helpTopicCardModel1;
   // Model for HelpTopicCard.
@@ -52,6 +63,9 @@ class HelpSupporModel extends FlutterFlowModel<HelpSupporWidget> {
 
   @override
   void dispose() {
+    helpSearchFocusNode?.dispose();
+    helpSearchTextController?.dispose();
+
     helpTopicCardModel1.dispose();
     helpTopicCardModel2.dispose();
     helpTopicCardModel3.dispose();

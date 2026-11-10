@@ -1,9 +1,17 @@
 import '/backend/api_requests/api_calls.dart';
 import '/components/category_chip2_widget.dart';
+import '/components/product_card2_widget.dart';
+import '/flutter_flow/ff_builtin_enums.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/index.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'shop_widget.dart' show ShopWidget;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class ShopModel extends FlutterFlowModel<ShopWidget> {
   ///  Local state fields for this page.
@@ -21,14 +29,10 @@ class ShopModel extends FlutterFlowModel<ShopWidget> {
 
   bool hasMore = true;
 
-  bool? loadingMore = false;
-
   ///  State fields for stateful widgets in this page.
 
   // Stores action output result for [Backend Call - API (WooCommerce Products)] action in Shop widget.
   ApiCallResponse? firstBatch;
-  // Stores action output result for [Backend Call - API (WooCommerce Products)] action in Column widget.
-  ApiCallResponse? moreBatch;
   // Model for CategoryChip.
   late CategoryChip2Model categoryChipModel1;
   // Model for CategoryChip.
@@ -39,8 +43,8 @@ class ShopModel extends FlutterFlowModel<ShopWidget> {
   late CategoryChip2Model categoryChipModel4;
   // Model for CategoryChip.
   late CategoryChip2Model categoryChipModel5;
-  // Stores action output result for [Backend Call - API (WooCommerce Products)] action in Row widget.
-  ApiCallResponse? appendProducts;
+  // Stores action output result for [Backend Call - API (WooCommerce Products)] action in Button widget.
+  ApiCallResponse? moreBatch;
 
   @override
   void initState(BuildContext context) {

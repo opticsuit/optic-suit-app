@@ -1,11 +1,14 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/components/custom_appbar_widget.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:ui';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'forgot_password_model.dart';
 export 'forgot_password_model.dart';
 
@@ -53,7 +56,32 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          automaticallyImplyLeading: false,
+          leading: FlutterFlowIconButton(
+            buttonSize: 40.0,
+            icon: Icon(
+              Icons.arrow_back_rounded,
+              color: Color(0xFF1F3A87),
+              size: 22.0,
+            ),
+            onPressed: () async {
+              logFirebaseEvent('FORGOT_PASSWORD_PAGE_IconButton_ON_TAP');
+              logFirebaseEvent('IconButton_navigate_back');
+              context.safePop();
+            },
+          ),
+          title: Text(
+            '',
+            style: TextStyle(),
+          ),
+          actions: [],
+          centerTitle: true,
+          toolbarHeight: 56.0,
+          elevation: 0.0,
+        ),
         body: SafeArea(
           top: true,
           child: Column(
@@ -69,36 +97,23 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        wrapWithModel(
-                          model: _model.customAppbarModel,
-                          updateCallback: () => safeSetState(() {}),
-                          child: CustomAppbarWidget(
-                            backButton: true,
-                            actionButton: false,
-                            actionButtonAction: () async {},
-                            optionsButtonAction: () async {},
-                          ),
-                        ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 24.0, 0.0, 0.0),
                           child: Text(
-                            'Forgot password',
+                            'Forgot Password',
                             style: FlutterFlowTheme.of(context)
                                 .displaySmall
                                 .override(
-                                  font: GoogleFonts.inter(
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .displaySmall
-                                        .fontWeight,
+                                  font: GoogleFonts.poppins(
+                                    fontWeight: FontWeight.bold,
                                     fontStyle: FlutterFlowTheme.of(context)
                                         .displaySmall
                                         .fontStyle,
                                   ),
+                                  color: Color(0xFF1F3A87),
                                   letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .displaySmall
-                                      .fontWeight,
+                                  fontWeight: FontWeight.bold,
                                   fontStyle: FlutterFlowTheme.of(context)
                                       .displaySmall
                                       .fontStyle,
@@ -124,7 +139,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .labelLarge
                                           .override(
-                                            font: GoogleFonts.inter(
+                                            font: GoogleFonts.poppins(
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
                                                       .labelLarge
@@ -134,6 +149,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                                       .labelLarge
                                                       .fontStyle,
                                             ),
+                                            color: Color(0xFF666666),
                                             letterSpacing: 0.0,
                                             fontWeight:
                                                 FlutterFlowTheme.of(context)
@@ -154,7 +170,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyLarge
                                             .override(
-                                              font: GoogleFonts.inter(
+                                              font: GoogleFonts.poppins(
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyLarge
@@ -164,6 +180,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                                         .bodyLarge
                                                         .fontStyle,
                                               ),
+                                              color: Colors.black,
                                               letterSpacing: 0.0,
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
@@ -190,25 +207,24 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                         textInputAction: TextInputAction.next,
                                         obscureText: false,
                                         decoration: InputDecoration(
+                                          hintStyle: TextStyle(
+                                            color: Color(0xFF666666),
+                                          ),
                                           enabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .alternate,
+                                              color: Color(0xFFE5E7EB),
                                               width: 1.0,
                                             ),
                                             borderRadius:
-                                                BorderRadius.circular(8.0),
+                                                BorderRadius.circular(12.0),
                                           ),
                                           focusedBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
+                                              color: Color(0xFF1F3A87),
                                               width: 1.0,
                                             ),
                                             borderRadius:
-                                                BorderRadius.circular(8.0),
+                                                BorderRadius.circular(12.0),
                                           ),
                                           errorBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
@@ -218,7 +234,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                               width: 1.0,
                                             ),
                                             borderRadius:
-                                                BorderRadius.circular(8.0),
+                                                BorderRadius.circular(12.0),
                                           ),
                                           focusedErrorBorder:
                                               OutlineInputBorder(
@@ -229,23 +245,22 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                               width: 1.0,
                                             ),
                                             borderRadius:
-                                                BorderRadius.circular(8.0),
+                                                BorderRadius.circular(12.0),
                                           ),
                                           filled: true,
-                                          fillColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondaryBackground,
+                                          fillColor: Colors.white,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              font: GoogleFonts.inter(
+                                              font: GoogleFonts.poppins(
                                                 fontWeight: FontWeight.w500,
                                                 fontStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
+                                              color: Color(0xFF333333),
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
@@ -258,9 +273,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                         minLines: 1,
                                         keyboardType:
                                             TextInputType.emailAddress,
-                                        cursorColor:
-                                            FlutterFlowTheme.of(context)
-                                                .primary,
+                                        cursorColor: Color(0xFF1F3A87),
                                         validator: _model
                                             .emailAddressTextControllerValidator
                                             .asValidator(context),
@@ -321,11 +334,11 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                   0.0, 0.0, 0.0, 0.0),
                               iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              color: Color(0xFF173177),
+                              color: Color(0xFF1F3A87),
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
-                                    font: GoogleFonts.inter(
+                                    font: GoogleFonts.poppins(
                                       fontWeight: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .fontWeight,
