@@ -58,7 +58,6 @@ class _ProductCard2WidgetState extends State<ProductCard2Widget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 170.0,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12.0),
@@ -70,7 +69,7 @@ class _ProductCard2WidgetState extends State<ProductCard2Widget> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            height: 180.0,
+            height: 184.0,
             child: Stack(
               alignment: AlignmentDirectional(-1.0, -1.0),
               children: [
@@ -80,7 +79,7 @@ class _ProductCard2WidgetState extends State<ProductCard2Widget> {
                     topRight: Radius.circular(12.0),
                   ),
                   child: Container(
-                    height: 180.0,
+                    height: 184.0,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(12.0),
@@ -148,7 +147,7 @@ class _ProductCard2WidgetState extends State<ProductCard2Widget> {
                 ),
                 Text(
                   widget!.name!,
-                  maxLines: 1,
+                  maxLines: 2,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         font: GoogleFonts.inter(
                           fontWeight: FontWeight.w500,

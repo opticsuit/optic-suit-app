@@ -56,6 +56,13 @@ abstract class FlutterFlowTheme {
   late Color error;
   late Color info;
 
+  late Color lensBlue;
+  late Color lensInk;
+  late Color lensMuted;
+  late Color lensSurface;
+  late Color lensCanvas;
+  late Color lensBorder;
+
   FFDesignTokens get designToken => FFDesignTokens(this);
 
   @Deprecated('Use displaySmallFamily instead')
@@ -160,6 +167,13 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color warning = const Color(0x4CFF5963);
   late Color error = const Color(0xFFFF5963);
   late Color info = const Color(0xFFFFFFFF);
+
+  late Color lensBlue = const Color(0xFF1F3A87);
+  late Color lensInk = const Color(0xFF1C2430);
+  late Color lensMuted = const Color(0xFF697586);
+  late Color lensSurface = const Color(0xFFFFFFFF);
+  late Color lensCanvas = const Color(0xFFF7F9FC);
+  late Color lensBorder = const Color(0xFFE3E8F0);
 }
 
 abstract class Typography {
@@ -346,6 +360,13 @@ class DarkModeTheme extends FlutterFlowTheme {
   late Color warning = const Color(0x4DFF5963);
   late Color error = const Color(0xFFFF5963);
   late Color info = const Color(0xFFFFFFFF);
+
+  late Color lensBlue = const Color(0xFF1F3A87);
+  late Color lensInk = const Color(0xFF1C2430);
+  late Color lensMuted = const Color(0xFF697586);
+  late Color lensSurface = const Color(0xFFFFFFFF);
+  late Color lensCanvas = const Color(0xFFF7F9FC);
+  late Color lensBorder = const Color(0xFFE3E8F0);
 }
 
 class FFDesignTokens {

@@ -76,5 +76,11 @@ function createBody({ headers, params, body, bodyType }) {
       return qs.stringify(params);
   }
 }
+function escapeStringForJson(val) {
+  if (typeof val !== "string") {
+    return val;
+  }
+  return JSON.stringify(val).slice(1, -1);
+}
 
 module.exports = { makeApiCall };

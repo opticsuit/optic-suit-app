@@ -68,7 +68,7 @@ class _DetailRow2WidgetState extends State<DetailRow2Widget> {
                     fontStyle:
                         FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                   ),
-                  color: FlutterFlowTheme.of(context).secondaryText,
+                  color: Color(0xFF222222),
                   letterSpacing: 0.0,
                   fontWeight:
                       FlutterFlowTheme.of(context).bodyMedium.fontWeight,
@@ -87,7 +87,7 @@ class _DetailRow2WidgetState extends State<DetailRow2Widget> {
                     fontStyle:
                         FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                   ),
-                  color: FlutterFlowTheme.of(context).primaryText,
+                  color: Color(0xFF222222),
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.w600,
                   fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,

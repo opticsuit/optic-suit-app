@@ -2821,20 +2821,8 @@ class _OpticSuitHomePageWidgetState extends State<OpticSuitHomePageWidget> {
                                                           'ProductCard_navigate_to');
 
                                                       context.pushNamed(
-                                                        ProductDeatilsWidget
-                                                            .routeName,
-                                                        queryParameters: {
-                                                          'productId':
-                                                              serializeParam(
-                                                            getJsonField(
-                                                              gridViewWooCommerceProductsResponse
-                                                                  .jsonBody,
-                                                              r'''$''',
-                                                            ),
-                                                            ParamType.int,
-                                                          ),
-                                                        }.withoutNulls,
-                                                      );
+                                                          ProductDetailsWidget
+                                                              .routeName);
                                                     },
                                                     child: wrapWithModel(
                                                       model: _model

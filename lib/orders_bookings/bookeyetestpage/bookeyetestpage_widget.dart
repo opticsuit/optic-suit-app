@@ -1,7 +1,5 @@
-import '/components/date_item_widget.dart';
 import '/components/summary_row2_widget.dart';
-import '/components/time_slot6_widget.dart';
-import '/flutter_flow/flutter_flow_google_map.dart';
+import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -513,8 +511,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        resizeToAvoidBottomInset: false,
-        backgroundColor: Color(0xFFF7F8FA),
+        backgroundColor: Color(0xFFF8F9FC),
         body: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -523,7 +520,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
             Container(
               height: 64.0,
               decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
+                color: Colors.white,
                 shape: BoxShape.rectangle,
               ),
               child: Column(
@@ -548,7 +545,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                               fillColor: Colors.transparent,
                               icon: Icon(
                                 Icons.arrow_back_rounded,
-                                color: Color(0xFF1F2937),
+                                color: Color(0xFF1F3A87),
                                 size: 24.0,
                               ),
                               onPressed: () async {
@@ -569,7 +566,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                           .bodyMedium
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFF1F2937),
+                                    color: Color(0xFF202633),
                                     fontSize: 20.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
@@ -579,6 +576,11 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                     lineHeight: 1.4,
                                   ),
                             ),
+                            Icon(
+                              Icons.visibility_rounded,
+                              color: Color(0xFF1F3A87),
+                              size: 22.0,
+                            ),
                           ].divide(SizedBox(width: 16.0)),
                         ),
                       ),
@@ -587,7 +589,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                   Container(
                     height: 1.0,
                     decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).alternate,
+                      color: Color(0xFFE2E5EB),
                       shape: BoxShape.rectangle,
                     ),
                   ),
@@ -614,7 +616,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                             children: [
                               Container(
                                 decoration: BoxDecoration(
-                                  color: Color(0xFFEAF3FF),
+                                  color: Color(0xFFE9EFEA),
                                   borderRadius: BorderRadius.circular(16.0),
                                   shape: BoxShape.rectangle,
                                 ),
@@ -652,7 +654,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                                                 .bodyMedium
                                                                 .fontStyle,
                                                       ),
-                                                      color: Color(0xFF111827),
+                                                      color: Color(0xFF202633),
                                                       fontSize: 18.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
@@ -683,7 +685,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                                                 .bodyMedium
                                                                 .fontStyle,
                                                       ),
-                                                      color: Color(0xFF52627A),
+                                                      color: Color(0xFF737B89),
                                                       fontSize: 13.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
@@ -747,7 +749,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFF1F2937),
+                                              color: Color(0xFF202633),
                                               fontSize: 18.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
@@ -773,7 +775,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFF6B7280),
+                                              color: Color(0xFF737B89),
                                               fontSize: 13.0,
                                               letterSpacing: 0.0,
                                               fontWeight:
@@ -791,12 +793,11 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                   ),
                                   Container(
                                     decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
+                                      color: Color(0xFFF0F1F5),
                                       borderRadius: BorderRadius.circular(14.0),
                                       shape: BoxShape.rectangle,
                                       border: Border.all(
-                                        color: Color(0xFF1F3A87),
+                                        color: Color(0xFFE2E5EB),
                                         width: 1.0,
                                       ),
                                     ),
@@ -825,7 +826,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
-                                                    'Optic Suit – Kozhikode',
+                                                    'Store details unavailable',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -841,7 +842,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                                                     .fontStyle,
                                                           ),
                                                           color:
-                                                              Color(0xFF1F2937),
+                                                              Color(0xFF202633),
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -855,7 +856,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                                         ),
                                                   ),
                                                   Text(
-                                                    'Kozhikode, Kerala',
+                                                    'Location details will appear when provided',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -874,7 +875,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                                                     .fontStyle,
                                                           ),
                                                           color:
-                                                              Color(0xFF6B7280),
+                                                              Color(0xFF737B89),
                                                           fontSize: 12.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -903,47 +904,6 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                       ),
                                     ),
                                   ),
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(14.0),
-                                    child: Container(
-                                      height: 160.0,
-                                      decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(14.0),
-                                        shape: BoxShape.rectangle,
-                                        border: Border.all(
-                                          color: FlutterFlowTheme.of(context)
-                                              .alternate,
-                                          width: 1.0,
-                                        ),
-                                      ),
-                                      child: Container(
-                                        height: 200.0,
-                                        child: FlutterFlowGoogleMap(
-                                          controller:
-                                              _model.mapGoogleMapsController,
-                                          onCameraIdle: (latLng) => _model
-                                              .mapGoogleMapsCenter = latLng,
-                                          initialLocation:
-                                              _model.mapGoogleMapsCenter ??=
-                                                  LatLng(11.2588, 75.7804),
-                                          markerColor: GoogleMarkerColor.violet,
-                                          mapType: MapType.normal,
-                                          style: GoogleMapStyle.standard,
-                                          initialZoom: 14.0,
-                                          allowInteraction: true,
-                                          allowZoom: true,
-                                          showZoomControls: false,
-                                          showLocation: false,
-                                          showCompass: false,
-                                          showMapToolbar: false,
-                                          showTraffic: false,
-                                          centerMapOnMarkerTap: true,
-                                          mapTakesGesturePreference: false,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
                                 ].divide(SizedBox(height: 16.0)),
                               ),
                               Column(
@@ -963,7 +923,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
-                                          color: Color(0xFF1F2937),
+                                          color: Color(0xFF202633),
                                           fontSize: 16.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
@@ -976,13 +936,11 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                   ),
                                   Container(
                                     decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
+                                      color: Color(0xFFF0F1F5),
                                       borderRadius: BorderRadius.circular(12.0),
                                       shape: BoxShape.rectangle,
                                       border: Border.all(
-                                        color: FlutterFlowTheme.of(context)
-                                            .alternate,
+                                        color: Color(0xFFE2E5EB),
                                         width: 1.0,
                                       ),
                                     ),
@@ -1009,7 +967,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                  'Open Today',
+                                                  'Store hours unavailable',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -1027,7 +985,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                                                   .fontStyle,
                                                         ),
                                                         color:
-                                                            Color(0xFF6B7280),
+                                                            Color(0xFF737B89),
                                                         fontSize: 12.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -1044,7 +1002,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                                       ),
                                                 ),
                                                 Text(
-                                                  '10:00 AM – 8:00 PM',
+                                                  'Please contact the store for timings',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -1059,7 +1017,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                                                   .fontStyle,
                                                         ),
                                                         color:
-                                                            Color(0xFF1F2937),
+                                                            Color(0xFF202633),
                                                         fontSize: 14.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -1104,7 +1062,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFF1F2937),
+                                              color: Color(0xFF202633),
                                               fontSize: 18.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
@@ -1130,7 +1088,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFF6B7280),
+                                              color: Color(0xFF737B89),
                                               fontSize: 13.0,
                                               letterSpacing: 0.0,
                                               fontWeight:
@@ -1146,66 +1104,66 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                       ),
                                     ].divide(SizedBox(height: 4.0)),
                                   ),
-                                  SingleChildScrollView(
-                                    scrollDirection: Axis.horizontal,
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        wrapWithModel(
-                                          model: _model.dateItemModel1,
-                                          updateCallback: () =>
-                                              safeSetState(() {}),
-                                          child: DateItemWidget(
-                                            selected: true,
-                                            date: '05',
-                                            day: 'Mon',
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: Color(0xFFF0F1F5),
+                                      borderRadius: BorderRadius.circular(12.0),
+                                      border: Border.all(
+                                        color: Color(0xFFE2E5EB),
+                                        width: 1.0,
+                                      ),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsets.all(14.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Icon(
+                                            Icons.event_busy_outlined,
+                                            color: Color(0xFF687386),
+                                            size: 20.0,
                                           ),
-                                        ),
-                                        wrapWithModel(
-                                          model: _model.dateItemModel2,
-                                          updateCallback: () =>
-                                              safeSetState(() {}),
-                                          child: DateItemWidget(
-                                            selected: false,
-                                            date: '06',
-                                            day: 'Tue',
+                                          Expanded(
+                                            child: Text(
+                                              'Appointment dates are not available yet.',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        color:
+                                                            Color(0xFF687386),
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                            ),
                                           ),
-                                        ),
-                                        wrapWithModel(
-                                          model: _model.dateItemModel3,
-                                          updateCallback: () =>
-                                              safeSetState(() {}),
-                                          child: DateItemWidget(
-                                            selected: false,
-                                            date: '07',
-                                            day: 'Wed',
-                                          ),
-                                        ),
-                                        wrapWithModel(
-                                          model: _model.dateItemModel4,
-                                          updateCallback: () =>
-                                              safeSetState(() {}),
-                                          child: DateItemWidget(
-                                            selected: false,
-                                            date: '08',
-                                            day: 'Thu',
-                                          ),
-                                        ),
-                                        wrapWithModel(
-                                          model: _model.dateItemModel5,
-                                          updateCallback: () =>
-                                              safeSetState(() {}),
-                                          child: DateItemWidget(
-                                            selected: false,
-                                            date: '09',
-                                            day: 'Fri',
-                                          ),
-                                        ),
-                                      ].divide(SizedBox(width: 8.0)),
+                                        ].divide(SizedBox(width: 10.0)),
+                                      ),
                                     ),
                                   ),
                                 ].divide(SizedBox(height: 16.0)),
@@ -1233,7 +1191,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFF1F2937),
+                                              color: Color(0xFF202633),
                                               fontSize: 18.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
@@ -1259,7 +1217,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFF6B7280),
+                                              color: Color(0xFF737B89),
                                               fontSize: 13.0,
                                               letterSpacing: 0.0,
                                               fontWeight:
@@ -1275,80 +1233,70 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                       ),
                                     ].divide(SizedBox(height: 4.0)),
                                   ),
-                                  GridView(
-                                    padding: EdgeInsets.zero,
-                                    gridDelegate:
-                                        SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 3,
-                                      crossAxisSpacing: 16.0,
-                                      mainAxisSpacing: 16.0,
-                                      childAspectRatio: 1.0,
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(12.0),
+                                      border: Border.all(
+                                        color: Color(0xFFE2E5EB),
+                                        width: 1.0,
+                                      ),
                                     ),
-                                    primary: false,
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.vertical,
-                                    children: [
-                                      wrapWithModel(
-                                        model: _model.timeSlotModel1,
-                                        updateCallback: () =>
-                                            safeSetState(() {}),
-                                        child: TimeSlot6Widget(
-                                          disabled: false,
-                                          selected: false,
-                                          time: '10:00 AM',
-                                        ),
+                                    child: Padding(
+                                      padding: EdgeInsets.all(14.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            (FFMainAxisAlignment.start)
+                                                .flutterValue,
+                                        crossAxisAlignment:
+                                            (FFCrossAxisAlignment.center)
+                                                .flutterValue,
+                                        textBaseline: TextBaseline.alphabetic,
+                                        children: [
+                                          Icon(
+                                            Icons.schedule_outlined,
+                                            color: Color(0xFF687386),
+                                            size: 20.0,
+                                          ),
+                                          Expanded(
+                                            child: Text(
+                                              'Time slots will appear when store availability is connected.',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        color:
+                                                            Color(0xFF687386),
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                            ),
+                                          ),
+                                        ].divide(SizedBox(width: 10.0)),
                                       ),
-                                      wrapWithModel(
-                                        model: _model.timeSlotModel2,
-                                        updateCallback: () =>
-                                            safeSetState(() {}),
-                                        child: TimeSlot6Widget(
-                                          disabled: false,
-                                          selected: true,
-                                          time: '11:00 AM',
-                                        ),
-                                      ),
-                                      wrapWithModel(
-                                        model: _model.timeSlotModel3,
-                                        updateCallback: () =>
-                                            safeSetState(() {}),
-                                        child: TimeSlot6Widget(
-                                          disabled: false,
-                                          selected: false,
-                                          time: '12:00 PM',
-                                        ),
-                                      ),
-                                      wrapWithModel(
-                                        model: _model.timeSlotModel4,
-                                        updateCallback: () =>
-                                            safeSetState(() {}),
-                                        child: TimeSlot6Widget(
-                                          disabled: false,
-                                          selected: false,
-                                          time: '02:00 PM',
-                                        ),
-                                      ),
-                                      wrapWithModel(
-                                        model: _model.timeSlotModel5,
-                                        updateCallback: () =>
-                                            safeSetState(() {}),
-                                        child: TimeSlot6Widget(
-                                          disabled: true,
-                                          selected: false,
-                                          time: '03:00 PM',
-                                        ),
-                                      ),
-                                      wrapWithModel(
-                                        model: _model.timeSlotModel6,
-                                        updateCallback: () =>
-                                            safeSetState(() {}),
-                                        child: TimeSlot6Widget(
-                                          disabled: false,
-                                          selected: false,
-                                          time: '04:00 PM',
-                                        ),
-                                      ),
-                                    ],
+                                    ),
                                   ),
                                 ].divide(SizedBox(height: 16.0)),
                               ),
@@ -1375,7 +1323,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFF1F2937),
+                                              color: Color(0xFF202633),
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
@@ -1388,8 +1336,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                       ),
                                       Divider(
                                         thickness: 1.0,
-                                        color: FlutterFlowTheme.of(context)
-                                            .alternate,
+                                        color: Color(0xFFE2E5EB),
                                       ),
                                       Text(
                                         'Full Name',
@@ -1406,7 +1353,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFF6B7280),
+                                              color: Color(0xFF737B89),
                                               fontSize: 13.0,
                                               letterSpacing: 0.0,
                                               fontWeight:
@@ -1490,7 +1437,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                                     ),
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
-                                                color: Color(0xFFE5E7EB),
+                                                color: Color(0xFFE2E5EB),
                                                 width: 1.0,
                                               ),
                                               borderRadius:
@@ -1526,9 +1473,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                                   BorderRadius.circular(10.0),
                                             ),
                                             filled: true,
-                                            fillColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
+                                            fillColor: Color(0xFFF3F4F6),
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
@@ -1579,7 +1524,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFF6B7280),
+                                              color: Color(0xFF737B89),
                                               fontSize: 13.0,
                                               letterSpacing: 0.0,
                                               fontWeight:
@@ -1661,7 +1606,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                                     ),
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
-                                                color: Color(0xFFE5E7EB),
+                                                color: Color(0xFFE2E5EB),
                                                 width: 1.0,
                                               ),
                                               borderRadius:
@@ -1697,9 +1642,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                                   BorderRadius.circular(8.0),
                                             ),
                                             filled: true,
-                                            fillColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
+                                            fillColor: Color(0xFFF3F4F6),
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
@@ -1750,7 +1693,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFF6B7280),
+                                              color: Color(0xFF737B89),
                                               fontSize: 13.0,
                                               letterSpacing: 0.0,
                                               fontWeight:
@@ -1832,7 +1775,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                                     ),
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
-                                                color: Color(0xFFE5E7EB),
+                                                color: Color(0xFFE2E5EB),
                                                 width: 1.0,
                                               ),
                                               borderRadius:
@@ -1868,9 +1811,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                                   BorderRadius.circular(8.0),
                                             ),
                                             filled: true,
-                                            fillColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
+                                            fillColor: Color(0xFFF3F4F6),
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
@@ -1913,13 +1854,11 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                               ),
                               Container(
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
+                                  color: Colors.white,
                                   borderRadius: BorderRadius.circular(14.0),
                                   shape: BoxShape.rectangle,
                                   border: Border.all(
-                                    color:
-                                        FlutterFlowTheme.of(context).alternate,
+                                    color: Color(0xFFE2E5EB),
                                     width: 1.0,
                                   ),
                                 ),
@@ -1946,7 +1885,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                                           .bodyMedium
                                                           .fontStyle,
                                                 ),
-                                                color: Color(0xFF1F2937),
+                                                color: Color(0xFF202633),
                                                 fontSize: 16.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
@@ -1962,8 +1901,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                           thickness: 1.0,
                                           indent: 0.0,
                                           endIndent: 0.0,
-                                          color: FlutterFlowTheme.of(context)
-                                              .alternate,
+                                          color: Color(0xFFE2E5EB),
                                         ),
                                         wrapWithModel(
                                           model: _model.summaryRowModel1,
@@ -1971,7 +1909,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                               safeSetState(() {}),
                                           child: SummaryRow2Widget(
                                             label: 'Store',
-                                            value: 'Optic Suit – Kozhikode',
+                                            value: 'Not available',
                                           ),
                                         ),
                                         wrapWithModel(
@@ -1980,7 +1918,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                               safeSetState(() {}),
                                           child: SummaryRow2Widget(
                                             label: 'Date',
-                                            value: '05 October 2026',
+                                            value: 'Not selected',
                                           ),
                                         ),
                                         wrapWithModel(
@@ -1989,7 +1927,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                               safeSetState(() {}),
                                           child: SummaryRow2Widget(
                                             label: 'Time',
-                                            value: '11:00 AM',
+                                            value: 'Not selected',
                                           ),
                                         ),
                                         FFButtonWidget(
@@ -1998,6 +1936,7 @@ class _BookeyetestpageWidgetState extends State<BookeyetestpageWidget> {
                                           },
                                           text: 'Confirm Booking',
                                           options: FFButtonOptions(
+                                            width: double.infinity,
                                             height: 52.0,
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(

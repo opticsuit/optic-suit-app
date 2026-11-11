@@ -1,14 +1,11 @@
-import '/backend/api_requests/api_calls.dart';
-import '/components/category_chip2_widget.dart';
-import '/components/product_card2_widget.dart';
-import '/flutter_flow/ff_builtin_enums.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
-import '/flutter_flow/custom_functions.dart' as functions;
+import '/custom_code/widgets/index.dart' as custom_widgets;
+import '/index.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'shop_model.dart';
@@ -236,31 +233,6 @@ class _ShopWidgetState extends State<ShopWidget> {
     _model = createModel(context, () => ShopModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Shop'});
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      logFirebaseEvent('SHOP_PAGE_Shop_ON_INIT_STATE');
-      logFirebaseEvent('Shop_backend_call');
-      _model.firstBatch = await WooCommerceProductsCall.call(
-        perPage: '100',
-        page: '1',
-      );
-
-      if ((_model.firstBatch?.succeeded ?? true)) {
-        logFirebaseEvent('Shop_update_page_state');
-        _model.products = WooCommerceProductsCall.productsList(
-          (_model.firstBatch?.jsonBody ?? ''),
-        )!
-            .toList()
-            .cast<dynamic>();
-        _model.hasMore = WooCommerceProductsCall.productsList(
-              (_model.firstBatch?.jsonBody ?? ''),
-            )!
-                .length >=
-            100;
-        safeSetState(() {});
-      }
-    });
-
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -280,7 +252,7 @@ class _ShopWidgetState extends State<ShopWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFF7F7F7),
+        backgroundColor: Color(0xFFF5F6F8),
         body: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -309,10 +281,19 @@ class _ShopWidgetState extends State<ShopWidget> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Icon(
-                                Icons.arrow_back_ios_new_rounded,
-                                color: Color(0xFF1B1B1B),
-                                size: 22.0,
+                              FlutterFlowIconButton(
+                                buttonSize: 40.0,
+                                icon: Icon(
+                                  Icons.arrow_back_ios_new_rounded,
+                                  color: Color(0xFF1F3A87),
+                                  size: 22.0,
+                                ),
+                                onPressed: () async {
+                                  logFirebaseEvent(
+                                      'SHOP_PAGE_IconButton_ON_TAP');
+                                  logFirebaseEvent('IconButton_navigate_back');
+                                  context.pop();
+                                },
                               ),
                               Column(
                                 mainAxisSize: MainAxisSize.min,
@@ -379,18 +360,24 @@ class _ShopWidgetState extends State<ShopWidget> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Icon(
-                                Icons.search_rounded,
-                                color: Color(0xFF1B1B1B),
-                                size: 22.0,
-                              ),
                               Stack(
                                 alignment: AlignmentDirectional(0.0, 0.0),
                                 children: [
-                                  Icon(
-                                    Icons.shopping_cart_outlined,
-                                    color: Color(0xFF1B1B1B),
-                                    size: 22.0,
+                                  FlutterFlowIconButton(
+                                    buttonSize: 40.0,
+                                    icon: Icon(
+                                      Icons.shopping_cart_outlined,
+                                      color: Color(0xFF1F3A87),
+                                      size: 22.0,
+                                    ),
+                                    onPressed: () async {
+                                      logFirebaseEvent(
+                                          'SHOP_PAGE_IconButton_ON_TAP');
+                                      logFirebaseEvent(
+                                          'IconButton_navigate_to');
+
+                                      context.pushNamed(CartWidget.routeName);
+                                    },
                                   ),
                                   Align(
                                     alignment: AlignmentDirectional(1.0, -1.0),
@@ -405,7 +392,7 @@ class _ShopWidgetState extends State<ShopWidget> {
                                       ),
                                       alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Text(
-                                        '2',
+                                        '0',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -449,392 +436,44 @@ class _ShopWidgetState extends State<ShopWidget> {
             ),
             Expanded(
               flex: 1,
-              child: SingleChildScrollView(
-                primary: false,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.all(16.0),
-                      child: Container(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Container(
-                              height: 48.0,
-                              decoration: BoxDecoration(
-                                color: Color(0xFFF5F6F8),
-                                borderRadius: BorderRadius.circular(12.0),
-                                shape: BoxShape.rectangle,
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(20.0, 12.0, 20.0, 6.0),
+                    child: Container(
+                      child: Text(
+                        'Discover eyewear designed for you',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              font: GoogleFonts.inter(
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .fontStyle,
                               ),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 0.0, 16.0, 0.0),
-                                child: Container(
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Icon(
-                                        Icons.search_rounded,
-                                        color: Color(0xFF6B7280),
-                                        size: 20.0,
-                                      ),
-                                      Text(
-                                        'Search frames, sunglasses...',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              font: GoogleFonts.inter(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
-                                              color: Color(0xFF6B7280),
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontStyle,
-                                              lineHeight: 1.4,
-                                            ),
-                                      ),
-                                    ].divide(SizedBox(width: 16.0)),
-                                  ),
-                                ),
-                              ),
+                              color: Color(0xFF6B7280),
+                              fontSize: 13.0,
+                              letterSpacing: 0.0,
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
+                              lineHeight: 1.4,
                             ),
-                            SingleChildScrollView(
-                              scrollDirection: Axis.horizontal,
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  wrapWithModel(
-                                    model: _model.categoryChipModel1,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: CategoryChip2Widget(
-                                      active: true,
-                                      label: 'All',
-                                    ),
-                                  ),
-                                  wrapWithModel(
-                                    model: _model.categoryChipModel2,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: CategoryChip2Widget(
-                                      active: false,
-                                      label: 'Eyeglasses',
-                                    ),
-                                  ),
-                                  wrapWithModel(
-                                    model: _model.categoryChipModel3,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: CategoryChip2Widget(
-                                      active: false,
-                                      label: 'Sunglasses',
-                                    ),
-                                  ),
-                                  wrapWithModel(
-                                    model: _model.categoryChipModel4,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: CategoryChip2Widget(
-                                      active: false,
-                                      label: 'Contact Lenses',
-                                    ),
-                                  ),
-                                  wrapWithModel(
-                                    model: _model.categoryChipModel5,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: CategoryChip2Widget(
-                                      active: false,
-                                      label: 'Accessories',
-                                    ),
-                                  ),
-                                ].divide(SizedBox(width: 8.0)),
-                              ),
-                            ),
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text(
-                                  '124 Products',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        font: GoogleFonts.inter(
-                                          fontWeight: FontWeight.w500,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
-                                        ),
-                                        color: Color(0xFF1B1B1B),
-                                        fontSize: 14.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w500,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontStyle,
-                                        lineHeight: 1.4,
-                                      ),
-                                ),
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Icon(
-                                          Icons.sort_rounded,
-                                          color: Color(0xFF1B1B1B),
-                                          size: 18.0,
-                                        ),
-                                        Text(
-                                          'Sort',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                font: GoogleFonts.inter(
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
-                                                color: Color(0xFF1B1B1B),
-                                                fontSize: 14.0,
-                                                letterSpacing: 0.0,
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                                lineHeight: 1.4,
-                                              ),
-                                        ),
-                                      ].divide(SizedBox(width: 4.0)),
-                                    ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Icon(
-                                          Icons.filter_list_rounded,
-                                          color: Color(0xFF1B1B1B),
-                                          size: 18.0,
-                                        ),
-                                        Text(
-                                          'Filter',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                font: GoogleFonts.inter(
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
-                                                color: Color(0xFF1B1B1B),
-                                                fontSize: 14.0,
-                                                letterSpacing: 0.0,
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                                lineHeight: 1.4,
-                                              ),
-                                        ),
-                                      ].divide(SizedBox(width: 4.0)),
-                                    ),
-                                  ].divide(SizedBox(width: 16.0)),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment:
-                                  (FFMainAxisAlignment.end).flutterValue,
-                              children: [
-                                if (_model.hasMore)
-                                  FFButtonWidget(
-                                    onPressed: () async {
-                                      logFirebaseEvent(
-                                          'SHOP_PAGE_LOAD_MORE_BTN_ON_TAP');
-                                      logFirebaseEvent('Button_backend_call');
-                                      _model.moreBatch =
-                                          await WooCommerceProductsCall.call(
-                                        perPage: '100',
-                                        page: _model.nextPage.toString(),
-                                      );
-
-                                      if ((_model.moreBatch?.succeeded ??
-                                          true)) {
-                                        logFirebaseEvent(
-                                            'Button_update_page_state');
-                                        _model.products = functions
-                                            .mergeLists(
-                                                _model.products.toList(),
-                                                WooCommerceProductsCall
-                                                    .productsList(
-                                                  (_model.moreBatch?.jsonBody ??
-                                                      ''),
-                                                )?.toList())!
-                                            .toList()
-                                            .cast<dynamic>();
-                                        _model.nextPage = _model.nextPage + 1;
-                                        _model.hasMore = WooCommerceProductsCall
-                                                    .productsList(
-                                              (_model.moreBatch?.jsonBody ??
-                                                  ''),
-                                            )!
-                                                .length >=
-                                            100;
-                                        safeSetState(() {});
-                                      }
-
-                                      safeSetState(() {});
-                                    },
-                                    text: 'Load More',
-                                    options: FFButtonOptions(
-                                      height: 40.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 0.0, 16.0, 0.0),
-                                      iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              0.0, 0.0, 0.0, 0.0),
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .override(
-                                            font: GoogleFonts.inter(
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .fontStyle,
-                                            ),
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            fontSize: 13.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .fontStyle,
-                                          ),
-                                      elevation: 0.0,
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                  ),
-                              ],
-                            ),
-                            Builder(
-                              builder: (context) {
-                                final productItem = _model.products.toList();
-
-                                return GridView.builder(
-                                  padding: EdgeInsets.zero,
-                                  gridDelegate:
-                                      SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2,
-                                    crossAxisSpacing: 12.0,
-                                    mainAxisSpacing: 12.0,
-                                    childAspectRatio: 0.65,
-                                  ),
-                                  primary: false,
-                                  shrinkWrap: true,
-                                  scrollDirection: Axis.vertical,
-                                  itemCount: productItem.length,
-                                  itemBuilder: (context, productItemIndex) {
-                                    final productItemItem =
-                                        productItem[productItemIndex];
-                                    return ProductCard2Widget(
-                                      key: Key(
-                                          'Key5gv_${productItemIndex}_of_${productItem.length}'),
-                                      imageDesc: getJsonField(
-                                        productItemItem,
-                                        r'''$.images[0].src''',
-                                      ).toString(),
-                                      brand: getJsonField(
-                                        productItemItem,
-                                        r'''$.brands[0].name''',
-                                      ).toString(),
-                                      name: getJsonField(
-                                        productItemItem,
-                                        r'''$.name''',
-                                      ).toString(),
-                                      rating: getJsonField(
-                                        productItemItem,
-                                        r'''$.average_rating''',
-                                      ).toString(),
-                                      price: getJsonField(
-                                        productItemItem,
-                                        r'''$.prices.price''',
-                                      ).toString(),
-                                    );
-                                  },
-                                );
-                              },
-                            ),
-                          ].divide(SizedBox(height: 24.0)),
-                        ),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                  Expanded(
+                    child: custom_widgets.ProductInfiniteGrid(),
+                  ),
+                ],
               ),
             ),
           ],

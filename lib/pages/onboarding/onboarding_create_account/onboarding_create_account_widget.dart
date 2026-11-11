@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/custom_appbar_widget.dart';
+import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -493,36 +494,40 @@ class _OnboardingCreateAccountWidgetState
                         }
                         logFirebaseEvent('Button_haptic_feedback');
                         HapticFeedback.lightImpact();
-                        logFirebaseEvent('Button_auth');
-                        GoRouter.of(context).prepareAuthEvent();
+                        if ((_model.fullNameTextController.text != null &&
+                                _model.fullNameTextController.text != '') &&
+                            (_model.emailAddressTextController.text != null &&
+                                _model.emailAddressTextController.text != '') &&
+                            (_model.passwordTextController.text != null &&
+                                _model.passwordTextController.text != '')) {
+                          logFirebaseEvent('Button_auth');
+                          GoRouter.of(context).prepareAuthEvent();
 
-                        final user = await authManager.createAccountWithEmail(
-                          context,
-                          _model.emailAddressTextController.text,
-                          _model.passwordTextController.text,
-                        );
-                        if (user == null) {
-                          return;
+                          final user = await authManager.createAccountWithEmail(
+                            context,
+                            _model.emailAddressTextController.text,
+                            _model.passwordTextController.text,
+                          );
+                          if (user == null) {
+                            return;
+                          }
+
+                          await UsersRecord.collection
+                              .doc(user.uid)
+                              .update(createUsersRecordData(
+                                displayName: _model.fullNameTextController.text,
+                                email: '',
+                                photoUrl: '',
+                                phoneNumber: '',
+                                uid: '',
+                                createdTime: getCurrentTimestamp,
+                              ));
+
+                          logFirebaseEvent('Button_navigate_to');
+
+                          context.goNamedAuth(OpticSuitHomePageWidget.routeName,
+                              context.mounted);
                         }
-
-                        await UsersRecord.collection.doc(user.uid).update({
-                          ...createUsersRecordData(
-                            displayName: _model.fullNameTextController.text,
-                            diet: FFAppState().userDiet,
-                          ),
-                          ...mapToFirestore(
-                            {
-                              'allergens': FFAppState().userAllergens,
-                              'ingredient_dislikes':
-                                  FFAppState().userIngredientDislikes,
-                            },
-                          ),
-                        });
-
-                        logFirebaseEvent('Button_navigate_to');
-
-                        context.goNamedAuth(
-                            OpticSuitHomePageWidget.routeName, context.mounted);
                       },
                       text: 'Create Account',
                       options: FFButtonOptions(
@@ -709,6 +714,77 @@ class _OnboardingCreateAccountWidgetState
                           ),
                         ),
                       ],
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment:
+                          (FFMainAxisAlignment.center).flutterValue,
+                      crossAxisAlignment:
+                          (FFCrossAxisAlignment.center).flutterValue,
+                      textBaseline: TextBaseline.alphabetic,
+                      children: [
+                        Text(
+                          'Already have an account?',
+                          style:
+                              FlutterFlowTheme.of(context).bodySmall.override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodySmall
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodySmall
+                                          .fontStyle,
+                                    ),
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodySmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodySmall
+                                        .fontStyle,
+                                  ),
+                        ),
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            logFirebaseEvent(
+                                'ONBOARDING_CREATE_ACCOUNT_Text_ON_TAP');
+                            logFirebaseEvent('Text_navigate_to');
+
+                            context.pushNamed(SignInWidget.routeName);
+                          },
+                          child: Text(
+                            'Sign In',
+                            style: FlutterFlowTheme.of(context)
+                                .bodySmall
+                                .override(
+                                  font: GoogleFonts.inter(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodySmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodySmall
+                                        .fontStyle,
+                                  ),
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .bodySmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .bodySmall
+                                      .fontStyle,
+                                ),
+                          ),
+                        ),
+                      ].divide(SizedBox(width: 8.0)),
                     ),
                   ),
                 ],

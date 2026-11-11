@@ -8,11 +8,8 @@ export '/pages/onboarding/onboarding_create_account/onboarding_create_account_wi
 export '/pages/profile/profile/profile_widget.dart' show ProfileWidget;
 export '/pages/profile/edit_profile/edit_profile_widget.dart'
     show EditProfileWidget;
-export '/pages/profile/about_us/about_us_widget.dart' show AboutUsWidget;
 export '/authentication/forgot_password/forgot_password_widget.dart'
     show ForgotPasswordWidget;
-export '/pages/onboarding/onboarding/onboarding_widget.dart'
-    show OnboardingWidget;
 export '/shopping_pages/categories/categories_widget.dart'
     show CategoriesWidget;
 export '/shopping_pages/cart/cart_widget.dart' show CartWidget;
@@ -22,8 +19,6 @@ export '/cart_page/cart_page_widget.dart' show CartPageWidget;
 export '/orders_bookings/order_tracking_page/order_tracking_page_widget.dart'
     show OrderTrackingPageWidget;
 export '/shopping_pages/shop/shop_widget.dart' show ShopWidget;
-export '/shopping_pages/product_deatils/product_deatils_widget.dart'
-    show ProductDeatilsWidget;
 export '/orders_bookings/my_orders_page/my_orders_page_widget.dart'
     show MyOrdersPageWidget;
 export '/orders_bookings/myeyetestbooking/myeyetestbooking_widget.dart'
@@ -60,3 +55,7 @@ export '/shopping_pages/optic_suit_home_page/optic_suit_home_page_widget.dart'
 export '/components/search/search_widget.dart' show SearchWidget;
 export '/pages/profile/delete_account_page/delete_account_page_widget.dart'
     show DeleteAccountPageWidget;
+export '/shopping_pages/product_details/product_details_widget.dart'
+    show ProductDetailsWidget;
+export '/shopping_pages/select_lens_page/select_lens_page_widget.dart'
+    show SelectLensPageWidget;

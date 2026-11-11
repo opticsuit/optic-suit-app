@@ -89,4 +89,11 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInUserIngredientDislikes(int index, String value) {
     userIngredientDislikes.insert(index, value);
   }
+
+  /// App state cartToken
+  String _cartToken = '';
+  String get cartToken => _cartToken;
+  set cartToken(String value) {
+    _cartToken = value;
+  }
 }

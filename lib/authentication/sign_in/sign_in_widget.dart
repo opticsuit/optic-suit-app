@@ -55,8 +55,8 @@ class _SignInWidgetState extends State<SignInWidget> {
     _model.passwordFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {
-          _model.emailAddressTextController?.text = 'opticsuit@gmail.com';
-          _model.passwordTextController?.text = 'optic@2025';
+          _model.emailAddressTextController?.text = '';
+          _model.passwordTextController?.text = '';
         }));
   }
 
@@ -433,23 +433,37 @@ class _SignInWidgetState extends State<SignInWidget> {
                             onPressed: () async {
                               logFirebaseEvent(
                                   'SIGN_IN_PAGE_SIGN_IN_BTN_ON_TAP');
-                              logFirebaseEvent('Button_auth');
-                              GoRouter.of(context).prepareAuthEvent();
-
-                              final user = await authManager.signInWithEmail(
-                                context,
-                                _model.emailAddressTextController.text,
-                                _model.passwordTextController.text,
-                              );
-                              if (user == null) {
+                              Function() _navigate = () {};
+                              logFirebaseEvent('Button_validate_form');
+                              if (_model.formKey.currentState == null ||
+                                  !_model.formKey.currentState!.validate()) {
                                 return;
                               }
+                              if ((_model.emailAddressTextController.text !=
+                                          null &&
+                                      _model.emailAddressTextController.text !=
+                                          '') &&
+                                  (_model.passwordTextController.text != null &&
+                                      _model.passwordTextController.text !=
+                                          '')) {
+                                logFirebaseEvent('Button_auth');
+                                GoRouter.of(context).prepareAuthEvent();
 
-                              logFirebaseEvent('Button_navigate_to');
+                                final user = await authManager.signInWithEmail(
+                                  context,
+                                  _model.emailAddressTextController.text,
+                                  _model.passwordTextController.text,
+                                );
+                                if (user == null) {
+                                  return;
+                                }
 
-                              context.pushNamedAuth(
-                                  OpticSuitHomePageWidget.routeName,
-                                  context.mounted);
+                                _navigate = () => context.goNamedAuth(
+                                    OpticSuitHomePageWidget.routeName,
+                                    context.mounted);
+                              }
+
+                              _navigate();
                             },
                             text: 'Sign In',
                             options: FFButtonOptions(

@@ -1,15 +1,14 @@
 import '/components/status_step_widget.dart';
-import '/flutter_flow/flutter_flow_google_map.dart';
+import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
+import '/index.dart';
 import 'order_tracking_page_widget.dart' show OrderTrackingPageWidget;
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pointer_interceptor/pointer_interceptor.dart';
 import 'package:provider/provider.dart';
 
 class OrderTrackingPageModel extends FlutterFlowModel<OrderTrackingPageWidget> {
@@ -25,9 +24,8 @@ class OrderTrackingPageModel extends FlutterFlowModel<OrderTrackingPageWidget> {
   late StatusStepModel statusStepModel4;
   // Model for StatusStep.
   late StatusStepModel statusStepModel5;
-  // State field(s) for Map Google Map widget.
-  LatLng? mapGoogleMapsCenter;
-  final mapGoogleMapsController = Completer<GoogleMapController>();
+  // Model for StatusStep.
+  late StatusStepModel statusStepModel6;
 
   @override
   void initState(BuildContext context) {
@@ -36,6 +34,7 @@ class OrderTrackingPageModel extends FlutterFlowModel<OrderTrackingPageWidget> {
     statusStepModel3 = createModel(context, () => StatusStepModel());
     statusStepModel4 = createModel(context, () => StatusStepModel());
     statusStepModel5 = createModel(context, () => StatusStepModel());
+    statusStepModel6 = createModel(context, () => StatusStepModel());
   }
 
   @override
@@ -45,5 +44,6 @@ class OrderTrackingPageModel extends FlutterFlowModel<OrderTrackingPageWidget> {
     statusStepModel3.dispose();
     statusStepModel4.dispose();
     statusStepModel5.dispose();
+    statusStepModel6.dispose();
   }
 }

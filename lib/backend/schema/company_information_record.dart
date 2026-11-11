@@ -61,11 +61,6 @@ class CompanyInformationRecord extends FirestoreRecord {
   String get companyBio => _companyBio ?? '';
   bool hasCompanyBio() => _companyBio != null;
 
-  // "chef_info" field.
-  List<ChefsStruct>? _chefInfo;
-  List<ChefsStruct> get chefInfo => _chefInfo ?? const [];
-  bool hasChefInfo() => _chefInfo != null;
-
   // "termsURL" field.
   String? _termsURL;
   String get termsURL => _termsURL ?? '';
@@ -81,10 +76,6 @@ class CompanyInformationRecord extends FirestoreRecord {
     _playStoreURL = snapshotData['playStoreURL'] as String?;
     _coverImage = snapshotData['coverImage'] as String?;
     _companyBio = snapshotData['company_bio'] as String?;
-    _chefInfo = getStructList(
-      snapshotData['chef_info'],
-      ChefsStruct.fromMap,
-    );
     _termsURL = snapshotData['termsURL'] as String?;
   }
 
@@ -159,7 +150,6 @@ class CompanyInformationRecordDocumentEquality
 
   @override
   bool equals(CompanyInformationRecord? e1, CompanyInformationRecord? e2) {
-    const listEquality = ListEquality();
     return e1?.name == e2?.name &&
         e1?.logo == e2?.logo &&
         e1?.email == e2?.email &&
@@ -169,7 +159,6 @@ class CompanyInformationRecordDocumentEquality
         e1?.playStoreURL == e2?.playStoreURL &&
         e1?.coverImage == e2?.coverImage &&
         e1?.companyBio == e2?.companyBio &&
-        listEquality.equals(e1?.chefInfo, e2?.chefInfo) &&
         e1?.termsURL == e2?.termsURL;
   }
 
@@ -184,7 +173,6 @@ class CompanyInformationRecordDocumentEquality
         e?.playStoreURL,
         e?.coverImage,
         e?.companyBio,
-        const ListEquality().hash(e?.chefInfo),
         e?.termsURL
       ]);
 

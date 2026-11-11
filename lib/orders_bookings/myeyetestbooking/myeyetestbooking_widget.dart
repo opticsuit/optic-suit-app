@@ -1,4 +1,4 @@
-import '/components/booking_card_widget.dart';
+import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -490,82 +490,85 @@ class _MyeyetestbookingWidgetState extends State<MyeyetestbookingWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFF7F8FA),
+        backgroundColor: Color(0xFFF8F9FC),
         body: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
-              height: 64.0,
               decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
-                shape: BoxShape.rectangle,
+                color: Colors.white,
               ),
               child: Column(
-                mainAxisSize: MainAxisSize.min,
+                mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                    child: Container(
-                      child: Container(
-                        height: 63.0,
-                        alignment: AlignmentDirectional(0.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            FlutterFlowIconButton(
-                              borderRadius: 8.0,
-                              buttonSize: 40.0,
-                              fillColor: Colors.transparent,
-                              icon: Icon(
-                                Icons.arrow_back,
-                                color: Color(0xFF1F2937),
-                                size: 24.0,
-                              ),
-                              onPressed: () async {
-                                logFirebaseEvent(
-                                    'MYEYETESTBOOKING_PAGE_IconButton_ON_TAP');
-                                logFirebaseEvent('IconButton_navigate_to');
-
-                                context.pushNamed(ProfileWidget.routeName);
-                              },
+                  Container(
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          16.0, 12.0, 16.0, 12.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          FlutterFlowIconButton(
+                            borderRadius: 8.0,
+                            buttonSize: 40.0,
+                            fillColor: Colors.transparent,
+                            icon: Icon(
+                              Icons.arrow_back_rounded,
+                              color: Color(0xFF1F3A87),
+                              size: 24.0,
                             ),
-                            Text(
+                            onPressed: () async {
+                              logFirebaseEvent(
+                                  'MYEYETESTBOOKING_PAGE_IconButton_ON_TAP');
+                              logFirebaseEvent('IconButton_navigate_to');
+
+                              context.pushNamed(ProfileWidget.routeName);
+                            },
+                          ),
+                          Expanded(
+                            child: Text(
                               'My Eye Test Bookings',
                               style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
+                                  .titleMedium
                                   .override(
                                     font: GoogleFonts.inter(
-                                      fontWeight: FontWeight.w600,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .fontWeight,
                                       fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
+                                          .titleMedium
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFF1F2937),
-                                    fontSize: 20.0,
+                                    color: Color(0xFF202633),
                                     letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w600,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleMedium
+                                        .fontWeight,
                                     fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
+                                        .titleMedium
                                         .fontStyle,
-                                    lineHeight: 1.4,
                                   ),
                             ),
-                          ].divide(SizedBox(width: 16.0)),
-                        ),
+                          ),
+                          Icon(
+                            Icons.visibility_outlined,
+                            color: Color(0xFF1F3A87),
+                            size: 22.0,
+                          ),
+                        ].divide(SizedBox(width: 12.0)),
                       ),
                     ),
                   ),
                   Container(
+                    width: double.infinity,
                     height: 1.0,
                     decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).alternate,
-                      shape: BoxShape.rectangle,
+                      color: Color(0xFFE2E5EB),
                     ),
                   ),
                 ],
@@ -573,128 +576,334 @@ class _MyeyetestbookingWidgetState extends State<MyeyetestbookingWidget> {
             ),
             Expanded(
               flex: 1,
-              child: Container(
-                child: SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+                child: ListView(
+                  padding: EdgeInsets.zero,
                   primary: false,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            16.0, 20.0, 16.0, 24.0),
-                        child: Container(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(20.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment:
+                            (FFMainAxisAlignment.start).flutterValue,
+                        crossAxisAlignment:
+                            (FFCrossAxisAlignment.stretch).flutterValue,
+                        textBaseline: TextBaseline.alphabetic,
+                        children: [
+                          Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment:
+                                (FFMainAxisAlignment.start).flutterValue,
+                            crossAxisAlignment:
+                                (FFCrossAxisAlignment.stretch).flutterValue,
+                            textBaseline: TextBaseline.alphabetic,
                             children: [
-                              Column(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                children: [
-                                  Text(
-                                    'Upcoming Bookings',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          font: GoogleFonts.inter(
-                                            fontWeight: FontWeight.w600,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
-                                          ),
-                                          color: Color(0xFF1F2937),
-                                          fontSize: 18.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w600,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
-                                          lineHeight: 1.4,
-                                        ),
-                                  ),
-                                  wrapWithModel(
-                                    model: _model.bookingCardModel1,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: BookingCardWidget(
-                                      idNum: 'APT-10245',
-                                      isUpcoming: true,
-                                      status: 'Confirmed',
-                                      store: 'Optic Suit – Kozhikode',
-                                      city: 'Kozhikode',
-                                      date: '05 Oct 2026',
-                                      time: '11:00 AM',
+                              Text(
+                                'Upcoming Bookings',
+                                style: FlutterFlowTheme.of(context)
+                                    .titleMedium
+                                    .override(
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .titleMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .titleMedium
+                                            .fontStyle,
+                                      ),
+                                      color: Color(0xFF202633),
+                                      letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .fontStyle,
                                     ),
-                                  ),
-                                ].divide(SizedBox(height: 16.0)),
                               ),
-                              Column(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                children: [
-                                  Text(
-                                    'Past Bookings',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          font: GoogleFonts.inter(
-                                            fontWeight: FontWeight.w600,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
-                                          ),
-                                          color: Color(0xFF1F2937),
-                                          fontSize: 18.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w600,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
-                                          lineHeight: 1.4,
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(16.0),
+                                  border: Border.all(
+                                    color: Color(0xFFE2E5EB),
+                                    width: 1.0,
+                                  ),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.all(18.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        (FFMainAxisAlignment.start)
+                                            .flutterValue,
+                                    crossAxisAlignment:
+                                        (FFCrossAxisAlignment.center)
+                                            .flutterValue,
+                                    textBaseline: TextBaseline.alphabetic,
+                                    children: [
+                                      Container(
+                                        width: 46.0,
+                                        height: 46.0,
+                                        decoration: BoxDecoration(
+                                          color: Color(0xFFF0F1F5),
+                                          borderRadius:
+                                              BorderRadius.circular(12.0),
                                         ),
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
+                                        child: Icon(
+                                          Icons.event_available_outlined,
+                                          color: Color(0xFF1F3A87),
+                                          size: 22.0,
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              (FFMainAxisAlignment.start)
+                                                  .flutterValue,
+                                          crossAxisAlignment:
+                                              (FFCrossAxisAlignment.start)
+                                                  .flutterValue,
+                                          textBaseline: TextBaseline.alphabetic,
+                                          children: [
+                                            Text(
+                                              'No upcoming bookings',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        color:
+                                                            Color(0xFF202633),
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                            ),
+                                            Text(
+                                              'Your scheduled eye tests will appear here.',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .fontStyle,
+                                                        ),
+                                                        color:
+                                                            Color(0xFF737B89),
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodySmall
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodySmall
+                                                                .fontStyle,
+                                                      ),
+                                            ),
+                                          ].divide(SizedBox(height: 5.0)),
+                                        ),
+                                      ),
+                                    ].divide(SizedBox(width: 14.0)),
                                   ),
-                                  wrapWithModel(
-                                    model: _model.bookingCardModel2,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: BookingCardWidget(
-                                      idNum: 'APT-10120',
-                                      isUpcoming: false,
-                                      status: 'Completed',
-                                      store: 'Optic Suit – Malappuram',
-                                      city: 'Malappuram',
-                                      date: '28 Sep 2026',
-                                      time: '03:00 PM',
-                                    ),
-                                  ),
-                                  wrapWithModel(
-                                    model: _model.bookingCardModel3,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: BookingCardWidget(
-                                      idNum: 'APT-10098',
-                                      isUpcoming: false,
-                                      status: 'Completed',
-                                      store: 'Optic Suit – Kozhikode',
-                                      city: 'Kozhikode',
-                                      date: '20 Sep 2026',
-                                      time: '11:00 AM',
-                                    ),
-                                  ),
-                                ].divide(SizedBox(height: 16.0)),
+                                ),
                               ),
-                            ].divide(SizedBox(height: 24.0)),
+                            ].divide(SizedBox(height: 14.0)),
                           ),
-                        ),
+                          Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment:
+                                (FFMainAxisAlignment.start).flutterValue,
+                            crossAxisAlignment:
+                                (FFCrossAxisAlignment.stretch).flutterValue,
+                            textBaseline: TextBaseline.alphabetic,
+                            children: [
+                              Text(
+                                'Past Bookings',
+                                style: FlutterFlowTheme.of(context)
+                                    .titleMedium
+                                    .override(
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .titleMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .titleMedium
+                                            .fontStyle,
+                                      ),
+                                      color: Color(0xFF202633),
+                                      letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .fontStyle,
+                                    ),
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(16.0),
+                                  border: Border.all(
+                                    color: Color(0xFFE2E5EB),
+                                    width: 1.0,
+                                  ),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.all(18.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        (FFMainAxisAlignment.start)
+                                            .flutterValue,
+                                    crossAxisAlignment:
+                                        (FFCrossAxisAlignment.center)
+                                            .flutterValue,
+                                    textBaseline: TextBaseline.alphabetic,
+                                    children: [
+                                      Container(
+                                        width: 46.0,
+                                        height: 46.0,
+                                        decoration: BoxDecoration(
+                                          color: Color(0xFFF0F1F5),
+                                          borderRadius:
+                                              BorderRadius.circular(12.0),
+                                        ),
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
+                                        child: Icon(
+                                          Icons.history_rounded,
+                                          color: Color(0xFF737B89),
+                                          size: 22.0,
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              (FFMainAxisAlignment.start)
+                                                  .flutterValue,
+                                          crossAxisAlignment:
+                                              (FFCrossAxisAlignment.start)
+                                                  .flutterValue,
+                                          textBaseline: TextBaseline.alphabetic,
+                                          children: [
+                                            Text(
+                                              'No past bookings',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        color:
+                                                            Color(0xFF202633),
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                            ),
+                                            Text(
+                                              'Completed eye test appointments will appear here.',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .fontStyle,
+                                                        ),
+                                                        color:
+                                                            Color(0xFF737B89),
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodySmall
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodySmall
+                                                                .fontStyle,
+                                                      ),
+                                            ),
+                                          ].divide(SizedBox(height: 5.0)),
+                                        ),
+                                      ),
+                                    ].divide(SizedBox(width: 14.0)),
+                                  ),
+                                ),
+                              ),
+                            ].divide(SizedBox(height: 14.0)),
+                          ),
+                        ].divide(SizedBox(height: 24.0)),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),

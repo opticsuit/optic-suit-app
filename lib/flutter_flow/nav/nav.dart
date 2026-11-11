@@ -127,20 +127,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => EditProfileWidget(),
             ),
             FFRoute(
-              name: AboutUsWidget.routeName,
-              path: AboutUsWidget.routePath,
-              requireAuth: true,
-              builder: (context, params) => AboutUsWidget(),
-            ),
-            FFRoute(
               name: ForgotPasswordWidget.routeName,
               path: ForgotPasswordWidget.routePath,
               builder: (context, params) => ForgotPasswordWidget(),
-            ),
-            FFRoute(
-              name: OnboardingWidget.routeName,
-              path: OnboardingWidget.routePath,
-              builder: (context, params) => OnboardingWidget(),
             ),
             FFRoute(
               name: CategoriesWidget.routeName,
@@ -182,16 +171,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => params.isEmpty
                   ? NavBarPage(initialPage: 'Shop')
                   : ShopWidget(),
-            ),
-            FFRoute(
-              name: ProductDeatilsWidget.routeName,
-              path: ProductDeatilsWidget.routePath,
-              builder: (context, params) => ProductDeatilsWidget(
-                productId: params.getParam(
-                  'productId',
-                  ParamType.int,
-                ),
-              ),
             ),
             FFRoute(
               name: MyOrdersPageWidget.routeName,
@@ -294,6 +273,26 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: DeleteAccountPageWidget.routeName,
               path: DeleteAccountPageWidget.routePath,
               builder: (context, params) => DeleteAccountPageWidget(),
+            ),
+            FFRoute(
+              name: ProductDetailsWidget.routeName,
+              path: ProductDetailsWidget.routePath,
+              builder: (context, params) => ProductDetailsWidget(
+                productId: params.getParam(
+                  'productId',
+                  ParamType.int,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: SelectLensPageWidget.routeName,
+              path: SelectLensPageWidget.routePath,
+              builder: (context, params) => SelectLensPageWidget(
+                productId: params.getParam(
+                  'productId',
+                  ParamType.int,
+                ),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
