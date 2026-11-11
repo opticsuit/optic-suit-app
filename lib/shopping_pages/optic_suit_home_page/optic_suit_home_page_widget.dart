@@ -588,8 +588,13 @@ class _OpticSuitHomePageWidgetState extends State<OpticSuitHomePageWidget> {
                                   color: Color(0xFF1F3A87),
                                   size: 24.0,
                                 ),
-                                onPressed: () {
-                                  print('IconButton pressed ...');
+                                onPressed: () async {
+                                  logFirebaseEvent(
+                                      'OPTIC_SUIT_HOME_IconButton_ON_TAP');
+                                  logFirebaseEvent('IconButton_navigate_to');
+
+                                  context
+                                      .pushNamed(NotificationsWidget.routeName);
                                 },
                               ),
                               FlutterFlowIconButton(
@@ -601,8 +606,13 @@ class _OpticSuitHomePageWidgetState extends State<OpticSuitHomePageWidget> {
                                   color: Color(0xFF1F3A87),
                                   size: 24.0,
                                 ),
-                                onPressed: () {
-                                  print('IconButton pressed ...');
+                                onPressed: () async {
+                                  logFirebaseEvent(
+                                      'OPTIC_SUIT_HOME_IconButton_ON_TAP');
+                                  logFirebaseEvent('IconButton_navigate_to');
+
+                                  context
+                                      .pushNamed(WishlistPageWidget.routeName);
                                 },
                               ),
                             ].divide(SizedBox(width: 4.0)),

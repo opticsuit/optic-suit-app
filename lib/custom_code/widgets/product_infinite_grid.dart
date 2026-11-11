@@ -32,8 +32,8 @@ class _ProductInfiniteGridState extends State<ProductInfiniteGrid> {
   static const double _threshold = 600;
 
   final List<Map<String, dynamic>> _items = [];
+  final List<Map<String, dynamic>> _categoryOptions = [];
   final Set<int> _ids = {};
-  final Set<int> _wishlistedIds = {};
   late final ScrollController _scrollController;
   int _page = 1;
   bool _loading = false;
@@ -45,16 +45,24 @@ class _ProductInfiniteGridState extends State<ProductInfiniteGrid> {
   String _sort = 'Featured';
   RangeValues _priceRange = const RangeValues(0, 1);
   bool _filterPanelOpen = false;
+  int _requestGeneration = 0;
 
   @override
   void initState() {
     super.initState();
+    FFAppState().addListener(_onWishlistChanged);
     _scrollController = ScrollController()..addListener(_onScroll);
+    _loadCategories();
     _loadMore();
+  }
+
+  void _onWishlistChanged() {
+    if (mounted) setState(() {});
   }
 
   @override
   void dispose() {
+    FFAppState().removeListener(_onWishlistChanged);
     _scrollController
       ..removeListener(_onScroll)
       ..dispose();
@@ -69,25 +77,83 @@ class _ProductInfiniteGridState extends State<ProductInfiniteGrid> {
     }
   }
 
+  Future<void> _loadCategories() async {
+    try {
+      final response = await http
+          .get(
+            Uri.parse(
+              'https://opticsuit.com/wp-json/wc/store/v1/products/categories?per_page=100&hide_empty=true',
+            ),
+          )
+          .timeout(const Duration(seconds: 30));
+      if (!mounted || response.statusCode != 200) return;
+      final body = jsonDecode(response.body);
+      if (body is! List) return;
+      setState(() {
+        _categoryOptions
+          ..clear()
+          ..addAll(body.whereType<Map<String, dynamic>>());
+      });
+    } catch (_) {
+      // Products still load; use their category data if the lookup fails.
+    }
+  }
+
+  Future<void> _selectCategory(String category) async {
+    if (_category == category) return;
+    setState(() {
+      _category = category;
+      _items.clear();
+      _ids.clear();
+      _page = 1;
+      _hasMore = true;
+      _failed = false;
+      _loading = false;
+    });
+    _requestGeneration++;
+    await _loadMore();
+  }
+
+  int? get _selectedCategoryId {
+    if (_category == 'All') return null;
+    for (final category in _categoryOptions) {
+      if ('${category['name']}'.toLowerCase() == _category.toLowerCase() ||
+          '${category['slug']}'.toLowerCase() == _category.toLowerCase()) {
+        return int.tryParse('${category['id']}');
+      }
+    }
+    return null;
+  }
+
   Future<void> _loadMore() async {
     if (_loading || !_hasMore) return;
+    final generation = _requestGeneration;
+    final requestedPage = _page;
     setState(() {
       _loading = true;
       _failed = false;
     });
 
     try {
-      final uri = Uri.parse(
-        'https://opticsuit.com/wp-json/wc/store/v1/products?per_page=$_perPage&page=$_page',
+      final categoryId = _selectedCategoryId;
+      final uri = Uri.https(
+        'opticsuit.com',
+        '/wp-json/wc/store/v1/products',
+        {
+          'per_page': '$_perPage',
+          'page': '$requestedPage',
+          if (categoryId != null) 'category': '$categoryId',
+        },
       );
       final r = await http.get(uri).timeout(const Duration(seconds: 30));
-      if (!mounted) return;
+      if (!mounted || generation != _requestGeneration) return;
 
       if (r.statusCode == 200) {
         final body = jsonDecode(r.body);
         if (body is! List)
           throw const FormatException('Expected a product list');
         final batch = body;
+        final totalPages = int.tryParse(r.headers['x-wp-totalpages'] ?? '');
         setState(() {
           for (final e in batch) {
             if (e is Map<String, dynamic>) {
@@ -103,8 +169,10 @@ class _ProductInfiniteGridState extends State<ProductInfiniteGrid> {
           if (_priceRange.end < maxPrice) {
             _priceRange = RangeValues(_priceRange.start, maxPrice);
           }
-          _page += 1;
-          _hasMore = batch.length >= _perPage;
+          _page = requestedPage + 1;
+          _hasMore = totalPages != null
+              ? requestedPage < totalPages
+              : batch.length >= _perPage;
           _loading = false;
         });
         // If the screen is still not full, keep loading.
@@ -118,7 +186,7 @@ class _ProductInfiniteGridState extends State<ProductInfiniteGrid> {
         });
       }
     } catch (_) {
-      if (!mounted) return;
+      if (!mounted || generation != _requestGeneration) return;
       setState(() {
         _failed = true;
         _loading = false;
@@ -143,18 +211,35 @@ class _ProductInfiniteGridState extends State<ProductInfiniteGrid> {
 
   String _price(Map<String, dynamic> p) {
     final prices = (p['prices'] as Map?) ?? {};
-    final v = int.tryParse('${prices['price']}');
-    if (v == null) return '';
-    final minor = int.tryParse('${prices['currency_minor_unit']}') ?? 2;
-    var d = 1;
+    final price = _hasSale(p)
+        ? prices['sale_price']
+        : (prices['price'] ?? prices['regular_price']);
+    return _formatRupees(price, prices['currency_minor_unit']);
+  }
+
+  String _formatRupees(dynamic rawPrice, dynamic rawMinorUnit) {
+    final price = int.tryParse('$rawPrice');
+    if (price == null) return '';
+    final minor = int.tryParse('$rawMinorUnit') ?? 2;
+    var divisor = 1.0;
     for (var i = 0; i < minor; i++) {
-      d *= 10;
+      divisor *= 10;
     }
-    final a = v / d;
-    final txt = a == a.roundToDouble()
-        ? a.toStringAsFixed(0)
-        : a.toStringAsFixed(minor);
-    return '${_clean(prices['currency_symbol']?.toString())}$txt';
+    return '₹${(price / divisor).toStringAsFixed(minor)}';
+  }
+
+  bool _hasSale(Map<String, dynamic> product) {
+    final prices = product['prices'];
+    if (prices is! Map) return false;
+    final regular = int.tryParse('${prices['regular_price']}');
+    final sale = int.tryParse('${prices['sale_price']}');
+    return regular != null && sale != null && sale > 0 && sale < regular;
+  }
+
+  String _regularPrice(Map<String, dynamic> product) {
+    final prices = (product['prices'] as Map?) ?? {};
+    return _formatRupees(
+        prices['regular_price'], prices['currency_minor_unit']);
   }
 
   double _rawPrice(Map<String, dynamic> product) {
@@ -252,8 +337,14 @@ class _ProductInfiniteGridState extends State<ProductInfiniteGrid> {
       _items.map(_brand).where((brand) => brand.isNotEmpty).toSet().toList()
         ..sort();
 
-  List<String> get _categoryNames =>
-      _items.expand(_categories).toSet().toList()..sort();
+  List<String> get _categoryNames {
+    final names = _categoryOptions
+        .map((category) => '${category['name'] ?? ''}')
+        .where((name) => name.isNotEmpty)
+        .toSet();
+    if (names.isEmpty) names.addAll(_items.expand(_categories));
+    return names.toList()..sort();
+  }
 
   double get _maxPrice => _items.fold<double>(
         1,
@@ -303,7 +394,7 @@ class _ProductInfiniteGridState extends State<ProductInfiniteGrid> {
                   child: ChoiceChip(
                     label: Text(category),
                     selected: selected,
-                    onSelected: (_) => setState(() => _category = category),
+                    onSelected: (_) => _selectCategory(category),
                     selectedColor: const Color(0xFF1F3A87),
                     backgroundColor: Colors.white,
                     labelStyle: TextStyle(
@@ -413,18 +504,21 @@ class _ProductInfiniteGridState extends State<ProductInfiniteGrid> {
     final count = int.tryParse(
       '${product['review_count'] ?? product['rating_count'] ?? ''}',
     );
-    if (rating == null || rating <= 0) return const SizedBox(height: 15);
+    final validRating = rating != null && rating > 0;
+    if (!validRating && count == null) return const SizedBox(height: 15);
     return Row(
       children: [
-        const Icon(Icons.star_rounded, size: 14, color: Color(0xFFF4B740)),
-        const SizedBox(width: 2),
-        Text(
-          rating.toStringAsFixed(1),
-          style: const TextStyle(fontSize: 11, color: Color(0xFF4B5563)),
-        ),
-        if (count != null && count > 0)
+        if (validRating) ...[
+          const Icon(Icons.star_rounded, size: 14, color: Color(0xFFF4B740)),
+          const SizedBox(width: 2),
           Text(
-            ' ($count)',
+            rating.toStringAsFixed(1),
+            style: const TextStyle(fontSize: 11, color: Color(0xFF6B7280)),
+          ),
+        ],
+        if (count != null)
+          Text(
+            validRating ? ' ($count)' : '$count reviews',
             style: const TextStyle(fontSize: 11, color: Color(0xFF6B7280)),
           ),
       ],
@@ -437,7 +531,7 @@ class _ProductInfiniteGridState extends State<ProductInfiniteGrid> {
     final img = firstImage is Map ? '${firstImage['src'] ?? ''}' : '';
     final brand = _brand(p);
     final id = p['id'] is int ? p['id'] as int : -1;
-    final wishlisted = _wishlistedIds.contains(id);
+    final wishlisted = id >= 0 && FFAppState().wishlistProductIds.contains(id);
     return InkWell(
       onTap: id < 0
           ? null
@@ -508,11 +602,13 @@ class _ProductInfiniteGridState extends State<ProductInfiniteGrid> {
                         iconSize: 19,
                         onPressed: id < 0
                             ? null
-                            : () => setState(() {
+                            : () => FFAppState().update(() {
                                   if (wishlisted) {
-                                    _wishlistedIds.remove(id);
-                                  } else {
-                                    _wishlistedIds.add(id);
+                                    FFAppState().wishlistProductIds.remove(id);
+                                  } else if (!FFAppState()
+                                      .wishlistProductIds
+                                      .contains(id)) {
+                                    FFAppState().wishlistProductIds.add(id);
                                   }
                                 }),
                         icon: Icon(
@@ -557,13 +653,46 @@ class _ProductInfiniteGridState extends State<ProductInfiniteGrid> {
                   const SizedBox(height: 3),
                   _rating(p),
                   const SizedBox(height: 2),
-                  Text(
-                    _price(p),
-                    style: const TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w700,
-                      color: Color(0xFF1F3A87),
-                    ),
+                  Wrap(
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    spacing: 6,
+                    runSpacing: 2,
+                    children: [
+                      Text(
+                        _price(p),
+                        style: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w700,
+                          color: Color(0xFF1F3A87),
+                        ),
+                      ),
+                      if (_hasSale(p))
+                        Text(
+                          _regularPrice(p),
+                          style: const TextStyle(
+                            fontSize: 11,
+                            color: Color(0xFF6B7280),
+                            decoration: TextDecoration.lineThrough,
+                          ),
+                        ),
+                      if (_hasSale(p))
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 5, vertical: 2),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF1F3A87),
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: const Text(
+                            'SALE',
+                            style: TextStyle(
+                              fontSize: 8,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                    ],
                   ),
                 ],
               ),

@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
+import '/backend/schema/structs/index.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -48,16 +49,47 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('PRODUCT_DETAILS_ProductDetails_ON_INIT_S');
-      logFirebaseEvent('ProductDetails_custom_action');
-      _model.initializedCartToken = await actions.initializeCartToken(
-        context,
-      );
-      if ((_model.initializedCartToken != null &&
-              _model.initializedCartToken != '') &&
-          (_model.initializedCartToken != '')) {
-        logFirebaseEvent('ProductDetails_update_app_state');
-        FFAppState().cartToken = _model.initializedCartToken!;
-        safeSetState(() {});
+      logFirebaseEvent('ProductDetails_update_page_state');
+      _model.isWishlisted =
+          FFAppState().wishlistProductIds.contains(widget!.productId);
+      safeSetState(() {});
+      if (FFAppState().cartToken == '') {
+        logFirebaseEvent('ProductDetails_custom_action');
+        _model.initializedCartToken = await actions.initializeCartToken(
+          context,
+        );
+        if ((_model.initializedCartToken != null &&
+                _model.initializedCartToken != '') &&
+            (_model.initializedCartToken != '')) {
+          logFirebaseEvent('ProductDetails_update_app_state');
+          FFAppState().cartToken = _model.initializedCartToken!;
+          safeSetState(() {});
+          logFirebaseEvent('ProductDetails_backend_call');
+          _model.productDetailsInitializedCart = await GetCartCall.call(
+            cartToken: FFAppState().cartToken,
+          );
+
+          if ((_model.productDetailsInitializedCart?.succeeded ?? true)) {
+            logFirebaseEvent('ProductDetails_update_page_state');
+            _model.cartItemCount = WooCartResponseStruct.maybeFromMap(
+                    (_model.productDetailsInitializedCart?.jsonBody ?? ''))
+                ?.itemsCount;
+            safeSetState(() {});
+          }
+        }
+      } else {
+        logFirebaseEvent('ProductDetails_backend_call');
+        _model.productDetailsExistingCart = await GetCartCall.call(
+          cartToken: FFAppState().cartToken,
+        );
+
+        if ((_model.productDetailsExistingCart?.succeeded ?? true)) {
+          logFirebaseEvent('ProductDetails_update_page_state');
+          _model.cartItemCount = WooCartResponseStruct.maybeFromMap(
+                  (_model.productDetailsExistingCart?.jsonBody ?? ''))
+              ?.itemsCount;
+          safeSetState(() {});
+        }
       }
     });
 
@@ -113,7 +145,129 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                 context.pop();
               },
             ),
-            actions: [],
+            actions: [
+              Stack(
+                alignment: AlignmentDirectional(0.0, 0.0),
+                children: [
+                  if (!_model.isWishlisted!)
+                    FlutterFlowIconButton(
+                      buttonSize: 44.0,
+                      icon: Icon(
+                        Icons.favorite_border_rounded,
+                        color: FlutterFlowTheme.of(context).lensBlue,
+                        size: 22.0,
+                      ),
+                      onPressed: () async {
+                        logFirebaseEvent(
+                            'PRODUCT_DETAILS_PAGE_IconButton_ON_TAP');
+                        if (FFAppState()
+                            .wishlistProductIds
+                            .contains(widget!.productId)) {
+                          logFirebaseEvent('IconButton_update_app_state');
+                          FFAppState()
+                              .removeFromWishlistProductIds(widget!.productId!);
+                          safeSetState(() {});
+                        } else {
+                          logFirebaseEvent('IconButton_update_app_state');
+                          FFAppState()
+                              .addToWishlistProductIds(widget!.productId!);
+                          safeSetState(() {});
+                        }
+
+                        logFirebaseEvent('IconButton_update_page_state');
+                        _model.isWishlisted = FFAppState()
+                            .wishlistProductIds
+                            .contains(widget!.productId);
+                        safeSetState(() {});
+                      },
+                    ),
+                  if (_model.isWishlisted ?? true)
+                    FlutterFlowIconButton(
+                      buttonSize: 44.0,
+                      icon: Icon(
+                        Icons.favorite_rounded,
+                        color: Color(0xFFE53935),
+                        size: 22.0,
+                      ),
+                      onPressed: () async {
+                        logFirebaseEvent(
+                            'PRODUCT_DETAILS_PAGE_IconButton_ON_TAP');
+                        if (FFAppState()
+                            .wishlistProductIds
+                            .contains(widget!.productId)) {
+                          logFirebaseEvent('IconButton_update_app_state');
+                          FFAppState()
+                              .removeFromWishlistProductIds(widget!.productId!);
+                          safeSetState(() {});
+                        } else {
+                          logFirebaseEvent('IconButton_update_app_state');
+                          FFAppState()
+                              .addToWishlistProductIds(widget!.productId!);
+                          safeSetState(() {});
+                        }
+
+                        logFirebaseEvent('IconButton_update_page_state');
+                        _model.isWishlisted = FFAppState()
+                            .wishlistProductIds
+                            .contains(widget!.productId);
+                        safeSetState(() {});
+                      },
+                    ),
+                ],
+              ),
+              Stack(
+                alignment: AlignmentDirectional(0.0, 0.0),
+                children: [
+                  FlutterFlowIconButton(
+                    buttonSize: 44.0,
+                    icon: Icon(
+                      Icons.shopping_cart_outlined,
+                      color: FlutterFlowTheme.of(context).lensBlue,
+                      size: 22.0,
+                    ),
+                    onPressed: () async {
+                      logFirebaseEvent(
+                          'PRODUCT_DETAILS_PAGE_IconButton_ON_TAP');
+                      logFirebaseEvent('IconButton_navigate_to');
+
+                      context.pushNamed(MyCartPageWidget.routeName);
+                    },
+                  ),
+                  if (_model.cartItemCount! > 0)
+                    Align(
+                      alignment: AlignmentDirectional(1.0, -1.0),
+                      child: Container(
+                        width: 16.0,
+                        height: 16.0,
+                        decoration: BoxDecoration(
+                          color: Color(0xFFFF0000),
+                          shape: BoxShape.circle,
+                        ),
+                        alignment: AlignmentDirectional(0.0, 0.0),
+                        child: Text(
+                          '${_model.cartItemCount?.toString()}',
+                          style:
+                              FlutterFlowTheme.of(context).labelSmall.override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelSmall
+                                          .fontStyle,
+                                    ),
+                                    color: Colors.white,
+                                    fontSize: 9.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelSmall
+                                        .fontStyle,
+                                  ),
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+            ],
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
                 'Product Details',
@@ -2785,6 +2939,17 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
 
                             _shouldSetState = true;
                             if ((_model.addToCartDslRes0?.succeeded ?? true)) {
+                              if ((_model.addToCartDslRes0
+                                          ?.getHeader('Cart-Token') ??
+                                      '') !=
+                                  '') {
+                                logFirebaseEvent('Button_update_app_state');
+                                FFAppState().cartToken = (_model
+                                        .addToCartDslRes0
+                                        ?.getHeader('Cart-Token') ??
+                                    '');
+                                safeSetState(() {});
+                              }
                               logFirebaseEvent('Button_show_snack_bar');
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
@@ -2795,6 +2960,32 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                                   duration: Duration(milliseconds: 4000),
                                 ),
                               );
+                              logFirebaseEvent('Button_backend_call');
+                              _model.productDetailsRefreshedCart =
+                                  await GetCartCall.call(
+                                cartToken: FFAppState().cartToken,
+                              );
+
+                              _shouldSetState = true;
+                              if ((_model
+                                      .productDetailsRefreshedCart?.succeeded ??
+                                  true)) {
+                                logFirebaseEvent('Button_update_page_state');
+                                _model.cartItemCount =
+                                    WooCartResponseStruct.maybeFromMap((_model
+                                                .productDetailsRefreshedCart
+                                                ?.jsonBody ??
+                                            ''))
+                                        ?.itemsCount;
+                                safeSetState(() {});
+                                logFirebaseEvent('Button_navigate_to');
+
+                                context.pushNamed(MyCartPageWidget.routeName);
+                              } else {
+                                logFirebaseEvent('Button_navigate_to');
+
+                                context.pushNamed(MyCartPageWidget.routeName);
+                              }
                             } else {
                               logFirebaseEvent('Button_show_snack_bar');
                               ScaffoldMessenger.of(context).showSnackBar(

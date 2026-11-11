@@ -12,7 +12,6 @@ export '/authentication/forgot_password/forgot_password_widget.dart'
     show ForgotPasswordWidget;
 export '/shopping_pages/categories/categories_widget.dart'
     show CategoriesWidget;
-export '/shopping_pages/cart/cart_widget.dart' show CartWidget;
 export '/chekout_page/chekout_page_widget.dart' show ChekoutPageWidget;
 export '/shopping_pages/chekout/chekout_widget.dart' show ChekoutWidget;
 export '/cart_page/cart_page_widget.dart' show CartPageWidget;
@@ -27,7 +26,6 @@ export '/orders_bookings/bookeyetestpage/bookeyetestpage_widget.dart'
     show BookeyetestpageWidget;
 export '/address_support/saved_address/saved_address_widget.dart'
     show SavedAddressWidget;
-export '/shopping_pages/wishlist/wishlist_widget.dart' show WishlistWidget;
 export '/address_support/help_suppor/help_suppor_widget.dart'
     show HelpSupporWidget;
 export '/address_support/add_new_address/add_new_address_widget.dart'
@@ -59,3 +57,7 @@ export '/shopping_pages/product_details/product_details_widget.dart'
     show ProductDetailsWidget;
 export '/shopping_pages/select_lens_page/select_lens_page_widget.dart'
     show SelectLensPageWidget;
+export '/shopping_pages/my_cart_page/my_cart_page_widget.dart'
+    show MyCartPageWidget;
+export '/shopping_pages/wishlist_page/wishlist_page_widget.dart'
+    show WishlistPageWidget;

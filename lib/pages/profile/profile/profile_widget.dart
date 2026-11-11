@@ -641,7 +641,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                         'PROFILE_PAGE_Container_ON_TAP');
                                     logFirebaseEvent('Container_navigate_to');
 
-                                    context.pushNamed(WishlistWidget.routeName);
+                                    context.pushNamed(
+                                        WishlistPageWidget.routeName);
                                   },
                                   child: Container(
                                     child: Padding(

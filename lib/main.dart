@@ -174,7 +174,6 @@ class _NavBarPageState extends State<NavBarPage> {
     final tabs = {
       'Profile': ProfileWidget(),
       'Categories': CategoriesWidget(),
-      'Cart': CartWidget(),
       'OpticSuitHomePage': OpticSuitHomePageWidget(),
       'Shop': ShopWidget(),
     };
@@ -214,14 +213,6 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24.0,
             ),
             label: 'category',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.shopping_cart,
-              size: 24.0,
-            ),
-            label: 'Cart',
             tooltip: '',
           ),
           BottomNavigationBarItem(

@@ -83,7 +83,7 @@ class _ChekoutPageWidgetState extends State<ChekoutPageWidget> {
                         logFirebaseEvent('CHEKOUT_PAGE_PAGE_IconButton_ON_TAP');
                         logFirebaseEvent('IconButton_navigate_to');
 
-                        context.pushNamed(CartWidget.routeName);
+                        context.pushNamed(MyCartPageWidget.routeName);
                       },
                     ),
                     Expanded(

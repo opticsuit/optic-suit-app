@@ -139,13 +139,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   : CategoriesWidget(),
             ),
             FFRoute(
-              name: CartWidget.routeName,
-              path: CartWidget.routePath,
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'Cart')
-                  : CartWidget(),
-            ),
-            FFRoute(
               name: ChekoutPageWidget.routeName,
               path: ChekoutPageWidget.routePath,
               builder: (context, params) => ChekoutPageWidget(),
@@ -191,11 +184,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: SavedAddressWidget.routeName,
               path: SavedAddressWidget.routePath,
               builder: (context, params) => SavedAddressWidget(),
-            ),
-            FFRoute(
-              name: WishlistWidget.routeName,
-              path: WishlistWidget.routePath,
-              builder: (context, params) => WishlistWidget(),
             ),
             FFRoute(
               name: HelpSupporWidget.routeName,
@@ -293,6 +281,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   ParamType.int,
                 ),
               ),
+            ),
+            FFRoute(
+              name: MyCartPageWidget.routeName,
+              path: MyCartPageWidget.routePath,
+              builder: (context, params) => MyCartPageWidget(),
+            ),
+            FFRoute(
+              name: WishlistPageWidget.routeName,
+              path: WishlistPageWidget.routePath,
+              builder: (context, params) => WishlistPageWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

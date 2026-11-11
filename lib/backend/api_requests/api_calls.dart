@@ -275,12 +275,16 @@ class WooCommerceRelatedProductsCall {
 }
 
 class GetCartCall {
-  static Future<ApiCallResponse> call() async {
+  static Future<ApiCallResponse> call({
+    String? cartToken = '',
+  }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'GetCart',
       apiUrl: 'https://opticsuit.com/wp-json/wc/store/v1/cart',
       callType: ApiCallType.GET,
-      headers: {},
+      headers: {
+        'Cart-Token': '${cartToken}',
+      },
       params: {},
       returnBody: true,
       encodeBodyUtf8: false,
@@ -341,6 +345,29 @@ class GetCartCall {
         response,
         r'''$.totals.total_price''',
       ));
+  static String? subtotal(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.totals.total_items''',
+      ));
+  static String? deliveryCharge(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.totals.total_shipping''',
+      ));
+  static String? discount(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.totals.total_discount''',
+      ));
+  static String? currencySymbol(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.totals.currency_symbol''',
+      ));
+  static int? currencyMinorUnit(dynamic response) =>
+      castToType<int>(getJsonField(
+        response,
+        r'''$.totals.currency_minor_unit''',
+      ));
   static int? totalItems(dynamic response) => castToType<int>(getJsonField(
         response,
         r'''$.items_count''',
@@ -388,6 +415,34 @@ class AddToCartCall {
         response,
         r'''$.totals.total_price''',
       ));
+}
+
+class UpdateCartItemCall {
+  static Future<ApiCallResponse> call({
+    String? key = '',
+    int? quantity,
+    String? cartToken = '',
+  }) async {
+    final ffApiRequestBody = '''
+{"key": ${key == null ? 'null' : '"${escapeStringForJson(key)}"'}, "quantity": ${quantity}}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'UpdateCartItem',
+      apiUrl: 'https://opticsuit.com/wp-json/wc/store/v1/cart/update-item',
+      callType: ApiCallType.POST,
+      headers: {
+        'Cart-Token': '${cartToken}',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
 }
 
 class ApiPagingParams {

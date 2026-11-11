@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
+import '/backend/schema/structs/index.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -22,10 +23,18 @@ class ProductDetailsModel extends FlutterFlowModel<ProductDetailsWidget> {
 
   bool? descriptionExpanded = false;
 
+  bool? isWishlisted = false;
+
+  int? cartItemCount = 0;
+
   ///  State fields for stateful widgets in this page.
 
   // Stores action output result for [Custom Action - initializeCartToken] action in ProductDetails widget.
   String? initializedCartToken;
+  // Stores action output result for [Backend Call - API (GetCart)] action in ProductDetails widget.
+  ApiCallResponse? productDetailsInitializedCart;
+  // Stores action output result for [Backend Call - API (GetCart)] action in ProductDetails widget.
+  ApiCallResponse? productDetailsExistingCart;
   // Model for DetailRow2.
   late DetailRow2Model detailRow2Model1;
   // Model for DetailRow2.
@@ -58,6 +67,8 @@ class ProductDetailsModel extends FlutterFlowModel<ProductDetailsWidget> {
   String? Function(BuildContext, String?)? textFieldTextController3Validator;
   // Stores action output result for [Backend Call - API (AddToCart)] action in Button widget.
   ApiCallResponse? addToCartDslRes0;
+  // Stores action output result for [Backend Call - API (GetCart)] action in Button widget.
+  ApiCallResponse? productDetailsRefreshedCart;
 
   @override
   void initState(BuildContext context) {

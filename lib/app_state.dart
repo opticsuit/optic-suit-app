@@ -19,12 +19,26 @@ class FFAppState extends ChangeNotifier {
     _instance = FFAppState._internal();
   }
 
-  Future initializePersistedState() async {}
+  Future initializePersistedState() async {
+    prefs = await SharedPreferences.getInstance();
+    _safeInit(() {
+      _cartToken = prefs.getString('ff_cartToken') ?? _cartToken;
+    });
+    _safeInit(() {
+      _wishlistProductIds = prefs
+              .getStringList('ff_wishlistProductIds')
+              ?.map(int.parse)
+              .toList() ??
+          _wishlistProductIds;
+    });
+  }
 
   void update(VoidCallback callback) {
     callback();
     notifyListeners();
   }
+
+  late SharedPreferences prefs;
 
   String _userDiet = '';
   String get userDiet => _userDiet;
@@ -95,5 +109,60 @@ class FFAppState extends ChangeNotifier {
   String get cartToken => _cartToken;
   set cartToken(String value) {
     _cartToken = value;
+    prefs.setString('ff_cartToken', value);
   }
+
+  /// App state wishlistProductIds
+  List<int> _wishlistProductIds = [];
+  List<int> get wishlistProductIds => _wishlistProductIds;
+  set wishlistProductIds(List<int> value) {
+    _wishlistProductIds = value;
+    prefs.setStringList(
+        'ff_wishlistProductIds', value.map((x) => x.toString()).toList());
+  }
+
+  void addToWishlistProductIds(int value) {
+    wishlistProductIds.add(value);
+    prefs.setStringList('ff_wishlistProductIds',
+        _wishlistProductIds.map((x) => x.toString()).toList());
+  }
+
+  void removeFromWishlistProductIds(int value) {
+    wishlistProductIds.remove(value);
+    prefs.setStringList('ff_wishlistProductIds',
+        _wishlistProductIds.map((x) => x.toString()).toList());
+  }
+
+  void removeAtIndexFromWishlistProductIds(int index) {
+    wishlistProductIds.removeAt(index);
+    prefs.setStringList('ff_wishlistProductIds',
+        _wishlistProductIds.map((x) => x.toString()).toList());
+  }
+
+  void updateWishlistProductIdsAtIndex(
+    int index,
+    int Function(int) updateFn,
+  ) {
+    wishlistProductIds[index] = updateFn(_wishlistProductIds[index]);
+    prefs.setStringList('ff_wishlistProductIds',
+        _wishlistProductIds.map((x) => x.toString()).toList());
+  }
+
+  void insertAtIndexInWishlistProductIds(int index, int value) {
+    wishlistProductIds.insert(index, value);
+    prefs.setStringList('ff_wishlistProductIds',
+        _wishlistProductIds.map((x) => x.toString()).toList());
+  }
+}
+
+void _safeInit(Function() initializeField) {
+  try {
+    initializeField();
+  } catch (_) {}
+}
+
+Future _safeInitAsync(Function() initializeField) async {
+  try {
+    await initializeField();
+  } catch (_) {}
 }

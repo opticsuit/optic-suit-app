@@ -1,11 +1,14 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
+import '/backend/schema/structs/index.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'shop_model.dart';
@@ -233,6 +236,27 @@ class _ShopWidgetState extends State<ShopWidget> {
     _model = createModel(context, () => ShopModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Shop'});
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('SHOP_PAGE_Shop_ON_INIT_STATE');
+      logFirebaseEvent('Shop_backend_call');
+      _model.getCartDslRes0 = await GetCartCall.call(
+        cartToken: FFAppState().cartToken,
+      );
+
+      if ((_model.getCartDslRes0?.succeeded ?? true)) {
+        logFirebaseEvent('Shop_update_page_state');
+        _model.cartQuantity = WooCartResponseStruct.maybeFromMap(
+                (_model.getCartDslRes0?.jsonBody ?? ''))
+            ?.itemsCount;
+        safeSetState(() {});
+      } else {
+        logFirebaseEvent('Shop_update_page_state');
+        _model.cartQuantity = 0;
+        safeSetState(() {});
+      }
+    });
+
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -245,6 +269,8 @@ class _ShopWidgetState extends State<ShopWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -376,46 +402,49 @@ class _ShopWidgetState extends State<ShopWidget> {
                                       logFirebaseEvent(
                                           'IconButton_navigate_to');
 
-                                      context.pushNamed(CartWidget.routeName);
+                                      context.pushNamed(
+                                          MyCartPageWidget.routeName);
                                     },
                                   ),
-                                  Align(
-                                    alignment: AlignmentDirectional(1.0, -1.0),
-                                    child: Container(
-                                      width: 14.0,
-                                      height: 14.0,
-                                      decoration: BoxDecoration(
-                                        color: Color(0xFF1F3A87),
-                                        borderRadius:
-                                            BorderRadius.circular(9999.0),
-                                        shape: BoxShape.rectangle,
-                                      ),
-                                      alignment: AlignmentDirectional(0.0, 0.0),
-                                      child: Text(
-                                        '0',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              font: GoogleFonts.inter(
+                                  if (_model.cartQuantity! > 0)
+                                    Align(
+                                      alignment:
+                                          AlignmentDirectional(1.0, -1.0),
+                                      child: Container(
+                                        width: 14.0,
+                                        height: 14.0,
+                                        decoration: BoxDecoration(
+                                          color: Color(0xFF1F3A87),
+                                          shape: BoxShape.circle,
+                                        ),
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
+                                        child: Text(
+                                          '${_model.cartQuantity?.toString()}',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                font: GoogleFonts.inter(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
+                                                color: Colors.white,
+                                                fontSize: 9.0,
+                                                letterSpacing: 0.0,
                                                 fontWeight: FontWeight.bold,
                                                 fontStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .fontStyle,
+                                                lineHeight: 1.4,
                                               ),
-                                              color: Colors.white,
-                                              fontSize: 9.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.bold,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontStyle,
-                                              lineHeight: 1.4,
-                                            ),
+                                        ),
                                       ),
                                     ),
-                                  ),
                                 ],
                               ),
                             ].divide(SizedBox(width: 16.0)),
