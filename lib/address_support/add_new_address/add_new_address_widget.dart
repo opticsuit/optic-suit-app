@@ -1,10 +1,10 @@
 import '/flutter_flow/flutter_flow_drop_down.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
-import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -210,36 +210,38 @@ class _AddNewAddressWidgetState extends State<AddNewAddressWidget> {
         appBar: AppBar(
           backgroundColor: Colors.white,
           iconTheme: IconThemeData(color: Color(0xFF1F3A87)),
-          automaticallyImplyLeading: true,
-          title: InkWell(
-            splashColor: Colors.transparent,
-            focusColor: Colors.transparent,
-            hoverColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            onTap: () async {
-              logFirebaseEvent('ADD_NEW_ADDRESS_PAGE_AppBarTitle_ON_TAP');
-              logFirebaseEvent('AppBarTitle_navigate_to');
-
-              context.pushNamed(SavedAddressWidget.routeName);
+          automaticallyImplyLeading: false,
+          leading: FlutterFlowIconButton(
+            borderRadius: 12.0,
+            buttonSize: 48.0,
+            fillColor: Colors.transparent,
+            icon: Icon(
+              Icons.chevron_left,
+              color: Color(0xFF1F3A87),
+              size: 24.0,
+            ),
+            onPressed: () async {
+              logFirebaseEvent('ADD_NEW_ADDRESS_PAGE_IconButton_ON_TAP');
+              logFirebaseEvent('IconButton_navigate_back');
+              context.pop();
             },
-            child: Text(
-              'Add New Address',
-              style: FlutterFlowTheme.of(context).titleLarge.override(
-                    font: GoogleFonts.poppins(
-                      fontWeight:
-                          FlutterFlowTheme.of(context).titleLarge.fontWeight,
-                      fontStyle:
-                          FlutterFlowTheme.of(context).titleLarge.fontStyle,
-                    ),
-                    color: Color(0xFF1F3A87),
-                    letterSpacing: 0.0,
+          ),
+          title: Text(
+            'Add New Address',
+            style: FlutterFlowTheme.of(context).titleLarge.override(
+                  font: GoogleFonts.poppins(
                     fontWeight:
                         FlutterFlowTheme.of(context).titleLarge.fontWeight,
                     fontStyle:
                         FlutterFlowTheme.of(context).titleLarge.fontStyle,
-                    lineHeight: 1.4,
                   ),
-            ),
+                  color: FlutterFlowTheme.of(context).lensBlue,
+                  letterSpacing: 0.0,
+                  fontWeight:
+                      FlutterFlowTheme.of(context).titleLarge.fontWeight,
+                  fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                  lineHeight: 1.4,
+                ),
           ),
           actions: [],
           centerTitle: false,

@@ -1,5 +1,6 @@
 import '/components/offer_card_widget.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -232,10 +233,25 @@ class _OffersWalletWidgetState extends State<OffersWalletWidget> {
         key: scaffoldKey,
         backgroundColor: Color(0xFFF5F6F8),
         appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primaryText,
+          backgroundColor: Colors.white,
           iconTheme:
-              IconThemeData(color: FlutterFlowTheme.of(context).secondaryText),
-          automaticallyImplyLeading: true,
+              IconThemeData(color: FlutterFlowTheme.of(context).lensBlue),
+          automaticallyImplyLeading: false,
+          leading: FlutterFlowIconButton(
+            borderRadius: 12.0,
+            buttonSize: 48.0,
+            fillColor: Colors.transparent,
+            icon: Icon(
+              Icons.chevron_left,
+              color: FlutterFlowTheme.of(context).lensBlue,
+              size: 24.0,
+            ),
+            onPressed: () async {
+              logFirebaseEvent('OFFERS_WALLET_PAGE_IconButton_ON_TAP');
+              logFirebaseEvent('IconButton_navigate_back');
+              context.pop();
+            },
+          ),
           title: Text(
             'Offers & Wallet',
             style: FlutterFlowTheme.of(context).titleLarge.override(
@@ -254,7 +270,7 @@ class _OffersWalletWidgetState extends State<OffersWalletWidget> {
                 ),
           ),
           actions: [],
-          centerTitle: false,
+          centerTitle: true,
           toolbarHeight: 60.0,
           elevation: 0.0,
         ),
@@ -698,15 +714,27 @@ class _OffersWalletWidgetState extends State<OffersWalletWidget> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          wrapWithModel(
-                            model: _model.offerCardModel1,
-                            updateCallback: () => safeSetState(() {}),
-                            child: OfferCardWidget(
-                              title: 'Flat ₹200 OFF',
-                              desc:
-                                  'Get ₹200 off on eligible purchases above ₹1999.',
-                              code: 'OPTIC200',
-                              expiry: '31 Dec 2024',
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              logFirebaseEvent(
+                                  'OFFERS_WALLET_PAGE_OfferCard_ON_TAP');
+                              logFirebaseEvent('OfferCard_navigate_back');
+                              context.safePop();
+                            },
+                            child: wrapWithModel(
+                              model: _model.offerCardModel1,
+                              updateCallback: () => safeSetState(() {}),
+                              child: OfferCardWidget(
+                                title: 'Flat ₹200 OFF',
+                                desc:
+                                    'Get ₹200 off on eligible purchases above ₹1999.',
+                                code: 'OPTIC200',
+                                expiry: '31 Dec 2024',
+                              ),
                             ),
                           ),
                           wrapWithModel(

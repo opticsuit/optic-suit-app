@@ -1,4 +1,4 @@
-import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/components/custom_appbar_widget.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:async';
 import 'dart:ui';
+import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'sign_in_widget.dart' show SignInWidget;
 import 'package:cached_network_image/cached_network_image.dart';
@@ -16,6 +17,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class SignInModel extends FlutterFlowModel<SignInWidget> {
+  ///  Local state fields for this page.
+
+  bool? signingIn = false;
+
+  String? loginToken = '';
+
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
@@ -51,6 +58,9 @@ class SignInModel extends FlutterFlowModel<SignInWidget> {
     return null;
   }
 
+  // Stores action output result for [Backend Call - API (WooLogin)] action in Button widget.
+  ApiCallResponse? wooLoginDslRes0;
+
   @override
   void initState(BuildContext context) {
     customAppbarModel = createModel(context, () => CustomAppbarModel());
@@ -69,5 +79,35 @@ class SignInModel extends FlutterFlowModel<SignInWidget> {
     passwordFocusNode?.dispose();
     passwordTextController?.dispose();
     passwordPasswordVisibilityFocusNode.dispose();
+  }
+
+  /// Action blocks.
+  Future storeLoginToken(BuildContext context) async {
+    bool? tokenStored;
+
+    logFirebaseEvent('storeLoginToken_custom_action');
+    tokenStored = await actions.storeWooJwt(
+      context,
+      loginToken,
+    );
+    if (tokenStored!) {
+      logFirebaseEvent('storeLoginToken_navigate_to');
+
+      context.pushNamed(OpticSuitHomePageWidget.routeName);
+    } else {
+      logFirebaseEvent('storeLoginToken_update_page_state');
+      signingIn = false;
+      updatePage(() {});
+      logFirebaseEvent('storeLoginToken_show_snack_bar');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'Unable to securely save your login. Please try again.',
+            style: TextStyle(),
+          ),
+          duration: Duration(milliseconds: 4000),
+        ),
+      );
+    }
   }
 }

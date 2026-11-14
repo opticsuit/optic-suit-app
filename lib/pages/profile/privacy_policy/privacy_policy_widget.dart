@@ -179,7 +179,7 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
             buttonSize: 40.0,
             fillColor: Colors.transparent,
             icon: Icon(
-              Icons.arrow_back_rounded,
+              Icons.chevron_left,
               color: Color(0xFF1F3A87),
               size: 24.0,
             ),

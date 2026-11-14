@@ -76,27 +76,39 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  wrapWithModel(
-                    model: _model.customAppbarModel,
-                    updateCallback: () => safeSetState(() {}),
-                    child: CustomAppbarWidget(
-                      backButton: true,
-                      actionButton: true,
-                      actionButtonText: 'Save',
-                      actionButtonAction: () async {
-                        logFirebaseEvent(
-                            'EDIT_PROFILE_Container_or1jni5i_CALLBACK');
-                        logFirebaseEvent('customAppbar_backend_call');
+                  InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      logFirebaseEvent(
+                          'EDIT_PROFILE_Container_or1jni5i_ON_TAP');
+                      logFirebaseEvent('customAppbar_navigate_back');
+                      context.safePop();
+                    },
+                    child: wrapWithModel(
+                      model: _model.customAppbarModel,
+                      updateCallback: () => safeSetState(() {}),
+                      child: CustomAppbarWidget(
+                        backButton: true,
+                        actionButton: true,
+                        actionButtonText: 'Save',
+                        actionButtonAction: () async {
+                          logFirebaseEvent(
+                              'EDIT_PROFILE_Container_or1jni5i_CALLBACK');
+                          logFirebaseEvent('customAppbar_backend_call');
 
-                        await currentUserReference!
-                            .update(createUsersRecordData(
-                          displayName: _model.fullNameTextController.text,
-                        ));
-                        logFirebaseEvent('customAppbar_update_page_state');
-                        _model.unsavedChanges = false;
-                        safeSetState(() {});
-                      },
-                      optionsButtonAction: () async {},
+                          await currentUserReference!
+                              .update(createUsersRecordData(
+                            displayName: _model.fullNameTextController.text,
+                          ));
+                          logFirebaseEvent('customAppbar_update_page_state');
+                          _model.unsavedChanges = false;
+                          safeSetState(() {});
+                        },
+                        optionsButtonAction: () async {},
+                      ),
                     ),
                   ),
                   Padding(

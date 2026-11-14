@@ -187,15 +187,14 @@ class _HelpSupporWidgetState extends State<HelpSupporWidget> {
           leading: FlutterFlowIconButton(
             buttonSize: 40.0,
             icon: Icon(
-              Icons.arrow_back_rounded,
+              Icons.chevron_left,
               color: Color(0xFF1F3A87),
               size: 22.0,
             ),
             onPressed: () async {
               logFirebaseEvent('HELP_SUPPOR_PAGE_IconButton_ON_TAP');
-              logFirebaseEvent('IconButton_navigate_to');
-
-              context.pushNamed(ProfileWidget.routeName);
+              logFirebaseEvent('IconButton_navigate_back');
+              context.safePop();
             },
           ),
           title: Text(

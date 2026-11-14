@@ -10,3 +10,6 @@ export '/custom_code/functions/woo_cart_item_savings.dart';
 export '/custom_code/functions/woo_cart_tax_inclusive_line_total.dart';
 export '/custom_code/functions/woo_product_is_on_sale.dart';
 export '/custom_code/functions/woo_product_has_rating_or_reviews.dart';
+export '/custom_code/functions/woo_profile_first_name.dart';
+export '/custom_code/functions/woo_profile_last_name.dart';
+export '/custom_code/functions/woo_profile_date.dart';

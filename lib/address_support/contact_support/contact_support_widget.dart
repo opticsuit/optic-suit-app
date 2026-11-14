@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
-import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -413,15 +412,14 @@ class _ContactSupportWidgetState extends State<ContactSupportWidget> {
           leading: FlutterFlowIconButton(
             buttonSize: 40.0,
             icon: Icon(
-              Icons.arrow_back,
+              Icons.chevron_left,
               color: Color(0xFF1F3A87),
               size: 22.0,
             ),
             onPressed: () async {
               logFirebaseEvent('CONTACT_SUPPORT_PAGE_IconButton_ON_TAP');
-              logFirebaseEvent('IconButton_navigate_to');
-
-              context.pushNamed(HelpSupporWidget.routeName);
+              logFirebaseEvent('IconButton_navigate_back');
+              context.safePop();
             },
           ),
           title: Text(

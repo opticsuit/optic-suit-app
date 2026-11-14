@@ -10,8 +10,6 @@ export '/pages/profile/edit_profile/edit_profile_widget.dart'
     show EditProfileWidget;
 export '/authentication/forgot_password/forgot_password_widget.dart'
     show ForgotPasswordWidget;
-export '/shopping_pages/categories/categories_widget.dart'
-    show CategoriesWidget;
 export '/chekout_page/chekout_page_widget.dart' show ChekoutPageWidget;
 export '/shopping_pages/chekout/chekout_widget.dart' show ChekoutWidget;
 export '/cart_page/cart_page_widget.dart' show CartPageWidget;
@@ -61,3 +59,5 @@ export '/shopping_pages/my_cart_page/my_cart_page_widget.dart'
     show MyCartPageWidget;
 export '/shopping_pages/wishlist_page/wishlist_page_widget.dart'
     show WishlistPageWidget;
+export '/shopping_pages/product_category/product_category_widget.dart'
+    show ProductCategoryWidget;

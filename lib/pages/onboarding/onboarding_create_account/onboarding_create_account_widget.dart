@@ -1,4 +1,4 @@
-import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/components/custom_appbar_widget.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
@@ -474,6 +474,33 @@ class _OnboardingCreateAccountWidgetState
                                     .passwordTextControllerValidator
                                     .asValidator(context),
                               ),
+                              if (_model.passwordLengthInvalid ?? true)
+                                Text(
+                                  'Password must be at least 10 characters long.',
+                                  style: FlutterFlowTheme.of(context)
+                                      .labelSmall
+                                      .override(
+                                        font: GoogleFonts.inter(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelSmall
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelSmall
+                                                  .fontStyle,
+                                        ),
+                                        color:
+                                            FlutterFlowTheme.of(context).error,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .labelSmall
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .labelSmall
+                                            .fontStyle,
+                                      ),
+                                ),
                             ],
                           ),
                         ),
@@ -484,51 +511,252 @@ class _OnboardingCreateAccountWidgetState
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                     child: FFButtonWidget(
-                      onPressed: () async {
-                        logFirebaseEvent(
-                            'ONBOARDING_CREATE_ACCOUNT_CREATE_ACCOUNT');
-                        logFirebaseEvent('Button_validate_form');
-                        if (_model.formKey.currentState == null ||
-                            !_model.formKey.currentState!.validate()) {
-                          return;
-                        }
-                        logFirebaseEvent('Button_haptic_feedback');
-                        HapticFeedback.lightImpact();
-                        if ((_model.fullNameTextController.text != null &&
-                                _model.fullNameTextController.text != '') &&
-                            (_model.emailAddressTextController.text != null &&
-                                _model.emailAddressTextController.text != '') &&
-                            (_model.passwordTextController.text != null &&
-                                _model.passwordTextController.text != '')) {
-                          logFirebaseEvent('Button_auth');
-                          GoRouter.of(context).prepareAuthEvent();
+                      onPressed: _model.registering!
+                          ? null
+                          : () async {
+                              logFirebaseEvent(
+                                  'ONBOARDING_CREATE_ACCOUNT_CREATE_ACCOUNT');
+                              var _shouldSetState = false;
+                              logFirebaseEvent('Button_validate_form');
+                              if (_model.formKey.currentState == null ||
+                                  !_model.formKey.currentState!.validate()) {
+                                return;
+                              }
+                              logFirebaseEvent('Button_update_page_state');
+                              _model.passwordLengthInvalid =
+                                  (_model.passwordTextController.text != null &&
+                                          _model.passwordTextController.text !=
+                                              '') &&
+                                      ((_model.passwordTextController.text
+                                              .length)! <
+                                          10);
+                              safeSetState(() {});
+                              if (_model.passwordTextController.text == null ||
+                                  _model.passwordTextController.text == '') {
+                                logFirebaseEvent('Button_show_snack_bar');
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Please enter your password.',
+                                      style: TextStyle(),
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                  ),
+                                );
+                                if (_shouldSetState) safeSetState(() {});
+                                return;
+                              }
+                              if (_model.passwordLengthInvalid!) {
+                                if (_shouldSetState) safeSetState(() {});
+                                return;
+                              }
+                              if (!_model.registering! &&
+                                  (_model.fullNameTextController.text != null &&
+                                      _model.fullNameTextController.text !=
+                                          '') &&
+                                  (_model.emailAddressTextController.text !=
+                                          null &&
+                                      _model.emailAddressTextController.text !=
+                                          '') &&
+                                  (_model.passwordTextController.text != null &&
+                                      _model.passwordTextController.text !=
+                                          '')) {
+                                logFirebaseEvent('Button_update_page_state');
+                                _model.registering = true;
+                                safeSetState(() {});
+                                logFirebaseEvent('Button_backend_call');
+                                _model.registration =
+                                    await WooRegisterCall.call(
+                                  fullName: _model.fullNameTextController.text,
+                                  email: _model.emailAddressTextController.text,
+                                  password: _model.passwordTextController.text,
+                                );
 
-                          final user = await authManager.createAccountWithEmail(
-                            context,
-                            _model.emailAddressTextController.text,
-                            _model.passwordTextController.text,
-                          );
-                          if (user == null) {
-                            return;
-                          }
+                                _shouldSetState = true;
+                                if ((_model.registration?.succeeded ?? true)) {
+                                  logFirebaseEvent('Button_update_page_state');
+                                  _model.registering = false;
+                                  safeSetState(() {});
+                                  if (((_model.registration?.statusCode ??
+                                              200) ==
+                                          201 &&
+                                      (WooRegisterCall.success(
+                                            (_model.registration?.jsonBody ??
+                                                ''),
+                                          )!) ==
+                                          true)!) {
+                                    logFirebaseEvent('Button_show_snack_bar');
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'Account created successfully.',
+                                          style: TextStyle(),
+                                        ),
+                                        duration: Duration(milliseconds: 4000),
+                                      ),
+                                    );
+                                    logFirebaseEvent('Button_navigate_to');
 
-                          await UsersRecord.collection
-                              .doc(user.uid)
-                              .update(createUsersRecordData(
-                                displayName: _model.fullNameTextController.text,
-                                email: '',
-                                photoUrl: '',
-                                phoneNumber: '',
-                                uid: '',
-                                createdTime: getCurrentTimestamp,
-                              ));
-
-                          logFirebaseEvent('Button_navigate_to');
-
-                          context.goNamedAuth(OpticSuitHomePageWidget.routeName,
-                              context.mounted);
-                        }
-                      },
+                                    context.pushNamed(SignInWidget.routeName);
+                                  } else {
+                                    if (((int a0, String a1) {
+                                      return a0 == 409 || a1 == 'email_exists';
+                                    }(
+                                        (_model.registration?.statusCode ??
+                                            200),
+                                        WooRegisterCall.code(
+                                          (_model.registration?.jsonBody ?? ''),
+                                        )!))!) {
+                                      logFirebaseEvent('Button_show_snack_bar');
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            'An account with this email already exists.',
+                                            style: TextStyle(),
+                                          ),
+                                          duration:
+                                              Duration(milliseconds: 4000),
+                                        ),
+                                      );
+                                    } else {
+                                      if (WooRegisterCall.code(
+                                            (_model.registration?.jsonBody ??
+                                                ''),
+                                          ) ==
+                                          'invalid_email') {
+                                        logFirebaseEvent(
+                                            'Button_show_snack_bar');
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              'Enter a valid email address.',
+                                              style: TextStyle(),
+                                            ),
+                                            duration:
+                                                Duration(milliseconds: 4000),
+                                          ),
+                                        );
+                                      } else {
+                                        if (WooRegisterCall.code(
+                                              (_model.registration?.jsonBody ??
+                                                  ''),
+                                            ) ==
+                                            'weak_password') {
+                                          logFirebaseEvent(
+                                              'Button_show_snack_bar');
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Choose a stronger password.',
+                                                style: TextStyle(),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                            ),
+                                          );
+                                        } else {
+                                          if ((_model.registration
+                                                      ?.statusCode ??
+                                                  200) ==
+                                              400) {
+                                            logFirebaseEvent(
+                                                'Button_show_snack_bar');
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              SnackBar(
+                                                content: Text(
+                                                  'Check your name, email, and password, then try again.',
+                                                  style: TextStyle(),
+                                                ),
+                                                duration: Duration(
+                                                    milliseconds: 4000),
+                                              ),
+                                            );
+                                          } else {
+                                            if ((_model.registration
+                                                        ?.statusCode ??
+                                                    200) ==
+                                                422) {
+                                              logFirebaseEvent(
+                                                  'Button_show_snack_bar');
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                    'Choose a stronger password and try again.',
+                                                    style: TextStyle(),
+                                                  ),
+                                                  duration: Duration(
+                                                      milliseconds: 4000),
+                                                ),
+                                              );
+                                            } else {
+                                              if ((_model.registration
+                                                          ?.statusCode ??
+                                                      200) >=
+                                                  500) {
+                                                logFirebaseEvent(
+                                                    'Button_show_snack_bar');
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(
+                                                  SnackBar(
+                                                    content: Text(
+                                                      'The service is temporarily unavailable. Please try again.',
+                                                      style: TextStyle(),
+                                                    ),
+                                                    duration: Duration(
+                                                        milliseconds: 4000),
+                                                  ),
+                                                );
+                                              } else {
+                                                logFirebaseEvent(
+                                                    'Button_show_snack_bar');
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(
+                                                  SnackBar(
+                                                    content: Text(
+                                                      ((String a0) {
+                                                        return a0 ??
+                                                            'We could not create your account. Please try again.';
+                                                      }(WooRegisterCall.message(
+                                                        (_model.registration
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                      )!))!,
+                                                      style: TextStyle(),
+                                                    ),
+                                                    duration: Duration(
+                                                        milliseconds: 4000),
+                                                  ),
+                                                );
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                } else {
+                                  logFirebaseEvent('Button_update_page_state');
+                                  _model.registering = false;
+                                  safeSetState(() {});
+                                  logFirebaseEvent('Button_show_snack_bar');
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'Registration failed. Check your connection and try again.',
+                                        style: TextStyle(),
+                                      ),
+                                      duration: Duration(milliseconds: 4000),
+                                    ),
+                                  );
+                                }
+                              }
+                              if (_shouldSetState) safeSetState(() {});
+                            },
                       text: 'Create Account',
                       options: FFButtonOptions(
                         width: double.infinity,
@@ -563,6 +791,7 @@ class _OnboardingCreateAccountWidgetState
                         ),
                         borderRadius: BorderRadius.circular(25.0),
                       ),
+                      showLoadingIndicator: _model.registering!,
                     ),
                   ),
                   Padding(

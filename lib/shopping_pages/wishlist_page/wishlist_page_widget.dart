@@ -12,6 +12,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
 import 'wishlist_page_model.dart';
 export 'wishlist_page_model.dart';
 
@@ -66,7 +67,7 @@ class _WishlistPageWidgetState extends State<WishlistPageWidget> {
           leading: FlutterFlowIconButton(
             buttonSize: 48.0,
             icon: Icon(
-              Icons.arrow_back_rounded,
+              Icons.chevron_left,
               color: FlutterFlowTheme.of(context).lensBlue,
               size: 24.0,
             ),
@@ -191,13 +192,10 @@ class _WishlistPageWidgetState extends State<WishlistPageWidget> {
             crossAxisAlignment: (FFCrossAxisAlignment.stretch).flutterValue,
             textBaseline: TextBaseline.alphabetic,
             children: [
-              if (valueOrDefault<bool>(
-                FFAppState().wishlistProductIds.length > 0,
-                false,
-              ))
-                Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(20.0, 12.0, 20.0, 8.0),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 12.0, 20.0, 8.0),
+                child: Container(
+                  width: double.infinity,
                   child: Text(
                     '${FFAppState().wishlistProductIds.length.toString()} saved items',
                     style: FlutterFlowTheme.of(context).labelLarge.override(
@@ -219,6 +217,7 @@ class _WishlistPageWidgetState extends State<WishlistPageWidget> {
                         ),
                   ),
                 ),
+              ),
               if (valueOrDefault<bool>(
                 _model.cartMessage != '',
                 false,
@@ -269,7 +268,7 @@ class _WishlistPageWidgetState extends State<WishlistPageWidget> {
                                 crossAxisCount: 2,
                                 crossAxisSpacing: 12.0,
                                 mainAxisSpacing: 12.0,
-                                childAspectRatio: 0.58,
+                                childAspectRatio: 0.54,
                               ),
                               shrinkWrap: true,
                               itemCount: productId.length,
@@ -299,71 +298,75 @@ class _WishlistPageWidgetState extends State<WishlistPageWidget> {
                                     final containerProductDetailsResponse =
                                         snapshot.data!;
 
-                                    return InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        logFirebaseEvent(
-                                            'WISHLIST_PAGE_PAGE_Container_ON_TAP');
-                                        logFirebaseEvent(
-                                            'Container_navigate_to');
-
-                                        context.pushNamed(
-                                          ProductDetailsWidget.routeName,
-                                          queryParameters: {
-                                            'productId': serializeParam(
-                                              productIdItem,
-                                              ParamType.int,
-                                            ),
-                                          }.withoutNulls,
-                                        );
-                                      },
+                                    return Container(
                                       child: Container(
-                                        child: Container(
-                                          width: double.infinity,
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            boxShadow: [
-                                              BoxShadow(
-                                                blurRadius: 8.0,
-                                                color: Color(0x101F3A87),
-                                                offset: Offset(
-                                                  0.0,
-                                                  3.0,
-                                                ),
-                                              )
-                                            ],
-                                            borderRadius:
-                                                BorderRadius.circular(16.0),
-                                            border: Border.all(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .lensBorder,
-                                              width: 1.0,
-                                            ),
+                                        width: double.infinity,
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          boxShadow: [
+                                            BoxShadow(
+                                              blurRadius: 8.0,
+                                              color: Color(0x101F3A87),
+                                              offset: Offset(
+                                                0.0,
+                                                3.0,
+                                              ),
+                                            )
+                                          ],
+                                          borderRadius:
+                                              BorderRadius.circular(16.0),
+                                          border: Border.all(
+                                            color: FlutterFlowTheme.of(context)
+                                                .lensBorder,
+                                            width: 1.0,
                                           ),
-                                          child: Padding(
-                                            padding: EdgeInsets.all(10.0),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  (FFMainAxisAlignment
-                                                          .spaceBetween)
-                                                      .flutterValue,
-                                              crossAxisAlignment:
-                                                  (FFCrossAxisAlignment.start)
-                                                      .flutterValue,
-                                              textBaseline:
-                                                  TextBaseline.alphabetic,
-                                              children: [
-                                                Stack(
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          0.0, 0.0),
-                                                  children: [
-                                                    ClipRRect(
+                                        ),
+                                        child: Padding(
+                                          padding: EdgeInsets.all(10.0),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                (FFMainAxisAlignment
+                                                        .spaceBetween)
+                                                    .flutterValue,
+                                            crossAxisAlignment:
+                                                (FFCrossAxisAlignment.start)
+                                                    .flutterValue,
+                                            textBaseline:
+                                                TextBaseline.alphabetic,
+                                            children: [
+                                              Stack(
+                                                alignment: AlignmentDirectional(
+                                                    0.0, 0.0),
+                                                children: [
+                                                  InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
+                                                    onTap: () async {
+                                                      logFirebaseEvent(
+                                                          'WISHLIST_PAGE_PAGE_Container_ON_TAP');
+                                                      logFirebaseEvent(
+                                                          'Container_navigate_to');
+
+                                                      context.pushNamed(
+                                                        ProductDetailsWidget
+                                                            .routeName,
+                                                        queryParameters: {
+                                                          'productId':
+                                                              serializeParam(
+                                                            productIdItem,
+                                                            ParamType.int,
+                                                          ),
+                                                        }.withoutNulls,
+                                                      );
+                                                    },
+                                                    child: ClipRRect(
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               12.0),
@@ -406,86 +409,49 @@ class _WishlistPageWidgetState extends State<WishlistPageWidget> {
                                                         ),
                                                       ),
                                                     ),
+                                                  ),
+                                                  if (valueOrDefault<bool>(
+                                                    functions
+                                                        .wooProductIsOnSale(
+                                                            getJsonField(
+                                                      containerProductDetailsResponse
+                                                          .jsonBody,
+                                                      r'''$.on_sale''',
+                                                    )),
+                                                    false,
+                                                  ))
                                                     Align(
                                                       alignment:
                                                           AlignmentDirectional(
-                                                              1.0, -1.0),
-                                                      child:
-                                                          FlutterFlowIconButton(
-                                                        buttonSize: 40.0,
-                                                        icon: Icon(
-                                                          Icons
-                                                              .favorite_rounded,
-                                                          color:
-                                                              Color(0xFFE34B59),
-                                                          size: 20.0,
+                                                              -1.0, -1.0),
+                                                      child: Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .lensBlue,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      6.0),
                                                         ),
-                                                        onPressed: () async {
-                                                          logFirebaseEvent(
-                                                              'WISHLIST_PAGE_PAGE_IconButton_ON_TAP');
-                                                          logFirebaseEvent(
-                                                              'IconButton_update_app_state');
-                                                          FFAppState()
-                                                              .removeFromWishlistProductIds(
-                                                                  productIdItem);
-                                                          safeSetState(() {});
-                                                        },
-                                                      ),
-                                                    ),
-                                                    if (valueOrDefault<bool>(
-                                                      functions
-                                                          .wooProductIsOnSale(
-                                                              getJsonField(
-                                                        containerProductDetailsResponse
-                                                            .jsonBody,
-                                                        r'''$.on_sale''',
-                                                      )),
-                                                      false,
-                                                    ))
-                                                      Align(
-                                                        alignment:
-                                                            AlignmentDirectional(
-                                                                -1.0, -1.0),
-                                                        child: Container(
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            color: FlutterFlowTheme
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      7.0,
+                                                                      4.0,
+                                                                      7.0,
+                                                                      4.0),
+                                                          child: Text(
+                                                            'SALE',
+                                                            style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .lensBlue,
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        6.0),
-                                                          ),
-                                                          child: Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        7.0,
-                                                                        4.0,
-                                                                        7.0,
-                                                                        4.0),
-                                                            child: Text(
-                                                              'SALE',
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .labelSmall
-                                                                  .override(
-                                                                    font: GoogleFonts
-                                                                        .inter(
-                                                                      fontWeight: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelSmall
-                                                                          .fontWeight,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelSmall
-                                                                          .fontStyle,
-                                                                    ),
-                                                                    color: Colors
-                                                                        .white,
-                                                                    letterSpacing:
-                                                                        0.0,
+                                                                .labelSmall
+                                                                .override(
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .inter(
                                                                     fontWeight: FlutterFlowTheme.of(
                                                                             context)
                                                                         .labelSmall
@@ -495,16 +461,56 @@ class _WishlistPageWidgetState extends State<WishlistPageWidget> {
                                                                         .labelSmall
                                                                         .fontStyle,
                                                                   ),
-                                                            ),
+                                                                  color: Colors
+                                                                      .white,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelSmall
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelSmall
+                                                                      .fontStyle,
+                                                                ),
                                                           ),
                                                         ),
                                                       ),
-                                                  ],
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 10.0, 0.0, 0.0),
+                                                    ),
+                                                ],
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 10.0, 0.0, 0.0),
+                                                child: InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () async {
+                                                    logFirebaseEvent(
+                                                        'WISHLIST_PAGE_PAGE_Text_ON_TAP');
+                                                    logFirebaseEvent(
+                                                        'Text_navigate_to');
+
+                                                    context.pushNamed(
+                                                      ProductDetailsWidget
+                                                          .routeName,
+                                                      queryParameters: {
+                                                        'productId':
+                                                            serializeParam(
+                                                          productIdItem,
+                                                          ParamType.int,
+                                                        ),
+                                                      }.withoutNulls,
+                                                    );
+                                                  },
                                                   child: Text(
                                                     getJsonField(
                                                       containerProductDetailsResponse
@@ -548,16 +554,147 @@ class _WishlistPageWidgetState extends State<WishlistPageWidget> {
                                                         TextOverflow.ellipsis,
                                                   ),
                                                 ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 6.0, 0.0, 0.0),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 6.0, 0.0, 0.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      (FFMainAxisAlignment
+                                                              .start)
+                                                          .flutterValue,
+                                                  crossAxisAlignment:
+                                                      (FFCrossAxisAlignment
+                                                              .center)
+                                                          .flutterValue,
+                                                  textBaseline:
+                                                      TextBaseline.alphabetic,
+                                                  children: [
+                                                    Expanded(
+                                                      child: Text(
+                                                        functions
+                                                            .formatWooPrice(
+                                                                getJsonField(
+                                                                  containerProductDetailsResponse
+                                                                      .jsonBody,
+                                                                  r'''$.prices.price''',
+                                                                ).toString(),
+                                                                '₹')!,
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleMedium
+                                                                .override(
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .inter(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .lensBlue,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                      ),
+                                                    ),
+                                                    if (valueOrDefault<bool>(
+                                                      functions
+                                                          .wooProductIsOnSale(
+                                                              getJsonField(
+                                                        containerProductDetailsResponse
+                                                            .jsonBody,
+                                                        r'''$.on_sale''',
+                                                      )),
+                                                      false,
+                                                    ))
+                                                      Text(
+                                                        functions
+                                                            .formatWooPrice(
+                                                                getJsonField(
+                                                                  containerProductDetailsResponse
+                                                                      .jsonBody,
+                                                                  r'''$.prices.regular_price''',
+                                                                ).toString(),
+                                                                '₹')!,
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelSmall
+                                                                .override(
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .inter(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelSmall
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelSmall
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .lensMuted,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelSmall
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelSmall
+                                                                      .fontStyle,
+                                                                  decoration:
+                                                                      TextDecoration
+                                                                          .lineThrough,
+                                                                ),
+                                                      ),
+                                                  ].divide(
+                                                      SizedBox(width: 6.0)),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 8.0, 0.0, 0.0),
+                                                child: Container(
+                                                  width: double.infinity,
+                                                  height: 48.0,
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .lensCanvas,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            12.0),
+                                                  ),
                                                   child: Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
                                                     mainAxisAlignment:
                                                         (FFMainAxisAlignment
-                                                                .start)
+                                                                .spaceEvenly)
                                                             .flutterValue,
                                                     crossAxisAlignment:
                                                         (FFCrossAxisAlignment
@@ -566,219 +703,155 @@ class _WishlistPageWidgetState extends State<WishlistPageWidget> {
                                                     textBaseline:
                                                         TextBaseline.alphabetic,
                                                     children: [
-                                                      Expanded(
-                                                        child: Text(
-                                                          functions
-                                                              .formatWooPrice(
-                                                                  getJsonField(
-                                                                    containerProductDetailsResponse
-                                                                        .jsonBody,
-                                                                    r'''$.prices.price''',
-                                                                  ).toString(),
-                                                                  '₹')!,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .titleMedium
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .inter(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .lensBlue,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleMedium
-                                                                    .fontStyle,
-                                                              ),
+                                                      FlutterFlowIconButton(
+                                                        buttonSize: 44.0,
+                                                        icon: Icon(
+                                                          Icons
+                                                              .delete_outline_rounded,
+                                                          color:
+                                                              Color(0xFF6B7280),
+                                                          size: 21.0,
                                                         ),
+                                                        onPressed:
+                                                            _model.addingItem!
+                                                                ? null
+                                                                : () async {
+                                                                    logFirebaseEvent(
+                                                                        'WISHLIST_PAGE_PAGE_IconButton_ON_TAP');
+                                                                    logFirebaseEvent(
+                                                                        'IconButton_update_app_state');
+                                                                    FFAppState()
+                                                                        .removeFromWishlistProductIds(
+                                                                            productIdItem);
+                                                                    safeSetState(
+                                                                        () {});
+                                                                  },
                                                       ),
-                                                      if (valueOrDefault<bool>(
-                                                        functions
-                                                            .wooProductIsOnSale(
-                                                                getJsonField(
-                                                          containerProductDetailsResponse
-                                                              .jsonBody,
-                                                          r'''$.on_sale''',
-                                                        )),
-                                                        false,
-                                                      ))
-                                                        Text(
-                                                          functions
-                                                              .formatWooPrice(
-                                                                  getJsonField(
-                                                                    containerProductDetailsResponse
-                                                                        .jsonBody,
-                                                                    r'''$.prices.regular_price''',
-                                                                  ).toString(),
-                                                                  '₹')!,
-                                                          style: FlutterFlowTheme
+                                                      FlutterFlowIconButton(
+                                                        buttonSize: 44.0,
+                                                        icon: Icon(
+                                                          Icons
+                                                              .shopping_bag_outlined,
+                                                          color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .labelSmall
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .inter(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmall
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmall
-                                                                      .fontStyle,
-                                                                ),
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .lensMuted,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelSmall
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelSmall
-                                                                    .fontStyle,
-                                                                decoration:
-                                                                    TextDecoration
-                                                                        .lineThrough,
-                                                              ),
+                                                              .lensBlue,
+                                                          size: 21.0,
                                                         ),
-                                                    ].divide(
-                                                        SizedBox(width: 6.0)),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 10.0, 0.0, 0.0),
-                                                  child: FFButtonWidget(
-                                                    onPressed: _model
-                                                            .addingItem!
-                                                        ? null
-                                                        : () async {
-                                                            logFirebaseEvent(
-                                                                'WISHLIST_PAGE_PAGE_Button_ON_TAP');
-                                                            var _shouldSetState =
-                                                                false;
-                                                            if (FFAppState()
-                                                                    .cartToken ==
-                                                                '') {
-                                                              logFirebaseEvent(
-                                                                  'Button_update_page_state');
-                                                              _model.cartMessage =
-                                                                  'Cart session is not ready. Please try again.';
-                                                              safeSetState(
-                                                                  () {});
-                                                              if (_shouldSetState)
+                                                        onPressed: _model
+                                                                .addingItem!
+                                                            ? null
+                                                            : () async {
+                                                                logFirebaseEvent(
+                                                                    'WISHLIST_PAGE_PAGE_IconButton_ON_TAP');
+                                                                var _shouldSetState =
+                                                                    false;
+                                                                if (FFAppState()
+                                                                        .cartToken ==
+                                                                    '') {
+                                                                  logFirebaseEvent(
+                                                                      'IconButton_update_page_state');
+                                                                  _model.cartMessage =
+                                                                      'Cart session is not ready. Please try again.';
+                                                                  safeSetState(
+                                                                      () {});
+                                                                  if (_shouldSetState)
+                                                                    safeSetState(
+                                                                        () {});
+                                                                  return;
+                                                                }
+                                                                logFirebaseEvent(
+                                                                    'IconButton_update_page_state');
+                                                                _model.addingItem =
+                                                                    true;
                                                                 safeSetState(
                                                                     () {});
-                                                              return;
-                                                            }
-                                                            logFirebaseEvent(
-                                                                'Button_update_page_state');
-                                                            _model.addingItem =
-                                                                true;
-                                                            safeSetState(() {});
-                                                            logFirebaseEvent(
-                                                                'Button_backend_call');
-                                                            _model.addToCartDslRes0 =
-                                                                await AddToCartCall
-                                                                    .call(
-                                                              quantity: 1,
-                                                              id: productIdItem,
-                                                              cartToken:
+                                                                logFirebaseEvent(
+                                                                    'IconButton_backend_call');
+                                                                _model.addToCartDslRes0 =
+                                                                    await AddToCartCall
+                                                                        .call(
+                                                                  quantity: 1,
+                                                                  id: productIdItem,
+                                                                  cartToken:
+                                                                      FFAppState()
+                                                                          .cartToken,
+                                                                );
+
+                                                                _shouldSetState =
+                                                                    true;
+                                                                if ((_model
+                                                                        .addToCartDslRes0
+                                                                        ?.succeeded ??
+                                                                    true)) {
+                                                                  logFirebaseEvent(
+                                                                      'IconButton_update_app_state');
                                                                   FFAppState()
-                                                                      .cartToken,
-                                                            );
+                                                                      .removeFromWishlistProductIds(
+                                                                          productIdItem);
+                                                                  safeSetState(
+                                                                      () {});
+                                                                  logFirebaseEvent(
+                                                                      'IconButton_update_page_state');
+                                                                  _model.addingItem =
+                                                                      false;
+                                                                  safeSetState(
+                                                                      () {});
+                                                                  logFirebaseEvent(
+                                                                      'IconButton_update_page_state');
+                                                                  _model.cartMessage =
+                                                                      'Added to cart';
+                                                                  safeSetState(
+                                                                      () {});
+                                                                } else {
+                                                                  logFirebaseEvent(
+                                                                      'IconButton_update_page_state');
+                                                                  _model.addingItem =
+                                                                      false;
+                                                                  safeSetState(
+                                                                      () {});
+                                                                  logFirebaseEvent(
+                                                                      'IconButton_update_page_state');
+                                                                  _model.cartMessage =
+                                                                      'Could not add this item. Please try again.';
+                                                                  safeSetState(
+                                                                      () {});
+                                                                }
 
-                                                            _shouldSetState =
-                                                                true;
-                                                            if ((_model
-                                                                    .addToCartDslRes0
-                                                                    ?.succeeded ??
-                                                                true)) {
-                                                              logFirebaseEvent(
-                                                                  'Button_update_page_state');
-                                                              _model.addingItem =
-                                                                  false;
-                                                              safeSetState(
-                                                                  () {});
-                                                              logFirebaseEvent(
-                                                                  'Button_update_page_state');
-                                                              _model.cartMessage =
-                                                                  'Added to cart';
-                                                              safeSetState(
-                                                                  () {});
-                                                            } else {
-                                                              logFirebaseEvent(
-                                                                  'Button_update_page_state');
-                                                              _model.addingItem =
-                                                                  false;
-                                                              safeSetState(
-                                                                  () {});
-                                                              logFirebaseEvent(
-                                                                  'Button_update_page_state');
-                                                              _model.cartMessage =
-                                                                  'Could not add this item. Please try again.';
-                                                              safeSetState(
-                                                                  () {});
-                                                            }
-
-                                                            if (_shouldSetState)
-                                                              safeSetState(
-                                                                  () {});
-                                                          },
-                                                    text: 'Add to Cart',
-                                                    options: FFButtonOptions(
-                                                      width: double.infinity,
-                                                      height: 42.0,
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      iconPadding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .lensBlue,
-                                                      textStyle: TextStyle(
-                                                        color: Colors.white,
+                                                                if (_shouldSetState)
+                                                                  safeSetState(
+                                                                      () {});
+                                                              },
                                                       ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10.0),
-                                                    ),
+                                                      Builder(
+                                                        builder: (context) =>
+                                                            FlutterFlowIconButton(
+                                                          buttonSize: 44.0,
+                                                          icon: Icon(
+                                                            Icons
+                                                                .share_outlined,
+                                                            color: Color(
+                                                                0xFF6B7280),
+                                                            size: 21.0,
+                                                          ),
+                                                          onPressed: () async {
+                                                            logFirebaseEvent(
+                                                                'WISHLIST_PAGE_PAGE_IconButton_ON_TAP');
+                                                            logFirebaseEvent(
+                                                                'IconButton_share');
+                                                            await Share.share(
+                                                              'https://opticsuit.com/?p=${productIdItem.toString()}',
+                                                              sharePositionOrigin:
+                                                                  getWidgetBoundingBox(
+                                                                      context),
+                                                            );
+                                                          },
+                                                        ),
+                                                      ),
+                                                    ],
                                                   ),
                                                 ),
-                                              ],
-                                            ),
+                                              ),
+                                            ],
                                           ),
                                         ),
                                       ),
@@ -883,7 +956,7 @@ class _WishlistPageWidgetState extends State<WishlistPageWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 12.0, 0.0, 0.0),
                               child: Text(
-                                'Save your favourite eyewear here and find them easily whenever you need.',
+                                'Save your favourite eyewear and find them here.',
                                 textAlign: TextAlign.center,
                                 maxLines: 4,
                                 style: FlutterFlowTheme.of(context)

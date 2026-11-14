@@ -1,5 +1,6 @@
 import '/components/section_header3_widget.dart';
 import '/components/setting_item_widget.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -294,36 +295,39 @@ class _SettingsWidgetState extends State<SettingsWidget> {
         backgroundColor: Color(0xFFF5F6F8),
         appBar: AppBar(
           backgroundColor: Colors.white,
-          iconTheme: IconThemeData(color: Color(0xFF1F3A87)),
-          automaticallyImplyLeading: true,
-          title: InkWell(
-            splashColor: Colors.transparent,
-            focusColor: Colors.transparent,
-            hoverColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            onTap: () async {
-              logFirebaseEvent('SETTINGS_PAGE_Text_ON_TAP');
-              logFirebaseEvent('Text_navigate_to');
-
-              context.pushNamed(ProfileWidget.routeName);
+          iconTheme:
+              IconThemeData(color: FlutterFlowTheme.of(context).lensBlue),
+          automaticallyImplyLeading: false,
+          leading: FlutterFlowIconButton(
+            borderRadius: 12.0,
+            buttonSize: 48.0,
+            fillColor: Colors.transparent,
+            icon: Icon(
+              Icons.chevron_left,
+              color: FlutterFlowTheme.of(context).lensBlue,
+              size: 24.0,
+            ),
+            onPressed: () async {
+              logFirebaseEvent('SETTINGS_PAGE_IconButton_ON_TAP');
+              logFirebaseEvent('IconButton_navigate_back');
+              context.pop();
             },
-            child: Text(
-              'Settings',
-              style: FlutterFlowTheme.of(context).titleLarge.override(
-                    font: GoogleFonts.poppins(
-                      fontWeight:
-                          FlutterFlowTheme.of(context).titleLarge.fontWeight,
-                      fontStyle:
-                          FlutterFlowTheme.of(context).titleLarge.fontStyle,
-                    ),
-                    color: Color(0xFF1F3A87),
-                    letterSpacing: 0.0,
+          ),
+          title: Text(
+            'Settings',
+            style: FlutterFlowTheme.of(context).titleLarge.override(
+                  font: GoogleFonts.poppins(
                     fontWeight:
                         FlutterFlowTheme.of(context).titleLarge.fontWeight,
                     fontStyle:
                         FlutterFlowTheme.of(context).titleLarge.fontStyle,
                   ),
-            ),
+                  color: FlutterFlowTheme.of(context).lensBlue,
+                  letterSpacing: 0.0,
+                  fontWeight:
+                      FlutterFlowTheme.of(context).titleLarge.fontWeight,
+                  fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                ),
           ),
           actions: [],
           centerTitle: false,

@@ -1,4 +1,4 @@
-import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/components/custom_appbar_widget.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -37,6 +37,7 @@ class _SignInWidgetState extends State<SignInWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => SignInModel());
+    _model.setOnUpdate(onUpdate: () => safeSetState(() {}));
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'SignIn'});
     if (!isWeb) {
@@ -430,41 +431,110 @@ class _SignInWidgetState extends State<SignInWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 20.0, 0.0, 0.0),
                           child: FFButtonWidget(
-                            onPressed: () async {
-                              logFirebaseEvent(
-                                  'SIGN_IN_PAGE_SIGN_IN_BTN_ON_TAP');
-                              Function() _navigate = () {};
-                              logFirebaseEvent('Button_validate_form');
-                              if (_model.formKey.currentState == null ||
-                                  !_model.formKey.currentState!.validate()) {
-                                return;
-                              }
-                              if ((_model.emailAddressTextController.text !=
-                                          null &&
-                                      _model.emailAddressTextController.text !=
-                                          '') &&
-                                  (_model.passwordTextController.text != null &&
-                                      _model.passwordTextController.text !=
-                                          '')) {
-                                logFirebaseEvent('Button_auth');
-                                GoRouter.of(context).prepareAuthEvent();
+                            onPressed: _model.signingIn!
+                                ? null
+                                : () async {
+                                    logFirebaseEvent(
+                                        'SIGN_IN_PAGE_SIGN_IN_BTN_ON_TAP');
+                                    var _shouldSetState = false;
+                                    logFirebaseEvent('Button_validate_form');
+                                    if (_model.formKey.currentState == null ||
+                                        !_model.formKey.currentState!
+                                            .validate()) {
+                                      return;
+                                    }
+                                    if (_model.signingIn!) {
+                                      if (_shouldSetState) safeSetState(() {});
+                                      return;
+                                    }
+                                    if ((_model.emailAddressTextController
+                                                    .text ==
+                                                null ||
+                                            _model.emailAddressTextController
+                                                    .text ==
+                                                '') ||
+                                        (_model.passwordTextController.text ==
+                                                null ||
+                                            _model.passwordTextController
+                                                    .text ==
+                                                '')) {
+                                      if (_shouldSetState) safeSetState(() {});
+                                      return;
+                                    }
+                                    logFirebaseEvent(
+                                        'Button_update_page_state');
+                                    _model.signingIn = true;
+                                    safeSetState(() {});
+                                    logFirebaseEvent('Button_backend_call');
+                                    _model.wooLoginDslRes0 =
+                                        await WooLoginCall.call(
+                                      username: _model
+                                          .emailAddressTextController.text,
+                                      password:
+                                          _model.passwordTextController.text,
+                                    );
 
-                                final user = await authManager.signInWithEmail(
-                                  context,
-                                  _model.emailAddressTextController.text,
-                                  _model.passwordTextController.text,
-                                );
-                                if (user == null) {
-                                  return;
-                                }
+                                    _shouldSetState = true;
+                                    if ((_model.wooLoginDslRes0?.succeeded ??
+                                        true)) {
+                                      if (((int a0, String a1) {
+                                        return a0 == 200 && a1 != '';
+                                      }(
+                                          (_model.wooLoginDslRes0?.statusCode ??
+                                              200),
+                                          WooLoginCall.token(
+                                            (_model.wooLoginDslRes0?.jsonBody ??
+                                                ''),
+                                          )!))!) {
+                                        logFirebaseEvent(
+                                            'Button_update_page_state');
+                                        _model.loginToken = WooLoginCall.token(
+                                          (_model.wooLoginDslRes0?.jsonBody ??
+                                              ''),
+                                        );
+                                        safeSetState(() {});
+                                        logFirebaseEvent('Button_action_block');
+                                        await _model.storeLoginToken(context);
+                                      } else {
+                                        logFirebaseEvent(
+                                            'Button_update_page_state');
+                                        _model.signingIn = false;
+                                        safeSetState(() {});
+                                        logFirebaseEvent(
+                                            'Button_show_snack_bar');
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              'Sign in failed. Check your email and password, then try again.',
+                                              style: TextStyle(),
+                                            ),
+                                            duration:
+                                                Duration(milliseconds: 4000),
+                                          ),
+                                        );
+                                      }
+                                    } else {
+                                      logFirebaseEvent(
+                                          'Button_update_page_state');
+                                      _model.signingIn = false;
+                                      safeSetState(() {});
+                                      logFirebaseEvent('Button_show_snack_bar');
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            'Sign in failed. Check your credentials or connection and try again.',
+                                            style: TextStyle(),
+                                          ),
+                                          duration:
+                                              Duration(milliseconds: 4000),
+                                        ),
+                                      );
+                                    }
 
-                                _navigate = () => context.goNamedAuth(
-                                    OpticSuitHomePageWidget.routeName,
-                                    context.mounted);
-                              }
-
-                              _navigate();
-                            },
+                                    if (_shouldSetState) safeSetState(() {});
+                                  },
                             text: 'Sign In',
                             options: FFButtonOptions(
                               width: double.infinity,
@@ -500,6 +570,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                               ),
                               borderRadius: BorderRadius.circular(14.0),
                             ),
+                            showLoadingIndicator: _model.signingIn!,
                           ),
                         ),
                         Padding(

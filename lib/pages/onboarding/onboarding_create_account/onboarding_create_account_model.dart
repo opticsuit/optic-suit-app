@@ -1,4 +1,4 @@
-import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/components/custom_appbar_widget.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
@@ -18,6 +18,12 @@ import 'package:provider/provider.dart';
 
 class OnboardingCreateAccountModel
     extends FlutterFlowModel<OnboardingCreateAccountWidget> {
+  ///  Local state fields for this page.
+
+  bool? registering = false;
+
+  bool? passwordLengthInvalid = false;
+
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
@@ -59,11 +65,14 @@ class OnboardingCreateAccountModel
   String? Function(BuildContext, String?)? passwordTextControllerValidator;
   String? _passwordTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Password is required.';
+      return 'Please enter your password.';
     }
 
     return null;
   }
+
+  // Stores action output result for [Backend Call - API (WooRegister)] action in Button widget.
+  ApiCallResponse? registration;
 
   @override
   void initState(BuildContext context) {

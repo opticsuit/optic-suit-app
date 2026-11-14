@@ -5,8 +5,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
-import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'my_orders_page_model.dart';
@@ -386,6 +386,13 @@ class _MyOrdersPageWidgetState extends State<MyOrdersPageWidget> {
 
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'MyOrdersPage'});
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('MY_ORDERS_MyOrdersPage_ON_INIT_STATE');
+      logFirebaseEvent('MyOrdersPage_navigate_back');
+      context.safePop();
+    });
+
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -440,16 +447,15 @@ class _MyOrdersPageWidgetState extends State<MyOrdersPageWidget> {
                                 buttonSize: 40.0,
                                 fillColor: Colors.transparent,
                                 icon: Icon(
-                                  Icons.arrow_back,
+                                  Icons.chevron_left,
                                   color: Color(0xFF1F3A87),
                                   size: 24.0,
                                 ),
                                 onPressed: () async {
                                   logFirebaseEvent(
                                       'MY_ORDERS_PAGE_PAGE_IconButton_ON_TAP');
-                                  logFirebaseEvent('IconButton_navigate_to');
-
-                                  context.pushNamed(ProfileWidget.routeName);
+                                  logFirebaseEvent('IconButton_navigate_back');
+                                  context.safePop();
                                 },
                               ),
                               Text(

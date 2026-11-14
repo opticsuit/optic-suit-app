@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
-import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -133,16 +132,15 @@ class _ShippingDeliveryWidgetState extends State<ShippingDeliveryWidget> {
                               buttonSize: 40.0,
                               fillColor: Colors.transparent,
                               icon: Icon(
-                                Icons.arrow_back_rounded,
+                                Icons.chevron_left,
                                 color: Color(0xFF1F3A87),
                                 size: 24.0,
                               ),
                               onPressed: () async {
                                 logFirebaseEvent(
                                     'SHIPPING_DELIVERY_PAGE_IconButton_ON_TAP');
-                                logFirebaseEvent('IconButton_navigate_to');
-
-                                context.pushNamed(SettingsWidget.routeName);
+                                logFirebaseEvent('IconButton_navigate_back');
+                                context.safePop();
                               },
                             ),
                             Text(

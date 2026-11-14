@@ -63,7 +63,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
           leading: FlutterFlowIconButton(
             buttonSize: 40.0,
             icon: Icon(
-              Icons.arrow_back_rounded,
+              Icons.chevron_left,
               color: Color(0xFF1F3A87),
               size: 22.0,
             ),

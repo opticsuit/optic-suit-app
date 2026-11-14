@@ -86,7 +86,7 @@ class _ChekoutWidgetState extends State<ChekoutWidget> {
                               buttonSize: 40.0,
                               fillColor: Colors.transparent,
                               icon: Icon(
-                                Icons.arrow_back_rounded,
+                                Icons.chevron_left,
                                 color: Color(0xFF1F3A87),
                                 size: 24.0,
                               ),
@@ -179,6 +179,9 @@ class _ChekoutWidgetState extends State<ChekoutWidget> {
                                                         .titleMedium
                                                         .fontStyle,
                                               ),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
                                               fontStyle:

@@ -173,7 +173,6 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'Profile': ProfileWidget(),
-      'Categories': CategoriesWidget(),
       'OpticSuitHomePage': OpticSuitHomePageWidget(),
       'Shop': ShopWidget(),
     };
@@ -205,14 +204,6 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24.0,
             ),
             label: 'Profile',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.grid_view,
-              size: 24.0,
-            ),
-            label: 'category',
             tooltip: '',
           ),
           BottomNavigationBarItem(

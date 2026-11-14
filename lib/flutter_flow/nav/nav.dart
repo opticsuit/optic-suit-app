@@ -132,13 +132,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => ForgotPasswordWidget(),
             ),
             FFRoute(
-              name: CategoriesWidget.routeName,
-              path: CategoriesWidget.routePath,
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'Categories')
-                  : CategoriesWidget(),
-            ),
-            FFRoute(
               name: ChekoutPageWidget.routeName,
               path: ChekoutPageWidget.routePath,
               builder: (context, params) => ChekoutPageWidget(),
@@ -291,6 +284,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: WishlistPageWidget.routeName,
               path: WishlistPageWidget.routePath,
               builder: (context, params) => WishlistPageWidget(),
+            ),
+            FFRoute(
+              name: ProductCategoryWidget.routeName,
+              path: ProductCategoryWidget.routePath,
+              builder: (context, params) => ProductCategoryWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

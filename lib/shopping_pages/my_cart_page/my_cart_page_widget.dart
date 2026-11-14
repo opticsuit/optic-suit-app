@@ -138,7 +138,7 @@ class _MyCartPageWidgetState extends State<MyCartPageWidget> {
           leading: FlutterFlowIconButton(
             buttonSize: 48.0,
             icon: Icon(
-              Icons.arrow_back_rounded,
+              Icons.chevron_left,
               color: FlutterFlowTheme.of(context).lensInk,
               size: 22.0,
             ),

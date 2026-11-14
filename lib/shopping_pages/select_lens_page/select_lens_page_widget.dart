@@ -94,7 +94,7 @@ class _SelectLensPageWidgetState extends State<SelectLensPageWidget> {
                       FlutterFlowIconButton(
                         buttonSize: 44.0,
                         icon: Icon(
-                          Icons.arrow_back_rounded,
+                          Icons.chevron_left,
                           color: FlutterFlowTheme.of(context).lensBlue,
                           size: 22.0,
                         ),

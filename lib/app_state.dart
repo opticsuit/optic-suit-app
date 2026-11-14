@@ -153,6 +153,13 @@ class FFAppState extends ChangeNotifier {
     prefs.setStringList('ff_wishlistProductIds',
         _wishlistProductIds.map((x) => x.toString()).toList());
   }
+
+  /// App state profilePhoneInternational
+  String _profilePhoneInternational = '';
+  String get profilePhoneInternational => _profilePhoneInternational;
+  set profilePhoneInternational(String value) {
+    _profilePhoneInternational = value;
+  }
 }
 
 void _safeInit(Function() initializeField) {

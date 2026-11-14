@@ -13,6 +13,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
 
 class WishlistPageModel extends FlutterFlowModel<WishlistPageWidget> {
   ///  Local state fields for this page.
@@ -23,7 +24,7 @@ class WishlistPageModel extends FlutterFlowModel<WishlistPageWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  // Stores action output result for [Backend Call - API (AddToCart)] action in Button widget.
+  // Stores action output result for [Backend Call - API (AddToCart)] action in IconButton widget.
   ApiCallResponse? addToCartDslRes0;
 
   @override

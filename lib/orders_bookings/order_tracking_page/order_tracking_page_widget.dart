@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'order_tracking_page_model.dart';
@@ -36,6 +37,13 @@ class _OrderTrackingPageWidgetState extends State<OrderTrackingPageWidget> {
 
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'OrderTrackingPage'});
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('ORDER_TRACKING_OrderTrackingPage_ON_INIT');
+      logFirebaseEvent('OrderTrackingPage_navigate_back');
+      context.safePop();
+    });
+
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -62,7 +70,7 @@ class _OrderTrackingPageWidgetState extends State<OrderTrackingPageWidget> {
           leading: FlutterFlowIconButton(
             buttonSize: 40.0,
             icon: Icon(
-              Icons.arrow_back_rounded,
+              Icons.chevron_left,
               color: Color(0xFF1F3A87),
               size: 22.0,
             ),

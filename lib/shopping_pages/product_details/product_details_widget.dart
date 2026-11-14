@@ -135,12 +135,12 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
               borderWidth: 1.0,
               buttonSize: 54.0,
               icon: Icon(
-                Icons.arrow_back,
+                Icons.chevron_left,
                 color: Color(0xFF173177),
                 size: 24.0,
               ),
               onPressed: () async {
-                logFirebaseEvent('PRODUCT_DETAILS_arrow_back_ICN_ON_TAP');
+                logFirebaseEvent('PRODUCT_DETAILS_chevron_left_ICN_ON_TAP');
                 logFirebaseEvent('IconButton_navigate_back');
                 context.pop();
               },
@@ -182,36 +182,49 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                       },
                     ),
                   if (_model.isWishlisted ?? true)
-                    FlutterFlowIconButton(
-                      buttonSize: 44.0,
-                      icon: Icon(
-                        Icons.favorite_rounded,
-                        color: Color(0xFFE53935),
-                        size: 22.0,
-                      ),
-                      onPressed: () async {
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onDoubleTap: () async {
                         logFirebaseEvent(
-                            'PRODUCT_DETAILS_PAGE_IconButton_ON_TAP');
-                        if (FFAppState()
-                            .wishlistProductIds
-                            .contains(widget!.productId)) {
-                          logFirebaseEvent('IconButton_update_app_state');
-                          FFAppState()
-                              .removeFromWishlistProductIds(widget!.productId!);
-                          safeSetState(() {});
-                        } else {
-                          logFirebaseEvent('IconButton_update_app_state');
-                          FFAppState()
-                              .addToWishlistProductIds(widget!.productId!);
-                          safeSetState(() {});
-                        }
+                            'PRODUCT_DETAILS_IconButton_ON_DOUBLE_TAP');
+                        logFirebaseEvent('IconButton_navigate_to');
 
-                        logFirebaseEvent('IconButton_update_page_state');
-                        _model.isWishlisted = FFAppState()
-                            .wishlistProductIds
-                            .contains(widget!.productId);
-                        safeSetState(() {});
+                        context.pushNamed(WishlistPageWidget.routeName);
                       },
+                      child: FlutterFlowIconButton(
+                        buttonSize: 44.0,
+                        icon: Icon(
+                          Icons.favorite_rounded,
+                          color: Color(0xFFE53935),
+                          size: 22.0,
+                        ),
+                        onPressed: () async {
+                          logFirebaseEvent(
+                              'PRODUCT_DETAILS_PAGE_IconButton_ON_TAP');
+                          if (FFAppState()
+                              .wishlistProductIds
+                              .contains(widget!.productId)) {
+                            logFirebaseEvent('IconButton_update_app_state');
+                            FFAppState().removeFromWishlistProductIds(
+                                widget!.productId!);
+                            safeSetState(() {});
+                          } else {
+                            logFirebaseEvent('IconButton_update_app_state');
+                            FFAppState()
+                                .addToWishlistProductIds(widget!.productId!);
+                            safeSetState(() {});
+                          }
+
+                          logFirebaseEvent('IconButton_update_page_state');
+                          _model.isWishlisted = FFAppState()
+                              .wishlistProductIds
+                              .contains(widget!.productId);
+                          safeSetState(() {});
+                        },
+                      ),
                     ),
                 ],
               ),

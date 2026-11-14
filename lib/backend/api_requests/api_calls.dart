@@ -445,6 +445,211 @@ class UpdateCartItemCall {
   }
 }
 
+class WooRegisterCall {
+  static Future<ApiCallResponse> call({
+    String? fullName = '',
+    String? email = '',
+    String? password = '',
+  }) async {
+    final ffApiRequestBody = '''
+{"full_name": ${fullName == null ? 'null' : '"${escapeStringForJson(fullName)}"'}, "email": ${email == null ? 'null' : '"${escapeStringForJson(email)}"'}, "password": ${password == null ? 'null' : '"${escapeStringForJson(password)}"'}}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'WooRegister',
+      apiUrl: 'https://opticsuit.com/wp-json/opticsuit/v1/register',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static bool? success(dynamic response) => castToType<bool>(getJsonField(
+        response,
+        r'''$.success''',
+      ));
+  static String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+  static String? code(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.code''',
+      ));
+}
+
+class WooLoginCall {
+  static Future<ApiCallResponse> call({
+    String? username = '',
+    String? password = '',
+  }) async {
+    final ffApiRequestBody = '''
+{"username": ${username == null ? 'null' : '"${escapeStringForJson(username)}"'}, "password": ${password == null ? 'null' : '"${escapeStringForJson(password)}"'}}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'WooLogin',
+      apiUrl: 'https://opticsuit.com/wp-json/jwt-auth/v1/token',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static String? token(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.token''',
+      ));
+  static String? userEmail(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.user_email''',
+      ));
+  static String? userNicename(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.user_nicename''',
+      ));
+  static String? userDisplayName(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.user_display_name''',
+      ));
+}
+
+class WooGetProfileCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'WooGetProfile',
+      apiUrl: 'https://opticsuit.com/wp-json/opticsuit/v1/my-profile',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static bool? success(dynamic response) => castToType<bool>(getJsonField(
+        response,
+        r'''$.success''',
+      ));
+  static int? customerId(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$.customer_id''',
+      ));
+  static dynamic fullName(dynamic response) => getJsonField(
+        response,
+        r'''$.full_name''',
+      );
+  static dynamic firstName(dynamic response) => getJsonField(
+        response,
+        r'''$.first_name''',
+      );
+  static dynamic lastName(dynamic response) => getJsonField(
+        response,
+        r'''$.last_name''',
+      );
+  static dynamic email(dynamic response) => getJsonField(
+        response,
+        r'''$.email''',
+      );
+  static dynamic billingPhone(dynamic response) => getJsonField(
+        response,
+        r'''$.billing_phone''',
+      );
+  static dynamic dateOfBirth(dynamic response) => getJsonField(
+        response,
+        r'''$.date_of_birth''',
+      );
+}
+
+class WooUpdateProfileCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+    String? fullName = '',
+    String? billingPhone = '',
+    String? dateOfBirth = '',
+  }) async {
+    final ffApiRequestBody = '''
+  {"full_name": ${fullName == null ? 'null' : '"${escapeStringForJson(fullName)}"'}, "billing_phone": ${billingPhone == null ? 'null' : '"${escapeStringForJson(billingPhone)}"'}, "date_of_birth": ${dateOfBirth == null ? 'null' : '"${escapeStringForJson(dateOfBirth)}"'}}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'WooUpdateProfile',
+      apiUrl: 'https://opticsuit.com/wp-json/opticsuit/v1/update-profile',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'Content-Type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static bool? success(dynamic response) => castToType<bool>(getJsonField(
+        response,
+        r'''$.success''',
+      ));
+  static String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
+  static dynamic fullName(dynamic response) => getJsonField(
+        response,
+        r'''$.full_name''',
+      );
+  static dynamic firstName(dynamic response) => getJsonField(
+        response,
+        r'''$.first_name''',
+      );
+  static dynamic lastName(dynamic response) => getJsonField(
+        response,
+        r'''$.last_name''',
+      );
+  static dynamic email(dynamic response) => getJsonField(
+        response,
+        r'''$.email''',
+      );
+  static dynamic billingPhone(dynamic response) => getJsonField(
+        response,
+        r'''$.billing_phone''',
+      );
+  static dynamic dateOfBirth(dynamic response) => getJsonField(
+        response,
+        r'''$.date_of_birth''',
+      );
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;

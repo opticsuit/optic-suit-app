@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/components/summary_row3_widget.dart';
 import '/flutter_flow/ff_builtin_enums.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -426,6 +427,55 @@ class _OrderSuccessWidgetState extends State<OrderSuccessWidget>
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: Color(0xFFF5F6F8),
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          iconTheme:
+              IconThemeData(color: FlutterFlowTheme.of(context).lensBlue),
+          automaticallyImplyLeading: false,
+          leading: FlutterFlowIconButton(
+            borderRadius: 12.0,
+            buttonSize: 48.0,
+            fillColor: Colors.transparent,
+            icon: Icon(
+              Icons.arrow_back_rounded,
+              color: FlutterFlowTheme.of(context).lensBlue,
+              size: 24.0,
+            ),
+            onPressed: () async {
+              logFirebaseEvent('ORDER_SUCCESS_PAGE_IconButton_ON_TAP');
+              logFirebaseEvent('IconButton_navigate_back');
+              context.pop();
+            },
+          ),
+          title: Text(
+            'Order Confirmation',
+            style: FlutterFlowTheme.of(context).titleLarge.override(
+                  font: GoogleFonts.inter(
+                    fontWeight:
+                        FlutterFlowTheme.of(context).titleLarge.fontWeight,
+                    fontStyle:
+                        FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                  ),
+                  color: Color(0xFF17233D),
+                  letterSpacing: 0.0,
+                  fontWeight:
+                      FlutterFlowTheme.of(context).titleLarge.fontWeight,
+                  fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                ),
+          ),
+          actions: [],
+          bottom: PreferredSize(
+            preferredSize: Size.fromHeight(0),
+            child: Divider(
+              height: 1.0,
+              thickness: 1.0,
+              color: Color(0xFFE8EBF0),
+            ),
+          ),
+          centerTitle: false,
+          toolbarHeight: 30.0,
+          elevation: 0.0,
+        ),
         body: SafeArea(
           top: true,
           child: Padding(
